@@ -1,14 +1,32 @@
-# github-issue-blog
-2024 Dcard Frontend Intern Homework
+# yeeway.dev
+Alex Su's personal website
 
 ## Getting Started
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+git clone https://github.com/yeeway0609/yeeway.dev.git
+cd yeeway.dev
+bun i
 bun dev
 ```
+## Feature
+### Must-have
+- [ ] 首頁
+  - [ ] 介紹我自己
+  - [ ] 各區塊導流
+  - [ ] Footer
+- [ ] 部落格
+  - [ ] 串接 GitHub API
+  - [ ] 作者在登入後能夠「瀏覽」、「新增」、「更新」Blog 文章,「瀏覽」留言;
+  - [ ] 非作者僅能「瀏覽」Blog 文章及「瀏覽」留言。
+- [x] 部署
+  - Vercel & Cloudfare
+- [ ] 優化
+  - [ ] Core Web Vitals
+  - [ ] SEO (Search Console、Google Analytics)
+
+### Nice-to-have
+- [ ] Dark mode
+- [ ] 音樂播放器
+- [ ] 個人名片
+- [ ] PWA
 
