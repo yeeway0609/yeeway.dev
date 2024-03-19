@@ -1,36 +1,32 @@
 'use client';
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from 'next/navigation';
-import { HomeIcon, DocumentDuplicateIcon, UserCircleIcon } from "@heroicons/react/24/outline";
-
-const links = [
-  { name: "首頁", href: "/", icon: HomeIcon },
-  { name: "文章", href: "/posts", icon: DocumentDuplicateIcon },
-  { name: "關於我", href: "/about", icon: UserCircleIcon },
-];
+import ThemeSwitch from '@/components/ThemeSwitch';
 
 export default function NavBar() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex h-full px-3 py-4 md:px-2">
-      {links.map((link) => {
-        const LinkIcon = link.icon;
-        return (
-          <Link
-            key={link.name}
-            href={link.href}
-            className={`
-              flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3
-              ${pathname === link.href ? "text-blue-600" : ""}
-            `}
-          >
-            <LinkIcon className="w-6" />
-            <p className="hidden md:block">{link.name}</p>
-          </Link>
-        );
-      })}
+    <nav className="flex w-full justify-around px-3 py-4 md:px-2">
+      <Link href="/">
+        <Image src="/logo.png" alt="Alex Su' Website" width={48} height={48} />
+      </Link>
+      <div className="flex">
+        <Link href="/posts" className="flex h-12 items-center justify-center gap-2 rounded-md p-3 text-sm font-medium hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
+          <p className="hidden md:block">文章</p>
+        </Link>
+        <Link href="/about" className="flex h-12 items-center justify-center gap-2 rounded-md p-3 text-sm font-medium hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
+          <p className="hidden md:block">關於我</p>
+        </Link>
+        <a href="https://resume.yeeway.dev" target="_blank" className="flex h-12 items-center justify-center gap-2 rounded-md p-3 text-sm font-medium hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
+          <p className="hidden md:block">履歷</p>
+        </a>
+      </div>
+      <div>
+        <ThemeSwitch />
+      </div>
     </nav>
   );
 }
