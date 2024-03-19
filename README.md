@@ -19,10 +19,14 @@ bun dev
   - [ ] 作者在登入後能夠「瀏覽」、「新增」、「更新」Blog 文章,「瀏覽」留言;
   - [ ] 非作者僅能「瀏覽」Blog 文章及「瀏覽」留言。
 - [x] 部署
-  - Vercel & Cloudfare
+  - Vercel: https://yeeway-dev.vercel.app
+  - Cloudfare: https://yeeway.dev
 - [ ] 優化
   - [ ] Core Web Vitals
-  - [ ] SEO (Search Console、Google Analytics)
+  - [ ] SEO
+    - [ ] Google Search Console
+    - [ ] Google Analytics
+    - [ ] Google Tag Manager
 
 ### Nice-to-have
 - [ ] Dark mode
