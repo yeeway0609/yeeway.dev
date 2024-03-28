@@ -14,7 +14,7 @@ export default function NavBar() {
         <Image src="/logo.png" alt="Alex Su' Website" width={48} height={48} />
       </Link>
       <div className="flex">
-        <Link href="/posts" className="flex h-12 items-center justify-center gap-2 rounded-md p-3 text-sm font-medium hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
+        <Link href="/blog" className="flex h-12 items-center justify-center gap-2 rounded-md p-3 text-sm font-medium hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
           <p className="hidden md:block">文章</p>
         </Link>
         <Link href="/about" className="flex h-12 items-center justify-center gap-2 rounded-md p-3 text-sm font-medium hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
