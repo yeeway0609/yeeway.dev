@@ -1,18 +1,33 @@
-import { Issue } from "@/lib/types";
+import {
+  Card,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
+import { Issue } from "@/lib/types";
+import { formatDate } from "@/lib/utils";
 
-export default function PostCard({ title, body, number }: Issue) {
+export default function PostCard({ title, body, number, createdAt, labels }: Issue) {
   return (
-    <div className="w-96 rounded-lg bg-white px-8 py-4 shadow-lg">
-      <div>
-        <h2 className="text-3xl font-semibold text-gray-800">{title}</h2>
-        <p className="mt-2 text-gray-600">{body}</p>
-      </div>
-      <div className="mt-4 flex justify-end">
-        <Link href={`blog/${number}`}>
-          <span className="text-xl font-medium text-indigo-500">閱讀更多</span>
-        </Link>
-      </div>
-    </div>
+    <Card className="w-96">
+      <Link href={`blog/${number}`}>
+        <CardHeader>
+          <CardTitle>{title}</CardTitle>
+          <CardDescription>{body}</CardDescription>
+          <CardDescription>
+            {labels?.nodes.map((label) => (
+              <Badge key={label.name} className="mr-1">{label.name}</Badge>
+            ))}
+          </CardDescription>
+        </CardHeader>
+        <CardFooter className="justify-between">
+          <p>{formatDate(createdAt)}</p>
+          <p className="text-primary">Read more</p>
+        </CardFooter>
+      </Link>
+    </Card>
   );
 };

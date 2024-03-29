@@ -38,7 +38,7 @@ export default function LoadPosts({ initialPosts, initialEndCursor }: { initialP
     <>
         {posts?.map((post: any) => {
           return (
-            <PostCard key={post.id} title={post.title} body={post.body} url={post.url} number={post.number}/>
+            <PostCard key={post.id} title={post.title} body={post.body} url={post.url} number={post.number} createdAt={post.createdAt} labels={post.labels} />
           );
         })}
 

@@ -1,6 +1,7 @@
 export type Issue = {
   title: string;
   body: string;
+  createdAt: string;
   id?: string;
   url?: string;
   number?: number;

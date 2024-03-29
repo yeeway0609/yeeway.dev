@@ -17,6 +17,12 @@ export async function getPosts(endCursor: string | null, perPage: number = 10): 
           body
           url
           number
+          createdAt
+          labels(first: 10) {
+            nodes {
+              name
+            }
+          }
         }
         pageInfo {
           endCursor
