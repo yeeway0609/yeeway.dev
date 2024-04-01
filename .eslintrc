@@ -5,6 +5,8 @@
     "plugin:tailwindcss/recommended"
   ],
   "rules": {
-    "semi": "error"
+    "tailwindcss/no-custom-classname": "off",
+    "semi": "error",
+    "quotes": ["warn", "double"]
   }
 }
