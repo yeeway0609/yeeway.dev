@@ -14,16 +14,13 @@ export default function SpotifyPlayer() {
   const randomIndex = Math.floor(Math.random() * songs.length);
 
   return (
-    <div>
-      Recent favorite:
-      <iframe
-        src={`https://open.spotify.com/embed/track/${songs[randomIndex]}?utm_source=generator&theme=0`}
-        className="mt-1 rounded-lg"
-        width="100%"
-        height="80"
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy"
-      ></iframe>
-    </div>
+    <iframe
+      src={`https://open.spotify.com/embed/track/${songs[randomIndex]}?utm_source=generator&theme=0`}
+      className="mt-1 rounded-lg"
+      width="100%"
+      height="80"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy"
+    ></iframe>
   );
 }

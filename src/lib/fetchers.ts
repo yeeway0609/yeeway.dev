@@ -1,11 +1,11 @@
-'use server';
+"use server";
 
-import { Issue, IssuesResponse } from '@/lib/types';
+import { Issue, IssuesResponse } from "@/lib/types";
 
 export async function getPosts(endCursor: string | null, perPage: number = 10): Promise<IssuesResponse> {
   const after = endCursor ? `\"${endCursor}\"` : null;
   const GITHUB_ACCESS_TOKEN = process.env.GITHUB_ACCESS_TOKEN;
-  const endpoint = 'https://api.github.com/graphql';
+  const endpoint = "https://api.github.com/graphql";
   const repo_owner = "yeeway0609";
   const repo_name = "yeeway.dev";
   const query = `{
@@ -34,9 +34,9 @@ export async function getPosts(endCursor: string | null, perPage: number = 10): 
     }
   }`;
   const options = {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       "Authorization": `bearer ${GITHUB_ACCESS_TOKEN}`,
     },
     body: JSON.stringify({ query: query })
@@ -50,7 +50,7 @@ export async function getPosts(endCursor: string | null, perPage: number = 10): 
 
 export async function getPostData(issueNumber: number): Promise<Issue> {
   const GITHUB_ACCESS_TOKEN = process.env.GITHUB_ACCESS_TOKEN;
-  const endpoint = 'https://api.github.com/graphql';
+  const endpoint = "https://api.github.com/graphql";
   const repo_owner = "yeeway0609";
   const repo_name = "yeeway.dev";
   const query = `{
@@ -81,9 +81,9 @@ export async function getPostData(issueNumber: number): Promise<Issue> {
     }
   }`;
   const options = {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       "Authorization": `bearer ${GITHUB_ACCESS_TOKEN}`,
     },
     body: JSON.stringify({ query: query })
@@ -94,4 +94,3 @@ export async function getPostData(issueNumber: number): Promise<Issue> {
   const response_data = await response.json();
   return response_data.data.repository.issue;
 }
-

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./global.css";
 import { Providers } from "@/lib/provider";
-import Header from '@/components/Header';
+import Header from "@/components/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,10 +14,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${inter.className} flex flex-col items-center`}>
         <Providers>
           <Header />
-          {children}
+          <div className="container pt-16">
+            {children}
+          </div>
         </Providers>
       </body>
     </html>

@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useInView } from 'react-intersection-observer';
+import { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
 import { Issue } from "@/lib/types";
 import { getPosts } from "@/lib/fetchers";
 import PostCard from "@/components/PostCard";
