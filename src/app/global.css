@@ -2,57 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
+    --gradient: linear-gradient(to top left,#a1c4fd,#c2e9fb);
+    --background: 231 9.6% 99.05%;
+    --foreground: 231 45.8% 10.53%;
+    --card: 231 9.6% 99.05%;
+    --card-foreground: 231 45.8% 10.53%;
+    --popover: 231 9.6% 99.05%;
+    --popover-foreground: 231 45.8% 10.53%;
+    --primary: 231 96% 65%;
+    --primary-foreground: 231 9.6% 99.05%;
+    --secondary: 231 9.6% 99.05%;
+    --secondary-foreground: 231 9.6% 8.10%;
+    --muted: 231 9.6% 99.05%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 231 9.6% 99.05%;
+    --accent-foreground: 231 9.6% 8.10%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 231 9.6% 99.05%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
+    --ring: 231 96% 65%;
     --radius: 1rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --gradient: linear-gradient(to top left,#a1c4fd,#c2e9fb);
+    --background: 231 62.4% 6.48%;
+    --foreground: 231 9.6% 99.05%;
+    --card: 231 45.8% 10.53%;
+    --card-foreground: 231 9.6% 99.05%;
+    --popover: 231 45.8% 10.53%;
+    --popover-foreground: 231 9.6% 99.05%;
+    --primary: 231 96% 81%;
+    --primary-foreground: 231 9.6% 8.10%;
+    --secondary: 231 48% 24.3%;
+    --secondary-foreground: 231 9.6% 99.05%;
+    --muted: 231 48% 24.3%;
+    --muted-foreground: 231 9.6% 58.1%;
+    --accent: 231 48% 24.3%;
+    --accent-foreground: 231 9.6% 99.05%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
+    --destructive-foreground: 231 9.6% 99.05%;
+    --border: 231 48% 24.3%;
+    --input: 231 48% 24.3%;
+    --ring: 231 96% 81%;
   }
 }
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border transition-[background-color] ease-in-out duration-300;
   }
   body {
     @apply bg-background text-foreground;
@@ -60,98 +61,74 @@
 
   /* https://github.com/iandinwoodie/github-markdown-tailwindcss/tree/master */
   .markdown {
-    @apply text-gray-900 leading-normal break-words;
+    @apply text-foreground leading-normal break-words;
   }
-
   .markdown > * + * {
     @apply mt-0 mb-4;
   }
-
   .markdown li + li {
     @apply mt-1;
   }
-
   .markdown li > p + p {
     @apply mt-6;
   }
-
   .markdown strong {
     @apply font-semibold;
   }
-
   .markdown a {
     @apply text-blue-600 font-semibold;
   }
-
   .markdown strong a {
     @apply font-bold;
   }
-
   .markdown h1 {
     @apply leading-tight border-b text-4xl font-semibold mb-4 mt-6 pb-2;
   }
-
   .markdown h2 {
     @apply leading-tight border-b text-2xl font-semibold mb-4 mt-6 pb-2;
   }
-
   .markdown h3 {
     @apply leading-snug text-lg font-semibold mb-4 mt-6;
   }
-
   .markdown h4 {
     @apply leading-none text-base font-semibold mb-4 mt-6;
   }
-
   .markdown h5 {
     @apply leading-tight text-sm font-semibold mb-4 mt-6;
   }
-
   .markdown h6 {
     @apply leading-tight text-sm font-semibold text-gray-600 mb-4 mt-6;
   }
-
   .markdown blockquote {
     @apply text-base border-l-4 border-gray-300 pl-4 pr-4 text-gray-600;
   }
-
-  .markdown code {
-    @apply font-mono text-sm inline bg-gray-200 rounded px-1 py-5;
-  }
-
   .markdown pre {
-    @apply bg-gray-100 rounded p-4;
+    @apply bg-gray-100 dark:bg-gray-700 rounded p-4 overflow-y-hidden;
   }
-
+  .markdown code {
+    @apply font-mono text-sm inline bg-gray-200 dark:bg-gray-700 rounded;
+  }
   .markdown pre code {
     @apply block bg-transparent p-0 overflow-visible rounded-none;
   }
-
   .markdown ul {
     @apply text-base pl-8 list-disc;
   }
-
   .markdown ol {
     @apply text-base pl-8 list-decimal;
   }
-
   .markdown kbd {
     @apply text-xs inline-block rounded border px-1 py-5 align-middle font-normal font-mono shadow;
   }
-
   .markdown table {
     @apply text-base border-gray-600;
   }
-
   .markdown th {
     @apply border py-1 px-3;
   }
-
   .markdown td {
     @apply border py-1 px-3;
   }
-
-  /* Override pygments style background color. */
   .markdown .highlight pre {
     @apply bg-gray-100 !important;
   }
