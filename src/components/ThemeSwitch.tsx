@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
 import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
-import { useState, useEffect } from 'react';
-import { useTheme } from 'next-themes';
+import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 import Image from "next/image";
 
 export default function ThemeSwitch() {
@@ -24,20 +24,20 @@ export default function ThemeSwitch() {
     />
   );
 
-  if (resolvedTheme === 'dark') return (
+  if (resolvedTheme === "dark") return (
     <div className="flex h-full items-center justify-center">
-      <SunIcon
+      <MoonIcon
         className="size-8"
-        onClick={() => setTheme('light')}
+        onClick={() => setTheme("light")}
       />
     </div>
   );
 
-  if (resolvedTheme === 'light') return (
+  if (resolvedTheme === "light") return (
     <div className="flex h-full items-center justify-center">
-      <MoonIcon
+      <SunIcon
         className="size-8"
-        onClick={() => setTheme('dark')}
+        onClick={() => setTheme("dark")}
       />
     </div>
   );
