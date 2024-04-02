@@ -16,7 +16,7 @@ export default function PostCard({ title, body, number, createdAt, labels }: Iss
       <Link href={`blog/${number}`}>
         <CardHeader>
           <CardTitle>{title}</CardTitle>
-          <CardDescription>{body}</CardDescription>
+          <CardDescription>{body.substring(0, 100)}......</CardDescription>
           <CardDescription>
             {labels?.nodes.map((label) => (
               <Badge key={label.name} className="mr-1">{label.name}</Badge>
