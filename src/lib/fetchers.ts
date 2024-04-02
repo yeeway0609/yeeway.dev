@@ -10,7 +10,7 @@ export async function getPosts(endCursor: string | null, perPage: number = 10): 
   const repo_name = "yeeway.dev";
   const query = `{
     repository(owner: "${repo_owner}", name: "${repo_name}") {
-      issues(first: ${perPage}, after: ${after}, orderBy: {field: CREATED_AT, direction: DESC}) {
+      issues(first: ${perPage}, after: ${after}, filterBy: {states: OPEN, createdBy: "${repo_owner}"}, orderBy: {field: CREATED_AT, direction: DESC}) {
         nodes {
           id
           title
@@ -92,5 +92,5 @@ export async function getPostData(issueNumber: number): Promise<Issue> {
   const response = await fetch(endpoint, options);
   if (!response.ok) throw Error;
   const response_data = await response.json();
-  return response_data.data.repository.issue;
+  return await response_data.data.repository.issue;
 }
