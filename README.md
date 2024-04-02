@@ -8,6 +8,12 @@ cd yeeway.dev
 bun i
 bun dev
 ```
+## Tech stack
+- JS 框架：Next.js
+- 樣式：Tailwind CSS、Shadcn-ui
+- 內容：MDX
+- 工具：ESlint
+
 ## Feature
 ### Must-have
 - [ ] 首頁
@@ -21,6 +27,7 @@ bun dev
 - [x] 部署
   - Vercel: https://yeeway-dev.vercel.app
   - Cloudfare: https://yeeway.dev
+- [ ] 測試
 - [ ] 優化
   - [ ] Core Web Vitals
   - [ ] SEO
@@ -33,4 +40,7 @@ bun dev
 - [ ] 音樂播放器
 - [ ] 個人名片
 - [ ] PWA
+
+## 參考資料
+- [Using pagination in the GitHub GraphQL API](https://docs.github.com/en/graphql/guides/using-pagination-in-the-graphql-api)
 

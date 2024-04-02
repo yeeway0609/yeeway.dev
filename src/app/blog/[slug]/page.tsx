@@ -12,6 +12,9 @@ export default async function PostPage({ params }: { params: { slug: number } })
   return (
     <div>
       <GitHubLogInBtn />
+      <h1 className="text-2xl leading-relaxed">
+        {postData.title}
+      </h1>
       <ReactMarkdown remarkPlugins={[remarkGfm]} className="markdown">{postData.body}</ReactMarkdown>
 
       <h1 className="text-xl">留言區</h1>
