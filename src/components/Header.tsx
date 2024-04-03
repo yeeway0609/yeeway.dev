@@ -1,14 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { Bars3Icon, XMarkIcon, NewspaperIcon, UserIcon, CommandLineIcon, BriefcaseIcon } from "@heroicons/react/24/solid";
-import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import SpotifyPlayer from "@/components/SpotifyPlayer";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { Bars3Icon, XMarkIcon, NewspaperIcon, UserIcon, CommandLineIcon, BriefcaseIcon } from "@heroicons/react/24/solid";
+import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import ThemeSwitch from "@/components/ThemeSwitch";
+import SpotifyPlayer from "@/components/SpotifyPlayer";
+import LogInAvatar from "@/components/LogInAvatar";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -47,7 +48,8 @@ export default function Header() {
             ))}
           </NavigationMenuList>
         </NavigationMenu>
-        <div className="hidden sm:block">
+        <div className="hidden sm:flex sm:gap-3">
+          <LogInAvatar />
           <ThemeSwitch />
         </div>
 
@@ -59,6 +61,7 @@ export default function Header() {
             </SheetTrigger>
             <SheetContent className="flex w-[270px] flex-col p-4">
               <div className="flex justify-between">
+                <LogInAvatar />
                 <ThemeSwitch />
                 <SheetTrigger className="block">
                   <XMarkIcon className="size-8" />
