@@ -30,12 +30,11 @@ export default async function PostPage({ params }: { params: { slug: number } })
       </div>
       <hr className="mb-5 mt-2" />
       <ReactMarkdown remarkPlugins={[remarkGfm]} className="markdown">{postData.body}</ReactMarkdown>
-
       <div className="mb-4 mt-10 flex">
         <ChatBubbleOvalLeftEllipsisIcon className="mr-2 size-7" />
         <p className="text-lg text-muted-foreground">{postData.comments?.totalCount} comments</p>
       </div>
-      <div className="mb-10 flex flex-col gap-4">
+      <div className="flex flex-col gap-4">
         {postData.comments?.nodes.map((comment: any, index: number) => (
           <CommentCard key={index} userName={comment.author.login} userAvatarUrl={comment.author.avatarUrl} content={comment.body} createdAt={comment.createdAt} />
         ))}
