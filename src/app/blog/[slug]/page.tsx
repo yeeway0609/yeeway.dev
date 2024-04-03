@@ -2,8 +2,10 @@ import { NextSeo } from "next-seo";
 import { getPostData } from "@/lib/fetchers";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import GitHubLogInBtn from "@/components/GitHubLogInBtn";
 import CommentCard from "@/components/CommentCard";
+import EditPostBtn from "@/components/EditPostBtn";
+
+export const dynamic = "force-dynamic"; // disable data caching
 
 export default async function PostPage({ params }: { params: { slug: number } }) {
   const issueNumber = params.slug;
@@ -11,10 +13,12 @@ export default async function PostPage({ params }: { params: { slug: number } })
 
   return (
     <div>
-      <GitHubLogInBtn />
-      <h1 className="text-2xl leading-relaxed">
-        {postData.title}
-      </h1>
+      <div className="flex justify-between">
+        <h1 className="text-2xl leading-relaxed">
+          {postData.title}
+        </h1>
+        <EditPostBtn issueId={postData.id!} initialTitle={postData.title} initialContent={postData.body} />
+      </div>
       <ReactMarkdown remarkPlugins={[remarkGfm]} className="markdown">{postData.body}</ReactMarkdown>
 
       <h1 className="text-xl">留言區</h1>
