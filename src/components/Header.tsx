@@ -24,7 +24,7 @@ export default function Header() {
   return (
     <nav className="border-foreground-300/30 fixed flex w-full items-center justify-center border-b-[0.5px] bg-background/30 py-3 shadow-md backdrop-blur-md">
       <div className="border-foreground-300/30 container flex items-center justify-between">
-        <Link href="/">
+        <Link href="/blog">
           <Image src="/logo.png" alt="Alex Su' Website" width={36} height={36} />
         </Link>
 
