@@ -10,7 +10,7 @@ import { PencilSquareIcon } from "@heroicons/react/24/solid";
 import { useSession } from "next-auth/react";
 import { updatePostTitle, updatePostContent } from "@/lib/actions";
 
-export default function EditPostBtn({ issueId, initialTitle, initialContent }: { issueId: string, initialTitle: string, initialContent: string}) {
+export default function EditPostBtn({ issueNumber, issueId, initialTitle, initialContent }: { issueNumber: number, issueId: string, initialTitle: string, initialContent: string}) {
   const { data: session } = useSession();
   const [newTitle, setNewTitle] = useState(initialTitle);
   const [newContent, setNewContent] = useState(initialContent);
@@ -27,6 +27,7 @@ export default function EditPostBtn({ issueId, initialTitle, initialContent }: {
   const handleSubmit = (e: any) => {
     updatePostTitle(issueId, newTitle);
     updatePostContent(issueId, newContent);
+    router.push(`/blog/${issueNumber}`);
     router.refresh();
     location.reload();
     console.log("Post updated!");
@@ -36,7 +37,7 @@ export default function EditPostBtn({ issueId, initialTitle, initialContent }: {
     return (
       <Dialog>
         <DialogTrigger>
-          <PencilSquareIcon className="size-6" />
+          <PencilSquareIcon className="size-6 text-muted-foreground" />
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>

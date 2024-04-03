@@ -1,20 +1,20 @@
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+import { formatDate } from "@/lib/utils";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
-export default function CommentCard({userName, userAvatarUrl, content}: {userName: string, userAvatarUrl: string, content: string}) {
+export default function CommentCard({userName, userAvatarUrl, content, createdAt}: {userName: string, userAvatarUrl: string, content: string, createdAt: string}) {
   return (
-    <Card className="w-96">
-      <CardHeader>
-        <CardTitle>{userName}</CardTitle>
-        <Avatar>
+    <div className="rounded-[10px] border border-border">
+      <div className="flex items-center rounded-t-[10px] border-b border-border bg-slate-400 px-4 py-3 dark:bg-slate-900">
+        <Avatar className="mr-2 size-6">
           <AvatarImage src={userAvatarUrl} />
         </Avatar>
-      </CardHeader>
-      <CardContent>
-        <ReactMarkdown remarkPlugins={[remarkGfm]} className="markdown">{content}</ReactMarkdown>
-      </CardContent>
-    </Card>
+        <p>
+          <span className="font-bold">{userName}</span> commented on {formatDate(createdAt)}
+        </p>
+      </div>
+      <div className="rounded-b-[10px] bg-gray-200 px-4 py-3 dark:bg-gray-700">
+        <p>{content}</p>
+      </div>
+    </div>
   );
 }

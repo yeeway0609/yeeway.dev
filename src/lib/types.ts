@@ -20,7 +20,9 @@ export type Issue = {
         avatarUrl: string;
       };
       body: string;
+      createdAt: string;
     }[];
+    totalCount: number;
   };
 };
 

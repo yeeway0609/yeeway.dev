@@ -2,9 +2,10 @@
 
 import { Issue, IssuesResponse } from "@/lib/types";
 
+const GITHUB_ACCESS_TOKEN = process.env.GITHUB_ACCESS_TOKEN;
+
 export async function getPosts(endCursor: string | null, perPage: number = 10): Promise<IssuesResponse> {
   const after = endCursor ? `\"${endCursor}\"` : null;
-  const GITHUB_ACCESS_TOKEN = process.env.GITHUB_ACCESS_TOKEN;
   const endpoint = "https://api.github.com/graphql";
   const repo_owner = "yeeway0609";
   const repo_name = "yeeway.dev";
@@ -49,7 +50,6 @@ export async function getPosts(endCursor: string | null, perPage: number = 10): 
 }
 
 export async function getPostData(issueNumber: number): Promise<Issue> {
-  const GITHUB_ACCESS_TOKEN = process.env.GITHUB_ACCESS_TOKEN;
   const endpoint = "https://api.github.com/graphql";
   const repo_owner = "yeeway0609";
   const repo_name = "yeeway.dev";
@@ -60,6 +60,7 @@ export async function getPostData(issueNumber: number): Promise<Issue> {
         title
         body
         url
+        createdAt
         author {
           login
         }
@@ -75,7 +76,9 @@ export async function getPostData(issueNumber: number): Promise<Issue> {
               avatarUrl
             }
             body
+            createdAt
           }
+          totalCount
         }
       }
     }
