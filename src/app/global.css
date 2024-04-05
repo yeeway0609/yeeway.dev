@@ -56,6 +56,22 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  .animate-arrow-shake .arrow {
+    animation: arrow-shake 1s infinite ease-in-out;
+  }
+  @keyframes arrow-shake {
+    0% {
+      transform: translateX(0px);
+    }
+    50% {
+      transform: translateX(5px);
+    }
+    100% {
+      transform: translateX(0px);
+    }
+  }
+
   .markdown {
     @apply text-foreground text-xl leading-normal break-words;
   }

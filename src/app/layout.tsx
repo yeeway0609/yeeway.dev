@@ -18,7 +18,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className={`${nunito.className} flex flex-col items-center`}>
         <Providers>
           <Header />
-          <div className="container pb-8 pt-16">
+          <div className="container py-16">
             {children}
           </div>
           <Footer />

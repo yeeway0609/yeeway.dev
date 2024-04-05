@@ -37,29 +37,32 @@ export default function AddPostBtn() {
 
   if (session?.user?.name === "蘇奕幃 Alex Su" || session?.user?.name === "test039274") {
     return (
-      <Dialog>
-        <DialogTrigger>
-          <PlusCircleIcon className="size-6" />
-        </DialogTrigger>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Create your post...</DialogTitle>
-          </DialogHeader>
-          <p>Title:</p>
-          <Input type="text" value={title} onChange={handleTitleChange} className="rounded-none" />
-          <p>Content:</p>
-          <Textarea value={content} onChange={handleContentChange} className="h-60 rounded-none" />
-          <DialogFooter className="sm:justify-start">
-          <DialogClose asChild>
-            {(session?.user?.name === "蘇奕幃 Alex Su") ? (
-              <Button type="button" variant="secondary" onClick={handleSubmit}>Update</Button>
-            ) : (
-              <Button disabled>Disabled</Button>
-            )}
-          </DialogClose>
-        </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      <div className="flex items-center justify-end py-2">
+        <span>Add new post ...</span>
+        <Dialog>
+          <DialogTrigger>
+            <PlusCircleIcon className="size-6" />
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Create your post...</DialogTitle>
+            </DialogHeader>
+            <p>Title:</p>
+            <Input type="text" value={title} onChange={handleTitleChange} className="rounded-none" />
+            <p>Content:</p>
+            <Textarea value={content} onChange={handleContentChange} className="h-60 rounded-none" />
+            <DialogFooter className="sm:justify-start">
+            <DialogClose asChild>
+              {(session?.user?.name === "蘇奕幃 Alex Su") ? (
+                <Button type="button" variant="secondary" onClick={handleSubmit}>Update</Button>
+              ) : (
+                <Button disabled>Disabled</Button>
+              )}
+            </DialogClose>
+          </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      </div>
     );
   } else {
     return (
