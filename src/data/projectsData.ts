@@ -9,7 +9,7 @@ export const projectsData: Project[] = [
     websiteURL: "https://nckubikefestival.ncku.edu.tw",
     githubURL: "https://github.com/gdsc-ncku/BikeFestival17th-Frontend",
     githubTitle: "BikeFestival17th-Frontend",
-    blogURL: "sdvsv",
-    blogTitle: "sdfds"
+    blogURL: "",
+    blogTitle: ""
   }
 ];
