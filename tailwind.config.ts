@@ -77,6 +77,9 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      cursor: {
+        pointer: "url(/pointing_up_3d.png), pointer",
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],

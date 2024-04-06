@@ -5,7 +5,7 @@ import { Providers } from "@/lib/provider";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const nunito = Nunito({ subsets: ["latin"], weight: ["400", "700"]});
+const nunito = Nunito({ subsets: ["latin"], weight: ["400", "700", "900"]});
 
 export const metadata: Metadata = {
   title: "Alex Su | Front-End Developer",

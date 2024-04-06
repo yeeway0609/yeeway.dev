@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { Bars3Icon, XMarkIcon, NewspaperIcon, UserIcon, CommandLineIcon, BriefcaseIcon } from "@heroicons/react/24/solid";
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import ThemeSwitch from "@/components/ThemeSwitch";
+import ThemeSwitch from "@/components/ThemeSwitchBtn";
 import SpotifyPlayer from "@/components/SpotifyPlayer";
 import LogInAvatar from "@/components/LogInAvatar";
 
@@ -22,7 +22,7 @@ export default function Header() {
   ];
 
   return (
-    <nav className="border-foreground-300/30 fixed flex w-full items-center justify-center border-b-[0.5px] bg-background/30 py-3 shadow-md backdrop-blur-md">
+    <header className="border-foreground-300/30 fixed z-50 flex w-full items-center justify-center border-b-[0.5px] bg-background/30 py-3 shadow-md backdrop-blur-md">
       <div className="border-foreground-300/30 container flex items-center justify-between">
         <Link href="/blog">
           <Image src="/logo.png" alt="Alex Su' Website" width={36} height={36} />
@@ -67,7 +67,7 @@ export default function Header() {
                   <XMarkIcon className="size-8" />
                 </SheetTrigger>
               </div>
-              <div className="mt-5 flex flex-col gap-8">
+              <nav className="mt-5 flex flex-col gap-8">
                 {routes.map((route) => (
                   <Link
                     key={route.title}
@@ -83,7 +83,7 @@ export default function Header() {
                   <BriefcaseIcon className="mr-2 size-5" />
                   Resume
                 </Link>
-              </div>
+              </nav>
               <div className="mt-auto">
                 Recent 😍 songs:
                 <SpotifyPlayer />
@@ -92,6 +92,6 @@ export default function Header() {
           </Sheet>
         </div>
       </div>
-    </nav>
+    </header>
   );
 }

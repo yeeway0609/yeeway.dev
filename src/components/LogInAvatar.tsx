@@ -6,13 +6,13 @@ export default function LogInAvatar() {
 
   if (status === "authenticated") {
     return (
-      <Avatar onClick={() => signOut()} className="size-8">
+      <Avatar onClick={() => signOut()} className="size-8 cursor-pointer">
         <AvatarImage src={session.user!.image!} />
       </Avatar>
     );
   } else {
     return (
-      <Avatar onClick={() => signIn("github")} className="size-8">
+      <Avatar onClick={() => signIn("github")} className="size-8 cursor-pointer">
         <AvatarImage src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" />
       </Avatar>
     );

@@ -14,7 +14,7 @@ export default function ThemeSwitch() {
   // if the component has not mounted, return a placeholder image to improve user experience
   if (!mounted) return (
     <Image
-      src="data:image/svg+xml;base64,PHN2ZyBzdHJva2U9IiNGRkZGRkYiIGZpbGw9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMCIgdmlld0JveD0iMCAwIDI0IDI0IiBoZWlnaHQ9IjIwMHB4IiB3aWR0aD0iMjAwcHgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiB4PSIyIiB5PSIyIiBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjIiIHJ4PSIyIj48L3JlY3Q+PC9zdmc+Cg=="
+      src="https://upload.wikimedia.org/wikipedia/commons/4/49/A_black_image.jpg"
       width={32}
       height={32}
       sizes="32x32"
@@ -25,7 +25,7 @@ export default function ThemeSwitch() {
   );
 
   if (resolvedTheme === "dark") return (
-    <div className="flex h-full items-center justify-center">
+    <div className="flex h-full cursor-pointer items-center justify-center">
       <MoonIcon
         className="size-8"
         onClick={() => setTheme("light")}
@@ -34,7 +34,7 @@ export default function ThemeSwitch() {
   );
 
   if (resolvedTheme === "light") return (
-    <div className="flex h-full items-center justify-center">
+    <div className="flex h-full cursor-pointer items-center justify-center">
       <SunIcon
         className="size-8"
         onClick={() => setTheme("dark")}

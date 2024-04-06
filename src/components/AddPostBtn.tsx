@@ -37,11 +37,11 @@ export default function AddPostBtn() {
 
   if (session?.user?.name === "蘇奕幃 Alex Su" || session?.user?.name === "test039274") {
     return (
-      <div className="flex items-center justify-end py-2">
+      <div className="mb-5 flex items-center">
         <span>Add new post ...</span>
         <Dialog>
           <DialogTrigger>
-            <PlusCircleIcon className="size-6" />
+            <PlusCircleIcon className="size-6 cursor-pointer" />
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
