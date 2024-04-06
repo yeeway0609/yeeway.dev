@@ -6,9 +6,9 @@
   :root {
     --background: 231 9.6% 99.05%;
     --foreground: 231 45.8% 10.53%;
-    --card: 231 9.6% 99.05%;
+    --card: 228 31.6% 97.3%;
     --card-foreground: 231 45.8% 10.53%;
-    --popover: 231 9.6% 99.05%;
+    --popover: 228 31.6% 97.3%;
     --popover-foreground: 231 45.8% 10.53%;
     --primary: 231 96% 65%;
     --primary-foreground: 231 9.6% 99.05%;
@@ -71,6 +71,23 @@
       transform: translateX(0px);
     }
   }
+
+  .animate-slide-in-right {
+    @apply opacity-0;
+    animation: slide-in-right 0.3s ease-in-out forwards;
+  }
+  @keyframes slide-in-right {
+    0% {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
 
   .markdown {
     @apply text-foreground text-xl leading-normal break-words;
