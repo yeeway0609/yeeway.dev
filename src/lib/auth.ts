@@ -1,6 +1,4 @@
-import { getServerSession, type NextAuthOptions } from "next-auth";
-import { getToken } from "next-auth/jwt";
-import { cookies, headers } from "next/headers";
+import { type NextAuthOptions } from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
 
 export const authOptions: NextAuthOptions = {
@@ -10,7 +8,7 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
       authorization: {
         params: {
-          scope: "user"
+          scope: "read:user"
         }
       },
     }),
