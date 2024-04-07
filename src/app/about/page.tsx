@@ -1,5 +1,5 @@
-import Image from "next/image";
 import MyAvatar from "@/components/MyAvatar";
+import SpotifyPlayer from "@/components/SpotifyPlayer";
 
 function SectionTitle({ children } : { children: string }) {
   return <h2 className="mb-2 mt-4 text-2xl font-bold text-primary sm:my-4">{children}</h2>;
@@ -43,6 +43,10 @@ export default function AboutPage() {
           <li>鋼之鍊金術師</li>
           <li>路人超能100</li>
         </ol>
+        <div className="mt-auto hidden sm:block">
+          <SectionTitle>😍 最近推的歌</SectionTitle>
+          <SpotifyPlayer />
+        </div>
       </section>
     </div>
   );
