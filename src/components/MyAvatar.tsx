@@ -28,7 +28,7 @@ export default function MyAvatar() {
 
   return (
     <div
-      className="size-[200px] mb-8 cursor-pointer overflow-hidden rounded-full bg-gradient-to-br from-[#757F9A] to-[#D7DDE8]"
+      className="mb-8 size-[200px] cursor-pointer overflow-hidden rounded-full bg-gradient-to-br from-[#757F9A] to-[#D7DDE8]"
       onClick={talkWithMe}
     >
       <Image src="/alex_su.png" alt="Alex Su" width={200} height={200} />

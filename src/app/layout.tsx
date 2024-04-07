@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import "./global.css";
-import { Providers } from "@/lib/provider";
+import { Providers } from "@/lib/Providers";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
