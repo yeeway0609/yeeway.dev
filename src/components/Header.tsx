@@ -22,9 +22,9 @@ export default function Header() {
   ];
 
   return (
-    <header className="border-foreground-300/30 fixed z-50 flex w-full items-center justify-center border-b-[0.5px] bg-background/30 py-3 shadow-md backdrop-blur-md">
+    <header className="border-foreground-300/30 fixed z-50 flex w-full items-center justify-center border-b-[0.5px] bg-background/70 py-3 shadow-md backdrop-blur-md">
       <div className="border-foreground-300/30 container flex items-center justify-between">
-        <Link href="/blog">
+        <Link href="/blog" className="cursor-pointer">
           <Image src="/logo.png" alt="Alex Su' Website" width={36} height={36} />
         </Link>
 
@@ -37,7 +37,7 @@ export default function Header() {
                   <NavigationMenuLink
                     className={`
                       ${navigationMenuTriggerStyle()}
-                      bg-transparent hover:text-primary
+                      cursor-pointer bg-transparent hover:text-primary
                       ${pathname.startsWith(route.href) ? "text-primary" : ""}
                   `}>
                     {<route.Icon className="mr-2 size-5" />}
@@ -79,10 +79,6 @@ export default function Header() {
                     {route.title}
                   </Link>
                 ))}
-                <Link href="https://resume.yeeway.dev" target="_blank" className="flex">
-                  <BriefcaseIcon className="mr-2 size-5" />
-                  Resume
-                </Link>
               </nav>
               <div className="mt-auto">
                 Recent 😍 songs:

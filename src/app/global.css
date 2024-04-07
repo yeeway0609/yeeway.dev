@@ -27,15 +27,15 @@
   }
 
   .dark {
-    --background: 231 62.4% 6.48%;
+    --background: 231 62.4% 6.48%; /* #06091b */
     --foreground: 231 9.6% 99.05%;
     --card: 231 45.8% 10.53%;
     --card-foreground: 231 9.6% 99.05%;
     --popover: 231 45.8% 10.53%;
     --popover-foreground: 231 9.6% 99.05%;
-    --primary: 231 96% 81%;
+    --primary: 231 96% 81%; /* #a0aefd */
     --primary-foreground: 231 9.6% 8.10%;
-    --secondary: 231 48% 24.3%;
+    --secondary: 231 48% 24.3%; /* #20295c */
     --secondary-foreground: 231 9.6% 99.05%;
     --muted: 231 48% 24.3%;
     --muted-foreground: 231 9.6% 58.1%;
@@ -55,6 +55,10 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  .name-gradient {
+    @apply bg-gradient-to-tl from-[#4776E6] to-[#8E54E9] bg-clip-text text-transparent;
   }
 
   .animate-arrow-shake .arrow {
@@ -88,6 +92,27 @@
     }
   }
 
+  .animate-fade-in-out {
+    animation: fade-in-out 1s forwards;
+  }
+  @keyframes fade-in-out {
+    0% {
+      opacity: 0;
+      transform: translate(-90%, 5px);
+    }
+    20% {
+      opacity: 1;
+      transform: translate(-90%, 0px);
+    }
+    80% {
+      opacity: 1;
+      transform: translate(-90%, 0px);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-90%, -5px);
+    }
+  }
 
   .markdown {
     @apply text-foreground text-xl leading-normal break-words;

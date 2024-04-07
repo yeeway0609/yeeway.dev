@@ -12,12 +12,12 @@ export default async function BlogPage() {
   return (
     <div className="flex">
       <div className="w-full md:w-2/3">
-        <section className="py-12">
+        <section className="py-8 sm:py-12">
           <h1 className="animate-slide-in-right inline-block text-5xl font-black tracking-wider">
-            Hi, I&apos;m Alex Su.
+            Hi, I&apos;m <span className="name-gradient">Alex Su</span>.
             <Image className="mb-2 inline" width={48} height={48} alt="emoji_smiling_face_with_sunglasses" src="/smiling_face_with_sunglasses_3d.png"></Image>
           </h1>
-          <h2 className="animate-slide-in-right mt-3 text-2xl text-muted-foreground delay-100">
+          <h2 className="animate-slide-in-right mt-3 text-xl text-muted-foreground delay-100 sm:text-2xl">
             Being creative. Being Positive. Being Motivated.
           </h2>
         </section>
