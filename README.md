@@ -53,7 +53,7 @@ bun dev
 
 ## Feature
 ### 部落格
-使用此 GitHub repo 的 issue 作為貼文資料庫，並串接 GitHub GraphQL API 讀取文章。
+- 使用此 GitHub repo 的 issue 作為貼文資料庫，並串接 GitHub GraphQL API 讀取文章。
 - 「文章列表」頁面：
   - 撰寫 GraphQL query 時限定只有 status 為 OPEN 以及創建者為專案擁有者的文章才會被讀取，以免其他用戶在此專案新建 issue 時也被呈現到網站上。每次查詢只會回傳十筆資料與 page cursor，每當列表滾到底部時發送 API 請求，直到沒有更多文章。GraphQL 相關程式碼在 [src/lib/fetcher.ts](https://github.com/yeeway0609/yeeway.dev/blob/main/src/lib/fetchers.ts)。
   - 若是「作者」本人透過 GitHub 登入，在此頁面會多出一個「新增貼文的按鈕」。點擊後跳出編輯 modal，並透過 GraphQL mutation 將新的貼文更新到此專案的 issue 列表。GraphQL 相關程式碼在 [src/lib/actions.ts](https://github.com/yeeway0609/yeeway.dev/blob/main/src/lib/actions.ts)。
@@ -63,6 +63,9 @@ bun dev
   - 若是「作者」本人透過 GitHub 登入，在此頁面會多出一個「編輯貼文的按鈕」。點擊後跳出編輯 modal，並透過 GraphQL mutation 將新的內容更新到此 issue。GraphQL 相關程式碼在 [src/lib/actions.ts](https://github.com/yeeway0609/yeeway.dev/blob/main/src/lib/actions.ts)。  
     <video src="https://github.com/yeeway0609/yeeway.dev/assets/98323303/83b78041-61fe-40be-871c-bc5e31532a34"></video>
   - 未來將新增讓用戶登入後留言的功能
+- 若想測試編輯視窗，可以使用下列測試帳號登入（但無法實際送出資料）
+  - 帳號：test039274
+  - 密碼：AtpJuliT+zLRAStE
 
 ### 線上環境部署
 使用 Vercel 部署: https://yeeway.dev
