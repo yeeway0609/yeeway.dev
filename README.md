@@ -84,6 +84,8 @@ bun dev
 ## To do
 - [ ] 部落格貼文留言功能  
   串接 GitHub GraphQL API 與 GitHub OAuth，讓使用者可以在網站上直接新增留言並更新到此 repo 的 issue
+- [ ] 聯絡表單
+- [ ] 3D動態設計
 - [ ] 單元測試
 - [ ] 優化
   - [ ] Core Web Vitals
