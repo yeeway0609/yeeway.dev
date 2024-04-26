@@ -82,8 +82,8 @@ bun dev
   <img width="283" alt="SCR-20240408-cqey" src="https://github.com/yeeway0609/yeeway.dev/assets/98323303/fb51f5c1-e9d6-4727-99e7-b2e5c493334e">
 
 ## To do
-- [ ] 部落格貼文留言功能  
-  串接 GitHub GraphQL API 與 GitHub OAuth，讓使用者可以在網站上直接新增留言並更新到此 repo 的 issue
+- [ ] 貼文留言功能
+- [ ] 照片 slider (參考linkedin pdf)
 - [ ] 聯絡表單
 - [ ] 3D動態設計
 - [ ] 單元測試
