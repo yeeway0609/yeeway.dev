@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 const nunito = Nunito({ subsets: ["latin"], weight: ["400", "700", "900"]});
 
 export const metadata: Metadata = {
-  title: "Alex Su | Front-End Developer",
+  title: "Alex Su | Software Developer",
   description: "Website of Alex Su, aka yeeway.",
 };
 

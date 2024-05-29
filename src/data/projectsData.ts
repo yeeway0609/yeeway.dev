@@ -11,5 +11,16 @@ export const projectsData: Project[] = [
     githubTitle: "BikeFestival17th-Frontend",
     blogURL: "",
     blogTitle: ""
+  },
+  {
+    title: "2024 GDSC NCKU Forum Website",
+    description: "Code to goal, Fuel your soul!",
+    imageURL: "\/gdsc_ncku_foum.png",
+    tags: ["Next.js", "Tailwind CSS", "shadcn/ui"],
+    websiteURL: "https://forum2024.gdscncku.com/",
+    githubURL: "https://github.com/gdsc-ncku/gdsc-ncku-forum-2024",
+    githubTitle: "gdsc-ncku-forum-2024",
+    blogURL: "",
+    blogTitle: ""
   }
 ];
