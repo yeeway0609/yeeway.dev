@@ -82,6 +82,7 @@ bun dev
   <img width="283" alt="SCR-20240408-cqey" src="https://github.com/yeeway0609/yeeway.dev/assets/98323303/fb51f5c1-e9d6-4727-99e7-b2e5c493334e">
 
 ## To do
+- [ ] 連結hover過去要有底線
 - [ ] 貼文留言功能
 - [ ] 照片 slider (參考linkedin pdf)
 - [ ] 聯絡表單
