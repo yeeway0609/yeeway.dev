@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import "./global.css";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Providers } from "@/lib/Providers";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <Footer />
         </Providers>
       </body>
+      <GoogleAnalytics gaId="G-CCEVLQFSHY" />
     </html>
   );
 }
