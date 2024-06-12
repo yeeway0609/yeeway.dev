@@ -18,7 +18,7 @@ export default function Header() {
     { title: "Blog", href: "/blog", Icon: NewspaperIcon },
     { title: "Projects", href: "/projects", Icon: CommandLineIcon },
     { title: "About", href: "/about", Icon: UserIcon },
-    { title: "Resume", href: "https://resume.yeeway.dev", Icon: BriefcaseIcon, }
+    // { title: "Resume", href: "https://resume.yeeway.dev", Icon: BriefcaseIcon, }
   ];
 
   return (
