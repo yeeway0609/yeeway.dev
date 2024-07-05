@@ -115,7 +115,7 @@
   }
 
   .markdown {
-    @apply text-foreground text-xl leading-normal break-words;
+    @apply text-foreground text-base sm:text-xl leading-normal break-words;
   }
   .markdown > * + * {
     @apply mt-0 mb-4;
@@ -154,7 +154,7 @@
     @apply bg-gray-200 dark:bg-gray-700 rounded p-4 overflow-y-hidden;
   }
   .markdown code {
-    @apply font-mono text-sm inline bg-gray-200 dark:bg-gray-700 rounded;
+    @apply text-sm font-mono inline bg-gray-200 dark:bg-gray-700 rounded;
   }
   .markdown ul {
     @apply pl-8 list-disc;

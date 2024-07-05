@@ -1,3 +1,13 @@
+import type { Metadata } from "next";
+export async function generateMetadata({ params }: { params: { slug: number } }): Promise<Metadata> {
+  const issueNumber = params.slug;
+  const postData = await getPostData(issueNumber);
+
+  return {
+    title: `${postData.title} | Alex Su's Blog`,
+  };
+}
+
 import { NextSeo } from "next-seo";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -10,7 +20,7 @@ import EditPostBtn from "@/components/EditPostBtn";
 
 export const dynamic = "force-dynamic"; // disable data caching
 
-export default async function PostPage({ params }: { params: { slug: number } }) {
+export default async function Page({ params }: { params: { slug: number } }) {
   const issueNumber = params.slug;
   const postData = await getPostData(issueNumber);
 
