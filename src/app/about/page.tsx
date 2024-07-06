@@ -35,7 +35,6 @@ export default function AboutPage() {
         <ul className="list-disc pl-4">
           <li>Kpop: Mamamoo, LE SSERAFIM, STAYC, XG, TWICE</li>
           <li>Jpop: Yurri, milet, Aimer, Ado, Vaundy</li>
-          <li>台灣樂團: 美秀集團, 冰球樂團, 好樂團, 血肉果汁機</li>
         </ul>
         <SectionTitle>🔥 喜愛的動漫</SectionTitle>
         <ol className="list-decimal pl-4">

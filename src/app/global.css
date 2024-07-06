@@ -130,7 +130,7 @@
     @apply font-bold;
   }
   .markdown a {
-    @apply text-blue-600 font-bold;
+    @apply text-blue-600 font-bold underline underline-offset-2;
   }
   .markdown h2 {
     @apply leading-tight text-2xl sm:text-3xl text-primary font-bold mb-4 mt-6;
@@ -182,5 +182,8 @@
   }
   .markdown .footnotes {
     @apply text-sm text-muted-foreground;
+  }
+  .markdown img {
+    @apply my-4;
   }
 }

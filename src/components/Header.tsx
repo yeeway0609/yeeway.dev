@@ -49,7 +49,7 @@ export default function Header() {
           </NavigationMenuList>
         </NavigationMenu>
         <div className="hidden sm:flex sm:gap-3">
-          <LogInAvatar />
+          {/* <LogInAvatar /> */}
           <ThemeSwitch />
         </div>
 
@@ -61,7 +61,7 @@ export default function Header() {
             </SheetTrigger>
             <SheetContent className="flex w-[270px] flex-col p-4">
               <div className="flex justify-between">
-                <LogInAvatar />
+                {/* <LogInAvatar /> */}
                 <ThemeSwitch />
                 <SheetTrigger className="block">
                   <XMarkIcon className="size-8" />
