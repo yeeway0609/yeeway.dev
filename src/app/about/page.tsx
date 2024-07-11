@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import MyAvatar from "@/components/MyAvatar";
 import SpotifyPlayer from "@/components/SpotifyPlayer";
 
@@ -5,12 +6,16 @@ function SectionTitle({ children } : { children: string }) {
   return <h2 className="mb-2 mt-4 text-2xl font-bold text-primary sm:my-4">{children}</h2>;
 }
 
+export const metadata: Metadata = {
+  title: "About Me | yeeway.dev",
+};
+
 export default function AboutPage() {
   return (
     <div className="my-8 flex flex-col items-start justify-evenly sm:flex-row-reverse">
       <MyAvatar />
       <section className="sm:w-[500px]">
-        <h1 className="name-gradient text-5xl font-black tracking-wider">Alex Su</h1>
+        <h1 className="name-gradient text-5xl font-black tracking-wider">Yiwei Su</h1>
         <p className="my-2">
           我是蘇奕幃，也可以叫我 Alex 或 yeeway。來自台灣的高雄市，現在的 MBTI 是 ESFJ。興趣是聽音樂、看動漫與打電動。
           目前主要學習網頁前端技術與 UI/UX 設計，並且喜歡參與各種社群小聚與研討會。

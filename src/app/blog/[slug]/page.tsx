@@ -4,7 +4,7 @@ export async function generateMetadata({ params }: { params: { slug: number } })
   const postData = await getPostData(issueNumber);
 
   return {
-    title: `${postData.title} | Alex Su's Blog`,
+    title: `${postData.title} | yeeway.dev`,
   };
 }
 
