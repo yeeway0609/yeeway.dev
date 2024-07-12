@@ -1,99 +1,70 @@
 "use server";
 
-import { Issue, IssuesResponse } from "@/lib/types";
+import { BlogPost } from "@/lib/types";
+import { Client } from "@notionhq/client";
+import { NotionToMarkdown } from "notion-to-md";
 
-const GITHUB_ACCESS_TOKEN = process.env.GITHUB_ACCESS_TOKEN;
+const notion = new Client({ auth: process.env.NOTION_SECRET });
+const NOTION_BLOG_DATABASE_ID = process.env.NOTION_BLOG_DATABASE_ID;
+const n2m = new NotionToMarkdown({ notionClient: notion });
 
-export async function getPosts(endCursor: string | null, perPage: number = 10): Promise<IssuesResponse> {
-  const after = endCursor ? `\"${endCursor}\"` : null;
-  const endpoint = "https://api.github.com/graphql";
-  const repo_owner = "yeeway0609";
-  const repo_name = "yeeway.dev";
-  const query = `{
-    repository(owner: "${repo_owner}", name: "${repo_name}") {
-      issues(first: ${perPage}, after: ${after}, filterBy: {states: OPEN, createdBy: "${repo_owner}"}, orderBy: {field: CREATED_AT, direction: DESC}) {
-        nodes {
-          id
-          title
-          body
-          url
-          number
-          createdAt
-          labels(first: 10) {
-            nodes {
-              name
-            }
-          }
-        }
-        pageInfo {
-          endCursor
-          startCursor
-          hasNextPage
-          hasPreviousPage
-        }
-      }
-    }
-  }`;
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `bearer ${GITHUB_ACCESS_TOKEN}`,
-    },
-    body: JSON.stringify({ query: query })
-  };
+export async function getBlogPostsInfo() {
+  try {
+    const data = await notion.databases.query({
+      database_id: NOTION_BLOG_DATABASE_ID as string,
+      filter: {
+        property: "published",
+        checkbox: {
+          equals: true,
+        },
+      },
+      sorts: [
+        {
+          property: "date",
+          direction: "descending",
+        },
+      ],
+    });
 
-  const response = await fetch(endpoint, options);
-  if (!response.ok) throw Error;
-  const response_data = await response.json();
-  return response_data.data.repository.issues;
+    const infoList = data.results.map((page: any) => {
+      return {
+        id: page.id,
+        title: page.properties.title.title[0].plain_text,
+        slug: page.properties.slug.rich_text[0].plain_text,
+        labels: page.properties.labels.multi_select.map((label: any) => label.name),
+        date: page.properties.date.date.start,
+        intro: page.properties.intro.rich_text[0].plain_text,
+      };
+    });
+
+    return infoList;
+  } catch (error) {
+    console.error(error);
+  }
 }
 
-export async function getPostData(issueNumber: number): Promise<Issue> {
-  const endpoint = "https://api.github.com/graphql";
-  const repo_owner = "yeeway0609";
-  const repo_name = "yeeway.dev";
-  const query = `{
-    repository(owner: "${repo_owner}", name: "${repo_name}") {
-      issue(number: ${issueNumber}) {
-        id
-        title
-        body
-        url
-        createdAt
-        author {
-          login
-        }
-        labels(first: 10) {
-          nodes {
-            name
-          }
-        }
-        comments(first: 100) {
-          nodes {
-            author {
-              login
-              avatarUrl
-            }
-            body
-            createdAt
-          }
-          totalCount
-        }
-      }
-    }
-  }`;
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `bearer ${GITHUB_ACCESS_TOKEN}`,
+export async function getBlogPostBySlug(slug: string): Promise<BlogPost> {
+  const response = await notion.databases.query({
+    database_id: NOTION_BLOG_DATABASE_ID as string,
+    filter: {
+      property: "slug",
+      rich_text: {
+        equals: slug,
+      },
     },
-    body: JSON.stringify({ query: query })
+  });
+
+  const page = response.results[0] as any;
+  const pageId = page.id;
+  const mdBlocks = await n2m.pageToMarkdown(pageId);
+  const mdString = n2m.toMarkdownString(mdBlocks);
+
+  const postdata = {
+    title: page.properties.title.title[0].plain_text,
+    date: page.properties.date.date.start,
+    labels: page.properties.labels.multi_select.map((label: any) => label.name),
+    body: mdString.parent,
   };
 
-  const response = await fetch(endpoint, options);
-  if (!response.ok) throw Error;
-  const response_data = await response.json();
-  return await response_data.data.repository.issue;
+  return postdata;
 }

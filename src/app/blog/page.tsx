@@ -1,8 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import { getPosts } from "@/lib/fetchers";
-import LoadPosts from "./LoadPosts";
-import AddPostBtn from "@/components/AddPostBtn";
+import { getBlogPostsInfo } from "@/lib/fetchers";
+import PostCard from "@/components/PostCard";
 
 export const dynamic = "force-dynamic"; // disable data caching
 
@@ -11,8 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
-  const posts = await getPosts(null);
-  const endCursor = posts.pageInfo.endCursor;
+  const blogPostsInfo = await getBlogPostsInfo();
 
   return (
     <div className="flex">
@@ -26,9 +24,12 @@ export default async function BlogPage() {
             Being creative. Being Positive. Being Motivated.
           </h2>
         </section>
-        <AddPostBtn />
         <div className="animate-slide-in-right flex w-full flex-col gap-6 delay-200 sm:gap-10">
-          <LoadPosts initialPosts={posts.nodes} initialEndCursor={endCursor} />
+          {blogPostsInfo?.map((post: any) => {
+            return (
+              <PostCard key={post.id} slug={post.slug} title={post.title} date={post.date} labels={post.labels} intro={post.intro} />
+            );
+          })}
         </div>
       </div>
       <div className="hidden md:block md:w-1/3">

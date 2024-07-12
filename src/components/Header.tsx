@@ -9,7 +9,6 @@ import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuL
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import ThemeSwitch from "@/components/ThemeSwitchBtn";
 import SpotifyPlayer from "@/components/SpotifyPlayer";
-import LogInAvatar from "@/components/LogInAvatar";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -49,7 +48,6 @@ export default function Header() {
           </NavigationMenuList>
         </NavigationMenu>
         <div className="hidden sm:flex sm:gap-3">
-          {/* <LogInAvatar /> */}
           <ThemeSwitch />
         </div>
 
@@ -61,7 +59,6 @@ export default function Header() {
             </SheetTrigger>
             <SheetContent className="flex w-[270px] flex-col p-4">
               <div className="flex justify-between">
-                {/* <LogInAvatar /> */}
                 <ThemeSwitch />
                 <SheetTrigger className="block">
                   <XMarkIcon className="size-8" />
