@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowRightCircleIcon } from "@heroicons/react/24/solid";
 import { BlogPostInfo } from "@/lib/types";
 
-export default function PostCard({ slug, title, intro, date, labels }: BlogPostInfo) {
+export default function PostCard({ slug, title, desc, date, labels }: BlogPostInfo) {
   return (
     <Link
       title={`Post: ${title}`}
@@ -11,7 +11,7 @@ export default function PostCard({ slug, title, intro, date, labels }: BlogPostI
       className="hover:animate-arrow-shake flex  w-full max-w-[600px] cursor-pointer flex-col gap-2 rounded-lg border bg-card p-6 text-card-foreground shadow-sm"
     >
       <h3 className="text-2xl font-semibold leading-tight">{title}</h3>
-      <p className="text-sm text-muted-foreground">{(intro.length > 100) ? `${intro.substring(0, 100)}......` : intro}</p>
+      <p className="text-sm text-muted-foreground">{(desc.length > 100) ? `${desc.substring(0, 100)}......` : desc}</p>
       <div className="flex">
         {labels.map((label: any) => (
           <Badge key={label} className="mr-1">#{label}</Badge>

@@ -27,7 +27,7 @@ export default async function BlogPage() {
         <div className="animate-slide-in-right flex w-full flex-col gap-6 delay-200 sm:gap-10">
           {blogPostsInfo?.map((post: any) => {
             return (
-              <PostCard key={post.id} slug={post.slug} title={post.title} date={post.date} labels={post.labels} intro={post.intro} />
+              <PostCard key={post.id} slug={post.slug} title={post.title} date={post.date} labels={post.labels} desc={post.desc} />
             );
           })}
         </div>

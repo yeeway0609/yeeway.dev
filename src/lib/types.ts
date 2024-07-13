@@ -15,12 +15,15 @@ export type BlogPostInfo = {
   title: string;
   date: string;
   labels: string[];
-  intro: string;
+  desc: string;
 };
 
 export type BlogPost = {
   title: string;
+  slug: string;
   date: string;
   labels: string[];
+  desc: string;
   body: string;
+  open_graph: string;
 };
