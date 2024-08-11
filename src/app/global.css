@@ -184,6 +184,6 @@
     @apply text-sm text-muted-foreground;
   }
   .markdown img {
-    @apply my-4;
+    @apply mx-auto my-6 sm:my-8 md:my-10;
   }
 }

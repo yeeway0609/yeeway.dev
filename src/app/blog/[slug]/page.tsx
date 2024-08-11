@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
   const post = await getBlogPostBySlug(params.slug);
 
   return {
@@ -10,9 +14,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       description: post.desc,
       type: "article",
       url: `https://yeeway.dev/blog/${post.slug}`,
-      images: [{
-        url: post.open_graph,
-      }],
+      images: [
+        {
+          url: post.open_graph,
+        },
+      ],
     },
   };
 }
@@ -30,20 +36,26 @@ export default async function Page({ params }: { params: { slug: string } }) {
   const post = await getBlogPostBySlug(params.slug);
 
   return (
-    <div>
+    <div className="mx-auto max-w-screen-lg">
       <h1 className="mb-2 mt-4 text-3xl font-bold sm:mb-4 sm:mt-8 sm:text-5xl">
         {post.title}
       </h1>
       <div className="flex">
-        <span className="mr-4 text-lg text-muted-foreground">{formatDate(post.date)}</span>
+        <span className="mr-4 text-lg text-muted-foreground">
+          {formatDate(post.date)}
+        </span>
         <div>
           {post.labels.map((label) => (
-            <Badge key={label} className="mr-2">#{label}</Badge>
+            <Badge key={label} className="mr-2">
+              #{label}
+            </Badge>
           ))}
         </div>
       </div>
       <hr className="mb-5 mt-2" />
-      <ReactMarkdown remarkPlugins={[remarkGfm]} className="markdown">{post.body}</ReactMarkdown>
+      <ReactMarkdown remarkPlugins={[remarkGfm]} className="markdown">
+        {post.body}
+      </ReactMarkdown>
       {/* <div className="mb-4 mt-10 flex">
         <ChatBubbleOvalLeftEllipsisIcon className="mr-2 size-7" />
         <p className="text-lg text-muted-foreground">{post.comments?.totalCount} comments</p>
