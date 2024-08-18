@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import plugin from 'tailwindcss/plugin'
 import tailwindcssAnimate from 'tailwindcss-animate'
 
 const config = {
@@ -11,16 +12,6 @@ const config = {
   ],
   prefix: '',
   theme: {
-    container: {
-      center: true,
-      padding: '40px',
-      screens: {
-        'sm': '640px',
-        'md': '768px',
-        'lg': '1024px',
-        'xl': '1280px',
-      },
-    },
     extend: {
       colors: {
         border: 'hsl(var(--border))',
@@ -82,7 +73,19 @@ const config = {
       }
     },
   },
-  plugins: [tailwindcssAnimate],
+  plugins: [
+    tailwindcssAnimate,
+    plugin(function ({ addComponents }) {
+      addComponents({
+        '.container': {
+          '@apply mx-auto px-4 max-w-screen-lg': {},
+          '@screen md': {
+            '@apply px-10': {}
+          }
+        },
+      })
+    }),
+  ],
 } satisfies Config
 
 export default config

@@ -28,15 +28,17 @@ import remarkGfm from 'remark-gfm'
 import { getBlogPostBySlug } from '@/lib/fetchers'
 import { formatDate } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
+// import TableOfContents from './TableOfContents'
 // import CommentCard from "@/components/CommentCard";
 
 export const dynamic = 'force-dynamic' // disable data caching
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const post = await getBlogPostBySlug(params.slug)
+  // const toc = post.body.match(/^##\s(.+)/gm)?.map(header => header.replace(/^##\s/, '')) || []
 
   return (
-    <div className="mx-auto max-w-screen-lg">
+    <main className="mx-auto max-w-screen-sm">
       <h1 className="mb-2 mt-4 text-3xl font-bold sm:mb-4 sm:mt-8 sm:text-5xl">
         {post.title}
       </h1>
@@ -65,6 +67,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
           <CommentCard key={index} userName={comment.author.login} userAvatarUrl={comment.author.avatarUrl} content={comment.body} createdAt={comment.createdAt} />
         ))}
       </div> */}
-    </div>
+    </main>
   )
 }
