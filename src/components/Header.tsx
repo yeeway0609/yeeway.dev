@@ -14,7 +14,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const routes = [
-    { title: "Blog", href: "/blog", Icon: NewspaperIcon },
+    { title: "Blog", href: "/", Icon: NewspaperIcon },
     { title: "Projects", href: "/projects", Icon: CommandLineIcon },
     { title: "About", href: "/about", Icon: UserIcon },
     // { title: "Resume", href: "https://resume.yeeway.dev", Icon: BriefcaseIcon, }
@@ -23,7 +23,7 @@ export default function Header() {
   return (
     <header className="border-foreground-300/30 fixed z-50 flex w-full items-center justify-center border-b-[0.5px] bg-background/70 py-3 shadow-md backdrop-blur-md">
       <div className="border-foreground-300/30 container flex items-center justify-between">
-        <Link href="/blog" className="cursor-pointer">
+        <Link href="/" className="cursor-pointer">
           <Image src="/logo.png" alt="Alex Su' Website" width={36} height={36} />
         </Link>
 
@@ -37,7 +37,7 @@ export default function Header() {
                     className={`
                       ${navigationMenuTriggerStyle()}
                       cursor-pointer bg-transparent hover:text-primary
-                      ${pathname.startsWith(route.href) ? "text-primary" : ""}
+                      ${pathname.split("/")[1] === route.href.split("/")[1] ? "text-primary" : ""}
                   `}>
                     {<route.Icon className="mr-2 size-5" />}
                     {route.title}
@@ -69,7 +69,7 @@ export default function Header() {
                   <Link
                     key={route.title}
                     href={route.href}
-                    className={`flex ${pathname.startsWith(route.href) ? "text-primary" : ""}`}
+                    className={`flex ${pathname.split("/")[1] === route.href.split("/")[1] ? "text-primary" : ""}`}
                     onClick={() => setOpen(false)}
                   >
                     {<route.Icon className="mr-2 size-5" />}

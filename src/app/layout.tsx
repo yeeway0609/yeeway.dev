@@ -9,8 +9,8 @@ import Footer from "@/components/Footer";
 const nunito = Nunito({ subsets: ["latin"], weight: ["400", "700", "900"]});
 
 export const metadata: Metadata = {
-  title: "Yiwei Su, Creative Developer | yeeway.dev",
-  description: "Website of Yiwei Su, aka yeeway or Alex.",
+  title: "yeeway.dev",
+  description: "Website of Yiwei Su, Creative Developer.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
