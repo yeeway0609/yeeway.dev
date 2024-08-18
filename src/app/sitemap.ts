@@ -1,6 +1,10 @@
 import { MetadataRoute } from 'next'
+import { BlogPostInfo } from '@/lib/types'
+import { getBlogPostsInfo } from '@/lib/fetchers'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const blogPostsInfo = await getBlogPostsInfo()
+
   return [
     {
       url: 'https://yeeway.dev',
@@ -15,10 +19,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: 'https://yeeway.dev/blog',
+      url: 'https://yeeway.dev/projects',
       lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.5,
+      changeFrequency: 'monthly',
+      priority: 0.8,
     },
+    // {
+    //   url: 'https://yeeway.dev/blog',
+    //   lastModified: new Date(),
+    //   changeFrequency: 'weekly',
+    //   priority: 0.5,
+    // },
+    ...blogPostsInfo.map((post: BlogPostInfo) => ({
+      url: `https://yeeway.dev/blog/${post.slug}`,
+      lastModified: new Date(post.date),
+      priority: 0.2,
+    })),
   ]
 }
