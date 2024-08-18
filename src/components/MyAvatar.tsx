@@ -1,30 +1,30 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import Image from "next/image";
+import { useState } from 'react'
+import Image from 'next/image'
 
 export default function MyAvatar() {
   const lines = [
-    "你好！😆",
-    "Hey Bro 😎",
-    "火鍋不能加芋頭",
-    "咖哩飯拌了還能吃嗎",
-    "(⁎⁍̴̛ᴗ⁍̴̛⁎)",
-    "文星伊一生推",
-  ];
+    '你好！😆',
+    'Hey Bro 😎',
+    '火鍋不能加芋頭',
+    '咖哩飯拌了還能吃嗎',
+    '(⁎⁍̴̛ᴗ⁍̴̛⁎)',
+    '文星伊一生推',
+  ]
 
-  const [showText, setShowText] = useState(false);
-  const [textBadge, setTextBadge] = useState({ text: "", x: 0, y: 0 });
+  const [showText, setShowText] = useState(false)
+  const [textBadge, setTextBadge] = useState({ text: '', x: 0, y: 0 })
 
   const talkWithMe = (e: any) => {
-    const randomIndex = Math.floor(Math.random() * lines.length);
-    setTextBadge({ text: lines[randomIndex], x: e.clientX, y: e.clientY });
-    setShowText(true);
+    const randomIndex = Math.floor(Math.random() * lines.length)
+    setTextBadge({ text: lines[randomIndex], x: e.clientX, y: e.clientY })
+    setShowText(true)
 
     setTimeout(() => {
-      setShowText(false);
-    }, 1000);
-  };
+      setShowText(false)
+    }, 1000)
+  }
 
   return (
     <div
@@ -36,11 +36,11 @@ export default function MyAvatar() {
         style={{left: textBadge.x, top: textBadge.y - 20}}
         className={`
           absolute rounded-full border border-border bg-card px-2.5 py-1 text-sm opacity-0
-          ${showText ? "animate-fade-in-out" : ""}
+          ${showText ? 'animate-fade-in-out' : ''}
         `}
       >
         {textBadge.text}
       </div>
     </div>
-  );
+  )
 }

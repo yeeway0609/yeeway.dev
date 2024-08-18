@@ -1,29 +1,29 @@
-"use server";
+'use server'
 
-import { BlogPostInfo, BlogPost } from "@/lib/types";
-import { Client } from "@notionhq/client";
-import { NotionToMarkdown } from "notion-to-md";
+import { BlogPostInfo, BlogPost } from '@/lib/types'
+import { Client } from '@notionhq/client'
+import { NotionToMarkdown } from 'notion-to-md'
 
-const notion = new Client({ auth: process.env.NOTION_SECRET });
-const NOTION_BLOG_DATABASE_ID = process.env.NOTION_BLOG_DATABASE_ID;
-const n2m = new NotionToMarkdown({ notionClient: notion });
+const notion = new Client({ auth: process.env.NOTION_SECRET })
+const NOTION_BLOG_DATABASE_ID = process.env.NOTION_BLOG_DATABASE_ID
+const n2m = new NotionToMarkdown({ notionClient: notion })
 
 export async function getBlogPostsInfo(): Promise<BlogPostInfo[]> {
   const data = await notion.databases.query({
     database_id: NOTION_BLOG_DATABASE_ID as string,
     filter: {
-      property: "published",
+      property: 'published',
       checkbox: {
         equals: true,
       },
     },
     sorts: [
       {
-        property: "date",
-        direction: "descending",
+        property: 'date',
+        direction: 'descending',
       },
     ],
-  });
+  })
 
   const infoList = data.results.map((page: any) => {
     return {
@@ -33,27 +33,27 @@ export async function getBlogPostsInfo(): Promise<BlogPostInfo[]> {
       labels: page.properties.labels.multi_select.map((label: any) => label.name),
       date: page.properties.date.date.start,
       desc: page.properties.desc.rich_text[0].plain_text,
-    } as BlogPostInfo;
-  });
+    } as BlogPostInfo
+  })
 
-  return infoList;
+  return infoList
 }
 
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost> {
   const response = await notion.databases.query({
     database_id: NOTION_BLOG_DATABASE_ID as string,
     filter: {
-      property: "slug",
+      property: 'slug',
       rich_text: {
         equals: slug,
       },
     },
-  });
+  })
 
-  const page = response.results[0] as any;
-  const pageId = page.id;
-  const mdBlocks = await n2m.pageToMarkdown(pageId);
-  const mdString = n2m.toMarkdownString(mdBlocks);
+  const page = response.results[0] as any
+  const pageId = page.id
+  const mdBlocks = await n2m.pageToMarkdown(pageId)
+  const mdString = n2m.toMarkdownString(mdBlocks)
 
   const postdata = {
     title: page.properties.title.title[0].plain_text,
@@ -63,7 +63,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost> {
     desc: page.properties.desc.rich_text[0].plain_text,
     body: mdString.parent,
     open_graph: page.properties.open_graph.files[0].file.url,
-  };
+  }
 
-  return postdata;
+  return postdata
 }

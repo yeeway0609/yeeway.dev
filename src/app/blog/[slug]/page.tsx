@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next'
 export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
-  const post = await getBlogPostBySlug(params.slug);
+  const post = await getBlogPostBySlug(params.slug)
 
   return {
     title: `${post.title} | yeeway.dev`,
@@ -12,7 +12,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${post.title} | yeeway.dev`,
       description: post.desc,
-      type: "article",
+      type: 'article',
       url: `https://yeeway.dev/blog/${post.slug}`,
       images: [
         {
@@ -20,20 +20,20 @@ export async function generateMetadata({
         },
       ],
     },
-  };
+  }
 }
 
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import { getBlogPostBySlug } from "@/lib/fetchers";
-import { formatDate } from "@/lib/utils";
-import { Badge } from "@/components/ui/badge";
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import { getBlogPostBySlug } from '@/lib/fetchers'
+import { formatDate } from '@/lib/utils'
+import { Badge } from '@/components/ui/badge'
 // import CommentCard from "@/components/CommentCard";
 
-export const dynamic = "force-dynamic"; // disable data caching
+export const dynamic = 'force-dynamic' // disable data caching
 
 export default async function Page({ params }: { params: { slug: string } }) {
-  const post = await getBlogPostBySlug(params.slug);
+  const post = await getBlogPostBySlug(params.slug)
 
   return (
     <div className="mx-auto max-w-screen-lg">
@@ -66,5 +66,5 @@ export default async function Page({ params }: { params: { slug: string } }) {
         ))}
       </div> */}
     </div>
-  );
+  )
 }

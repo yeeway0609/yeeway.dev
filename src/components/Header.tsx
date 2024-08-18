@@ -1,24 +1,24 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { Bars3Icon, XMarkIcon, NewspaperIcon, UserIcon, CommandLineIcon, BriefcaseIcon } from "@heroicons/react/24/solid";
-import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import ThemeSwitch from "@/components/ThemeSwitchBtn";
-import SpotifyPlayer from "@/components/SpotifyPlayer";
+import { useState } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { usePathname } from 'next/navigation'
+import { Bars3Icon, XMarkIcon, NewspaperIcon, UserIcon, CommandLineIcon } from '@heroicons/react/24/solid'
+import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, navigationMenuTriggerStyle } from '@/components/ui/navigation-menu'
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import ThemeSwitch from '@/components/ThemeSwitchBtn'
+import SpotifyPlayer from '@/components/SpotifyPlayer'
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
-  const pathname = usePathname();
+  const [open, setOpen] = useState(false)
+  const pathname = usePathname()
   const routes = [
-    { title: "Blog", href: "/", Icon: NewspaperIcon },
-    { title: "Projects", href: "/projects", Icon: CommandLineIcon },
-    { title: "About", href: "/about", Icon: UserIcon },
+    { title: 'Blog', href: '/', Icon: NewspaperIcon },
+    { title: 'Projects', href: '/projects', Icon: CommandLineIcon },
+    { title: 'About', href: '/about', Icon: UserIcon },
     // { title: "Resume", href: "https://resume.yeeway.dev", Icon: BriefcaseIcon, }
-  ];
+  ]
 
   return (
     <header className="border-foreground-300/30 fixed z-50 flex w-full items-center justify-center border-b-[0.5px] bg-background/70 py-3 shadow-md backdrop-blur-md">
@@ -37,7 +37,7 @@ export default function Header() {
                     className={`
                       ${navigationMenuTriggerStyle()}
                       cursor-pointer bg-transparent hover:text-primary
-                      ${pathname.split("/")[1] === route.href.split("/")[1] ? "text-primary" : ""}
+                      ${pathname.split('/')[1] === route.href.split('/')[1] ? 'text-primary' : ''}
                   `}>
                     {<route.Icon className="mr-2 size-5" />}
                     {route.title}
@@ -69,7 +69,7 @@ export default function Header() {
                   <Link
                     key={route.title}
                     href={route.href}
-                    className={`flex ${pathname.split("/")[1] === route.href.split("/")[1] ? "text-primary" : ""}`}
+                    className={`flex ${pathname.split('/')[1] === route.href.split('/')[1] ? 'text-primary' : ''}`}
                     onClick={() => setOpen(false)}
                   >
                     {<route.Icon className="mr-2 size-5" />}
@@ -86,5 +86,5 @@ export default function Header() {
         </div>
       </div>
     </header>
-  );
+  )
 }

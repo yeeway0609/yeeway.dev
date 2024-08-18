@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
-export async function generateMetadata({ params }: { params: { slug: number } }): Promise<Metadata> {
+import type { Metadata } from 'next'
+export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "[作品集] 成大單車節 形象網站 | Alex Su's Blog"
-  };
+    title: '[作品集] 成大單車節 形象網站 | Alex Su\'s Blog'
+  }
 }
 
 export default async function Page() {
@@ -18,5 +18,5 @@ export default async function Page() {
       <hr className="mb-5 mt-2" />
       <h2>專案背景</h2>
     </div>
-  );
+  )
 }

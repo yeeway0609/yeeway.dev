@@ -1,11 +1,11 @@
-import Image from "next/image";
-import { getBlogPostsInfo } from "@/lib/fetchers";
-import PostCard from "@/components/PostCard";
+import Image from 'next/image'
+import { getBlogPostsInfo } from '@/lib/fetchers'
+import PostCard from '@/components/PostCard'
 
-export const dynamic = "force-dynamic"; // disable data caching
+export const dynamic = 'force-dynamic' // disable data caching
 
 export default async function BlogPage() {
-  const blogPostsInfo = await getBlogPostsInfo();
+  const blogPostsInfo = await getBlogPostsInfo()
 
   return (
     <div className="flex">
@@ -23,7 +23,7 @@ export default async function BlogPage() {
           {blogPostsInfo?.map((post: any) => {
             return (
               <PostCard key={post.id} slug={post.slug} title={post.title} date={post.date} labels={post.labels} desc={post.desc} />
-            );
+            )
           })}
         </div>
       </div>
@@ -31,5 +31,5 @@ export default async function BlogPage() {
         {/* TODO: Add a search bar and a tag filter. */}
       </div>
     </div>
-  );
+  )
 }

@@ -1,9 +1,9 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
-import { GlobeAltIcon, BookOpenIcon } from "@heroicons/react/24/solid";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Project } from "@/lib/types";
+import Link from 'next/link'
+import Image from 'next/image'
+import { Badge } from '@/components/ui/badge'
+import { GlobeAltIcon, BookOpenIcon } from '@heroicons/react/24/solid'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { Project } from '@/lib/types'
 
 export default function ProjectCard({ title, description, tags, imageURL, websiteURL, githubURL, githubTitle, blogURL, blogTitle }: Project) {
   return (
@@ -19,7 +19,7 @@ export default function ProjectCard({ title, description, tags, imageURL, websit
         {websiteURL && (
           <div className="mb-2 flex cursor-pointer items-center gap-2 hover:text-primary">
             <GlobeAltIcon className="size-5" />
-            <a className="underline" href={websiteURL} target="_blank">{websiteURL?.replace("https://", "")}</a>
+            <a className="underline" href={websiteURL} target="_blank">{websiteURL?.replace('https://', '')}</a>
           </div>
         )}
         {githubURL && (
@@ -34,10 +34,10 @@ export default function ProjectCard({ title, description, tags, imageURL, websit
             <Link className="underline" href={blogURL}>{blogTitle}</Link>
           </div>
         )}
-        </CardContent>
+      </CardContent>
       <CardFooter className="mt-auto flex-wrap gap-2">
         {tags?.map((tag) => <Badge key={tag}>{tag}</Badge>)}
       </CardFooter>
     </Card>
-  );
-};
+  )
+}

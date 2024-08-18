@@ -1,17 +1,17 @@
-import type { Metadata } from "next";
-import { Nunito } from "next/font/google";
-import "./global.css";
-import { GoogleAnalytics } from "@next/third-parties/google";
-import { Providers } from "@/lib/Providers";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import type { Metadata } from 'next'
+import { Nunito } from 'next/font/google'
+import './global.css'
+import { GoogleAnalytics } from '@next/third-parties/google'
+import { Providers } from '@/lib/Providers'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 
-const nunito = Nunito({ subsets: ["latin"], weight: ["400", "700", "900"]});
+const nunito = Nunito({ subsets: ['latin'], weight: ['400', '700', '900']})
 
 export const metadata: Metadata = {
-  title: "yeeway.dev",
-  description: "Website of Yiwei Su, Creative Developer.",
-};
+  title: 'yeeway.dev',
+  description: 'Website of Yiwei Su, Creative Developer.',
+}
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -27,5 +27,5 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </body>
       <GoogleAnalytics gaId="G-CCEVLQFSHY" />
     </html>
-  );
+  )
 }

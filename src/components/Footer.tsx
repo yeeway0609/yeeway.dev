@@ -16,5 +16,5 @@ export default function Footer() {
         <p>© 2024 Alex Su. All rights reserved.</p>
       </div>
     </footer>
-  );
+  )
 }

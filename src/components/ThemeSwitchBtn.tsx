@@ -1,15 +1,15 @@
-"use client";
+'use client'
 
-import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
-import { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
-import Image from "next/image";
+import { SunIcon, MoonIcon } from '@heroicons/react/24/solid'
+import { useState, useEffect } from 'react'
+import { useTheme } from 'next-themes'
+import Image from 'next/image'
 
 export default function ThemeSwitch() {
-  const [mounted, setMounted] = useState(false);
-  const { setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false)
+  const { setTheme, resolvedTheme } = useTheme()
 
-  useEffect(() =>  setMounted(true), []);
+  useEffect(() =>  setMounted(true), [])
 
   // if the component has not mounted, return a placeholder image to improve user experience
   if (!mounted) return (
@@ -22,23 +22,23 @@ export default function ThemeSwitch() {
       alt="Loading Light/Dark Toggle"
       title="Loading Light/Dark Toggle"
     />
-  );
+  )
 
-  if (resolvedTheme === "dark") return (
+  if (resolvedTheme === 'dark') return (
     <div className="flex h-full cursor-pointer items-center justify-center">
       <MoonIcon
         className="size-8"
-        onClick={() => setTheme("light")}
+        onClick={() => setTheme('light')}
       />
     </div>
-  );
+  )
 
-  if (resolvedTheme === "light") return (
+  if (resolvedTheme === 'light') return (
     <div className="flex h-full cursor-pointer items-center justify-center">
       <SunIcon
         className="size-8"
-        onClick={() => setTheme("dark")}
+        onClick={() => setTheme('dark')}
       />
     </div>
-  );
+  )
 }

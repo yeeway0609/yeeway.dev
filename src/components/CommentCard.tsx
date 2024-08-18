@@ -1,5 +1,5 @@
-import { formatDate } from "@/lib/utils";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { formatDate } from '@/lib/utils'
+import { Avatar, AvatarImage } from '@/components/ui/avatar'
 
 export default function CommentCard({userName, userAvatarUrl, content, createdAt}: {userName: string, userAvatarUrl: string, content: string, createdAt: string}) {
   return (
@@ -16,5 +16,5 @@ export default function CommentCard({userName, userAvatarUrl, content, createdAt
         <p>{content}</p>
       </div>
     </div>
-  );
+  )
 }
