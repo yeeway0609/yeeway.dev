@@ -21,7 +21,7 @@ export default function Footer() {
         </div>
         <div className="flex flex-col justify-between gap-1 sm:flex-row">
           <p>
-            Contact me:
+            Contact me:&nbsp;
             <a className="text-primary transition duration-300" href="mailto:hi@yeewy.dev">
               hi@yeewy.dev
             </a>
