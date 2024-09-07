@@ -1,9 +1,5 @@
 import type { Metadata } from 'next'
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const post = await getBlogPostBySlug(params.slug)
 
   return {
@@ -39,13 +35,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   return (
     <main className="mx-auto max-w-screen-sm">
-      <h1 className="mb-2 mt-4 text-3xl font-bold sm:mb-4 sm:mt-8 sm:text-5xl">
-        {post.title}
-      </h1>
+      <h1 className="mb-2 mt-4 text-3xl font-bold sm:mb-4 sm:mt-8 sm:text-5xl">{post.title}</h1>
       <div className="flex">
-        <span className="mr-4 text-lg text-muted-foreground">
-          {formatDate(post.date)}
-        </span>
+        <span className="mr-4 text-lg text-muted-foreground">{formatDate(post.date)}</span>
         <div>
           {post.labels.map((label) => (
             <Badge key={label} className="mr-2">

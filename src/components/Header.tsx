@@ -5,7 +5,13 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Bars3Icon, XMarkIcon, NewspaperIcon, UserIcon, CommandLineIcon } from '@heroicons/react/24/solid'
-import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, navigationMenuTriggerStyle } from '@/components/ui/navigation-menu'
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
+} from '@/components/ui/navigation-menu'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import ThemeSwitch from '@/components/ThemeSwitchBtn'
 import SpotifyPlayer from '@/components/SpotifyPlayer'
@@ -34,11 +40,8 @@ export default function Header() {
               <NavigationMenuItem key={route.title}>
                 <Link href={route.href} legacyBehavior passHref>
                   <NavigationMenuLink
-                    className={`
-                      ${navigationMenuTriggerStyle()}
-                      cursor-pointer bg-transparent hover:text-primary
-                      ${pathname.split('/')[1] === route.href.split('/')[1] ? 'text-primary' : ''}
-                  `}>
+                    className={` ${navigationMenuTriggerStyle()} cursor-pointer bg-transparent hover:text-primary ${pathname.split('/')[1] === route.href.split('/')[1] ? 'text-primary' : ''} `}
+                  >
                     {<route.Icon className="mr-2 size-5" />}
                     {route.title}
                   </NavigationMenuLink>

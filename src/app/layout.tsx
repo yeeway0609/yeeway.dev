@@ -6,7 +6,7 @@ import { Providers } from '@/lib/Providers'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
-const nunito = Nunito({ subsets: ['latin'], weight: ['400', '700', '900']})
+const nunito = Nunito({ subsets: ['latin'], weight: ['400', '700', '900'] })
 
 export const metadata: Metadata = {
   title: 'yeeway.dev',
@@ -19,9 +19,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className={`${nunito.className} flex flex-col items-center`}>
         <Providers>
           <Header />
-          <div className="container py-16">
-            {children}
-          </div>
+          <div className="container py-16">{children}</div>
           <Footer />
         </Providers>
       </body>

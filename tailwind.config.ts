@@ -4,12 +4,7 @@ import tailwindcssAnimate from 'tailwindcss-animate'
 
 const config = {
   darkMode: ['class'],
-  content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-  ],
+  content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
   prefix: '',
   theme: {
     extend: {
@@ -47,7 +42,7 @@ const config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
-        gradient: 'var(--gradient)'
+        gradient: 'var(--gradient)',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -70,7 +65,7 @@ const config = {
       },
       cursor: {
         pointer: 'url(/pointing_up_3d.png), pointer',
-      }
+      },
     },
   },
   plugins: [
@@ -80,8 +75,8 @@ const config = {
         '.container': {
           '@apply mx-auto px-4 max-w-screen-lg': {},
           '@screen md': {
-            '@apply px-10': {}
-          }
+            '@apply px-10': {},
+          },
         },
       })
     }),

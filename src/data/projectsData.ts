@@ -10,7 +10,7 @@ export const projectsData: Project[] = [
     githubURL: 'https://github.com/gdsc-ncku/BikeFestival17th-Frontend',
     githubTitle: 'BikeFestival17th-Frontend',
     blogURL: '',
-    blogTitle: ''
+    blogTitle: '',
   },
   {
     title: '2024 GDSC NCKU Forum Website',
@@ -21,6 +21,6 @@ export const projectsData: Project[] = [
     githubURL: 'https://github.com/gdsc-ncku/gdsc-ncku-forum-2024',
     githubTitle: 'gdsc-ncku-forum-2024',
     blogURL: '',
-    blogTitle: ''
-  }
+    blogTitle: '',
+  },
 ]

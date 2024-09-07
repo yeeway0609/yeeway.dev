@@ -1,7 +1,17 @@
 import { formatDate } from '@/lib/utils'
 import { Avatar, AvatarImage } from '@/components/ui/avatar'
 
-export default function CommentCard({userName, userAvatarUrl, content, createdAt}: {userName: string, userAvatarUrl: string, content: string, createdAt: string}) {
+export default function CommentCard({
+  userName,
+  userAvatarUrl,
+  content,
+  createdAt,
+}: {
+  userName: string
+  userAvatarUrl: string
+  content: string
+  createdAt: string
+}) {
   return (
     <div className="rounded-[10px] border border-border">
       <div className="flex items-center rounded-t-[10px] border-b border-border bg-slate-400 px-4 py-3 dark:bg-slate-900">

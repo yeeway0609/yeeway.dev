@@ -13,11 +13,11 @@
     --primary: 231 96% 65%;
     --primary-foreground: 231 9.6% 99.05%;
     --secondary: 231 48% 74.3%;
-    --secondary-foreground: 231 9.6% 8.10%;
+    --secondary-foreground: 231 9.6% 8.1%;
     --muted: 231 9.6% 99.05%;
     --muted-foreground: 215.4 16.3% 46.9%;
     --accent: 231 9.6% 99.05%;
-    --accent-foreground: 231 9.6% 8.10%;
+    --accent-foreground: 231 9.6% 8.1%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 231 9.6% 99.05%;
     --border: 214.3 31.8% 91.4%;
@@ -34,7 +34,7 @@
     --popover: 231 45.8% 10.53%;
     --popover-foreground: 231 9.6% 99.05%;
     --primary: 231 96% 81%; /* #a0aefd */
-    --primary-foreground: 231 9.6% 8.10%;
+    --primary-foreground: 231 9.6% 8.1%;
     --secondary: 231 48% 24.3%; /* #20295c */
     --secondary-foreground: 231 9.6% 99.05%;
     --muted: 231 48% 24.3%;
@@ -51,7 +51,7 @@
 
 @layer base {
   * {
-    @apply border-border transition-[background-color] ease-in-out duration-300;
+    @apply border-border transition-[background-color] duration-300 ease-in-out;
   }
   body {
     @apply bg-background text-foreground;
@@ -115,10 +115,10 @@
   }
 
   .markdown {
-    @apply text-foreground text-base sm:text-xl leading-normal break-words;
+    @apply break-words text-base leading-normal text-foreground sm:text-xl;
   }
   .markdown > * + * {
-    @apply mt-0 mb-4;
+    @apply mb-4 mt-0;
   }
   .markdown li + li {
     @apply mt-1;
@@ -130,52 +130,52 @@
     @apply font-bold;
   }
   .markdown a {
-    @apply text-blue-600 font-bold underline underline-offset-2;
+    @apply font-bold text-blue-600 underline underline-offset-2;
   }
   .markdown h2 {
-    @apply leading-tight text-2xl sm:text-3xl text-primary font-bold mb-4 mt-6;
+    @apply mb-4 mt-6 text-2xl font-bold leading-tight text-primary sm:text-3xl;
   }
   .markdown h3 {
-    @apply leading-snug font-bold mb-4 mt-6;
+    @apply mb-4 mt-6 font-bold leading-snug;
   }
   .markdown h4 {
-    @apply leading-none font-bold mb-4 mt-6;
+    @apply mb-4 mt-6 font-bold leading-none;
   }
   .markdown h5 {
-    @apply leading-tight font-bold mb-4 mt-6;
+    @apply mb-4 mt-6 font-bold leading-tight;
   }
   .markdown h6 {
-    @apply leading-tight font-bold text-muted-foreground mb-4 mt-6;
+    @apply mb-4 mt-6 font-bold leading-tight text-muted-foreground;
   }
   .markdown blockquote {
-    @apply text-lg text-muted-foreground border-l-4 border-muted-foreground pl-4 pr-4 ;
+    @apply border-l-4 border-muted-foreground pl-4 pr-4 text-lg text-muted-foreground;
   }
   .markdown pre {
-    @apply bg-gray-200 dark:bg-gray-700 rounded p-4 overflow-y-hidden;
+    @apply overflow-y-hidden rounded bg-gray-200 p-4 dark:bg-gray-700;
   }
   .markdown code {
-    @apply text-sm font-mono inline bg-gray-200 dark:bg-gray-700 rounded;
+    @apply inline rounded bg-gray-200 font-mono text-sm dark:bg-gray-700;
   }
   .markdown ul {
-    @apply pl-8 list-disc;
+    @apply list-disc pl-8;
   }
   .markdown ul.contains-task-list {
-    @apply pl-3 list-none;
+    @apply list-none pl-3;
   }
   .markdown ol {
-    @apply pl-8 list-decimal;
+    @apply list-decimal pl-8;
   }
   .markdown kbd {
-    @apply text-xs inline-block rounded border px-1 py-5 align-middle font-normal font-mono shadow;
+    @apply inline-block rounded border px-1 py-5 align-middle font-mono text-xs font-normal shadow;
   }
   .markdown table {
-    @apply text-lg border-gray-600;
+    @apply border-gray-600 text-lg;
   }
   .markdown th {
-    @apply border py-1 px-3;
+    @apply border px-3 py-1;
   }
   .markdown td {
-    @apply border py-1 px-3;
+    @apply border px-3 py-1;
   }
   .markdown .highlight pre {
     @apply bg-gray-100 !important;

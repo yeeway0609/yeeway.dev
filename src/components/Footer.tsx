@@ -11,7 +11,7 @@ export default function Footer() {
 
   return (
     <footer className="w-full border-t border-border">
-      <div className="container flex flex-col  gap-4 py-5  sm:py-8">
+      <div className="container flex flex-col gap-4 py-5 sm:py-8">
         <div className="flex items-center gap-5">
           {socialLinks.map(({ href, icon: Icon }, index) => (
             <a className="size-6 text-foreground transition duration-300 hover:text-primary" key={index} href={href} target="_blank">
@@ -19,8 +19,13 @@ export default function Footer() {
             </a>
           ))}
         </div>
-        <div className='flex flex-col justify-between gap-1 sm:flex-row'>
-          <p>Contact me:<a className='text-primary transition duration-300' href="mailto:hi@yeewy.dev">hi@yeewy.dev</a></p>
+        <div className="flex flex-col justify-between gap-1 sm:flex-row">
+          <p>
+            Contact me:
+            <a className="text-primary transition duration-300" href="mailto:hi@yeewy.dev">
+              hi@yeewy.dev
+            </a>
+          </p>
           <p>© 2024 Alex Su. All rights reserved.</p>
         </div>
       </div>

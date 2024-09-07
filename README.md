@@ -1,6 +1,7 @@
 # yeeway.dev - Personal Website of Yiwei Su
 
 ## Tech stack
+
 - Typescript, [React](https://react.dev/), [Next.js](https://nextjs.org/) (App Router)
 - CSS framework: [Tailwind CSS](https://tailwindcss.com/)
 - Component library: [shadcn/ui](https://ui.shadcn.com/)
@@ -9,6 +10,7 @@
 - CMS for Blog: [Notion](https://www.notion.so)
 
 ## Files and Folders Structure
+
 ```
 src
 ├── app
@@ -31,11 +33,13 @@ src
 ```
 
 ## Git Branch
+
 - `develop`: 主要開發分支，若測試後沒問題則併入 `main`
 - `main`: push 至 origin 後透過 Vercel 自動部署
 - others
 
 ## Git Commit Type
+
 reference: [@commitlint/config-conventional](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional)
 | 前綴名稱 | 說明 |
 | :---- | :---- |

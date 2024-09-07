@@ -9,7 +9,7 @@ export default function SpotifyPlayer() {
     '0y0uzuB1HxljAY2j0tLETp',
     '5KxTHd0r8eM6T2K65zxt2L',
     '3v5o91PrUtf0nmO6j8J7dZ',
-    '4P5ozkI1bxiGxA5rZ27jlO'
+    '4P5ozkI1bxiGxA5rZ27jlO',
   ]
   const randomIndex = Math.floor(Math.random() * songs.length)
 
