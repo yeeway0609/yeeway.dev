@@ -1,47 +1,49 @@
 # yeeway.dev - Personal Website of Yiwei Su
 
 ## Tech stack
-- 框架：Next.js 14 (App Router)
-- 樣式：Tailwind CSS, Shadcn-ui
-- 檔案架構：
-  ```
-  src
-  ├── app
-  │   ├── about (自我介紹)
-  │   ├── blog (部落格)
-  │   │   └── [slug] (文章頁面)
-  │   ├── projects (專案介紹)
-  │   ├── global.css (全域 CSS)
-  │   └── ...
-  ├── components
-  │   ├── ui (shadcn-ui 元件庫)
-  │   └── ...
-  ├── lib
-  │   ├── fetchers.ts (獲取資料的相關函式，使用 Notion 作為 CMS)
-  │   ├── types.ts (存放 TypeScript 型別)
-  │   ├── utils.ts (存放一些通用的輔助函式)
-  │   └── Providers.tsx (全域狀態管理的容器，用於 next-theme)
-  ├── data
-  │   └── projectsData (專案頁的資料，之後可能也會遷移到 CMS)
-  └── middleware.ts (網址重新導向)
-  ```
+- Typescript, [React](https://react.dev/), [Next.js](https://nextjs.org/) (App Router)
+- CSS framework: [Tailwind CSS](https://tailwindcss.com/)
+- Component library: [shadcn/ui](https://ui.shadcn.com/)
+- Coding style: [ESLint](https://eslint.org/), [commitlint](https://commitlint.js.org/)
+- Deployment: [Vercel](https://vercel.com)
+- CMS for Blog: [Notion](https://www.notion.so)
 
-## Feature
-### 部落格
-- 使用 [Notion](https://www.notion.so/product) 作位作為 content management system
-- 「文章列表」頁面：
-- 「貼文」頁面：
+## Files and Folders Structure
+```
+src
+├── app
+│   ├── page.tsx (網站主頁，目前亦為部落格主頁面)
+│   ├── about (自我介紹頁面)
+│   ├── blog
+│   │   └── [slug] (部落格文章頁面，依據 slug 生成)
+│   ├── projects (作品集頁面)
+│   └── ...
+├── components
+│   ├── ui (shadcn-ui 元件庫)
+│   └── ...
+├── data
+│   └── projectsData (作品集頁面的靜態資料，預計遷移到 CMS)
+└── lib
+    ├── fetchers.ts (獲取動態資料的相關函式，用於 Notion CMS)
+    ├── types.ts (全域 TypeScript 型別定義)
+    ├── utils.ts (通用的輔助函式)
+    └── Providers.tsx (全域狀態管理容器，用於 next-theme)
+```
 
-### UI 設計
-使用 next-theme 套件搭配 Tailwind CSS 與 Shadcn-ui，實作深色與亮色兩種模式的 UI
+## Git Branch
+- `develop`: 主要開發分支，若測試後沒問題則併入 `main`
+- `main`: push 至 origin 後透過 Vercel 自動部署
+- others
 
-### Deployment
-使用 [Vercel](https://vercel.com/home) 部署
-
-## SEO
-### Metadata
-- [x] favicon, icon, and apple-icon
-- [ ] opengraph-image and twitter-image
-- [ ] manifest.json
-- [ ] robots.txt
-- [ ] sitemap.xml
+## Git Commit Type
+reference: [@commitlint/config-conventional](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional)
+| 前綴名稱 | 說明 |
+| :---- | :---- |
+| feat | 新增/修改功能 |
+| fix | 修補 bug |
+| refactor | 程式碼重構優化 |
+| style | 與 coding style 相關的修改 (縮排、空白、註解...etc) |
+| docs | 修改文件 |
+| data | 更新靜態資料：文案、圖片素材...etc |
+| build | 部署 |
+| chore | 建構程序或輔助工具的變動與其他雜項 |
