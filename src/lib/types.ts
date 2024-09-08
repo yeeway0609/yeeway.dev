@@ -10,14 +10,6 @@ export type Project = {
   blogTitle?: string
 }
 
-export type BlogPostInfo = {
-  slug: string
-  title: string
-  date: string
-  labels: string[]
-  desc: string
-}
-
 export type BlogPost = {
   slug: string
   title: string
@@ -27,5 +19,7 @@ export type BlogPost = {
   labels: string[]
   body: string
 }
+
+export type BlogPostInfo = Pick<BlogPost, 'slug' | 'title' | 'date' | 'labels' | 'desc'>
 
 export type BlogPostMetadata = Pick<BlogPost, 'slug' | 'title' | 'desc' | 'open_graph'>
