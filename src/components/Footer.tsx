@@ -26,7 +26,7 @@ export default function Footer() {
               hi@yeewy.dev
             </a>
           </p>
-          <p>© 2024 Alex Su. All rights reserved.</p>
+          <p>© 2024 Yiwei Su. All rights reserved.</p>
         </div>
       </div>
     </footer>

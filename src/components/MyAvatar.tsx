@@ -21,7 +21,7 @@ export default function MyAvatar() {
 
   return (
     <div className="mb-8 size-[200px] cursor-pointer overflow-hidden rounded-full bg-gradient-to-br from-[#757F9A] to-[#D7DDE8]" onClick={talkWithMe}>
-      <Image src="/alex_su.png" alt="Alex Su" width={200} height={200} />
+      <Image src="/yiwei_su.png" alt="Yiwei Su" width={200} height={200} />
       <div
         style={{ left: textBadge.x, top: textBadge.y - 20 }}
         className={`absolute rounded-full border border-border bg-card px-2.5 py-1 text-sm opacity-0 ${showText ? 'animate-fade-in-out' : ''} `}

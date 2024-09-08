@@ -48,6 +48,5 @@ reference: [@commitlint/config-conventional](https://github.com/conventional-cha
 | refactor | 程式碼重構優化 |
 | style | 與 coding style 相關的修改 (縮排、空白、註解...etc) |
 | docs | 修改文件 |
-| data | 更新靜態資料：文案、圖片素材...etc |
 | build | 部署 |
 | chore | 建構程序或輔助工具的變動與其他雜項 |

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "[作品集] 成大單車節 形象網站 | Alex Su's Blog",
+    title: '[作品集] 成大單車節 形象網站 | yeeway.dev',
   }
 }
 

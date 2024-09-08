@@ -30,7 +30,7 @@ export default function Header() {
     <header className="border-foreground-300/30 fixed z-50 flex w-full items-center justify-center border-b-[0.5px] bg-background/70 py-3 shadow-md backdrop-blur-md">
       <div className="border-foreground-300/30 container flex items-center justify-between">
         <Link href="/" className="cursor-pointer">
-          <Image src="/logo.png" alt="Alex Su' Website" width={36} height={36} />
+          <Image src="/logo.png" alt="Yiwei Su' Website" width={36} height={36} />
         </Link>
 
         {/* Desktop */}

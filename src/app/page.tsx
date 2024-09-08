@@ -10,7 +10,7 @@ export default async function BlogPage() {
       <div className="w-full md:w-2/3">
         <section className="py-8 sm:py-12">
           <h1 className="animate-slide-in-right inline-block text-5xl font-black tracking-wider">
-            Hi, I&apos;m <span className="name-gradient">Alex Su</span>.
+            Hi, I&apos;m <span className="name-gradient">Yiwei Su</span>.
             <Image
               className="mb-2 inline"
               width={48}
