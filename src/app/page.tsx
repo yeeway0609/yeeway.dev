@@ -2,8 +2,6 @@ import Image from 'next/image'
 import { getBlogPostsInfo } from '@/lib/fetchers'
 import PostCard from '@/components/PostCard'
 
-export const dynamic = 'force-dynamic' // disable data caching
-
 export default async function BlogPage() {
   const blogPostsInfo = await getBlogPostsInfo()
 

@@ -1,6 +1,6 @@
 'use server'
 
-import { BlogPostInfo, BlogPost } from '@/lib/types'
+import { BlogPostInfo, BlogPost, BlogPostMetadata } from '@/lib/types'
 import { Client } from '@notionhq/client'
 import { NotionToMarkdown } from 'notion-to-md'
 
@@ -62,6 +62,29 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost> {
     labels: page.properties.labels.multi_select.map((label: any) => label.name),
     desc: page.properties.desc.rich_text[0].plain_text,
     body: mdString.parent,
+    open_graph: page.properties.open_graph.files[0].file.url,
+  }
+
+  return postdata
+}
+
+export async function getBlogPostMetadataBySlug(slug: string): Promise<BlogPostMetadata> {
+  const response = await notion.databases.query({
+    database_id: NOTION_BLOG_DATABASE_ID as string,
+    filter: {
+      property: 'slug',
+      rich_text: {
+        equals: slug,
+      },
+    },
+  })
+
+  const page = response.results[0] as any
+
+  const postdata = {
+    title: page.properties.title.title[0].plain_text,
+    slug: page.properties.slug.rich_text[0].plain_text,
+    desc: page.properties.desc.rich_text[0].plain_text,
     open_graph: page.properties.open_graph.files[0].file.url,
   }
 

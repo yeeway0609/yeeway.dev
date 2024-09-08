@@ -22,6 +22,7 @@
     "clsx": "^2.1.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
+    "ldrs": "^1.0.2",
     "lucide-react": "^0.363.0",
     "next": "14.1.0",
     "notion-to-md": "^3.1.1",

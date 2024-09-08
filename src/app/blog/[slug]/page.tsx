@@ -1,6 +1,9 @@
+// --- Metadata of blog post ---
 import type { Metadata } from 'next'
+import { getBlogPostMetadataBySlug } from '@/lib/fetchers'
+
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = await getBlogPostBySlug(params.slug)
+  const post = await getBlogPostMetadataBySlug(params.slug)
 
   return {
     title: `${post.title} | yeeway.dev`,
@@ -19,6 +22,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
+// --- Content of blog post ---
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { getBlogPostBySlug } from '@/lib/fetchers'
@@ -27,15 +31,13 @@ import { Badge } from '@/components/ui/badge'
 // import TableOfContents from './TableOfContents'
 // import CommentCard from "@/components/CommentCard";
 
-export const dynamic = 'force-dynamic' // disable data caching
-
 export default async function Page({ params }: { params: { slug: string } }) {
   const post = await getBlogPostBySlug(params.slug)
   // const toc = post.body.match(/^##\s(.+)/gm)?.map(header => header.replace(/^##\s/, '')) || []
 
   return (
     <main className="mx-auto max-w-screen-sm">
-      <h1 className="mb-2 mt-4 text-3xl font-bold sm:mb-4 sm:mt-8 sm:text-5xl">{post.title}</h1>
+      <h1 className="my-4 text-3xl font-bold sm:my-8 sm:text-5xl">{post.title}</h1>
       <div className="flex">
         <span className="mr-4 text-lg text-muted-foreground">{formatDate(post.date)}</span>
         <div>

@@ -19,11 +19,13 @@ export type BlogPostInfo = {
 }
 
 export type BlogPost = {
-  title: string
   slug: string
+  title: string
+  desc: string
+  open_graph: string
   date: string
   labels: string[]
-  desc: string
   body: string
-  open_graph: string
 }
+
+export type BlogPostMetadata = Pick<BlogPost, 'slug' | 'title' | 'desc' | 'open_graph'>
