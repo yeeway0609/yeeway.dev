@@ -1,4 +1,5 @@
 {
+  "ignorePatterns": ["src/components/ui/"],
   "env": {
     "browser": true,
     "commonjs": true,
@@ -6,9 +7,8 @@
   },
   "extends": [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended",
     "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
     "plugin:import/recommended",
     "plugin:import/typescript"
@@ -27,6 +27,11 @@
   "rules": {
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-empty-object-type": "off",
+    "prefer-template": "error",
+    "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
+    "arrow-body-style": ["error", "as-needed"],
+    "prefer-arrow-callback": ["error"],
+    "padded-blocks": ["error", { "blocks": "never", "classes": "never", "switches": "never" }],
     "import/order": [
       "warn",
       {

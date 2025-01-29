@@ -25,16 +25,17 @@ export async function getBlogPostsInfo(): Promise<BlogPostInfo[]> {
     ],
   })
 
-  const infoList = data.results.map((page: any) => {
-    return {
-      id: page.id,
-      title: page.properties.title.title[0].plain_text,
-      slug: page.properties.slug.rich_text[0].plain_text,
-      labels: page.properties.labels.multi_select.map((label: any) => label.name),
-      date: page.properties.date.date.start,
-      desc: page.properties.desc.rich_text[0].plain_text,
-    } as BlogPostInfo
-  })
+  const infoList = data.results.map(
+    (page: any) =>
+      ({
+        id: page.id,
+        title: page.properties.title.title[0].plain_text,
+        slug: page.properties.slug.rich_text[0].plain_text,
+        labels: page.properties.labels.multi_select.map((label: any) => label.name),
+        date: page.properties.date.date.start,
+        desc: page.properties.desc.rich_text[0].plain_text,
+      }) as BlogPostInfo
+  )
 
   return infoList
 }

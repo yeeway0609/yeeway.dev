@@ -70,7 +70,7 @@ const config = {
   },
   plugins: [
     tailwindcssAnimate,
-    plugin(function ({ addComponents }) {
+    plugin(({ addComponents }) => {
       addComponents({
         '.container': {
           '@apply mx-auto px-4 max-w-screen-lg': {},

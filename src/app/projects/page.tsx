@@ -15,22 +15,20 @@ export default function ProjectsPage() {
         <h2 className="animate-slide-in-right mt-3 text-2xl text-muted-foreground delay-100">Showcase of my works or interesting plans.</h2>
       </section>
       <div className="grid grid-cols-1 place-items-center gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {projectsData.map((project: Project) => {
-          return (
-            <ProjectCard
-              key={project.title}
-              title={project.title}
-              description={project.description}
-              tags={project.tags}
-              imageURL={project.imageURL}
-              websiteURL={'websiteURL' in project ? project.websiteURL : undefined}
-              githubURL={'githubURL' in project ? project.githubURL : undefined}
-              githubTitle={'githubTitle' in project ? project.githubTitle : undefined}
-              blogURL={'blogURL' in project ? project.blogURL : undefined}
-              blogTitle={'blogTitle' in project ? project.blogTitle : undefined}
-            />
-          )
-        })}
+        {projectsData.map((project: Project) => (
+          <ProjectCard
+            key={project.title}
+            title={project.title}
+            description={project.description}
+            tags={project.tags}
+            imageURL={project.imageURL}
+            websiteURL={'websiteURL' in project ? project.websiteURL : undefined}
+            githubURL={'githubURL' in project ? project.githubURL : undefined}
+            githubTitle={'githubTitle' in project ? project.githubTitle : undefined}
+            blogURL={'blogURL' in project ? project.blogURL : undefined}
+            blogTitle={'blogTitle' in project ? project.blogTitle : undefined}
+          />
+        ))}
       </div>
     </>
   )
