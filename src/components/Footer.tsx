@@ -1,22 +1,20 @@
-import GithubIcon from '@/assets/icons/github-logo.svg'
-import LinkedinIcon from '@/assets/icons/linkedin-logo.svg'
-import InstagramIcon from '@/assets/icons/instagram-logo.svg'
 import { Contact } from '@/lib/constants'
+import { Icons } from '@/components/Icons'
 
 export default function Footer() {
   const socialLinks = [
-    { href: Contact.GITHUB, icon: GithubIcon },
-    { href: Contact.LINKEDIN, icon: LinkedinIcon },
-    { href: Contact.LINKEDIN, icon: InstagramIcon },
+    { href: Contact.GITHUB, icon: <Icons.Github /> },
+    { href: Contact.LINKEDIN, icon: <Icons.Linkedin /> },
+    { href: Contact.LINKEDIN, icon: <Icons.Instagram /> },
   ]
 
   return (
     <footer className="w-full border-t border-border">
       <div className="container flex flex-col gap-4 py-5 sm:py-8">
         <div className="flex items-center gap-5">
-          {socialLinks.map(({ href, icon: Icon }, index) => (
-            <a className="size-6 text-foreground transition duration-300 hover:text-primary" key={index} href={href} target="_blank">
-              <Icon />
+          {socialLinks.map(({ href, icon }, index) => (
+            <a className="size-6 fill-foreground transition duration-300 hover:fill-primary" key={index} href={href} target="_blank">
+              {icon}
             </a>
           ))}
         </div>
