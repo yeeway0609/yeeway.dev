@@ -5,6 +5,7 @@ import { Bars3Icon, XMarkIcon, NewspaperIcon, UserIcon, CommandLineIcon } from '
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import logoIcon from '@/assets/logo.png'
 import { SpotifyPlayer } from '@/components/SpotifyPlayer'
 import {
   NavigationMenu,
@@ -16,26 +17,27 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { ThemeSwitch } from './ThemeSwitch'
 
+const ROUTES = [
+  { title: 'Blog', href: '/', Icon: NewspaperIcon },
+  { title: 'Projects', href: '/projects', Icon: CommandLineIcon },
+  { title: 'About', href: '/about', Icon: UserIcon },
+]
+
 export function Header() {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
-  const routes = [
-    { title: 'Blog', href: '/', Icon: NewspaperIcon },
-    { title: 'Projects', href: '/projects', Icon: CommandLineIcon },
-    { title: 'About', href: '/about', Icon: UserIcon },
-  ]
 
   return (
     <header className="border-foreground-300/30 fixed z-50 flex w-full items-center justify-center border-b-[0.5px] bg-background/70 py-3 shadow-md backdrop-blur-md">
       <div className="border-foreground-300/30 container flex items-center justify-between">
         <Link href="/" className="cursor-pointer">
-          <Image src="/logo.png" alt="Yiwei Su' Website" width={36} height={36} />
+          <Image src={logoIcon} alt="Yiwei Su' Website" width={36} height={36} />
         </Link>
 
         {/* Desktop */}
         <NavigationMenu className="hidden sm:block">
           <NavigationMenuList>
-            {routes.map((route) => (
+            {ROUTES.map((route) => (
               <NavigationMenuItem key={route.title}>
                 <Link href={route.href} legacyBehavior passHref>
                   <NavigationMenuLink
@@ -67,7 +69,7 @@ export function Header() {
                 </SheetTrigger>
               </div>
               <nav className="mt-5 flex flex-col gap-8">
-                {routes.map((route) => (
+                {ROUTES.map((route) => (
                   <Link
                     key={route.title}
                     href={route.href}

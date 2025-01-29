@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import smilingFaceImg from '@/assets/smiling_face_with_sunglasses_3d.png'
 import { PostCard } from '@/components/PostCard'
 import { getBlogPostsInfo } from '@/lib/fetchers'
 
@@ -11,13 +12,7 @@ export default async function BlogPage() {
         <section className="py-8 sm:py-12">
           <h1 className="animate-slide-in-right inline-block text-5xl font-black tracking-wider">
             Hi, I&apos;m <span className="name-gradient">Yiwei Su</span>.
-            <Image
-              className="mb-2 inline"
-              width={48}
-              height={48}
-              alt="emoji_smiling_face_with_sunglasses"
-              src="/smiling_face_with_sunglasses_3d.png"
-            ></Image>
+            <Image className="mb-2 inline" width={48} height={48} alt="emoji_smiling_face_with_sunglasses" src={smilingFaceImg}></Image>
           </h1>
           <h2 className="animate-slide-in-right mt-3 text-xl text-muted-foreground delay-100 sm:text-2xl">
             Being creative. Being Positive. Being Motivated.
