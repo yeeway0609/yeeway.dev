@@ -6,9 +6,10 @@ import { BlogPostInfo } from '@/lib/types'
 export function PostCard({ slug, title, desc, date, labels }: BlogPostInfo) {
   return (
     <Link
+      className="hover:animate-arrow-shake flex w-full max-w-[600px] cursor-pointer flex-col gap-2 rounded-lg border bg-card p-6 text-card-foreground shadow-sm"
       title={`Post: ${title}`}
       href={`blog/${slug}`}
-      className="hover:animate-arrow-shake flex w-full max-w-[600px] cursor-pointer flex-col gap-2 rounded-lg border bg-card p-6 text-card-foreground shadow-sm"
+      scroll={false}
     >
       <h3 className="text-2xl font-semibold leading-tight">{title}</h3>
       <p className="text-sm text-muted-foreground">{desc.length > 100 ? `${desc.substring(0, 100)}......` : desc}</p>

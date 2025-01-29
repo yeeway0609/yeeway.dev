@@ -9,7 +9,7 @@ export function Footer() {
   ]
 
   return (
-    <footer className="w-full border-t border-border">
+    <footer className="mt-auto w-full border-t border-border">
       <div className="container flex flex-col gap-4 py-5 sm:py-8">
         <div className="flex items-center gap-5">
           {socialLinks.map(({ href, icon }, index) => (
