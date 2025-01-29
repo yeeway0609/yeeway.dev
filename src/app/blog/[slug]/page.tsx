@@ -2,7 +2,8 @@
 import type { Metadata } from 'next'
 import { getBlogPostMetadataBySlug } from '@/lib/fetchers'
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const params = await props.params
   const post = await getBlogPostMetadataBySlug(params.slug)
 
   return {
@@ -31,7 +32,8 @@ import { Badge } from '@/components/ui/badge'
 // import TableOfContents from './TableOfContents'
 // import CommentCard from "@/components/CommentCard";
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function Page(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params
   const post = await getBlogPostBySlug(params.slug)
   // const toc = post.body.match(/^##\s(.+)/gm)?.map(header => header.replace(/^##\s/, '')) || []
 
