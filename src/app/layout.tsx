@@ -10,8 +10,12 @@ import { ConsoleAsciiArt } from '@/components/ConsoleAsciiArt'
 const nunito = Nunito({ subsets: ['latin'], weight: ['400', '700', '900'] })
 
 export const metadata: Metadata = {
-  title: 'yeeway.dev',
+  title: {
+    template: '%s | yeeway.dev',
+    default: 'yeeway.dev',
+  },
   description: 'Website of Yiwei Su, Creative Developer.',
+  metadataBase: new URL('https://yeeway.dev'),
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

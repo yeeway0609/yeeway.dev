@@ -1,10 +1,10 @@
 import { Metadata } from 'next'
-import ProjectCard from '@/components/ProjectCard'
+import { ProjectCard } from '@/components/ProjectCard'
 import { Project } from '@/lib/types'
 import { projectsData } from '@/data/projectsData'
 
 export const metadata: Metadata = {
-  title: 'Projects | yeeway.dev',
+  title: 'Projects',
 }
 
 export default function ProjectsPage() {

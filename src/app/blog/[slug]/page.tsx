@@ -1,4 +1,6 @@
-// --- Metadata of blog post ---
+/************
+ * METADATA *
+ ************/
 import type { Metadata } from 'next'
 import { getBlogPostMetadataBySlug } from '@/lib/fetchers'
 
@@ -7,10 +9,10 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
   const post = await getBlogPostMetadataBySlug(params.slug)
 
   return {
-    title: `${post.title} | yeeway.dev`,
+    title: post.title,
     description: post.desc,
     openGraph: {
-      title: `${post.title} | yeeway.dev`,
+      title: post.title,
       description: post.desc,
       type: 'article',
       url: `https://yeeway.dev/blog/${post.slug}`,
@@ -23,19 +25,18 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
   }
 }
 
-// --- Content of blog post ---
+/***********
+ * CONTENT *
+ ***********/
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { getBlogPostBySlug } from '@/lib/fetchers'
 import { formatDate } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
-// import TableOfContents from './TableOfContents'
-// import CommentCard from "@/components/CommentCard";
 
 export default async function Page(props: { params: Promise<{ slug: string }> }) {
   const params = await props.params
   const post = await getBlogPostBySlug(params.slug)
-  // const toc = post.body.match(/^##\s(.+)/gm)?.map(header => header.replace(/^##\s/, '')) || []
 
   return (
     <main className="mx-auto max-w-screen-sm">
@@ -54,15 +55,6 @@ export default async function Page(props: { params: Promise<{ slug: string }> })
       <ReactMarkdown remarkPlugins={[remarkGfm]} className="markdown">
         {post.body}
       </ReactMarkdown>
-      {/* <div className="mb-4 mt-10 flex">
-        <ChatBubbleOvalLeftEllipsisIcon className="mr-2 size-7" />
-        <p className="text-lg text-muted-foreground">{post.comments?.totalCount} comments</p>
-      </div> */}
-      {/* <div className="flex flex-col gap-4">
-        {post.comments?.nodes.map((comment: any, index: number) => (
-          <CommentCard key={index} userName={comment.author.login} userAvatarUrl={comment.author.avatarUrl} content={comment.body} createdAt={comment.createdAt} />
-        ))}
-      </div> */}
     </main>
   )
 }

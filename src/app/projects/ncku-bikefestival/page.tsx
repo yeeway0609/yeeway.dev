@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: '[作品集] 成大單車節 形象網站 | yeeway.dev',
+    title: '[作品集] 成大單車節 形象網站',
   }
 }
 
-export default async function Page() {
+export default function Page() {
   return (
+    // TODO: Add a post content here
     <div className="markdown">
       <div className="mt-2 flex"></div>
       <h1 className="my-4 text-3xl font-bold sm:my-8 sm:text-5xl">成大單車節 形象網站</h1>

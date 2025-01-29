@@ -13,6 +13,7 @@ export function CommentCard({
   createdAt: string
 }) {
   return (
+    // TODO: Add a comment card here
     <div className="rounded-[10px] border border-border">
       <div className="flex items-center rounded-t-[10px] border-b border-border bg-slate-400 px-4 py-3 dark:bg-slate-900">
         <Avatar className="mr-2 size-6">

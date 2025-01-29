@@ -3,7 +3,7 @@ import { MyAvatar } from '@/components/MyAvatar'
 import { SpotifyPlayer } from '@/components/SpotifyPlayer'
 
 export const metadata: Metadata = {
-  title: 'About Me | yeeway.dev',
+  title: 'About Me',
 }
 
 export default function AboutPage() {
