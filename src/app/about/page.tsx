@@ -2,10 +2,6 @@ import { Metadata } from 'next'
 import { MyAvatar } from '@/components/MyAvatar'
 import { SpotifyPlayer } from '@/components/SpotifyPlayer'
 
-function SectionTitle({ children }: { children: string }) {
-  return <h2 className="mb-2 mt-4 text-2xl font-bold text-primary sm:my-4">{children}</h2>
-}
-
 export const metadata: Metadata = {
   title: 'About Me | yeeway.dev',
 }
@@ -54,4 +50,8 @@ export default function AboutPage() {
       </section>
     </div>
   )
+}
+
+function SectionTitle({ children }: { children: string }) {
+  return <h2 className="mb-2 mt-4 text-2xl font-bold text-primary sm:my-4">{children}</h2>
 }
