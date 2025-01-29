@@ -14,7 +14,7 @@ export default function PostCard({ slug, title, desc, date, labels }: BlogPostIn
       <p className="text-sm text-muted-foreground">{desc.length > 100 ? `${desc.substring(0, 100)}......` : desc}</p>
       <div className="flex">
         {labels.map((label: any) => (
-          <Badge key={label} className="mr-1">
+          <Badge key={label} className="mr-2">
             #{label}
           </Badge>
         ))}
