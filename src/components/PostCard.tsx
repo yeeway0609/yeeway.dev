@@ -3,7 +3,7 @@ import { Badge } from '@/components/ui/badge'
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid'
 import { BlogPostInfo } from '@/lib/types'
 
-export default function PostCard({ slug, title, desc, date, labels }: BlogPostInfo) {
+export function PostCard({ slug, title, desc, date, labels }: BlogPostInfo) {
   return (
     <Link
       title={`Post: ${title}`}

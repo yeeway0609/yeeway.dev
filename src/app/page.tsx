@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { getBlogPostsInfo } from '@/lib/fetchers'
-import PostCard from '@/components/PostCard'
+import { PostCard } from '@/components/PostCard'
 
 export default async function BlogPage() {
   const blogPostsInfo = await getBlogPostsInfo()

@@ -13,17 +13,16 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import ThemeSwitch from '@/components/ThemeSwitchBtn'
-import SpotifyPlayer from '@/components/SpotifyPlayer'
+import { ThemeSwitch } from './ThemeSwitch'
+import { SpotifyPlayer } from '@/components/SpotifyPlayer'
 
-export default function Header() {
+export function Header() {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
   const routes = [
     { title: 'Blog', href: '/', Icon: NewspaperIcon },
     { title: 'Projects', href: '/projects', Icon: CommandLineIcon },
     { title: 'About', href: '/about', Icon: UserIcon },
-    // { title: "Resume", href: "https://resume.yeeway.dev", Icon: BriefcaseIcon, }
   ]
 
   return (

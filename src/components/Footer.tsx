@@ -1,7 +1,7 @@
 import { Contact } from '@/lib/constants'
 import { Icons } from '@/components/Icons'
 
-export default function Footer() {
+export function Footer() {
   const socialLinks = [
     { href: Contact.GITHUB, icon: <Icons.Github /> },
     { href: Contact.LINKEDIN, icon: <Icons.Linkedin /> },

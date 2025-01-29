@@ -1,6 +1,6 @@
 'use client'
 
-export default function ConsoleAsciiArt() {
+export function ConsoleAsciiArt() {
   console.log(
     '               ;i.\n' +
       '               M$L                    .;i.\n' +

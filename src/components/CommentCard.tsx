@@ -1,7 +1,7 @@
 import { formatDate } from '@/lib/utils'
 import { Avatar, AvatarImage } from '@/components/ui/avatar'
 
-export default function CommentCard({
+export function CommentCard({
   userName,
   userAvatarUrl,
   content,

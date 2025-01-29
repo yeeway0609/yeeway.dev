@@ -5,7 +5,7 @@ import { GlobeAltIcon, BookOpenIcon } from '@heroicons/react/24/solid'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Project } from '@/lib/types'
 
-export default function ProjectCard({ title, description, tags, imageURL, websiteURL, githubURL, githubTitle, blogURL, blogTitle }: Project) {
+export function ProjectCard({ title, description, tags, imageURL, websiteURL, githubURL, githubTitle, blogURL, blogTitle }: Project) {
   return (
     <Card className="flex flex-col sm:h-[470px] sm:w-[300px]">
       <div className="relative mb-3 aspect-[5/3] overflow-hidden rounded-t-lg">

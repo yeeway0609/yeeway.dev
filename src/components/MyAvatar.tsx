@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 
-export default function MyAvatar() {
+export function MyAvatar() {
   const lines = ['你好！😆', 'Hey Bro 😎', '火鍋不能加芋頭', '咖哩飯拌了還能吃嗎', '(⁎⁍̴̛ᴗ⁍̴̛⁎)', '文星伊一生推']
 
   const [showText, setShowText] = useState(false)

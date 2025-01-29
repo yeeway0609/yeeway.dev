@@ -1,4 +1,4 @@
-export default function SpotifyPlayer() {
+export function SpotifyPlayer() {
   const songs = [
     '4vEPfqkEgL3ARGLS3Qdq2H',
     '4c2oEDopvep6mnJK25KzVE',
