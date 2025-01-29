@@ -21,5 +21,6 @@ export default function LoadingUI() {
   useEffect(() => {
     cardio.register()
   }, [])
+  // TOFIX: ReferenceError: HTMLElement is not defined
   return <l-cardio size="60" stroke="5" speed="2" color="currentColor" />
 }
