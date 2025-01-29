@@ -1,8 +1,9 @@
-/************
- * METADATA *
- ************/
 import type { Metadata } from 'next'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import { Badge } from '@/components/ui/badge'
 import { getBlogPostMetadataBySlug, getBlogPostBySlug } from '@/lib/fetchers'
+import { formatDate } from '@/lib/utils'
 
 export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const params = await props.params
@@ -24,14 +25,6 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
     },
   }
 }
-
-/***********
- * CONTENT *
- ***********/
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
-import { Badge } from '@/components/ui/badge'
-import { formatDate } from '@/lib/utils'
 
 export default async function Page(props: { params: Promise<{ slug: string }> }) {
   const params = await props.params

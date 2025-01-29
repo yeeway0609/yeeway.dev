@@ -33,8 +33,8 @@
         "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
         "pathGroups": [
           {
-            "group": "external",
             "pattern": "react",
+            "group": "external",
             "position": "before"
           }
         ],
