@@ -1,10 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { usePathname } from 'next/navigation'
 import { Bars3Icon, XMarkIcon, NewspaperIcon, UserIcon, CommandLineIcon } from '@heroicons/react/24/solid'
+import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { SpotifyPlayer } from '@/components/SpotifyPlayer'
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -14,7 +15,6 @@ import {
 } from '@/components/ui/navigation-menu'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { ThemeSwitch } from './ThemeSwitch'
-import { SpotifyPlayer } from '@/components/SpotifyPlayer'
 
 export function Header() {
   const [open, setOpen] = useState(false)

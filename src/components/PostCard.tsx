@@ -1,6 +1,6 @@
+import { ArrowRightCircleIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 import { Badge } from '@/components/ui/badge'
-import { ArrowRightCircleIcon } from '@heroicons/react/24/solid'
 import { BlogPostInfo } from '@/lib/types'
 
 export function PostCard({ slug, title, desc, date, labels }: BlogPostInfo) {

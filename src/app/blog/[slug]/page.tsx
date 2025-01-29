@@ -2,7 +2,7 @@
  * METADATA *
  ************/
 import type { Metadata } from 'next'
-import { getBlogPostMetadataBySlug } from '@/lib/fetchers'
+import { getBlogPostMetadataBySlug, getBlogPostBySlug } from '@/lib/fetchers'
 
 export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const params = await props.params
@@ -30,9 +30,8 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
  ***********/
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { getBlogPostBySlug } from '@/lib/fetchers'
-import { formatDate } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
+import { formatDate } from '@/lib/utils'
 
 export default async function Page(props: { params: Promise<{ slug: string }> }) {
   const params = await props.params

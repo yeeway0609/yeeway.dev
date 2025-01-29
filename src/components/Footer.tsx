@@ -1,5 +1,5 @@
-import { Contact } from '@/lib/constants'
 import { Icons } from '@/components/Icons'
+import { Contact } from '@/lib/constants'
 
 export function Footer() {
   const socialLinks = [

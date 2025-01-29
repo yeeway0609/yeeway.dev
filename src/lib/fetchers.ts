@@ -1,8 +1,8 @@
 'use server'
 
-import { BlogPostInfo, BlogPost, BlogPostMetadata } from '@/lib/types'
 import { Client } from '@notionhq/client'
 import { NotionToMarkdown } from 'notion-to-md'
+import { BlogPostInfo, BlogPost, BlogPostMetadata } from '@/lib/types'
 
 const notion = new Client({ auth: process.env.NOTION_SECRET })
 const NOTION_BLOG_DATABASE_ID = process.env.NOTION_BLOG_DATABASE_ID

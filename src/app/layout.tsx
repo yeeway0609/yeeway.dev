@@ -1,11 +1,11 @@
+import { GoogleAnalytics } from '@next/third-parties/google'
 import type { Metadata } from 'next'
 import { Nunito } from 'next/font/google'
-import './global.css'
-import { GoogleAnalytics } from '@next/third-parties/google'
-import { Providers } from '@/lib/Providers'
-import { Header } from '@/components/Header'
-import { Footer } from '@/components/Footer'
 import { ConsoleAsciiArt } from '@/components/ConsoleAsciiArt'
+import { Footer } from '@/components/Footer'
+import { Header } from '@/components/Header'
+import { Providers } from '@/lib/Providers'
+import './global.css'
 
 const nunito = Nunito({ subsets: ['latin'], weight: ['400', '700', '900'] })
 

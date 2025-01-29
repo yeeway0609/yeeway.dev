@@ -1,7 +1,7 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import { Badge } from '@/components/ui/badge'
 import { GlobeAltIcon, BookOpenIcon } from '@heroicons/react/24/solid'
+import Image from 'next/image'
+import Link from 'next/link'
+import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Project } from '@/lib/types'
 
