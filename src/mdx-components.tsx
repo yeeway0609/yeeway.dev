@@ -3,7 +3,6 @@ import Image from 'next/image'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    h1: ({ children }) => <h1 className="my-4 text-3xl font-bold sm:my-8 sm:text-5xl">{children}</h1>,
     h2: ({ children }) => <h2 className="mb-4 mt-6 text-2xl font-bold leading-tight text-primary sm:text-3xl">{children}</h2>,
     h3: ({ children }) => <h3 className="mb-4 mt-6 font-bold leading-snug">{children}</h3>,
     h4: ({ children }) => <h4 className="mb-4 mt-6 font-bold leading-none">{children}</h4>,
@@ -27,6 +26,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </a>
     ),
+    img: (props) => <img className="mx-auto my-6" {...props} />,
     ...components,
   }
 }
