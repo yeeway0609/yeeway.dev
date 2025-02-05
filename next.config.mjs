@@ -1,6 +1,8 @@
+import path from 'path'
 import createMDX from '@next/mdx'
 import remarkFrontmatter from 'remark-frontmatter'
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
+import { rehypeImageSize } from './rehype-image-size.mjs'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -17,8 +19,9 @@ const nextConfig = {
 
 const withMDX = createMDX({
   options: {
+    extension: /\.mdx?$/,
     remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
-    rehypePlugins: [],
+    rehypePlugins: [[rehypeImageSize, { root: path.join(process.cwd(), 'public') }]],
   },
 })
 

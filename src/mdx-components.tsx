@@ -1,4 +1,5 @@
 import type { MDXComponents } from 'mdx/types'
+import Image from 'next/image'
 
 // TODO: 加上 a11y、有些元件可以改成 next js 的、圖片要有最小高度
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -31,7 +32,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </a>
     ),
-    img: (props) => <img className="mx-auto my-6" {...props} alt={props.alt ?? 'image'} />,
+    img: (props) => <Image className="mx-auto my-6" {...props} alt={props.alt ?? 'image'} />,
     ...components,
   }
 }
