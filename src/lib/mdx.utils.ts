@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
-interface BlogMetadata {
+export interface BlogMetadata {
   slug: string
   title: string
   description: string
@@ -39,9 +39,11 @@ export function getAllBlogMetadata(): BlogMetadata[] {
     .map((file) => {
       const slug = file.replace(/\.mdx$/, '')
       const metadata = getBlogMetadata(slug)
+
       return metadata.isPublished ? metadata : null
     })
-    .filter(Boolean) as BlogMetadata[]
+    .filter(Boolean)
+    .sort((a, b) => new Date(b!.publishedOn).getTime() - new Date(a!.publishedOn).getTime()) as BlogMetadata[]
 }
 
 // TODO: implement this function
