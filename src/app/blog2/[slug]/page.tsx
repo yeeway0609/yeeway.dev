@@ -34,7 +34,6 @@ export const dynamicParams = false // accessing a route not defined in generateS
 export function generateStaticParams() {
   const metadataSet = getAllBlogMetadata()
   const slugs = metadataSet.map((metadata) => ({ slug: metadata.slug }))
-  console.log('slugs:', slugs)
   return slugs
 }
 
