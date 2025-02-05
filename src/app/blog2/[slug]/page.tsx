@@ -23,7 +23,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
         </ul>
       </div>
       <hr className="mb-5 mt-2" />
-      <article>
+
+      <article className="break-words text-base leading-normal text-foreground sm:text-xl">
         <PostContent />
       </article>
     </main>
