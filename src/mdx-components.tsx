@@ -1,7 +1,7 @@
 import type { MDXComponents } from 'mdx/types'
 import Image from 'next/image'
 
-// TODO: 加上 a11y、有些元件可以改成 next js 的、圖片要有最小高度
+// TODO: 加上 a11y
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h2: ({ children }) => <h2 className="mb-4 mt-6 text-2xl font-bold leading-tight text-primary sm:text-3xl">{children}</h2>,
@@ -32,7 +32,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </a>
     ),
-    img: (props) => <Image className="mx-auto my-6" {...props} alt={props.alt ?? 'image'} />,
+    img: (props) => (
+      <div className="relative mx-auto w-fit my-6">
+        <div className="absolute size-full animate-pulse bg-gray-300 dark:bg-gray-800" />
+        <Image className="relative" {...props} alt={props.alt ?? 'image'} />
+      </div>
+    ),
     ...components,
   }
 }
