@@ -33,7 +33,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </a>
     ),
     img: (props) => (
-      <div className="relative mx-auto w-fit my-6">
+      <div className="relative mx-auto my-6 w-fit">
         <div className="absolute size-full animate-pulse bg-gray-300 dark:bg-gray-800" />
         <Image className="relative" {...props} alt={props.alt ?? 'image'} />
       </div>
