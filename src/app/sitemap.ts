@@ -1,9 +1,9 @@
 import { MetadataRoute } from 'next'
-import { getBlogPostsInfo } from '@/lib/fetchers'
-import { BlogPostInfo } from '@/lib/types'
+import { getAllBlogMetadata } from '@/lib/mdx.utils'
+import type { BlogMetadata } from '@/lib/mdx.utils'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const blogPostsInfo = await getBlogPostsInfo()
+  const blogMetadata = getAllBlogMetadata()
 
   return [
     {
@@ -30,9 +30,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     //   changeFrequency: 'weekly',
     //   priority: 0.5,
     // },
-    ...blogPostsInfo.map((post: BlogPostInfo) => ({
+    ...blogMetadata.map((post: BlogMetadata) => ({
       url: `https://yeeway.dev/blog/${post.slug}`,
-      lastModified: new Date(post.date),
+      lastModified: new Date(post.publishedOn),
       priority: 0.2,
     })),
   ]

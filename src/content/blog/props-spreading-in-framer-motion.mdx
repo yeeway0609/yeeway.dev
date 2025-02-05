@@ -1,0 +1,106 @@
+---
+title: 如何透過 Props Spreading 來簡化 Motion 元件的寫法
+description: 如何透過 Props Spreading 來簡化 Motion 元件的寫法
+labels:
+  - 學習筆記
+  - 網頁開發
+publishedOn: 2024-12-16
+isPublished: true
+ogImageUrl: /assets/{slug}/cover.png
+---
+
+在 React 中，使用 Props Spreading（物件展開運算符 `...`）是一種簡潔而強大的方法來傳遞大量的屬性。而在 Framer Motion 的開發中，這個技巧更能幫助我們有效地組織動畫物件，讓程式碼更可讀且易於維護。
+
+這篇文章將介紹如何使用 Props Spreading 的方式，將動畫參數物件傳遞給 Framer Motion 的 `motion` 元件，並展示一些實用的應用場景。
+
+## 什麼是 Props Spreading？
+
+Props Spreading 是指將一個物件的所有 key-value，展開作為元件的 `props` 傳遞。這種方式很適合用在一個元件有很大量的 props 時並且 props 名稱與物件的 key 值相同時，在 [React 官方文檔](https://react.dev/learn/passing-props-to-a-component#forwarding-props-with-the-jsx-spread-syntax)也有介紹這個寫法。另外當我們的資料是一個格式固定的列表時，也適合用 map 函式迭代渲染出元件。
+
+原本的寫法：
+
+```jsx
+const alex = { name: 'Alex', age: 20, email: 'alex@example.com', mbti: 'ISFJ'}
+
+const becky  = { name: 'Becky', age: 27, email: 'becky@example.com', mbti: 'ISFJ' }
+
+const cindy = { name: 'Cindy', age: 29, email: 'cindy@example.com', mbti: 'ISFJ' }
+
+<Profile name={alex.name} age={alex.age} email={alex.email} mbti={alex.mbti} />;
+<Profile name={becky.name} age={becky.age} email={becky.email} mbti={becky.mbti} />;
+<Profile name={cindy.name} age={cindy.age} email={cindy.email} mbti={cindy.mbti} />;
+```
+
+改用 Props Spreading 的寫法：
+
+```jsx
+;<Profile {...alex} />
+;<Profile {...becky} />
+;<Profile {...cindy} />
+```
+
+## 在 Motion 中的應用
+
+[Motion](https://motion.dev/)（前身為 Framer Motion）的 `motion` 元件通常需要接收多個動畫屬性，例如 `initial`、`animate`、`exit` 等。如果這些屬性當中要調整的值又包含了透明度、背景顏色、x y 位置……等等的話整個元件 props 就會落落長，這時候我們就能將與動畫相關的屬性整合成一個物件，然後透過 Props Spreading 傳遞，讓程式碼更整潔。
+
+原本的 `motion` 元件寫法：
+
+```jsx
+<motion.div className="size-10 bg-slate-500" initial={{ scale: 0, x: 0, y: 0 }} animate={{ scale: 2, x: 100, y: 200 }} transition={{ duration: 1 }} />
+```
+
+改用 Props Spreading 的寫法：
+
+```jsx
+const animationProps = {
+  initial: { scale: 0, x: 0, y: 0 },
+  animate: { scale: 2, x: 100, y: 200 },
+  transition: { duration: 1 },
+}
+
+;<motion.div className="size-10 bg-slate-500" {...animationProps} />
+```
+
+## 動畫模板的重用
+
+如果某個頁面中需要用到大量或是重複的 `motion` 元件的話，我們也可以將這些動畫屬性物件抽離至另一個 utility 檔案中
+
+```jsx
+// animations.js
+export const fadeIn = {
+  initial: { opacity: 0 },
+  whileInView: { opacity: 1 },
+  transition: { duration: 0.5 },
+}
+
+export const slideUp = {
+  initial: { opacity: 0, y: 50 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.7 },
+}
+```
+
+在元件中重用這些模板：
+
+```jsx
+import { motion } from "motion/react"
+import { fadeIn, slideUp } from "./animations";
+
+function Page() {
+  return (
+    <motion.section id="hero-section" {...fadeIn}>
+			...
+    </motion.section>
+
+    <motion.section id="about-section" {...fadeIn}>
+			...
+    </motion.section>
+  );
+}
+```
+
+## 總結用 Props Spreading 的好處
+
+1. **增強可讀性**：將動畫屬性抽離到單獨的物件中，避免在 JSX 中塞入太多屬性，讓程式碼結構更清晰。
+2. **提高重用性**：如果多個元件共享同一組動畫屬性，可以直接傳遞統一的動畫屬性物件。
+3. **動態屬性管理**：能根據邏輯動態生成 `props`，減少手動管理的複雜性。
