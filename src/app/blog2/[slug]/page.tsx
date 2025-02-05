@@ -1,12 +1,10 @@
-import fs from 'fs'
-import path from 'path'
 import type { Metadata } from 'next'
 import { Badge } from '@/components/ui/badge'
-import { getBlogFrontmatter } from '@/lib/mdx.utils'
+import { getBlogMetadata, getAllBlogMetadata } from '@/lib/mdx.utils'
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const slug = params.slug
-  const frontmatter = getBlogFrontmatter(slug)
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+  const slug = (await params).slug
+  const frontmatter = getBlogMetadata(slug)
   const { default: PostContent } = await import(`@/content/blog/${slug}.mdx`)
 
   return (
@@ -34,36 +32,28 @@ export default async function Page({ params }: { params: { slug: string } }) {
 export const dynamicParams = false // accessing a route not defined in generateStaticParams will get 404.
 
 export function generateStaticParams() {
-  const BLOG_DIR = 'src/content/blog'
-  const files = fs.readdirSync(path.join(process.cwd(), BLOG_DIR))
-  const mdxFiles = files.filter((file) => file.endsWith('.mdx'))
-
-  // Only published blog posts will be generated
-  return mdxFiles
-    .map((file) => {
-      const slug = file.replace(/\.mdx$/, '')
-      const frontmatter = getBlogFrontmatter(slug)
-      return frontmatter.isPublished ? { slug } : null
-    })
-    .filter(Boolean)
+  const metadataSet = getAllBlogMetadata()
+  const slugs = metadataSet.map((metadata) => ({ slug: metadata.slug }))
+  console.log('slugs:', slugs)
+  return slugs
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const DEFAULT_OG_IMAGE = '/og.png'
-  const slug = params.slug
-  const frontmatter = getBlogFrontmatter(slug)
+  const slug = (await params).slug
+  const metadata = getBlogMetadata(slug)
 
   return {
-    title: frontmatter.title,
-    description: frontmatter.description,
+    title: metadata.title,
+    description: metadata.description,
     openGraph: {
-      title: frontmatter.title,
-      description: frontmatter.description,
+      title: metadata.title,
+      description: metadata.description,
       type: 'article',
       url: `/blog/${slug}`,
       images: [
         {
-          url: frontmatter.ogImageUrl ?? DEFAULT_OG_IMAGE,
+          url: metadata.ogImageUrl ?? DEFAULT_OG_IMAGE,
         },
       ],
     },
