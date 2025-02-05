@@ -15,7 +15,6 @@
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "^15.1.6",
     "@next/third-parties": "15.1.6",
-    "@notionhq/client": "^2.2.15",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-navigation-menu": "^1.1.4",
@@ -34,9 +33,7 @@
     "prettier-plugin-tailwindcss": "^0.6.6",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "react-markdown": "^9.0.1",
     "remark-frontmatter": "^5.0.0",
-    "remark-gfm": "^4.0.0",
     "remark-mdx-frontmatter": "^5.0.0",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7"
