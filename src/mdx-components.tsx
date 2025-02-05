@@ -10,7 +10,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h6: ({ children }) => <h6 className="mb-4 mt-6 font-bold leading-tight text-muted-foreground">{children}</h6>,
     hr: () => <hr className="mb-5 mt-2" />,
     blockquote: ({ children }) => (
-      <blockquote className="border-l-4 border-muted-foreground pl-4 pr-4 text-lg text-muted-foreground">{children}</blockquote>
+      <blockquote className="border-l-4 my-2 border-muted-foreground pl-4 pr-4 text-lg text-muted-foreground">{children}</blockquote>
     ),
     pre: ({ children }) => <pre className="my-2 overflow-y-hidden rounded bg-gray-200 p-4 dark:bg-gray-700">{children}</pre>,
     code: ({ children }) => <code className="rounded bg-gray-200 font-mono text-sm dark:bg-gray-700">{children}</code>,
