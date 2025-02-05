@@ -30,13 +30,14 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   )
 }
 
-export const dynamicParams = false // EXPLAIN: accessing a route not defined in generateStaticParams will get 404.
+export const dynamicParams = false // accessing a route not defined in generateStaticParams will get 404.
 
 export function generateStaticParams() {
   const BLOG_DIR = 'src/content/blog'
   const files = fs.readdirSync(path.join(process.cwd(), BLOG_DIR))
   const mdxFiles = files.filter((file) => file.endsWith('.mdx'))
 
+  // Only published blog posts will be generated
   return mdxFiles
     .map((file) => {
       const slug = file.replace(/\.mdx$/, '')
@@ -47,7 +48,7 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const DEFAULT_OG_IMAGE = 'https://yeeway.dev/og.png'
+  const DEFAULT_OG_IMAGE = '/og.png'
   const slug = (await params).slug
   const frontmatter = getBlogFrontmatter(slug)
 
@@ -58,7 +59,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: frontmatter.title,
       description: frontmatter.description,
       type: 'article',
-      url: `https://yeeway.dev/blog/${slug}`,
+      url: `/blog/${slug}`,
       images: [
         {
           url: frontmatter.ogImageUrl ?? DEFAULT_OG_IMAGE,
