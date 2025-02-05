@@ -39,7 +39,6 @@ export function getAllBlogMetadata(): BlogMetadata[] {
     .map((file) => {
       const slug = file.replace(/\.mdx$/, '')
       const metadata = getBlogMetadata(slug)
-
       return metadata.isPublished ? metadata : null
     })
     .filter(Boolean)

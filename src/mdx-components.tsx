@@ -31,7 +31,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </a>
     ),
-    img: (props) => <img className="mx-auto my-6" {...props} />,
+    img: (props) => <img className="mx-auto my-6" {...props} alt={props.alt ?? 'image'} />,
     ...components,
   }
 }
