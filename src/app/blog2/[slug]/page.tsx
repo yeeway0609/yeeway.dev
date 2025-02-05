@@ -4,8 +4,8 @@ import type { Metadata } from 'next'
 import { Badge } from '@/components/ui/badge'
 import { getBlogFrontmatter } from '@/lib/mdx.utils'
 
-export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
-  const slug = (await params).slug
+export default async function Page({ params }: { params: { slug: string } }) {
+  const slug = params.slug
   const frontmatter = getBlogFrontmatter(slug)
   const { default: PostContent } = await import(`@/content/blog/${slug}.mdx`)
 
@@ -47,9 +47,9 @@ export function generateStaticParams() {
     .filter(Boolean)
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const DEFAULT_OG_IMAGE = '/og.png'
-  const slug = (await params).slug
+  const slug = params.slug
   const frontmatter = getBlogFrontmatter(slug)
 
   return {
