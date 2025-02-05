@@ -28,6 +28,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         href={href}
         target="_blank"
         rel="noopener"
+        aria-label={children}
       >
         {children}
       </a>
