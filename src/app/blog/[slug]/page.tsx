@@ -1,52 +1,60 @@
 import type { Metadata } from 'next'
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
 import { Badge } from '@/components/ui/badge'
-import { getBlogPostMetadataBySlug, getBlogPostBySlug } from '@/lib/fetchers'
-import { formatDate } from '@/lib/utils'
+import { getBlogMetadata, getAllBlogMetadata } from '@/lib/mdx.utils'
 
-export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const params = await props.params
-  const post = await getBlogPostMetadataBySlug(params.slug)
-
-  return {
-    title: post.title,
-    description: post.desc,
-    openGraph: {
-      title: post.title,
-      description: post.desc,
-      type: 'article',
-      url: `https://yeeway.dev/blog/${post.slug}`,
-      images: [
-        {
-          url: post.open_graph,
-        },
-      ],
-    },
-  }
-}
-
-export default async function Page(props: { params: Promise<{ slug: string }> }) {
-  const params = await props.params
-  const post = await getBlogPostBySlug(params.slug)
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+  const slug = (await params).slug
+  const frontmatter = getBlogMetadata(slug)
+  const { default: PostContent } = await import(`@/content/blog/${slug}.mdx`)
 
   return (
     <main className="mx-auto max-w-screen-sm">
-      <h1 className="my-4 text-3xl font-bold sm:my-8 sm:text-5xl">{post.title}</h1>
+      <h1 className="my-4 text-3xl font-bold sm:my-8 sm:text-5xl">{frontmatter.title}</h1>
       <div className="flex">
-        <span className="mr-4 text-lg text-muted-foreground">{formatDate(post.date)}</span>
-        <div>
-          {post.labels.map((label) => (
+        <time className="mr-4 text-lg text-muted-foreground">{frontmatter.publishedOn.toLocaleDateString('zh-TW')}</time>
+        <ul>
+          {frontmatter.labels.map((label) => (
             <Badge key={label} className="mr-2">
               #{label}
             </Badge>
           ))}
-        </div>
+        </ul>
       </div>
       <hr className="mb-5 mt-2" />
-      <ReactMarkdown remarkPlugins={[remarkGfm]} className="markdown">
-        {post.body}
-      </ReactMarkdown>
+
+      <article className="break-words text-base leading-normal text-foreground sm:text-xl">
+        <PostContent />
+      </article>
     </main>
   )
+}
+
+export const dynamicParams = false // accessing a route not defined in generateStaticParams will get 404.
+
+export function generateStaticParams() {
+  const metadataSet = getAllBlogMetadata()
+  const slugs = metadataSet.map((metadata) => ({ slug: metadata.slug }))
+  return slugs
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const DEFAULT_OG_IMAGE = '/og.png'
+  const slug = (await params).slug
+  const metadata = getBlogMetadata(slug)
+
+  return {
+    title: metadata.title,
+    description: metadata.description,
+    openGraph: {
+      title: metadata.title,
+      description: metadata.description,
+      type: 'article',
+      url: `/blog/${slug}`,
+      images: [
+        {
+          url: metadata.ogImageUrl ?? DEFAULT_OG_IMAGE,
+        },
+      ],
+    },
+  }
 }

@@ -8,7 +8,7 @@ export function PostCard({ slug, title, description, publishedOn, labels }: Blog
     <Link
       className="hover:animate-arrow-shake flex w-full max-w-[600px] cursor-pointer flex-col gap-2 rounded-lg border bg-card p-6 text-card-foreground shadow-sm"
       title={`Post: ${title}`}
-      href={`blog2/${slug}`}
+      href={`blog/${slug}`}
       scroll={false}
     >
       <h3 className="text-2xl font-semibold leading-tight">{title}</h3>

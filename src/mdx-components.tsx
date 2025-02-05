@@ -1,6 +1,6 @@
 import type { MDXComponents } from 'mdx/types'
 
-// TODO: 加上 a11y，有些元件可以改成 next js 的
+// TODO: 加上 a11y、有些元件可以改成 next js 的、圖片要有最小高度
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h2: ({ children }) => <h2 className="mb-4 mt-6 text-2xl font-bold leading-tight text-primary sm:text-3xl">{children}</h2>,
