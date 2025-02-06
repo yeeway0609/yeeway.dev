@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Badge } from '@/components/ui/badge'
 import { getBlogMetadata, getAllBlogMetadata } from '@/lib/mdx.utils'
 
-// TODO: Add loading.tsx
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const slug = (await params).slug
   const frontmatter = getBlogMetadata(slug)
