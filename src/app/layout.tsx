@@ -6,6 +6,7 @@ import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { Providers } from '@/lib/Providers'
 import './global.css'
+import '@fontsource/commit-mono'
 
 const nunito = Nunito({ subsets: ['latin'], weight: ['400', '700', '900'] })
 

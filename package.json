@@ -10,6 +10,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@fontsource/commit-mono": "^5.0.1",
     "@heroicons/react": "^2.1.1",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",

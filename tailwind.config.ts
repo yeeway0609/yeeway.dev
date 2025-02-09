@@ -44,6 +44,10 @@ const config = {
         },
         gradient: 'var(--gradient)',
       },
+      fontFamily: {
+        sans: ['Nunito', 'sans-serif'],
+        mono: ['Commit Mono', 'monospace'],
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',

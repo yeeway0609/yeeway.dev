@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@fontsource/commit-mono':
+        specifier: ^5.0.1
+        version: 5.0.1
       '@heroicons/react':
         specifier: ^2.1.1
         version: 2.2.0(react@19.0.0)
@@ -266,6 +269,9 @@ packages:
   '@eslint/js@8.57.1':
     resolution: {integrity: sha512-d9zaMRSTIKDLhctzH12MtXvJKSSUhaHcjV+2Z+GK+EEY7XKpP5yR4x+N3TAcHTcu963nIr+TMcCb4DBCYX1z6Q==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+
+  '@fontsource/commit-mono@5.0.1':
+    resolution: {integrity: sha512-WS0IDzYip1LdFC5AB4U6X3CcQipa4a5RtAvLjUuoBBsnmntQrsBfXYnxv2axjH+ZwygrP1RLOsdtVZspiBGAQA==}
 
   '@heroicons/react@2.2.0':
     resolution: {integrity: sha512-LMcepvRaS9LYHJGsF0zzmgKCUim/X3N/DQKc4jepAXJ7l8QxJ1PmxJzqplF2Z3FE4PqBAIGyJAQ/w4B5dsqbtQ==}
@@ -3235,6 +3241,8 @@ snapshots:
       - supports-color
 
   '@eslint/js@8.57.1': {}
+
+  '@fontsource/commit-mono@5.0.1': {}
 
   '@heroicons/react@2.2.0(react@19.0.0)':
     dependencies:
