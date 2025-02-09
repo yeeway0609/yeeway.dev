@@ -32,12 +32,6 @@ src
     └── Providers.tsx (全域狀態管理容器，用於 next-theme)
 ```
 
-## Git Branch
-
-- `develop`: 主要開發分支，若測試後沒問題則併入 `main`
-- `main`: push 至 origin 後透過 Vercel 自動部署
-- others
-
 ## Git Commit Type
 
 reference: [@commitlint/config-conventional](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional)
