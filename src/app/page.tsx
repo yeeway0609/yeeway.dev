@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import smilingFaceImg from '@/assets/smiling_face_with_sunglasses_3d.png'
-import { PostCard } from '@/components/PostCard'
+import { BlogPostCard } from '@/components/BlogPostCard'
 import { getAllBlogMetadata } from '@/lib/mdx.utils'
 import type { BlogMetadata } from '@/lib/mdx.utils'
 
@@ -20,7 +20,7 @@ export default async function BlogPage() {
           </h2>
         </section>
         <div className="animate-slide-in-right flex w-full flex-col gap-6 delay-200 sm:gap-10">
-          {blogMetadata?.map((post: BlogMetadata) => <PostCard key={post.slug} {...post} />)}
+          {blogMetadata?.map((post: BlogMetadata) => <BlogPostCard key={post.slug} {...post} />)}
         </div>
       </div>
       <div className="hidden md:block md:w-1/3">{/* TODO: Add a search bar and a tag filter. */}</div>

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Badge } from '@/components/ui/badge'
 import type { BlogMetadata } from '@/lib/mdx.utils'
 
-export function PostCard({ slug, title, description, publishedOn, labels }: BlogMetadata) {
+export function BlogPostCard({ slug, title, description, publishedOn, labels }: BlogMetadata) {
   return (
     <Link
       className="hover:animate-arrow-shake flex w-full max-w-[600px] cursor-pointer flex-col gap-2 rounded-lg border bg-card p-6 text-card-foreground shadow-sm"
