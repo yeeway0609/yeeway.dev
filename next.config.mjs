@@ -2,7 +2,7 @@ import path from 'path'
 import createMDX from '@next/mdx'
 import remarkFrontmatter from 'remark-frontmatter'
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
-import { rehypeImageSize } from './rehype-image-size.mjs'
+import { rehypeImageSize } from './src/lib/rehype-image-size.mjs'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
