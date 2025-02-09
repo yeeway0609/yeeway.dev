@@ -4,7 +4,7 @@ import { Nunito } from 'next/font/google'
 import { ConsoleAsciiArt } from '@/components/ConsoleAsciiArt'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
-import { Providers } from '@/lib/Providers'
+import { Providers } from '@/components/Providers'
 import './global.css'
 import '@fontsource/commit-mono'
 
