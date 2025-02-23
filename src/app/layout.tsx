@@ -21,12 +21,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="zh-TW" suppressHydrationWarning>
       <body className={`${nunito.className} flex min-h-dvh flex-col items-center`}>
         <Providers>
           <Header />
           {/* TODO: pt-16 要抽成 header */}
-          <div className="container relative flex-grow py-16">{children}</div>
+          <div className="container relative grow py-16">{children}</div>
           <Footer />
         </Providers>
       </body>

@@ -1,11 +1,11 @@
-import { Icons } from '@/components/Icons'
+import { GithubIcon, LinkedinIcon, InstagramIcon } from '@/components/svg-icons'
 import { Contact } from '@/lib/constants'
 
 export function Footer() {
   const socialLinks = [
-    { href: Contact.GITHUB, icon: <Icons.Github /> },
-    { href: Contact.LINKEDIN, icon: <Icons.Linkedin /> },
-    { href: Contact.LINKEDIN, icon: <Icons.Instagram /> },
+    { href: Contact.GITHUB, icon: <GithubIcon /> },
+    { href: Contact.LINKEDIN, icon: <LinkedinIcon /> },
+    { href: Contact.LINKEDIN, icon: <InstagramIcon /> },
   ]
 
   return (
