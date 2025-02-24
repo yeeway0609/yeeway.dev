@@ -1,3 +1,6 @@
+// TODO: 將 h2 標題加入目錄 (TOC 元件可以參考 tailwind 文件)
+// TODO: 將 h2 標題 anchor 加到路由
+
 import type { Metadata } from 'next'
 import { Badge } from '@/components/ui/badge'
 import { getBlogMetadata, getAllBlogMetadata } from '@/lib/mdx.utils'

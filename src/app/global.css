@@ -14,6 +14,8 @@
 
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-slide-in-right: slide-in-right 0.3s ease-in-out forwards;
+  --animate-fade-in-out: fade-in-out 1s forwards;
 
   @keyframes accordion-down {
     from {
@@ -29,6 +31,35 @@
     }
     to {
       height: 0;
+    }
+  }
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes fade-in-out {
+    0% {
+      opacity: 0;
+      transform: translate(-90%, 5px);
+    }
+    20% {
+      opacity: 1;
+      transform: translate(-90%, 0px);
+    }
+    80% {
+      opacity: 1;
+      transform: translate(-90%, 0px);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-90%, -5px);
     }
   }
 }
@@ -102,16 +133,18 @@
     --input: hsl(231 48% 24.3%);
     --ring: hsl(231 96% 81%);
   }
-}
 
-@layer base {
   * {
     @apply border-border transition-[background-color] duration-300 ease-in-out;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
 
+@layer components {
+  /* TODO: 好像可以改成 utility */
   .layout-container {
     @apply mx-auto w-full max-w-(--breakpoint-lg) px-4 md:px-10;
   }
@@ -132,44 +165,6 @@
     }
     100% {
       transform: translateX(0px);
-    }
-  }
-
-  .animate-slide-in-right {
-    @apply opacity-0;
-    animation: slide-in-right 0.3s ease-in-out forwards;
-  }
-  @keyframes slide-in-right {
-    0% {
-      opacity: 0;
-      transform: translateX(-20px);
-    }
-
-    100% {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  .animate-fade-in-out {
-    animation: fade-in-out 1s forwards;
-  }
-  @keyframes fade-in-out {
-    0% {
-      opacity: 0;
-      transform: translate(-90%, 5px);
-    }
-    20% {
-      opacity: 1;
-      transform: translate(-90%, 0px);
-    }
-    80% {
-      opacity: 1;
-      transform: translate(-90%, 0px);
-    }
-    100% {
-      opacity: 0;
-      transform: translate(-90%, -5px);
     }
   }
 }

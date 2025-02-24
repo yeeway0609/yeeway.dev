@@ -25,6 +25,7 @@ export function MyAvatar() {
       <Image src="/yiwei-avatar.jpeg" alt="Yiwei Su" width={200} height={200} />
       <div
         style={{ left: textBadge.x, top: textBadge.y - 20 }}
+        // TODO: 改用clsx
         className={`absolute rounded-full border border-border bg-card px-2.5 py-1 text-sm opacity-0 ${showText ? 'animate-fade-in-out' : ''} `}
       >
         {textBadge.text}
