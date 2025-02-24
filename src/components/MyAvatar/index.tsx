@@ -9,6 +9,7 @@ export function MyAvatar() {
   const [showText, setShowText] = useState(false)
   const [textBadge, setTextBadge] = useState({ text: '', x: 0, y: 0 })
 
+  // FIXME: 點擊右側一點的bubble 會跑版，應該是max-w 的問題
   const talkWithMe = (e: any) => {
     const randomIndex = Math.floor(Math.random() * lines.length)
     setTextBadge({ text: lines[randomIndex], x: e.clientX, y: e.clientY })
