@@ -8,7 +8,7 @@ import { Project } from '@/lib/types'
 export function ProjectCard({ title, description, tags, imageURL, websiteURL, githubURL, githubTitle, blogURL, blogTitle }: Project) {
   return (
     <Card className="flex flex-col sm:h-[470px] sm:w-[300px]">
-      <div className="relative mb-3 aspect-[5/3] overflow-hidden rounded-t-lg">
+      <div className="relative mb-3 aspect-5/3 overflow-hidden rounded-t-lg">
         <Image src={imageURL} alt={title} fill={true} />
       </div>
       <CardHeader className="pb-3 pt-0">

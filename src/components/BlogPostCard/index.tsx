@@ -6,7 +6,7 @@ import type { BlogMetadata } from '@/lib/mdx.utils'
 export function BlogPostCard({ slug, title, description, publishedOn, labels }: BlogMetadata) {
   return (
     <Link
-      className="hover:animate-arrow-shake flex w-full max-w-[600px] cursor-pointer flex-col gap-2 rounded-lg border bg-card p-6 text-card-foreground shadow-sm"
+      className="hover:animate-arrow-shake flex w-full max-w-[600px] cursor-pointer flex-col gap-2 rounded-lg border bg-card p-6 text-card-foreground shadow-xs"
       title={`Post: ${title}`}
       href={`blog/${slug}`}
       scroll={false}

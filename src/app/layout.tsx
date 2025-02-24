@@ -26,7 +26,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Providers>
           <Header />
           {/* TODO: pt-16 要抽成 header */}
-          <div className="container relative grow py-16">{children}</div>
+          <div className="layout-container relative grow py-16">{children}</div>
           <Footer />
         </Providers>
       </body>

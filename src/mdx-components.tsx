@@ -14,7 +14,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     ul: ({ children }) => <ul className="list-disc pl-8">{children}</ul>,
     ol: ({ children }) => <ol className="list-decimal pl-8">{children}</ol>,
-    kbd: ({ children }) => <kbd className="inline-block rounded border px-1 py-5 align-middle font-mono text-xs font-normal shadow">{children}</kbd>,
+    kbd: ({ children }) => <kbd className="inline-block rounded border px-1 py-5 align-middle font-mono text-xs font-normal shadow-sm">{children}</kbd>,
     table: ({ children }) => <table className="border-gray-600 text-lg">{children}</table>,
     th: ({ children }) => <th className="border px-3 py-1">{children}</th>,
     td: ({ children }) => <td className="border px-3 py-1">{children}</td>,
