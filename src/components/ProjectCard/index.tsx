@@ -43,7 +43,13 @@ export function ProjectCard({ title, description, tags, imageURL, websiteURL, gi
           </div>
         )}
       </CardContent>
-      <CardFooter className="mt-auto flex-wrap gap-x-2 px-4">{tags?.map((tag) => <Badge key={tag}>{tag}</Badge>)}</CardFooter>
+      <CardFooter className="mt-auto flex-wrap gap-x-2 px-4">
+        {tags?.map((tag) => (
+          <Badge className="font-bold" key={tag}>
+            {tag}
+          </Badge>
+        ))}
+      </CardFooter>
     </Card>
   )
 }

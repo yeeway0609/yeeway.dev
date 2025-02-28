@@ -15,7 +15,7 @@ export function BlogPostCard({ slug, title, description, publishedOn, labels }: 
       <p className="text-sm text-muted-foreground">{description.length > 100 ? `${description.substring(0, 100)}......` : description}</p>
       <div className="flex">
         {labels.map((label: any) => (
-          <Badge key={label} className="mr-2">
+          <Badge key={label} className="mr-2 font-bold">
             #{label}
           </Badge>
         ))}

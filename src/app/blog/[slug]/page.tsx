@@ -17,7 +17,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <time className="mr-4 text-lg text-muted-foreground">{frontmatter.publishedOn.toLocaleDateString('zh-TW')}</time>
         <ul>
           {frontmatter.labels.map((label) => (
-            <Badge key={label} className="mr-2">
+            <Badge key={label} className="mr-2 font-bold">
               #{label}
             </Badge>
           ))}
