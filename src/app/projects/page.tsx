@@ -12,7 +12,7 @@ export default function ProjectsPage() {
     <>
       <section className="py-12">
         <h1 className="animate-slide-in-right flex gap-2 text-5xl font-bold tracking-wider">Projects</h1>
-        <h2 className="animate-slide-in-right mt-3 text-2xl text-muted-foreground delay-100">Showcase of my works or interesting plans.</h2>
+        <h2 className="animate-slide-in-right text-muted-foreground mt-3 text-2xl delay-100">Showcase of my works or interesting plans.</h2>
       </section>
       <div className="grid grid-cols-1 place-items-center gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {projectsData.map((project: Project) => (

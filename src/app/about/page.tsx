@@ -53,5 +53,5 @@ export default function AboutPage() {
 }
 
 function SectionTitle({ children }: { children: string }) {
-  return <h2 className="mb-2 mt-4 text-2xl font-bold text-primary sm:my-4">{children}</h2>
+  return <h2 className="text-primary mt-4 mb-2 text-2xl font-bold sm:my-4">{children}</h2>
 }

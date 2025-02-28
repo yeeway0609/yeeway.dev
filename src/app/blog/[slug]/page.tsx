@@ -14,7 +14,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     <main className="mx-auto max-w-(--breakpoint-sm)">
       <h1 className="my-4 text-3xl font-bold sm:my-8 sm:text-5xl">{frontmatter.title}</h1>
       <div className="flex">
-        <time className="mr-4 text-lg text-muted-foreground">{frontmatter.publishedOn.toLocaleDateString('zh-TW')}</time>
+        <time className="text-muted-foreground mr-4 text-lg">{frontmatter.publishedOn.toLocaleDateString('zh-TW')}</time>
         <ul>
           {frontmatter.labels.map((label) => (
             <Badge key={label} className="mr-2 font-bold">
@@ -23,9 +23,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           ))}
         </ul>
       </div>
-      <hr className="mb-5 mt-2" />
+      <hr className="mt-2 mb-5" />
 
-      <article className="break-words text-base leading-normal text-foreground sm:text-xl">
+      <article className="text-foreground text-base leading-normal break-words sm:text-xl">
         <PostContent />
       </article>
     </main>

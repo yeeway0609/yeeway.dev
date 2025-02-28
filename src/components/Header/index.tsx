@@ -2,10 +2,10 @@
 
 import { useState } from 'react'
 import { Bars3Icon, XMarkIcon, NewspaperIcon, UserIcon, CommandLineIcon } from '@heroicons/react/24/solid'
+import { clsx } from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import clsx from 'clsx'
 import logoIcon from '@/assets/logo.png'
 import { SpotifyPlayer } from '@/components/SpotifyPlayer'
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet'

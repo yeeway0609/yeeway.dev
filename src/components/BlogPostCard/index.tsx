@@ -6,13 +6,13 @@ import type { BlogMetadata } from '@/lib/mdx.utils'
 export function BlogPostCard({ slug, title, description, publishedOn, labels }: BlogMetadata) {
   return (
     <Link
-      className="hover:animate-arrow-shake flex w-full max-w-[600px] cursor-pointer flex-col gap-2 rounded-lg border bg-card p-6 text-card-foreground shadow-xs"
+      className="hover:animate-arrow-shake bg-card text-card-foreground flex w-full max-w-[600px] cursor-pointer flex-col gap-2 rounded-lg border p-6 shadow-xs"
       title={`Post: ${title}`}
       href={`blog/${slug}`}
       scroll={false}
     >
-      <h3 className="text-2xl font-semibold leading-tight">{title}</h3>
-      <p className="text-sm text-muted-foreground">{description.length > 100 ? `${description.substring(0, 100)}......` : description}</p>
+      <h3 className="text-2xl leading-tight font-semibold">{title}</h3>
+      <p className="text-muted-foreground text-sm">{description.length > 100 ? `${description.substring(0, 100)}......` : description}</p>
       <div className="flex">
         {labels.map((label: any) => (
           <Badge key={label} className="mr-2 font-bold">
@@ -24,7 +24,7 @@ export function BlogPostCard({ slug, title, description, publishedOn, labels }: 
         <span>{publishedOn.toLocaleDateString('zh-TW')}</span>
         <div className="arrow-border flex items-center">
           <span className="text-primary">Read more</span>
-          <ArrowRightCircleIcon className="arrow ml-2 size-5 text-primary" />
+          <ArrowRightCircleIcon className="arrow text-primary ml-2 size-5" />
         </div>
       </div>
     </Link>

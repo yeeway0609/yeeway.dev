@@ -9,11 +9,11 @@ export function Footer() {
   ]
 
   return (
-    <footer className="mt-auto w-full border-t border-border">
+    <footer className="border-border mt-auto w-full border-t">
       <div className="layout-container flex flex-col gap-4 py-5 sm:py-8">
         <div className="flex items-center gap-5">
           {socialLinks.map(({ href, icon }, index) => (
-            <a className="size-6 fill-foreground transition duration-300 hover:fill-primary" key={index} href={href} target="_blank">
+            <a className="fill-foreground hover:fill-primary size-6 transition duration-300" key={index} href={href} target="_blank">
               {icon}
             </a>
           ))}
