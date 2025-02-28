@@ -14,7 +14,7 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { ThemeSwitch } from './ThemeSwitch'
 
 const ROUTES = [
@@ -63,13 +63,14 @@ export function Header() {
               <Bars3Icon className="size-8" />
             </SheetTrigger>
             <SheetContent className="flex w-[270px] flex-col p-4">
+              <SheetTitle className="sr-only">Mobile menu</SheetTitle>
               <div className="flex justify-between">
                 <ThemeSwitch />
-                <SheetTrigger className="block">
-                  <XMarkIcon className="size-8" />
-                </SheetTrigger>
+                <SheetClose>
+                  <XMarkIcon className="hover:text-primary transition-colors active:text-primary size-7" />
+                </SheetClose>
               </div>
-              <nav className="mt-5 flex flex-col gap-8">
+              <nav className="mt-5 flex flex-col gap-8 px-1">
                 {ROUTES.map((route) => (
                   <Link
                     key={route.title}
@@ -82,7 +83,7 @@ export function Header() {
                   </Link>
                 ))}
               </nav>
-              <div className="mt-auto">
+              <div className="mt-auto px-1">
                 Recent 😍 songs:
                 <SpotifyPlayer />
               </div>
