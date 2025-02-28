@@ -25,8 +25,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className={`${nunito.className} flex min-h-dvh flex-col items-center`}>
         <Providers>
           <Header />
-          {/* TODO: pt-16 要抽成 header */}
-          <div className="layout-container relative grow py-16">{children}</div>
+          <div className="layout-container py-header relative grow">{children}</div>
           <Footer />
         </Providers>
       </body>

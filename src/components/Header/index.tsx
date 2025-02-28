@@ -22,8 +22,7 @@ export function Header() {
   const pathname = usePathname()
 
   return (
-    <header className="border-foreground-300/30 bg-background/70 fixed z-50 flex h-16 w-full items-center justify-center border-b-[0.5px] py-3 shadow-md backdrop-blur-md">
-      {/* TODO: h-16 要抽成 header 高度變數 */}
+    <header className="border-foreground-300/30 bg-background/70 h-header fixed z-50 flex w-full items-center justify-center border-b-[0.5px] py-3 shadow-md backdrop-blur-md">
       <div className="layout-container border-foreground-300/30 flex items-center justify-between">
         <Link href="/" className="cursor-pointer">
           <Image src={logoIcon} alt="Yiwei Su' Website" width={36} height={36} />
