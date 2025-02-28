@@ -5,15 +5,9 @@ import { Bars3Icon, XMarkIcon, NewspaperIcon, UserIcon, CommandLineIcon } from '
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import clsx from 'clsx'
 import logoIcon from '@/assets/logo.png'
 import { SpotifyPlayer } from '@/components/SpotifyPlayer'
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  navigationMenuTriggerStyle,
-} from '@/components/ui/navigation-menu'
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { ThemeSwitch } from './ThemeSwitch'
 
@@ -36,22 +30,21 @@ export function Header() {
         </Link>
 
         {/* Desktop */}
-        <NavigationMenu className="hidden sm:block">
-          <NavigationMenuList>
-            {ROUTES.map((route) => (
-              <NavigationMenuItem key={route.title}>
-                <Link href={route.href} legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={` ${navigationMenuTriggerStyle()} hover:text-primary cursor-pointer bg-transparent ${pathname.split('/')[1] === route.href.split('/')[1] ? 'text-primary' : ''} `}
-                  >
-                    {<route.Icon className="mr-2 size-5" />}
-                    {route.title}
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-            ))}
-          </NavigationMenuList>
-        </NavigationMenu>
+        <nav className="hidden gap-x-6 sm:flex">
+          {ROUTES.map((route) => (
+            <Link
+              key={route.title}
+              className={clsx(
+                'hover:text-primary flex cursor-pointer bg-transparent text-sm',
+                pathname.split('/')[1] === route.href.split('/')[1] && 'text-primary'
+              )}
+              href={route.href}
+            >
+              {<route.Icon className="mr-2 size-5" />}
+              <span>{route.title}</span>
+            </Link>
+          ))}
+        </nav>
         <div className="hidden sm:flex sm:gap-3">
           <ThemeSwitch />
         </div>
@@ -67,7 +60,7 @@ export function Header() {
               <div className="flex justify-between">
                 <ThemeSwitch />
                 <SheetClose>
-                  <XMarkIcon className="hover:text-primary transition-colors active:text-primary size-7" />
+                  <XMarkIcon className="hover:text-primary active:text-primary size-7 transition-colors" />
                 </SheetClose>
               </div>
               <nav className="mt-5 flex flex-col gap-8 px-1">
@@ -75,7 +68,7 @@ export function Header() {
                   <Link
                     key={route.title}
                     href={route.href}
-                    className={`flex ${pathname.split('/')[1] === route.href.split('/')[1] ? 'text-primary' : ''}`}
+                    className={clsx('flex', pathname.split('/')[1] === route.href.split('/')[1] && 'text-primary')}
                     onClick={() => setOpen(false)}
                   >
                     {<route.Icon className="mr-2 size-5" />}
