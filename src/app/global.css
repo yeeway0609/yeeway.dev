@@ -15,10 +15,30 @@
 
   --spacing-header: 4rem;
 
+  --animate-badge-popup: badge-popup 3s;
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
   --animate-slide-in-right: slide-in-right 0.3s ease-in-out forwards;
-  --animate-fade-in-out: fade-in-out 1s forwards;
+  /* --animate-fade-in-out: fade-in-out 1s forwards; */
+
+  @keyframes badge-popup {
+    0% {
+      scale: 0.1;
+      opacity: 0;
+      animation-timing-function: cubic-bezier(0.13, 1.53, 0.12, 0.98);
+    }
+    16.67%,
+    83.33% {
+      scale: 1;
+      opacity: 1;
+      transform: translateY(-27px);
+    }
+    100% {
+      scale: 0;
+      opacity: 0;
+      animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+  }
 
   @keyframes accordion-down {
     from {
@@ -47,7 +67,7 @@
       transform: translateX(0);
     }
   }
-  @keyframes fade-in-out {
+  /* @keyframes fade-in-out {
     0% {
       opacity: 0;
       transform: translate(-90%, 5px);
@@ -64,7 +84,7 @@
       opacity: 0;
       transform: translate(-90%, -5px);
     }
-  }
+  } */
 }
 
 @theme inline {

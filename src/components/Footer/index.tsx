@@ -1,4 +1,4 @@
-import { GithubIcon, LinkedinIcon, InstagramIcon } from '@/components/svg-icons'
+import { GithubIcon, LinkedinIcon, InstagramIcon } from '@/assets/svg-icons'
 import { Contact } from '@/lib/constants'
 
 export function Footer() {
