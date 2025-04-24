@@ -28,6 +28,7 @@
     "@next/next/no-img-element": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-empty-object-type": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
     "prefer-template": "error",
     "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
     "arrow-body-style": ["error", "as-needed"],

@@ -13,11 +13,11 @@ export default function AboutPage() {
       <section className="sm:w-[500px]">
         <h1 className="name-gradient text-5xl font-black tracking-wider">Yiwei Su</h1>
         <p className="my-2">
-          我是蘇奕幃，也可以叫我 Alex 或 yeeway。來自台灣的高雄市，現在的 MBTI 是 ESFJ。興趣是聽音樂、看動漫與打電動。 目前主要學習網頁前端技術與
-          UI/UX 設計，並且喜歡參與各種社群小聚與研討會。
+          我是蘇奕幃，也可以叫我 Alex 或 yeeway。來自台灣的高雄市，興趣是 ACG、K-pop 與閱讀。 目前深耕於網頁前端技術與 UI
+          設計研究，空餘時間也喜歡逛逛展覽或參與社群小聚與研討會。
           <br />
           <br />
-          我的個性樂於分享，未來想成為有影響力的軟體工程師，並且幫助更多人解決大大小小的煩惱。 期許自己成為文化內涵與理論技術兼容並蓄的人。
+          我的個性樂於分享，未來想成為稍微有影響力的人，並且幫助他人解決大大小小的煩惱。 期許自己成為文化內涵與理論技術兼容並蓄的人類。
         </p>
         <SectionTitle>🖥️ Tech stack</SectionTitle>
         <ul className="list-disc pl-4">

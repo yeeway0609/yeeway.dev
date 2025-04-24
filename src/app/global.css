@@ -16,10 +16,10 @@
   --spacing-header: 4rem;
 
   --animate-badge-popup: badge-popup 3s;
+  --animate-fade-in: fade-in 0.5s ease-in 1.5s forwards; /* 要等 SplitTitle 跑完 */
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
   --animate-slide-in-right: slide-in-right 0.3s ease-in-out forwards;
-  /* --animate-fade-in-out: fade-in-out 1s forwards; */
 
   @keyframes badge-popup {
     0% {
@@ -37,6 +37,15 @@
       scale: 0;
       opacity: 0;
       animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
 
@@ -67,24 +76,6 @@
       transform: translateX(0);
     }
   }
-  /* @keyframes fade-in-out {
-    0% {
-      opacity: 0;
-      transform: translate(-90%, 5px);
-    }
-    20% {
-      opacity: 1;
-      transform: translate(-90%, 0px);
-    }
-    80% {
-      opacity: 1;
-      transform: translate(-90%, 0px);
-    }
-    100% {
-      opacity: 0;
-      transform: translate(-90%, -5px);
-    }
-  } */
 }
 
 @theme inline {

@@ -75,10 +75,11 @@ export function Header() {
                   </Link>
                 ))}
               </nav>
-              <div className="mt-auto px-1">
+              {/* TODO: 之後加回來 */}
+              {/* <div className="mt-auto px-1">
                 Recent 😍 songs:
                 <SpotifyPlayer />
-              </div>
+              </div> */}
             </SheetContent>
           </Sheet>
         </div>

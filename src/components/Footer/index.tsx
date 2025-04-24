@@ -1,11 +1,11 @@
 import { GithubIcon, LinkedinIcon, InstagramIcon } from '@/assets/svg-icons'
-import { Contact } from '@/lib/constants'
+import { Profile } from '@/lib/constants'
 
 export function Footer() {
   const socialLinks = [
-    { href: Contact.GITHUB, icon: <GithubIcon /> },
-    { href: Contact.LINKEDIN, icon: <LinkedinIcon /> },
-    { href: Contact.LINKEDIN, icon: <InstagramIcon /> },
+    { href: Profile.GITHUB, icon: <GithubIcon /> },
+    { href: Profile.LINKEDIN, icon: <LinkedinIcon /> },
+    { href: Profile.LINKEDIN, icon: <InstagramIcon /> },
   ]
 
   return (
@@ -22,7 +22,7 @@ export function Footer() {
           <p>
             Contact me:&nbsp;
             <a className="text-primary transition duration-300" href="mailto:hi@yeewy.dev">
-              {Contact.EMAIL}
+              {Profile.EMAIL}
             </a>
           </p>
           <p>© 2024 Yiwei Su. All rights reserved.</p>

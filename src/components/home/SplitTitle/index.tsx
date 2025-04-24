@@ -37,7 +37,7 @@ export default function SplitTitle({ className }: SplitTitleProps) {
   return (
     <motion.h1
       className={clsx(
-        'flex flex-wrap items-center text-center text-3xl font-black tracking-wider whitespace-pre sm:text-5xl sm:leading-tight',
+        'flex flex-wrap items-center text-center text-3xl font-extrabold tracking-wider whitespace-pre sm:text-5xl sm:leading-tight',
         className
       )}
       variants={containerVariants}

@@ -45,5 +45,10 @@ export function getAllBlogMetadata(): BlogMetadata[] {
     .sort((a, b) => new Date(b!.publishedOn).getTime() - new Date(a!.publishedOn).getTime()) as BlogMetadata[]
 }
 
+export function getRecentBlogMetadata(): BlogMetadata[] {
+  const allBlogMetadata = getAllBlogMetadata()
+  return allBlogMetadata.slice(0, 3)
+}
+
 // TODO: implement this function
 export function getTableOfContents() {}
