@@ -12,7 +12,7 @@ import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from '@/com
 import { ThemeSwitch } from './ThemeSwitch'
 
 const ROUTES = [
-  { title: 'Blog', href: '/', Icon: NewspaperIcon },
+  { title: 'Blog', href: '/blog', Icon: NewspaperIcon },
   { title: 'Projects', href: '/projects', Icon: CommandLineIcon },
   { title: 'About', href: '/about', Icon: UserIcon },
 ]

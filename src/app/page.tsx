@@ -1,29 +1,68 @@
-import Image from 'next/image'
-import smilingFaceImg from '@/assets/smiling_face_with_sunglasses_3d.png'
-import { BlogPostCard } from '@/components/BlogPostCard'
-import { getAllBlogMetadata } from '@/lib/mdx.utils'
-import type { BlogMetadata } from '@/lib/mdx.utils'
+import { Icon } from '@iconify/react'
+import CoolAvatar from '@/components/home/CoolAvatar'
+import SplitTitle from '@/components/home/SplitTitle'
+import { Profile } from '@/lib/constants'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 
-export default async function BlogPage() {
-  const blogMetadata = getAllBlogMetadata()
+const profileLinks = [
+  {
+    name: 'Mail',
+    href: `mailto:${Profile.EMAIL}`,
+    icon: <Icon icon="tabler:mail" className="size-7 sm:size-8" />,
+  },
+  {
+    name: 'LinkedIn',
+    href: Profile.LINKEDIN,
+    icon: <Icon icon="tabler:brand-linkedin" className="size-7 sm:size-8" />,
+  },
+  {
+    name: 'GitHub',
+    href: Profile.GITHUB,
+    icon: <Icon icon="tabler:brand-github" className="size-7 sm:size-8" />,
+  },
+  {
+    name: 'Instagram',
+    href: Profile.INSTAGRAM,
+    icon: <Icon icon="tabler:brand-instagram" className="size-7 sm:size-8" />,
+  },
+  {
+    name: 'Spotify',
+    href: Profile.SPOTIFY,
+    icon: <Icon icon="tabler:brand-spotify" className="size-7 sm:size-8" />,
+  },
+]
 
+export default function Page() {
   return (
-    <div className="flex">
-      <div className="w-full md:w-2/3">
-        <section className="py-8 sm:py-12">
-          <h1 className="animate-slide-in-right inline-block text-5xl font-black tracking-wider">
-            Hi, I&apos;m <span className="name-gradient">Yiwei Su</span>.
-            <Image className="mb-2 inline" width={48} height={48} alt="emoji_smiling_face_with_sunglasses" src={smilingFaceImg}></Image>
-          </h1>
-          <h2 className="animate-slide-in-right text-muted-foreground mt-3 text-xl delay-100 sm:text-2xl">
-            Being creative. Being Positive. Being Motivated.
-          </h2>
-        </section>
-        <div className="animate-slide-in-right flex w-full flex-col gap-6 delay-200 sm:gap-10">
-          {blogMetadata?.map((post: BlogMetadata) => <BlogPostCard key={post.slug} {...post} />)}
+    <main className="flex flex-col items-center pt-10 md:pt-16">
+      <CoolAvatar />
+
+      <SplitTitle className="mt-5" />
+
+      <section className="animate-fade-in opacity-0">
+        <p className="mt-4 text-center text-sm text-zinc-600 sm:text-base dark:text-zinc-400">
+          目前是位前端工程師，也可叫我 Alex 或 yeeway
+          <br />
+          時不時會數位 FOMO，但我會努力跟上時代與台北人的腳步
+        </p>
+
+        <div className="mt-4 flex items-center justify-center space-x-4">
+          {profileLinks.map((link) => (
+            <TooltipProvider key={link.name}>
+              <Tooltip delayDuration={700}>
+                <TooltipTrigger asChild>
+                  <a className="text-zinc-600 transition-colors dark:text-zinc-400 dark:hover:text-zinc-200" href={link.href}>
+                    {link.icon}
+                  </a>
+                </TooltipTrigger>
+                <TooltipContent className="bg-card text-card-foreground">
+                  <p>{link.name}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          ))}
         </div>
-      </div>
-      <div className="hidden md:block md:w-1/3">{/* TODO: Add a search bar and a tag filter. */}</div>
-    </div>
+      </section>
+    </main>
   )
 }
