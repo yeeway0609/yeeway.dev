@@ -16,7 +16,7 @@
   --spacing-header: 4rem;
 
   --animate-badge-popup: badge-popup 3s;
-  --animate-fade-in: fade-in 0.5s ease-in 1.5s forwards; /* 要等 SplitTitle 跑完 */
+  --animate-fade-in: fade-in 0.5s ease-in forwards; /* 要等 SplitTitle 跑完 */
   --animate-slide-in-right: slide-in-right 0.3s ease-in-out forwards;
 }
 

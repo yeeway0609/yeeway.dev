@@ -32,7 +32,7 @@ const wordVariants = {
   },
 }
 
-export default function SplitTitle({ className }: SplitTitleProps) {
+export function SplitTitle({ className }: SplitTitleProps) {
   return (
     <motion.h1
       className={clsx(

@@ -1,8 +1,11 @@
 import { Icon } from '@iconify/react'
+import Link from 'next/link'
+import { ImageCarousel } from '@/components/ImageCarousel'
+import { Button } from '@/components/ui/button'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { Profile } from '@/lib/constants'
-import CoolAvatar from './CoolAvatar'
-import SplitTitle from './SplitTitle'
+import { CoolAvatar } from './CoolAvatar'
+import { SplitTitle } from './SplitTitle'
 
 const profileLinks = [
   {
@@ -34,16 +37,16 @@ const profileLinks = [
 
 export default function Page() {
   return (
-    <main className="flex flex-col items-center pt-10 md:pt-16">
+    <main className="flex flex-col items-center pt-16 md:pt-16">
       <CoolAvatar />
 
       <SplitTitle className="mt-5" />
 
-      <section className="animate-fade-in opacity-0">
+      <section className="animate-fade-in w-full opacity-0 delay-[1.5s]">
         <p className="mt-4 text-center text-sm text-zinc-600 sm:text-base dark:text-zinc-400">
           目前是位前端工程師，也可叫我 Alex 或 yeeway
           <br />
-          時不時會數位 FOMO，但我會努力跟上時代與台北人的腳步
+          時不時會數位 FOMO，但我努力跟上時代與台北的步調
         </p>
 
         <div className="mt-4 flex items-center justify-center space-x-4">
@@ -62,6 +65,17 @@ export default function Page() {
             </TooltipProvider>
           ))}
         </div>
+
+        <div className="my-8 flex justify-center space-x-5">
+          <Button asChild>
+            <Link href="/blog">Read my articles</Link>
+          </Button>
+          <Button variant="outline" asChild>
+            <Link href="/about">More about me</Link>
+          </Button>
+        </div>
+
+        <ImageCarousel />
       </section>
     </main>
   )
