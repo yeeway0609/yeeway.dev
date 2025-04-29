@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'About Me',
 }
 
-export default function AboutPage() {
+export default function Page() {
   return (
     <div className="my-8 flex flex-col items-start justify-evenly sm:flex-row-reverse">
       <MyAvatar />

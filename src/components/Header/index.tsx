@@ -31,14 +31,7 @@ export function Header() {
         {/* Desktop */}
         <nav className="hidden gap-x-6 sm:flex">
           {ROUTES.map((route) => (
-            <Link
-              key={route.title}
-              className={clsx(
-                'hover:text-primary flex cursor-pointer bg-transparent text-sm',
-                pathname.split('/')[1] === route.href.split('/')[1] && 'text-primary'
-              )}
-              href={route.href}
-            >
+            <Link key={route.title} className="hover:text-primary flex cursor-pointer bg-transparent text-sm" href={route.href}>
               {<route.Icon className="mr-2 size-5" />}
               <span>{route.title}</span>
             </Link>
@@ -64,12 +57,7 @@ export function Header() {
               </div>
               <nav className="mt-5 flex flex-col gap-8 px-1">
                 {ROUTES.map((route) => (
-                  <Link
-                    key={route.title}
-                    href={route.href}
-                    className={clsx('flex', pathname.split('/')[1] === route.href.split('/')[1] && 'text-primary')}
-                    onClick={() => setOpen(false)}
-                  >
+                  <Link key={route.title} className="flex" href={route.href} onClick={() => setOpen(false)}>
                     {<route.Icon className="mr-2 size-5" />}
                     {route.title}
                   </Link>

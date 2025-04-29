@@ -7,13 +7,11 @@ export const metadata: Metadata = {
   title: 'Projects',
 }
 
-export default function ProjectsPage() {
+export default function Page() {
   return (
-    <>
-      <section className="py-12">
-        <h1 className="animate-slide-in-right flex gap-2 text-5xl font-bold tracking-wider">Projects</h1>
-        <h2 className="animate-slide-in-right text-muted-foreground mt-3 text-2xl delay-100">Showcase of my works or interesting plans.</h2>
-      </section>
+    <main>
+      <h1 className="page-title">Projects</h1>
+      <h2 className="page-sub-title">Showcase of my works or interesting plans.</h2>
       <div className="grid grid-cols-1 place-items-center gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {projectsData.map((project: Project) => (
           <ProjectCard
@@ -30,6 +28,6 @@ export default function ProjectsPage() {
           />
         ))}
       </div>
-    </>
+    </main>
   )
 }

@@ -168,6 +168,14 @@
     @apply bg-linear-to-tl from-[#4776E6] to-[#8E54E9] bg-clip-text text-transparent;
   }
 
+  .page-title {
+    @apply animate-slide-in-right pt-12 text-4xl font-bold tracking-wide sm:text-5xl;
+  }
+
+  .page-sub-title {
+    @apply animate-slide-in-right text-muted-foreground mt-3 pb-8 text-xl delay-100 sm:pb-12 sm:text-2xl;
+  }
+
   .animate-arrow-shake .arrow {
     animation: arrow-shake 1s infinite ease-in-out;
   }

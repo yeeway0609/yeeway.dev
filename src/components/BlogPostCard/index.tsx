@@ -11,7 +11,7 @@ export function BlogPostCard({ slug, title, description, publishedOn, labels }: 
       href={`blog/${slug}`}
       scroll={false}
     >
-      <h3 className="text-2xl leading-tight font-semibold">{title}</h3>
+      <h3 className="text-xl leading-tight font-semibold sm:text-2xl">{title}</h3>
       <p className="text-muted-foreground text-sm">{description.length > 100 ? `${description.substring(0, 100)}......` : description}</p>
       <div className="flex">
         {labels.map((label: any) => (
