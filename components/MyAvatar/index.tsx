@@ -23,7 +23,7 @@ export function MyAvatar() {
 
   return (
     <div className="mb-8 size-[200px] cursor-pointer overflow-hidden rounded-full bg-linear-to-br from-[#757F9A] to-[#D7DDE8]">
-      <Image src="/yiwei-avatar.jpeg" alt="Yiwei Su" width={200} height={200} />
+      <Image src="/assets/yiwei-avatar.jpeg" alt="Yiwei Su" width={200} height={200} />
       {/* <div
         style={{ left: textBadge.x, top: textBadge.y - 20 }}
         className={clsx('border-border bg-card absolute rounded-full border px-2.5 py-1 text-sm opacity-0', showText && 'animate-fade-in-out')}

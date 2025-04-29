@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --cursor-pointer: url(/pointing_up_3d.png), pointer;
+  --cursor-pointer: url(/assets/pointing-up-3d.png), pointer;
 
   --font-sans: Nunito, sans-serif;
   --font-mono: Commit Mono, monospace;
@@ -20,62 +20,6 @@
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
   --animate-slide-in-right: slide-in-right 0.3s ease-in-out forwards;
-
-  @keyframes badge-popup {
-    0% {
-      scale: 0.1;
-      opacity: 0;
-      animation-timing-function: cubic-bezier(0.13, 1.53, 0.12, 0.98);
-    }
-    16.67%,
-    83.33% {
-      scale: 1;
-      opacity: 1;
-      transform: translateY(-27px);
-    }
-    100% {
-      scale: 0;
-      opacity: 0;
-      animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-    }
-  }
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes accordion-down {
-    from {
-      height: 0;
-    }
-    to {
-      height: var(--radix-accordion-content-height);
-    }
-  }
-  @keyframes accordion-up {
-    from {
-      height: var(--radix-accordion-content-height);
-    }
-    to {
-      height: 0;
-    }
-  }
-  @keyframes slide-in-right {
-    from {
-      opacity: 0;
-      transform: translateX(-20px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
 }
 
 @theme inline {
@@ -154,7 +98,7 @@
 
   body {
     @apply bg-background text-foreground bg-repeat;
-    background-image: url(/assets/noisy-texture.png);
+    background-image: url(/assets/noise-texture.png);
   }
 }
 
@@ -176,9 +120,10 @@
     @apply animate-slide-in-right text-muted-foreground mt-3 pb-8 text-xl delay-100 sm:pb-12 sm:text-2xl;
   }
 
-  .animate-arrow-shake .arrow {
+  .animate-arrow-shake:hover .arrow {
     animation: arrow-shake 1s infinite ease-in-out;
   }
+
   @keyframes arrow-shake {
     0% {
       transform: translateX(0px);
@@ -188,6 +133,63 @@
     }
     100% {
       transform: translateX(0px);
+    }
+  }
+
+  @keyframes badge-popup {
+    0% {
+      scale: 0.1;
+      opacity: 0;
+      animation-timing-function: cubic-bezier(0.13, 1.53, 0.12, 0.98);
+    }
+    16.67%,
+    83.33% {
+      scale: 1;
+      opacity: 1;
+      transform: translateY(-27px);
+    }
+    100% {
+      scale: 0;
+      opacity: 0;
+      animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
     }
   }
 }

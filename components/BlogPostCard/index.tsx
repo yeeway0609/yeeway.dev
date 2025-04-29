@@ -1,12 +1,12 @@
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
-import { Badge } from '../ui/badge'
 import type { BlogMetadata } from '../../lib/mdx.utils'
+import { Badge } from '../ui/badge'
 
 export function BlogPostCard({ slug, title, description, publishedOn, labels }: BlogMetadata) {
   return (
     <Link
-      className="hover:animate-arrow-shake bg-card text-card-foreground flex w-full max-w-[600px] cursor-pointer flex-col gap-2 rounded-lg border p-6 shadow-xs"
+      className="animate-arrow-shake bg-card text-card-foreground flex w-full max-w-[600px] cursor-pointer flex-col gap-2 rounded-lg border p-6 shadow-xs"
       title={`Post: ${title}`}
       href={`blog/${slug}`}
       scroll={false}

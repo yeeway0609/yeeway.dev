@@ -6,6 +6,7 @@ import Image from 'next/image'
 
 const AVATAR_URL = '/assets/avatar-cartoon.png'
 const BADGE_DURATION = 3000
+// TODO: 加上更多訊息
 const messages = ['你好！😆', 'Hey Bro 😎', '火鍋不能加芋頭', '咖哩飯拌了還能吃嗎', '(⁎⁍̴̛ᴗ⁍̴̛⁎)']
 
 export default function CoolAvatar() {
