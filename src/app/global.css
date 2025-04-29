@@ -103,7 +103,7 @@
 
 @layer base {
   :root {
-    --background: hsl(231 9.6% 99.05%);
+    --background: hsl(231 9.6% 99.05%); /* #FCFCFD */
     --foreground: hsl(231 45.8% 10.53%);
     --card: hsl(228 31.6% 97.3%);
     --card-foreground: hsl(231 45.8% 10.53%);
@@ -153,7 +153,8 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground bg-repeat;
+    background-image: url(/assets/noisy-texture.png);
   }
 }
 

@@ -12,7 +12,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
   return (
     <main className="mx-auto max-w-(--breakpoint-sm)">
-      <h1 className="my-4 text-3xl font-bold sm:my-8 sm:text-5xl">{frontmatter.title}</h1>
+      <h1 className="my-4 text-3xl font-bold sm:my-8 sm:text-5xl sm:leading-tight">{frontmatter.title}</h1>
       <div className="flex">
         <time className="text-muted-foreground mr-4 text-lg">{frontmatter.publishedOn.toLocaleDateString('zh-TW')}</time>
         <ul>
