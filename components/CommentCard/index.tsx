@@ -1,5 +1,5 @@
-import { Avatar, AvatarImage } from '../ui/avatar'
-import { formatDate } from '../../lib/utils'
+import { Avatar, AvatarImage } from '@/components/ui/avatar'
+import { formatDate } from '@/lib/utils'
 
 export function CommentCard({
   userName,

@@ -1,8 +1,8 @@
 import { Icon } from '@iconify/react'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { Profile } from '@/lib/constants'
 import CoolAvatar from './CoolAvatar'
 import SplitTitle from './SplitTitle'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../../components/ui/tooltip'
-import { Profile } from '../../lib/constants'
 
 const profileLinks = [
   {

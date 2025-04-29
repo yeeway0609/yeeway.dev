@@ -2,14 +2,11 @@
 
 import { useState } from 'react'
 import { Bars3Icon, XMarkIcon, NewspaperIcon, UserIcon, CommandLineIcon } from '@heroicons/react/24/solid'
-import { clsx } from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { SpotifyPlayer } from '../SpotifyPlayer'
-import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from '../ui/sheet'
 import { ThemeSwitch } from './ThemeSwitch'
-import logoIcon from '@/assets/logo.png'
 
 const ROUTES = [
   { title: 'Blog', href: '/blog', Icon: NewspaperIcon },
@@ -19,13 +16,12 @@ const ROUTES = [
 
 export function Header() {
   const [open, setOpen] = useState(false)
-  const pathname = usePathname()
 
   return (
     <header className="border-foreground-300/30 bg-background/70 h-header fixed z-50 flex w-full items-center justify-center border-b-[0.5px] py-3 shadow-md backdrop-blur-md">
       <div className="layout-container border-foreground-300/30 flex items-center justify-between">
         <Link href="/" className="cursor-pointer">
-          <Image src={logoIcon} alt="Yiwei Su' Website" width={36} height={36} />
+          <Image src="/logo.png" alt="Yiwei Su' Website" width={36} height={36} />
         </Link>
 
         {/* Desktop */}

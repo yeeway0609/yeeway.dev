@@ -1,11 +1,11 @@
-import { GithubIcon, LinkedinIcon, InstagramIcon } from '../../assets/svg-icons'
-import { Profile } from '../../lib/constants'
+import { Icon } from '@iconify/react'
+import { Profile } from '@/lib/constants'
 
 export function Footer() {
   const socialLinks = [
-    { href: Profile.GITHUB, icon: <GithubIcon /> },
-    { href: Profile.LINKEDIN, icon: <LinkedinIcon /> },
-    { href: Profile.LINKEDIN, icon: <InstagramIcon /> },
+    { href: Profile.LINKEDIN, icon: <Icon icon="tabler:brand-linkedin" className="size-7" /> },
+    { href: Profile.GITHUB, icon: <Icon icon="tabler:brand-github" className="size-7" /> },
+    { href: Profile.LINKEDIN, icon: <Icon icon="tabler:brand-instagram" className="size-7" /> },
   ]
 
   return (

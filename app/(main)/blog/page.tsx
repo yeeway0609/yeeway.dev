@@ -1,6 +1,6 @@
-import { BlogPostCard } from '../../../components/BlogPostCard'
-import { getAllBlogMetadata } from '../../../lib/mdx.utils'
-import type { BlogMetadata } from '../../../lib/mdx.utils'
+import { BlogPostCard } from '@/components/BlogPostCard'
+import { getAllBlogMetadata } from '@/lib/mdx.utils'
+import type { BlogMetadata } from '@/lib/mdx.utils'
 
 export default async function Page() {
   const blogMetadata = getAllBlogMetadata()

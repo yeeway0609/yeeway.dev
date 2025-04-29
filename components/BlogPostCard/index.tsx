@@ -1,7 +1,7 @@
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
-import type { BlogMetadata } from '../../lib/mdx.utils'
-import { Badge } from '../ui/badge'
+import type { BlogMetadata } from '@/lib/mdx.utils'
+import { Badge } from '@/components/ui/badge'
 
 export function BlogPostCard({ slug, title, description, publishedOn, labels }: BlogMetadata) {
   return (

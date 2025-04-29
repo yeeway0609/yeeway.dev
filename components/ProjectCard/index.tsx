@@ -1,9 +1,9 @@
 import { GlobeAltIcon, BookOpenIcon } from '@heroicons/react/24/solid'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Badge } from '../ui/badge'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card'
-import { Project } from '../../lib/types'
+import { Badge } from '@/components/ui/badge'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { Project } from '@/lib/types'
 
 export function ProjectCard({ title, description, tags, imageURL, websiteURL, githubURL, githubTitle, blogURL, blogTitle }: Project) {
   return (

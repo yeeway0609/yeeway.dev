@@ -17,8 +17,6 @@
 
   --animate-badge-popup: badge-popup 3s;
   --animate-fade-in: fade-in 0.5s ease-in 1.5s forwards; /* 要等 SplitTitle 跑完 */
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
   --animate-slide-in-right: slide-in-right 0.3s ease-in-out forwards;
 }
 
@@ -113,11 +111,11 @@
   }
 
   .page-title {
-    @apply animate-slide-in-right pt-12 text-4xl font-bold tracking-wide sm:text-5xl;
+    @apply animate-slide-in-right pt-12 text-4xl font-bold tracking-wide opacity-0 sm:text-5xl;
   }
 
   .page-sub-title {
-    @apply animate-slide-in-right text-muted-foreground mt-3 pb-8 text-xl delay-100 sm:pb-12 sm:text-2xl;
+    @apply animate-slide-in-right text-muted-foreground mt-3 pb-8 text-xl opacity-0 delay-100 sm:pb-12 sm:text-2xl;
   }
 
   .animate-arrow-shake:hover .arrow {
@@ -161,23 +159,6 @@
     }
     to {
       opacity: 1;
-    }
-  }
-
-  @keyframes accordion-down {
-    from {
-      height: 0;
-    }
-    to {
-      height: var(--radix-accordion-content-height);
-    }
-  }
-  @keyframes accordion-up {
-    from {
-      height: var(--radix-accordion-content-height);
-    }
-    to {
-      height: 0;
     }
   }
 

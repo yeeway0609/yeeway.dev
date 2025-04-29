@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
-import { MyAvatar } from '../../../components/MyAvatar'
-import { SpotifyPlayer } from '../../../components/SpotifyPlayer'
+import { MyAvatar } from '@/components/MyAvatar'
+import { SpotifyPlayer } from '@/components/SpotifyPlayer'
 
 export const metadata: Metadata = {
   title: 'About Me',

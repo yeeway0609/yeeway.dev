@@ -2,8 +2,8 @@
 // TODO: 將 h2 標題 anchor 加到路由
 
 import type { Metadata } from 'next'
-import { Badge } from '../../../../components/ui/badge'
-import { getBlogMetadata, getAllBlogMetadata } from '../../../../lib/mdx.utils'
+import { Badge } from '@/components/ui/badge'
+import { getBlogMetadata, getAllBlogMetadata } from '@/lib/mdx.utils'
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const slug = (await params).slug

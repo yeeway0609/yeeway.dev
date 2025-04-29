@@ -3,7 +3,6 @@
 import clsx from 'clsx'
 import { motion } from 'motion/react'
 import Image from 'next/image'
-import VulcanSaluteIcon from '@/assets/fluent-emoji-vulcan-salute.png'
 
 type SplitTitleProps = {
   className?: string
@@ -50,7 +49,7 @@ export default function SplitTitle({ className }: SplitTitleProps) {
         </motion.span>
       ))}
       <motion.div className="ml-2 flex aspect-square h-full items-center justify-center" variants={wordVariants}>
-        <Image className="inline-block size-9 sm:size-12" src={VulcanSaluteIcon} alt="vulcan-salute" width={48} height={48} />
+        <Image className="inline-block size-9 sm:size-12" src="/assets/fluent-emoji-vulcan-salute.png" alt="vulcan-salute" width={48} height={48} />
       </motion.div>
     </motion.h1>
   )
