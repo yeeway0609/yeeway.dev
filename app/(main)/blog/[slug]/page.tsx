@@ -11,7 +11,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const { default: PostContent } = await import(`@/content/blog/${slug}.mdx`)
 
   return (
-    <main className="mx-auto max-w-(--breakpoint-sm)">
+    <main className="layout-container max-w-(--breakpoint-md)">
       <h1 className="my-4 text-3xl font-bold sm:my-8 sm:text-5xl sm:leading-tight">{frontmatter.title}</h1>
       <div className="flex">
         <time className="text-muted-foreground mr-4 text-lg">{frontmatter.publishedOn.toLocaleDateString('zh-TW')}</time>

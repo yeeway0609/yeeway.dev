@@ -9,3 +9,9 @@ export type Project = {
   blogURL?: string
   blogTitle?: string
 }
+
+export type CarouselImage = {
+  url: string
+  title: string
+  description: string
+}

@@ -1,39 +1,19 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import clsx from 'clsx'
 import { motion } from 'motion/react'
 import Image from 'next/image'
+import { CarouselImage } from '@/lib/types'
 
-type Item = {
-  url: string
-  title: string
-  description: string
+type ImageCarouselProps = {
+  images: CarouselImage[]
+  align?: 'left' | 'center' | 'right'
 }
 
-const items: Item[] = [
-  {
-    url: '/assets/gdsc-journey/1.jpg',
-    title: '',
-    description: '',
-  },
-  {
-    url: '/assets/gdsc-journey/2.jpg',
-    title: '',
-    description: '',
-  },
-  {
-    url: '/assets/gdsc-journey/2.jpg',
-    title: '',
-    description: '',
-  },
-  {
-    url: '/assets/gdsc-journey/2.jpg',
-    title: '',
-    description: '',
-  },
-]
+const possibleRotations = [1.3, -1.3, 1.3, -1.3, 1.3, -1.3]
 
-export function ImageCarousel() {
+export function ImageCarousel({ images, align = 'left' }: ImageCarouselProps) {
   const [width, setWidth] = useState(0)
   const carousel = useRef<HTMLDivElement>(null)
 
@@ -44,7 +24,7 @@ export function ImageCarousel() {
   }, [carousel])
 
   return (
-    <div className="w-full">
+    <div className="hide-scrollbar w-full max-w-dvw overflow-x-hidden px-5 py-5">
       <motion.div
         ref={carousel}
         drag="x"
@@ -53,17 +33,28 @@ export function ImageCarousel() {
         dragConstraints={{ right: 0, left: -width }}
         dragTransition={{ bounceDamping: 30 }}
         transition={{ duration: 0.2, ease: 'easeInOut' }}
-        className="flex cursor-grab will-change-transform active:cursor-grabbing"
+        className={clsx(
+          'flex cursor-grab gap-8 will-change-transform active:cursor-grabbing',
+          align === 'left' && 'justify-start',
+          align === 'center' && 'justify-center',
+          align === 'right' && 'justify-end'
+        )}
       >
-        {items.map((itemData: Item, index: number) => (
-          <motion.div key={index} className="h-[200px] w-[300px] shrink-0 p-2">
+        {images.map((image, index: number) => (
+          <motion.div
+            key={index}
+            className="relative aspect-[9/10] w-[200px] shrink-0"
+            initial={{ scale: 1, rotate: possibleRotations[index % possibleRotations.length], opacity: 0 }}
+            whileHover={{ scale: 1.1, rotate: 0, transition: { duration: 0.2 } }}
+            whileInView={{ opacity: 1, transition: { delay: index / 100 } }}
+          >
             <Image
-              className="pointer-events-none size-full rounded-md object-cover"
-              src={itemData?.url}
-              title={itemData.title}
-              alt={itemData.description}
-              width={400}
-              height={200}
+              className="pointer-events-none absolute inset-0 size-full rounded-md object-cover"
+              src={image?.url}
+              title={image.title}
+              alt={image.description}
+              width={300}
+              height={300}
             />
           </motion.div>
         ))}

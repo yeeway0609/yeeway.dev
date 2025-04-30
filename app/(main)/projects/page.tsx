@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <main>
+    <main className="layout-container">
       <h1 className="page-title">Projects</h1>
       <h2 className="page-sub-title">Showcase of my works or interesting plans.</h2>
       <div className="grid grid-cols-1 place-items-center gap-5 sm:grid-cols-2 lg:grid-cols-3">

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className="my-8 flex flex-col items-start justify-evenly sm:flex-row-reverse">
+    <main className="layout-container my-8 flex flex-col items-start justify-between sm:flex-row-reverse">
       <MyAvatar />
       <section className="sm:w-[500px]">
         <h1 className="name-gradient text-5xl font-black tracking-wider">Yiwei Su</h1>
@@ -48,7 +48,7 @@ export default function Page() {
           <SpotifyPlayer />
         </div>
       </section>
-    </div>
+    </main>
   )
 }
 

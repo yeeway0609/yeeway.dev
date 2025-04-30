@@ -4,6 +4,7 @@ import { ImageCarousel } from '@/components/ImageCarousel'
 import { Button } from '@/components/ui/button'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { Profile } from '@/lib/constants'
+import { CarouselImage } from '@/lib/types'
 import { CoolAvatar } from './CoolAvatar'
 import { SplitTitle } from './SplitTitle'
 
@@ -35,9 +36,32 @@ const profileLinks = [
   },
 ]
 
+const items: CarouselImage[] = [
+  {
+    url: '/assets/gdsc-journey/1.jpg',
+    title: '',
+    description: '',
+  },
+  {
+    url: '/assets/gdsc-journey/2.jpg',
+    title: '',
+    description: '',
+  },
+  {
+    url: '/assets/gdsc-journey/2.jpg',
+    title: '',
+    description: '',
+  },
+  {
+    url: '/assets/gdsc-journey/2.jpg',
+    title: '',
+    description: '',
+  },
+]
+
 export default function Page() {
   return (
-    <main className="flex flex-col items-center pt-16 md:pt-16">
+    <main className="flex w-full flex-col items-center pt-16">
       <CoolAvatar />
 
       <SplitTitle className="mt-5" />
@@ -75,7 +99,12 @@ export default function Page() {
           </Button>
         </div>
 
-        <ImageCarousel />
+        <h2 className="mt-16 mb-2 flex items-center justify-center space-x-2 text-xl font-bold">
+          <Icon icon="ri:sparkling-2-fill" className="size-6 text-[#D8A71B]" />
+          <span>生活碎片</span>
+          <Icon icon="ri:sparkling-2-fill" className="size-6 text-[#D8A71B]" />
+        </h2>
+        <ImageCarousel images={items} />
       </section>
     </main>
   )
