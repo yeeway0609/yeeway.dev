@@ -36,26 +36,42 @@ const profileLinks = [
   },
 ]
 
-const items: CarouselImage[] = [
+const images: CarouselImage[] = [
   {
-    url: '/assets/gdsc-journey/1.jpg',
-    title: '',
-    description: '',
+    url: '/assets/homepage-photos/1.jpeg',
+    height: 250,
   },
   {
-    url: '/assets/gdsc-journey/2.jpg',
-    title: '',
-    description: '',
+    url: '/assets/homepage-photos/2.jpeg',
+    title: '東京 - 淺草寺',
+    width: 300,
   },
   {
-    url: '/assets/gdsc-journey/2.jpg',
-    title: '',
-    description: '',
+    url: '/assets/homepage-photos/3.jpeg',
   },
   {
-    url: '/assets/gdsc-journey/2.jpg',
-    title: '',
-    description: '',
+    url: '/assets/homepage-photos/5.jpeg',
+    title: '東京 - 秋葉原',
+    width: 300,
+    height: 250,
+  },
+  {
+    url: '/assets/homepage-photos/4.jpeg',
+    title: '雄中大黑',
+    width: 250,
+  },
+  {
+    url: '/assets/homepage-photos/6.jpeg',
+    title: 'Moon Byul 演唱會！',
+    height: 250,
+  },
+  {
+    url: '/assets/homepage-photos/7.jpeg',
+    title: '東京 - 大井賽馬場',
+    width: 250,
+  },
+  {
+    url: '/assets/homepage-photos/8.jpeg',
   },
 ]
 
@@ -104,7 +120,7 @@ export default function Page() {
           <span>生活碎片</span>
           <Icon icon="ri:sparkling-2-fill" className="size-6 text-[#D8A71B]" />
         </h2>
-        <ImageCarousel images={items} />
+        <ImageCarousel images={images} />
       </section>
     </main>
   )

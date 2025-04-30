@@ -12,6 +12,7 @@ export type Project = {
 
 export type CarouselImage = {
   url: string
-  title: string
-  description: string
+  title?: string
+  width?: number
+  height?: number
 }

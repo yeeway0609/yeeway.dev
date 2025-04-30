@@ -34,7 +34,7 @@ export function ImageCarousel({ images, align = 'left' }: ImageCarouselProps) {
         dragTransition={{ bounceDamping: 30 }}
         transition={{ duration: 0.2, ease: 'easeInOut' }}
         className={clsx(
-          'flex cursor-grab gap-8 will-change-transform active:cursor-grabbing',
+          'flex cursor-grab items-center gap-8 will-change-transform active:cursor-grabbing',
           align === 'left' && 'justify-start',
           align === 'center' && 'justify-center',
           align === 'right' && 'justify-end'
@@ -43,19 +43,24 @@ export function ImageCarousel({ images, align = 'left' }: ImageCarouselProps) {
         {images.map((image, index: number) => (
           <motion.div
             key={index}
-            className="relative aspect-[9/10] w-[200px] shrink-0"
+            className="group relative shrink-0"
+            style={{ width: image.width ?? 200, height: image.height ?? 200 }}
             initial={{ scale: 1, rotate: possibleRotations[index % possibleRotations.length], opacity: 0 }}
             whileHover={{ scale: 1.1, rotate: 0, transition: { duration: 0.2 } }}
             whileInView={{ opacity: 1, transition: { delay: index / 100 } }}
           >
             <Image
-              className="pointer-events-none absolute inset-0 size-full rounded-md object-cover"
+              className="pointer-events-none size-full rounded-md object-cover"
               src={image?.url}
-              title={image.title}
-              alt={image.description}
+              alt={image.title ?? ''}
               width={300}
               height={300}
             />
+            {image.title && (
+              <div className="absolute flex size-full items-end bg-gradient-to-t from-black/75 via-black/0 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                <p className="px-3 py-2 text-sm font-bold">{image.title}</p>
+              </div>
+            )}
           </motion.div>
         ))}
       </motion.div>
