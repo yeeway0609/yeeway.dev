@@ -57,7 +57,7 @@ export function ImageCarousel({ images, align = 'left' }: ImageCarouselProps) {
               height={300}
             />
             {image.title && (
-              <div className="absolute flex size-full items-end bg-gradient-to-t from-black/75 via-black/0 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+              <div className="absolute inset-0 flex size-full items-end bg-gradient-to-t from-black/75 via-black/0 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
                 <p className="px-3 py-2 text-sm font-bold">{image.title}</p>
               </div>
             )}
