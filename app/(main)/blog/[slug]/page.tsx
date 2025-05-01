@@ -1,36 +1,40 @@
-// TODO: 將標題加入目錄 (TOC 元件可以參考 tailwind 文件)，並 anchor 加到路由
-
 import type { Metadata } from 'next'
 import { Badge } from '@/components/ui/badge'
-import { getBlogMetadata, getAllBlogMetadata } from '@/lib/mdx.utils'
+import { getBlogMetadata, getAllBlogMetadata, getBlogToc } from '@/lib/mdx.utils'
 import { ScrollProgress } from '@/components/magicui/scroll-progress'
+import { TableOfContents } from './TableOfContents'
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const slug = (await params).slug
-  const frontmatter = getBlogMetadata(slug)
+  const metadata = getBlogMetadata(slug)
+  const toc = getBlogToc(slug)
   const { default: PostContent } = await import(`@/content/blog/${slug}.mdx`)
 
   return (
     <main className="w-full">
       <ScrollProgress className="top-header h-[1.5px]" />
 
-      <div className="layout-container max-w-(--breakpoint-md)">
-        <h1 className="my-4 text-3xl font-bold sm:my-8 sm:text-5xl sm:leading-tight">{frontmatter.title}</h1>
+      <div className="layout-container">
+        <h1 className="my-4 max-w-3xl text-3xl font-bold sm:mt-8 sm:text-5xl sm:leading-tight">{metadata.title}</h1>
         <div className="flex">
-          <time className="text-muted-foreground mr-4 text-lg">{frontmatter.publishedOn.toLocaleDateString('zh-TW')}</time>
+          <time className="text-muted-foreground mr-4 text-lg">{metadata.publishedOn.toLocaleDateString('zh-TW')}</time>
           <ul>
-            {frontmatter.labels.map((label) => (
-              <Badge key={label} className="mr-2 font-bold">
+            {metadata.labels.map((label) => (
+              <Badge key={label} className="mr-2 text-sm font-bold">
                 #{label}
               </Badge>
             ))}
           </ul>
         </div>
-        <hr className="mt-2 mb-5" />
+        <hr className="bg-border mt-4 h-0.5" />
 
-        <article className="text-foreground text-base leading-normal break-words sm:text-xl">
-          <PostContent />
-        </article>
+        <div className="flex items-start justify-evenly lg:gap-6">
+          <article className="text-foreground mt-5 w-full max-w-3xl text-base leading-normal break-words sm:text-xl">
+            <PostContent />
+          </article>
+
+          <TableOfContents toc={toc} />
+        </div>
       </div>
     </main>
   )

@@ -103,7 +103,7 @@
 @layer components {
   /* TODO: 好像可以改成 utility */
   .layout-container {
-    @apply mx-auto w-full max-w-(--breakpoint-lg) px-4 md:px-10;
+    @apply mx-auto w-full max-w-7xl px-4 md:px-10;
   }
 
   .name-gradient {

@@ -1,17 +1,18 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { BlogMetadata } from '@/lib/types'
+import { BlogMetadata, TableOfContents } from '@/lib/types'
+
+const BLOG_DIR = 'content/blog'
+
+function getFile(filePath: string): string {
+  if (!fs.existsSync(filePath)) throw new Error(`File not found: ${filePath}`)
+  return fs.readFileSync(filePath, 'utf8')
+}
 
 export function getBlogMetadata(slug: string): BlogMetadata {
-  const filePath = path.join(process.cwd(), 'content/blog', `${slug}.mdx`)
-  console.log(filePath)
-
-  if (!fs.existsSync(filePath)) {
-    throw new Error(`Blog post not found: ${slug}`)
-  }
-
-  const fileContent = fs.readFileSync(filePath, 'utf8')
+  const filePath = path.join(process.cwd(), BLOG_DIR, `${slug}.mdx`)
+  const fileContent = getFile(filePath)
   const { data } = matter(fileContent)
 
   return {
@@ -20,26 +21,39 @@ export function getBlogMetadata(slug: string): BlogMetadata {
   } as BlogMetadata
 }
 
-/** Only published blog posts will be generated */
 export function getAllBlogMetadata(): BlogMetadata[] {
-  const BLOG_DIR = 'content/blog'
-  const files = fs.readdirSync(path.join(process.cwd(), BLOG_DIR))
-  const mdxFiles = files.filter((file) => file.endsWith('.mdx'))
-
-  return mdxFiles
+  return fs
+    .readdirSync(path.join(process.cwd(), BLOG_DIR))
+    .filter((file) => file.endsWith('.mdx'))
     .map((file) => {
       const slug = file.replace(/\.mdx$/, '')
       const metadata = getBlogMetadata(slug)
-      return metadata.isPublished ? metadata : null
+      return metadata.isPublished ? metadata : null // Filter out unpublished posts
     })
     .filter(Boolean)
     .sort((a, b) => new Date(b!.publishedOn).getTime() - new Date(a!.publishedOn).getTime()) as BlogMetadata[]
 }
 
 export function getRecentBlogMetadata(): BlogMetadata[] {
-  const allBlogMetadata = getAllBlogMetadata()
-  return allBlogMetadata.slice(0, 3)
+  return getAllBlogMetadata().slice(0, 3)
 }
 
-// TODO: implement this function
-export function getTableOfContents() {}
+export function getBlogToc(slug: string): TableOfContents {
+  const filePath = path.join(process.cwd(), BLOG_DIR, `${slug}.mdx`)
+  const fileContent = getFile(filePath)
+  const headings: TableOfContents = []
+
+  const lines = fileContent.split('\n')
+  for (const line of lines) {
+    const h2 = line.match(/^##\s+(.*)/)
+    const h3 = line.match(/^###\s+(.*)/)
+
+    if (h2) {
+      headings.push({ level: 2, heading: h2[1] })
+    } else if (h3) {
+      headings.push({ level: 3, heading: h3[1] })
+    }
+  }
+
+  return headings
+}

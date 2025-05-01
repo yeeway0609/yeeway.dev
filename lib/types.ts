@@ -25,3 +25,8 @@ export type CarouselImage = {
   width?: number
   height?: number
 }
+
+export type TableOfContents = {
+  level: number
+  heading: string
+}[]
