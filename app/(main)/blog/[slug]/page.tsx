@@ -3,6 +3,7 @@
 import type { Metadata } from 'next'
 import { Badge } from '@/components/ui/badge'
 import { getBlogMetadata, getAllBlogMetadata } from '@/lib/mdx.utils'
+import { ScrollProgress } from '@/components/magicui/scroll-progress'
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const slug = (await params).slug
@@ -10,23 +11,27 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const { default: PostContent } = await import(`@/content/blog/${slug}.mdx`)
 
   return (
-    <main className="layout-container max-w-(--breakpoint-md)">
-      <h1 className="my-4 text-3xl font-bold sm:my-8 sm:text-5xl sm:leading-tight">{frontmatter.title}</h1>
-      <div className="flex">
-        <time className="text-muted-foreground mr-4 text-lg">{frontmatter.publishedOn.toLocaleDateString('zh-TW')}</time>
-        <ul>
-          {frontmatter.labels.map((label) => (
-            <Badge key={label} className="mr-2 font-bold">
-              #{label}
-            </Badge>
-          ))}
-        </ul>
-      </div>
-      <hr className="mt-2 mb-5" />
+    <main className="w-full">
+      <ScrollProgress className="top-header h-[1.5px]" />
 
-      <article className="text-foreground text-base leading-normal break-words sm:text-xl">
-        <PostContent />
-      </article>
+      <div className="layout-container max-w-(--breakpoint-md)">
+        <h1 className="my-4 text-3xl font-bold sm:my-8 sm:text-5xl sm:leading-tight">{frontmatter.title}</h1>
+        <div className="flex">
+          <time className="text-muted-foreground mr-4 text-lg">{frontmatter.publishedOn.toLocaleDateString('zh-TW')}</time>
+          <ul>
+            {frontmatter.labels.map((label) => (
+              <Badge key={label} className="mr-2 font-bold">
+                #{label}
+              </Badge>
+            ))}
+          </ul>
+        </div>
+        <hr className="mt-2 mb-5" />
+
+        <article className="text-foreground text-base leading-normal break-words sm:text-xl">
+          <PostContent />
+        </article>
+      </div>
     </main>
   )
 }
