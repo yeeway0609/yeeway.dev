@@ -1,8 +1,8 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { TableOfContents as TableOfContentsType } from '@/lib/types'
-import clsx from 'clsx'
 import { Icon } from '@iconify/react'
+import clsx from 'clsx'
+import { TableOfContents as TableOfContentsType } from '@/lib/types'
 
 type TableOfContentsProps = {
   toc: TableOfContentsType

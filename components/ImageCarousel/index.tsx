@@ -67,4 +67,3 @@ export function ImageCarousel({ images, align = 'left' }: ImageCarouselProps) {
     </div>
   )
 }
-

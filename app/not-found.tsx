@@ -1,8 +1,8 @@
 'use client'
-import { Button } from '@/components/ui/button'
 import clsx from 'clsx'
 import Link from 'next/link'
 import { UAParser } from 'ua-parser-js'
+import { Button } from '@/components/ui/button'
 
 export default function NotFound() {
   const bonkSound = new Audio('/assets/bonk.m4a')

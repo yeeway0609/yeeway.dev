@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
+import { ScrollProgress } from '@/components/magicui/scroll-progress'
 import { Badge } from '@/components/ui/badge'
 import { getBlogMetadata, getAllBlogMetadata, getBlogToc } from '@/lib/mdx.utils'
-import { ScrollProgress } from '@/components/magicui/scroll-progress'
 import { TableOfContents } from './TableOfContents'
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
@@ -11,7 +11,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const { default: PostContent } = await import(`@/content/blog/${slug}.mdx`)
 
   return (
-    <main className="w-full mb-20">
+    <main className="mb-20 w-full">
       <ScrollProgress className="top-header h-[1.5px]" />
 
       <div className="layout-container">
