@@ -1,17 +1,26 @@
 'use client'
 import { Button } from '@/components/ui/button'
+import clsx from 'clsx'
 import Link from 'next/link'
+import { UAParser } from 'ua-parser-js'
 
 export default function NotFound() {
-  let bonkSound = new Audio('/assets/bonk.m4a')
+  const bonkSound = new Audio('/assets/bonk.m4a')
+  const { device } = UAParser()
 
-  const handlePlaySound = () => {
+  function handlePlaySound() {
+    if (device.is('mobile')) return
+
+    bonkSound.currentTime = 0
     bonkSound.play()
   }
 
   return (
     <main
-      className="flex min-h-[calc(100vh-var(--spacing-header))] w-full cursor-[url('/assets/bat.png')_32_32,auto] flex-col items-center justify-center select-none active:cursor-[url('/assets/bat-bonk.png')_32_32,auto]"
+      className={clsx(
+        'flex min-h-[calc(100vh-var(--spacing-header))] w-full flex-col items-center justify-center select-none',
+        "cursor-[url('/assets/bat.png')_32_32,auto] active:cursor-[url('/assets/bat-bonk.png')_32_32,auto] dark:active:cursor-[url('/assets/bat-bonk-white.png')_32_32,auto]"
+      )}
       onMouseDown={handlePlaySound}
     >
       <div className="flex justify-center px-5">
