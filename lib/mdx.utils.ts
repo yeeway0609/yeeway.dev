@@ -1,16 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-
-export interface BlogMetadata {
-  slug: string
-  title: string
-  description: string
-  labels: string[]
-  publishedOn: Date
-  isPublished: boolean
-  ogImageUrl?: string
-}
+import { BlogMetadata } from '@/lib/types'
 
 export function getBlogMetadata(slug: string): BlogMetadata {
   const filePath = path.join(process.cwd(), 'content/blog', `${slug}.mdx`)

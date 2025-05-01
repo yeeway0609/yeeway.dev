@@ -43,19 +43,22 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const DEFAULT_OG_IMAGE = '/og.png'
   const slug = (await params).slug
-  const metadata = getBlogMetadata(slug)
+  const postMetadata = getBlogMetadata(slug)
+  const coverImageUrl = `/assets/${slug}/cover.png`
 
   return {
-    title: metadata.title,
-    description: metadata.description,
+    title: postMetadata.title,
+    description: postMetadata.description,
     openGraph: {
-      title: metadata.title,
-      description: metadata.description,
+      title: postMetadata.title,
+      description: postMetadata.description,
       type: 'article',
       url: `/blog/${slug}`,
       images: [
         {
-          url: metadata.ogImageUrl ?? DEFAULT_OG_IMAGE,
+          url: coverImageUrl ?? DEFAULT_OG_IMAGE,
+          width: 1200,
+          height: 630,
         },
       ],
     },

@@ -1,3 +1,12 @@
+export type BlogMetadata = {
+  slug: string
+  title: string
+  description: string
+  labels: string[]
+  publishedOn: Date
+  isPublished: boolean
+}
+
 export type Project = {
   title: string
   description: string
