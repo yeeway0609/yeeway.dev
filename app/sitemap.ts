@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
-import { getAllBlogMetadata } from '../lib/mdx.utils'
-import type { BlogMetadata } from '../lib/mdx.utils'
+import { getAllBlogMetadata } from '@/lib/mdx.utils'
+import type { BlogMetadata } from '@/lib/types'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blogMetadata = getAllBlogMetadata()
