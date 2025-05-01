@@ -1,18 +1,25 @@
 'use client'
+import { useEffect, useRef } from 'react'
 import clsx from 'clsx'
 import Link from 'next/link'
 import { UAParser } from 'ua-parser-js'
 import { Button } from '@/components/ui/button'
 
 export default function NotFound() {
-  const bonkSound = new Audio('/assets/bonk.m4a')
+  const bonkSoundRef = useRef<HTMLAudioElement | null>(null)
   const { device } = UAParser()
+
+  useEffect(() => {
+    bonkSoundRef.current = new Audio('/assets/bonk.m4a')
+  }, [])
 
   function handlePlaySound() {
     if (device.is('mobile')) return
 
-    bonkSound.currentTime = 0
-    bonkSound.play()
+    if (bonkSoundRef.current) {
+      bonkSoundRef.current.currentTime = 0
+      bonkSoundRef.current.play()
+    }
   }
 
   return (
