@@ -3,14 +3,22 @@ import Image from 'next/image'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    h2: ({ children }) => <h2 className="text-primary mt-6 mb-4 text-2xl leading-tight font-bold sm:text-3xl">{children}</h2>,
-    h3: ({ children }) => <h3 className="mt-6 mb-4 leading-snug font-bold">{children}</h3>,
-    h4: ({ children }) => <h4 className="mt-6 mb-4 leading-none font-bold">{children}</h4>,
-    h5: ({ children }) => <h5 className="mt-6 mb-4 leading-tight font-bold">{children}</h5>,
-    h6: ({ children }) => <h6 className="text-muted-foreground mt-6 mb-4 leading-tight font-bold">{children}</h6>,
+    h2: ({ children }) => (
+      <h2 id={children as string} className="text-primary mt-6 mb-4 scroll-mt-20 text-2xl leading-tight font-bold sm:text-3xl">
+        {children}
+      </h2>
+    ),
+    h3: ({ children }) => (
+      <h3 id={children as string} className="mt-6 mb-4 scroll-mt-20 text-xl leading-snug font-bold">
+        {children}
+      </h3>
+    ),
+    // h4: ({ children }) => <h4 className="mt-6 mb-4 leading-none font-bold">{children}</h4>,
+    // h5: ({ children }) => <h5 className="mt-6 mb-4 leading-tight font-bold">{children}</h5>,
+    // h6: ({ children }) => <h6 className="text-muted-foreground mt-6 mb-4 leading-tight font-bold">{children}</h6>,
     hr: () => <hr className="mt-2 mb-5" />,
     blockquote: ({ children }) => (
-      <blockquote className="border-muted-foreground text-muted-foreground my-2 border-l-4 pr-4 pl-4 text-lg">{children}</blockquote>
+      <blockquote className="border-muted-foreground text-muted-foreground my-4 border-l-4 pr-4 pl-4 text-sm sm:text-lg">{children}</blockquote>
     ),
     ul: ({ children }) => <ul className="list-disc pl-8">{children}</ul>,
     ol: ({ children }) => <ol className="list-decimal pl-8">{children}</ol>,
