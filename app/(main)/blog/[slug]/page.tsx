@@ -11,7 +11,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const { default: PostContent } = await import(`@/content/blog/${slug}.mdx`)
 
   return (
-    <main className="w-full">
+    <main className="w-full mb-20">
       <ScrollProgress className="top-header h-[1.5px]" />
 
       <div className="layout-container">

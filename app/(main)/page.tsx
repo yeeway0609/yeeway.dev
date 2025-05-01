@@ -77,7 +77,7 @@ const images: CarouselImage[] = [
 
 export default function Page() {
   return (
-    <main className="flex w-full flex-col items-center pt-16">
+    <main className="flex w-full flex-col mb-20 items-center pt-16">
       <CoolAvatar />
 
       <SplitTitle className="mt-5" />

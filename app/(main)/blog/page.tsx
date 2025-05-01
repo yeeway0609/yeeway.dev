@@ -6,7 +6,7 @@ export default async function Page() {
   const blogMetadata = getAllBlogMetadata()
 
   return (
-    <main className="layout-container">
+    <main className="layout-container mb-20">
       <h1 className="page-title">Blog</h1>
       <h2 className="page-sub-title">My thoughts on coding, study notes, lifestyle, and other cool stuff.</h2>
       <div className="flex">

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <main className="layout-container my-8 flex flex-col items-start justify-between sm:flex-row-reverse">
+    <main className="layout-container mt-8 mb-20 flex flex-col items-start justify-between sm:flex-row-reverse">
       <MyAvatar />
       <section className="sm:w-[500px]">
         <h1 className="name-gradient text-5xl font-black tracking-wider">Yiwei Su</h1>
