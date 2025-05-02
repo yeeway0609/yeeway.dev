@@ -30,7 +30,7 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
   }, [])
 
   return (
-    <nav className="top-header sticky z-10 hidden w-60 shrink-0 overflow-y-auto pt-5 lg:block">
+    <nav className="top-header sticky z-10 hidden w-60 shrink-0 overflow-y-auto pt-6 lg:block">
       <ul className="">
         <div className="flex text-xl">
           <Icon icon="quill:list" className="mr-1 mb-2 size-7" />
