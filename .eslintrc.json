@@ -34,6 +34,7 @@
     "arrow-body-style": ["error", "as-needed"],
     "prefer-arrow-callback": ["error"],
     "padded-blocks": ["error", { "blocks": "never", "classes": "never", "switches": "never" }],
+    "import/no-named-as-default": "off",
     "import/order": [
       "warn",
       {

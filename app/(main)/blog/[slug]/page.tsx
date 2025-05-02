@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const DEFAULT_OG_IMAGE = '/og.png'
   const slug = (await params).slug
   const postMetadata = getBlogMetadata(slug)
-  const coverImageUrl = `/assets/${slug}/cover.png`
+  const coverImageUrl = `/blog/${slug}/cover.png`
 
   return {
     title: postMetadata.title,
