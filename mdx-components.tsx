@@ -13,9 +13,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </h3>
     ),
-    // h4: ({ children }) => <h4 className="mt-6 mb-4 leading-none font-bold">{children}</h4>,
-    // h5: ({ children }) => <h5 className="mt-6 mb-4 leading-tight font-bold">{children}</h5>,
-    // h6: ({ children }) => <h6 className="text-muted-foreground mt-6 mb-4 leading-tight font-bold">{children}</h6>,
     hr: () => <hr className="mt-2 mb-5" />,
     blockquote: ({ children }) => (
       <blockquote className="border-muted-foreground text-muted-foreground my-4 border-l-4 pr-4 pl-4 text-sm sm:text-lg">{children}</blockquote>
@@ -30,7 +27,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     td: ({ children }) => <td className="border px-3 py-1">{children}</td>,
     strong: ({ children }) => <strong className="font-bold">{children}</strong>,
     pre: ({ children }) => <pre className="my-2 overflow-y-hidden rounded bg-gray-200 p-4 dark:bg-gray-700">{children}</pre>,
-    code: ({ children }) => <code className="rounded bg-gray-200 font-mono text-sm dark:bg-gray-700">{children}</code>,
     a: ({ children, href }) => (
       <a
         className="cursor-pointer font-bold text-blue-400 underline underline-offset-2 hover:text-blue-600"
@@ -49,5 +45,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </div>
     ),
     ...components,
+
+    // DEPRECATED: 文章裡面只會出現 h2 和 h3，配合 TOC 的架構
+    // h4: ({ children }) => <h4 className="mt-6 mb-4 leading-none font-bold">{children}</h4>,
+    // h5: ({ children }) => <h5 className="mt-6 mb-4 leading-tight font-bold">{children}</h5>,
+    // h6: ({ children }) => <h6 className="text-muted-foreground mt-6 mb-4 leading-tight font-bold">{children}</h6>,
+
+    // DEPRECATED: code 統一用 CodeBlock 這個元件
+    // code: ({ children }) => <code className="rounded bg-gray-200 font-mono text-sm dark:bg-gray-700">{children}</code>,
   }
 }

@@ -21,7 +21,7 @@ Props Spreading 是指將一個物件的所有 key-value，展開作為元件的
 
 原本的寫法：
 
-<CodeBlock lang="jsx">
+<CodeBlock lang="jsx" icon="react">
   {`const alex = { name: 'Alex', age: 20, email: 'alex@example.com', mbti: 'ISFJ'}
   const becky  = { name: 'Becky', age: 27, email: 'becky@example.com', mbti: 'ISFJ' }
   const cindy = { name: 'Cindy', age: 29, email: 'cindy@example.com', mbti: 'ISFJ' }
@@ -33,11 +33,11 @@ Props Spreading 是指將一個物件的所有 key-value，展開作為元件的
 
 改用 Props Spreading 的寫法：
 
-{<CodeBlock lang="jsx">
+<CodeBlock lang="jsx" icon="react">
   {`<Profile {...alex} />
   <Profile {...becky} />
   <Profile {...cindy} />`}
-</CodeBlock>}
+</CodeBlock>
 
 ## 在 Motion 中的應用
 
@@ -45,7 +45,7 @@ Motion的 `motion` 元件通常需要接收多個動畫屬性，例如 `initial`
 
 原本的 `motion` 元件寫法：
 
-<CodeBlock lang="jsx">
+<CodeBlock lang="jsx" icon="react">
   {`<motion.div
     className="size-10 bg-slate-500"
     initial={{ scale: 0, x: 0, y: 0 }}
@@ -56,7 +56,7 @@ Motion的 `motion` 元件通常需要接收多個動畫屬性，例如 `initial`
 
 改用 Props Spreading 的寫法：
 
-<CodeBlock lang="jsx">
+<CodeBlock lang="jsx" icon="react">
   {`const animationProps = {
     initial: { scale: 0, x: 0, y: 0 },
     animate: { scale: 2, x: 100, y: 200 },
@@ -71,9 +71,8 @@ Motion的 `motion` 元件通常需要接收多個動畫屬性，例如 `initial`
 
 如果某個頁面中需要用到大量或是重複的 `motion` 元件的話，我們也可以將這些動畫屬性物件抽離至另一個 utility 檔案中
 
-<CodeBlock lang="jsx">
-  {`// animations.js
-  export const fadeIn = {
+<CodeBlock lang="jsx" title="animations.js" icon="js">
+  {`export const fadeIn = {
     initial: { opacity: 0 },
     whileInView: { opacity: 1 },
     transition: { duration: 0.5 },
@@ -89,7 +88,7 @@ Motion的 `motion` 元件通常需要接收多個動畫屬性，例如 `initial`
 
 在元件中重用這些模板：
 
-{<CodeBlock lang="jsx">
+<CodeBlock lang="jsx" icon="react">
   {`import { motion } from "motion/react"
   import { fadeIn, slideUp } from "./animations"
 
@@ -105,7 +104,7 @@ Motion的 `motion` 元件通常需要接收多個動畫屬性，例如 `initial`
     )
   }
   `}
-</CodeBlock>}
+</CodeBlock>
 
 ## 總結用 Props Spreading 的好處
 
