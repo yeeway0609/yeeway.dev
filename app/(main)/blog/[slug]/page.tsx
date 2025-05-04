@@ -10,7 +10,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const metadata = getBlogMetadata(slug)
   const toc = getBlogToc(slug)
   const { default: PostContent } = await import(`@/content/blog/${slug}.mdx`)
-  const coverImageUrl = `/blog/${slug}/cover.png`
 
   return (
     <main className="mb-20 w-full">
@@ -20,7 +19,11 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <div className="w-full max-w-3xl">
           <h1 className="mt-4 mb-2 text-3xl font-bold break-all sm:mt-8 sm:text-5xl sm:leading-tight sm:break-normal">{metadata.title}</h1>
           <p className="text-muted-foreground mb-3 text-sm sm:text-lg">{metadata.description}</p>
-          <Image className="mb-4 w-full" src={coverImageUrl} alt="cover" width={600} height={315} priority />
+
+          {metadata.coverImageUrl && (
+            <Image className="mb-4 w-full" src={metadata.coverImageUrl} alt={`${metadata.title} - 封面`} width={600} height={315} priority />
+          )}
+
           <div className="mb-4 flex items-center">
             <time className="text-muted-foreground mr-4">{metadata.publishedOn.toLocaleDateString('zh-TW')}</time>
             <ul>
@@ -55,20 +58,19 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const DEFAULT_OG_IMAGE = '/og.png'
   const slug = (await params).slug
-  const postMetadata = getBlogMetadata(slug)
-  const coverImageUrl = `/blog/${slug}/cover.png`
+  const metadata = getBlogMetadata(slug)
 
   return {
-    title: postMetadata.title,
-    description: postMetadata.description,
+    title: metadata.title,
+    description: metadata.description,
     openGraph: {
-      title: postMetadata.title,
-      description: postMetadata.description,
+      title: metadata.title,
+      description: metadata.description,
       type: 'article',
       url: `/blog/${slug}`,
       images: [
         {
-          url: coverImageUrl ?? DEFAULT_OG_IMAGE,
+          url: metadata.coverImageUrl ?? DEFAULT_OG_IMAGE,
           width: 1200,
           height: 630,
         },

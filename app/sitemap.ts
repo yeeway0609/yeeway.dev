@@ -13,27 +13,27 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
+      url: 'https://yeeway.dev/projects',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
       url: 'https://yeeway.dev/about',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://yeeway.dev/projects',
+      url: 'https://yeeway.dev/blog',
       lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
+      changeFrequency: 'weekly',
+      priority: 1,
     },
-    // {
-    //   url: 'https://yeeway.dev/blog',
-    //   lastModified: new Date(),
-    //   changeFrequency: 'weekly',
-    //   priority: 0.5,
-    // },
     ...blogMetadata.map((post: BlogMetadata) => ({
       url: `https://yeeway.dev/blog/${post.slug}`,
       lastModified: new Date(post.publishedOn),
-      priority: 0.2,
+      priority: 1,
     })),
   ]
 }

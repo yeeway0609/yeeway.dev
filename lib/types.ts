@@ -5,8 +5,10 @@ export type BlogMetadata = {
   labels: string[]
   publishedOn: Date
   isPublished: boolean
+  coverImageUrl: string | null
 }
 
+// TODO: 專案的 metadata
 export type Project = {
   title: string
   description: string
