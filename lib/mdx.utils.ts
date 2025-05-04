@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { BlogMetadata, TableOfContents } from '@/lib/types'
+import { BlogMetadata, BlogTOC } from '@/lib/types'
 
 const BLOG_DIR = 'content/blog'
 
@@ -28,7 +28,7 @@ export function getAllBlogMetadata(): BlogMetadata[] {
     .map((file) => {
       const slug = file.replace(/\.mdx$/, '')
       const metadata = getBlogMetadata(slug)
-      return metadata.isPublished ? metadata : null // Filter out unpublished posts
+      return metadata.isPublished ? metadata : null // EXPLAIN: Filter out unpublished posts
     })
     .filter(Boolean)
     .sort((a, b) => new Date(b!.publishedOn).getTime() - new Date(a!.publishedOn).getTime()) as BlogMetadata[]
@@ -38,10 +38,10 @@ export function getRecentBlogMetadata(): BlogMetadata[] {
   return getAllBlogMetadata().slice(0, 3)
 }
 
-export function getBlogToc(slug: string): TableOfContents {
+export function getBlogTOC(slug: string): BlogTOC {
   const filePath = path.join(process.cwd(), BLOG_DIR, `${slug}.mdx`)
   const fileContent = getFile(filePath)
-  const headings: TableOfContents = []
+  const headings: BlogTOC = []
 
   const lines = fileContent.split('\n')
   for (const line of lines) {

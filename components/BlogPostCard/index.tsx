@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Badge } from '@/components/ui/badge'
 import type { BlogMetadata } from '@/lib/types'
 
-export function BlogPostCard({ slug, title, description, publishedOn, labels }: BlogMetadata) {
+export function BlogPostCard({ slug, title, description, publishedOn, labels, coverImageUrl }: BlogMetadata) {
   return (
     <Link
       className="animate-arrow-shake bg-card text-card-foreground flex w-full max-w-[600px] cursor-pointer flex-col gap-2 rounded-lg border p-6 shadow-xs"

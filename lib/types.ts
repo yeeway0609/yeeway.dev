@@ -28,7 +28,7 @@ export type CarouselImage = {
   height?: number
 }
 
-export type TableOfContents = {
+export type BlogTOC = {
   level: number
   heading: string
 }[]

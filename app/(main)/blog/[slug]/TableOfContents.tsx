@@ -2,10 +2,10 @@
 import { useEffect, useState } from 'react'
 import { Icon } from '@iconify/react'
 import clsx from 'clsx'
-import { TableOfContents as TableOfContentsType } from '@/lib/types'
+import { BlogTOC } from '@/lib/types'
 
 type TableOfContentsProps = {
-  toc: TableOfContentsType
+  toc: BlogTOC
 }
 
 export function TableOfContents({ toc }: TableOfContentsProps) {
@@ -15,7 +15,7 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
     const headingElements = document.querySelectorAll('h2, h3')
 
     const observer = new IntersectionObserver(observerCallback, {
-      rootMargin: '-64px 0px -30% 0px', // 64px 是 Header 的高度，50% 代表畫面的中間高度
+      rootMargin: '-64px 0px -30% 0px', // EXPLAIN: 64px 是 Header 的高度，50% 代表畫面的中間高度
     })
 
     function observerCallback(entries: IntersectionObserverEntry[]) {

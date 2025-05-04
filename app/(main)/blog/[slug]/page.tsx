@@ -2,13 +2,13 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { ScrollProgress } from '@/components/magicui/scroll-progress'
 import { Badge } from '@/components/ui/badge'
-import { getBlogMetadata, getAllBlogMetadata, getBlogToc } from '@/lib/mdx.utils'
+import { getBlogMetadata, getAllBlogMetadata, getBlogTOC } from '@/lib/mdx.utils'
 import { TableOfContents } from './TableOfContents'
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const slug = (await params).slug
   const metadata = getBlogMetadata(slug)
-  const toc = getBlogToc(slug)
+  const toc = getBlogTOC(slug)
   const { default: PostContent } = await import(`@/content/blog/${slug}.mdx`)
 
   return (
