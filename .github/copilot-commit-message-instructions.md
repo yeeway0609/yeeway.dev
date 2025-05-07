@@ -1,0 +1,2 @@
+- Use Conventional Commits message format: `<type>[optional scope]: <description>`
+- If it's an update related to the README, just write 'docs: update README'.
