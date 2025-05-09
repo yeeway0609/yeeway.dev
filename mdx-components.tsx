@@ -1,5 +1,6 @@
 import type { MDXComponents } from 'mdx/types'
 import Image from 'next/image'
+import { ImageContainer } from '@/components/ImageContainer'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -39,10 +40,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </a>
     ),
     img: (props) => (
-      <div className="relative mx-auto my-6 w-fit">
-        <div className="absolute size-full animate-pulse bg-gray-300 dark:bg-gray-800" />
-        <Image className="relative" {...props} alt={props.alt ?? 'image'} />
-      </div>
+      <ImageContainer className="mx-auto my-6 w-fit">
+        <Image {...props} alt={props.alt ?? 'image'} />
+      </ImageContainer>
+      // <div className="relative ">
+      //   <div className="absolute size-full animate-pulse bg-gray-300 dark:bg-gray-800" />
+      // </div>
     ),
     ...components,
 

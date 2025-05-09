@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import { ImageContainer } from '@/components/ImageContainer'
 import { ScrollProgress } from '@/components/magicui/scroll-progress'
 import { Badge } from '@/components/ui/badge'
 import { getBlogMetadata, getAllBlogMetadata, getBlogTOC } from '@/lib/mdx.utils'
@@ -21,7 +22,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           <p className="text-muted-foreground mb-3 text-sm sm:text-lg">{metadata.description}</p>
 
           {metadata.coverImageUrl && (
-            <Image className="mb-4 w-full" src={metadata.coverImageUrl} alt={`${metadata.title} - 封面`} width={600} height={315} priority />
+            <ImageContainer className="mb-4 w-full">
+              <Image className="size-full" src={metadata.coverImageUrl} alt={`${metadata.title} - 封面`} width={600} height={315} priority />
+            </ImageContainer>
           )}
 
           <div className="mb-4 flex items-center">
