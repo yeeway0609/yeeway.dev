@@ -40,9 +40,16 @@
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
 :root {
+  --radius: 0.625rem;
+
   --background: hsl(231 9.6% 99.05%); /* #FCFCFD */
   --foreground: hsl(231 45.8% 10.53%);
   --border: hsl(214.3 31.8% 91.4%);
@@ -62,8 +69,6 @@
   --card-foreground: hsl(231 45.8% 10.53%);
   --popover: hsl(228 31.6% 97.3%);
   --popover-foreground: hsl(231 45.8% 10.53%);
-
-  --radius: 1rem;
 }
 
 .dark {
