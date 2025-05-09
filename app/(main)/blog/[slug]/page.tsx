@@ -4,6 +4,7 @@ import { ImageContainer } from '@/components/ImageContainer'
 import { ScrollProgress } from '@/components/magicui/scroll-progress'
 import { Badge } from '@/components/ui/badge'
 import { getBlogMetadata, getAllBlogMetadata, getBlogTOC } from '@/lib/mdx.utils'
+import { formatDate } from '@/lib/utils'
 import { TableOfContents } from './TableOfContents'
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
@@ -28,14 +29,12 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           )}
 
           <div className="mb-4 flex items-center">
-            <time className="text-muted-foreground mr-4">{metadata.publishedOn.toLocaleDateString('zh-TW')}</time>
-            <ul>
-              {metadata.labels.map((label) => (
-                <Badge key={label} className="mr-2 text-sm font-bold">
-                  #{label}
-                </Badge>
-              ))}
-            </ul>
+            <time className="text-muted-foreground mr-4 pt-0.5 text-lg">{formatDate(metadata.publishedOn)}</time>
+            {metadata.labels.map((label) => (
+              <Badge key={label} className="mr-2 text-xs font-medium">
+                #{label}
+              </Badge>
+            ))}
           </div>
           <hr className="bg-border mb-5 h-0.5" />
 

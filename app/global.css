@@ -4,6 +4,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+  --breakpoint-xs: 24rem;
+
   --cursor-pointer: url(/assets/pointing-up-3d.png), pointer;
 
   --font-sans: Nunito, sans-serif;
@@ -122,22 +124,6 @@
     @apply animate-slide-in-right text-muted-foreground mt-3 pb-8 text-xl opacity-0 delay-100 sm:pb-12 sm:text-2xl;
   }
 
-  .animate-arrow-shake:hover .arrow {
-    animation: arrow-shake 1s infinite ease-in-out;
-  }
-
-  @keyframes arrow-shake {
-    0% {
-      transform: translateX(0px);
-    }
-    50% {
-      transform: translateX(5px);
-    }
-    100% {
-      transform: translateX(0px);
-    }
-  }
-
   @keyframes badge-popup {
     0% {
       scale: 0.1;
@@ -188,8 +174,4 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
-
-  /* .test-cursor {
-    cursor: ;
-  } */
 }
