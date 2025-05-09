@@ -5,7 +5,6 @@ import { Bars3Icon, XMarkIcon, NewspaperIcon, UserIcon, CommandLineIcon } from '
 import Image from 'next/image'
 import Link from 'next/link'
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
-import { SpotifyPlayer } from '../SpotifyPlayer'
 import { ThemeSwitch } from './ThemeSwitch'
 
 const ROUTES = [
@@ -59,11 +58,6 @@ export function Header() {
                   </Link>
                 ))}
               </nav>
-              {/* TODO: 之後加回來 */}
-              {/* <div className="mt-auto px-1">
-                Recent 😍 songs:
-                <SpotifyPlayer />
-              </div> */}
             </SheetContent>
           </Sheet>
         </div>
