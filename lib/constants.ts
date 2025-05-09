@@ -4,4 +4,5 @@ export const Profile = {
   LINKEDIN: 'https://www.linkedin.com/in/yi-wei-su',
   INSTAGRAM: 'https://www.instagram.com/yeeway_0609/',
   SPOTIFY: 'https://open.spotify.com/user/316mp4peyke2yfbklasiigreqyfq?si=d355fe49436e4a4d',
+  FOLO: 'https://app.follow.is/share/users/yeeway0609',
 } as const
