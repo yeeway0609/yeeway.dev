@@ -8,17 +8,17 @@ export type BlogMetadata = {
   coverImageUrl: string | null
 }
 
-// TODO: 專案的 metadata
 export type Project = {
   title: string
   description: string
   imageURL: string
+  websiteURL: string | null
+  websiteTitle: string | null
+  githubURL: string | null
+  githubTitle: string | null
+  blogURL: string | null
+  blogTitle: string | null
   tags?: string[]
-  websiteURL?: string
-  githubURL?: string
-  githubTitle?: string
-  blogURL?: string
-  blogTitle?: string
 }
 
 export type CarouselImage = {

@@ -14,18 +14,7 @@ export default function Page() {
       <h2 className="page-sub-title">Showcase of my works or interesting plans.</h2>
       <div className="grid grid-cols-1 place-items-center gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {projectsData.map((project: Project) => (
-          <ProjectCard
-            key={project.title}
-            title={project.title}
-            description={project.description}
-            tags={project.tags}
-            imageURL={project.imageURL}
-            websiteURL={'websiteURL' in project ? project.websiteURL : undefined}
-            githubURL={'githubURL' in project ? project.githubURL : undefined}
-            githubTitle={'githubTitle' in project ? project.githubTitle : undefined}
-            blogURL={'blogURL' in project ? project.blogURL : undefined}
-            blogTitle={'blogTitle' in project ? project.blogTitle : undefined}
-          />
+          <ProjectCard key={project.title} {...project} />
         ))}
       </div>
     </main>
