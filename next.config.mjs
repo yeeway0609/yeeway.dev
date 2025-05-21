@@ -16,6 +16,22 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/feed',
+        destination: '/feed.xml',
+      },
+      {
+        source: '/rss',
+        destination: '/feed.xml',
+      },
+      {
+        source: '/rss.xml',
+        destination: '/feed.xml',
+      },
+    ]
+  },
 }
 
 const withMDX = createMDX({

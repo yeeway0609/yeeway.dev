@@ -1,7 +1,11 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { BlogMetadata, BlogTOC } from '@/lib/types'
+import rehypeStringify from 'rehype-stringify'
+import { remark } from 'remark'
+import remarkMdx from 'remark-mdx'
+import remarkRehype from 'remark-rehype'
+import { BlogData, BlogTOC } from '@/lib/types'
 
 const BLOG_DIR = 'content/blog'
 
@@ -10,39 +14,44 @@ function getFile(filePath: string): string {
   return fs.readFileSync(filePath, 'utf8')
 }
 
-export function getBlogMetadata(slug: string): BlogMetadata {
+export function getBlogData(slug: string): BlogData {
   const filePath = path.join(process.cwd(), BLOG_DIR, `${slug}.mdx`)
   const fileContent = getFile(filePath)
-  const { data } = matter(fileContent)
+  const { data, content } = matter(fileContent)
+
+  // EXPLAIN: 移除 MDX 中引入元件的 import path
+  const removeImportsContent = content
+    .split('\n')
+    .filter((line) => !/^\s*(import)\s/.test(line))
+    .join('\n')
+
+  const contentHTML = remark().use(remarkMdx).use(remarkRehype).use(rehypeStringify).processSync(removeImportsContent).toString()
 
   return {
     slug,
     ...data,
-  } as BlogMetadata
+    content: contentHTML,
+  } as BlogData
 }
 
-export function getAllBlogMetadata(): BlogMetadata[] {
+export function getAllBlogData(): BlogData[] {
   return fs
     .readdirSync(path.join(process.cwd(), BLOG_DIR))
     .filter((file) => file.endsWith('.mdx'))
     .map((file) => {
       const slug = file.replace(/\.mdx$/, '')
-      const metadata = getBlogMetadata(slug)
-      return metadata.isPublished ? metadata : null // EXPLAIN: Filter out unpublished posts
+      const data = getBlogData(slug)
+      return data.isPublished ? data : null // EXPLAIN: Filter out unpublished posts
     })
     .filter(Boolean)
-    .sort((a, b) => new Date(b!.publishedOn).getTime() - new Date(a!.publishedOn).getTime()) as BlogMetadata[]
+    .sort((a, b) => new Date(b!.publishedOn).getTime() - new Date(a!.publishedOn).getTime()) as BlogData[]
 }
 
 export function getAllBlogTags(): string[] {
-  const allMetadata = getAllBlogMetadata()
-  const allTags = allMetadata.flatMap((metadata) => metadata.tags)
+  const allData = getAllBlogData()
+  const allTags = allData.flatMap((data) => data.tags)
   const uniqueTags = Array.from(new Set(allTags))
   return uniqueTags.sort((a, b) => a.localeCompare(b))
-}
-
-export function getRecentBlogMetadata(): BlogMetadata[] {
-  return getAllBlogMetadata().slice(0, 3)
 }
 
 export function getBlogTOC(slug: string): BlogTOC {

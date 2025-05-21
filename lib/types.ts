@@ -1,4 +1,4 @@
-export type BlogMetadata = {
+export type BlogData = {
   slug: string
   title: string
   description: string
@@ -6,6 +6,7 @@ export type BlogMetadata = {
   publishedOn: Date
   isPublished: boolean
   coverImageUrl: string | null
+  content: string
 }
 
 export type Project = {

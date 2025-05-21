@@ -2,10 +2,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ImageContainer } from '@/components/ImageContainer'
 import { Badge } from '@/components/ui/badge'
-import type { BlogMetadata } from '@/lib/types'
+import type { BlogData } from '@/lib/types'
 import { formatDate } from '@/lib/utils'
 
-export function BlogPostCard({ slug, title, description, publishedOn, tags, coverImageUrl }: BlogMetadata) {
+export function BlogPostCard({ slug, title, description, publishedOn, tags, coverImageUrl }: BlogData) {
   const defaultCoverImage = '/og.png'
 
   return (
