@@ -17,6 +17,12 @@ export const metadata: Metadata = {
   },
   description: 'Website of Yiwei Su, Creative Developer.',
   metadataBase: new URL('https://yeeway.dev'),
+  alternates: {
+    canonical: 'https://yeeway.dev',
+    types: {
+      'application/rss+xml': [{ url: 'feed.xml', title: 'yeeway.dev' }],
+    },
+  },
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

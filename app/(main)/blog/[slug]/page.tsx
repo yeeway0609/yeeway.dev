@@ -57,7 +57,7 @@ export function generateStaticParams() {
   return slugs
 }
 
-export async function generatedata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const DEFAULT_OG_IMAGE = '/og.png'
   const slug = (await params).slug
   const data = getBlogData(slug)
