@@ -11,7 +11,7 @@ function buildRssXml(posts: BlogData[]): string {
           <title>${post.title}</title>
           <link>${SITE_LINK}/blog/${post.slug}</link>
           <pubDate>${new Date(post.publishedOn).toUTCString()}</pubDate>
-          <enclosure url="${post.coverImageUrl ? post.coverImageUrl : DEFAULT_COVER_IMAGE}" type="image/jpeg" />
+          <enclosure url="${post.coverImageUrl ? `${SITE_LINK}${post.coverImageUrl}` : `${SITE_LINK}${DEFAULT_COVER_IMAGE}`}" type="image/png" />
           <description><![CDATA[ ${post.content} ]]></description>
         </item>
       `
