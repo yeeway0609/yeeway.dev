@@ -10,13 +10,13 @@ export function BlogPostCard({ slug, title, description, publishedOn, labels, co
 
   return (
     <Link
-      className="bg-card text-card-foreground @container flex min-h-40 w-full max-w-[600px] cursor-pointer flex-col overflow-clip rounded-lg border shadow-xs transition-transform hover:scale-105 sm:flex-row"
+      className="bg-card text-card-foreground @container flex min-h-48 w-full max-w-[640px] cursor-pointer flex-col overflow-clip rounded-lg border shadow-xs transition-transform hover:scale-105 sm:flex-row"
       href={`blog/${slug}`}
       title={`Post: ${title}`}
     >
-      <ImageContainer className="w-full shrink-0 sm:max-w-64">
+      <ImageContainer className="w-full shrink-0 sm:max-w-72">
         <Image
-          className="size-full max-h-44 object-cover"
+          className="size-full max-h-48 object-cover"
           src={coverImageUrl ?? defaultCoverImage}
           alt={`${title} - 封面`}
           width={300}

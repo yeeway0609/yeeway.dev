@@ -12,7 +12,7 @@ export default function Page() {
     <main className="layout-container mb-20">
       <h1 className="page-title">Projects</h1>
       <h2 className="page-sub-title">Showcase of my works or interesting plans.</h2>
-      <div className="grid grid-cols-1 place-items-center gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="flex flex-wrap gap-5">
         {projectsData.map((project: Project) => (
           <ProjectCard key={project.title} {...project} />
         ))}

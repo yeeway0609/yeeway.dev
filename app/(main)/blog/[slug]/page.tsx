@@ -17,7 +17,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     <main className="mb-20 w-full">
       <ScrollProgress className="top-header h-[1.5px]" />
 
-      <div className="layout-container flex items-start justify-evenly lg:gap-6">
+      <div className="layout-container flex items-start justify-between lg:gap-6">
         <div className="w-full max-w-3xl">
           <h1 className="mt-4 mb-2 text-3xl font-bold break-all sm:mt-8 sm:text-5xl sm:leading-tight sm:break-normal">{metadata.title}</h1>
           <p className="text-muted-foreground mb-3 text-sm sm:text-lg">{metadata.description}</p>
