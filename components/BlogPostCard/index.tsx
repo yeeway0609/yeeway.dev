@@ -5,12 +5,12 @@ import { Badge } from '@/components/ui/badge'
 import type { BlogMetadata } from '@/lib/types'
 import { formatDate } from '@/lib/utils'
 
-export function BlogPostCard({ slug, title, description, publishedOn, labels, coverImageUrl }: BlogMetadata) {
+export function BlogPostCard({ slug, title, description, publishedOn, tags, coverImageUrl }: BlogMetadata) {
   const defaultCoverImage = '/og.png'
 
   return (
     <Link
-      className="bg-card text-card-foreground @container flex min-h-48 w-full max-w-[640px] cursor-pointer flex-col overflow-clip rounded-lg border shadow-xs transition-transform hover:scale-105 sm:flex-row"
+      className="bg-card text-card-foreground @container flex min-h-48 w-full cursor-pointer flex-col overflow-clip rounded-lg border shadow-xs transition-transform hover:scale-105 sm:flex-row"
       href={`blog/${slug}`}
       title={`Post: ${title}`}
     >
@@ -32,9 +32,9 @@ export function BlogPostCard({ slug, title, description, publishedOn, labels, co
           <time className="mt-0.5">{formatDate(publishedOn)}</time>
           <span className="mx-2.5 text-[8px]">•</span>
           <div className="flex">
-            {labels.map((label: any) => (
-              <Badge key={label} className="hover:bg-primary mr-2 font-medium">
-                #{label}
+            {tags.map((tag) => (
+              <Badge key={tag} className="hover:bg-primary mr-2 font-medium">
+                #{tag}
               </Badge>
             ))}
           </div>

@@ -108,7 +108,7 @@
 
 @layer components {
   .layout-container {
-    @apply mx-auto w-full max-w-7xl px-4 md:px-20;
+    @apply mx-auto w-full max-w-7xl px-4 md:px-18;
   }
 
   .name-gradient {

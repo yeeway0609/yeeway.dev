@@ -14,7 +14,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const { default: PostContent } = await import(`@/content/blog/${slug}.mdx`)
 
   return (
-    <main className="mb-20 w-full">
+    <main className="w-full pb-20">
       <ScrollProgress className="top-header h-[1.5px]" />
 
       <div className="layout-container flex items-start justify-between lg:gap-6">
@@ -30,9 +30,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
           <div className="mb-4 flex items-center">
             <time className="text-muted-foreground mr-4 pt-0.5 text-lg">{formatDate(metadata.publishedOn)}</time>
-            {metadata.labels.map((label) => (
-              <Badge key={label} className="mr-2 text-xs font-medium">
-                #{label}
+            {metadata.tags.map((tag) => (
+              <Badge key={tag} className="mr-2 text-xs font-medium">
+                #{tag}
               </Badge>
             ))}
           </div>

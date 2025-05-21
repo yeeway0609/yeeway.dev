@@ -34,6 +34,13 @@ export function getAllBlogMetadata(): BlogMetadata[] {
     .sort((a, b) => new Date(b!.publishedOn).getTime() - new Date(a!.publishedOn).getTime()) as BlogMetadata[]
 }
 
+export function getAllBlogTags(): string[] {
+  const allMetadata = getAllBlogMetadata()
+  const allTags = allMetadata.flatMap((metadata) => metadata.tags)
+  const uniqueTags = Array.from(new Set(allTags))
+  return uniqueTags.sort((a, b) => a.localeCompare(b))
+}
+
 export function getRecentBlogMetadata(): BlogMetadata[] {
   return getAllBlogMetadata().slice(0, 3)
 }

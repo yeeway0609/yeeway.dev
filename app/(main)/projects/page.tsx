@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <main className="layout-container mb-20">
+    <main className="layout-container pb-20">
       <h1 className="page-title">Projects</h1>
       <h2 className="page-sub-title">Showcase of my works or interesting plans.</h2>
       <div className="flex flex-wrap gap-5">

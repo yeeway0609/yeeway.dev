@@ -2,7 +2,7 @@ export type BlogMetadata = {
   slug: string
   title: string
   description: string
-  labels: string[]
+  tags: string[]
   publishedOn: Date
   isPublished: boolean
   coverImageUrl: string | null
