@@ -10,16 +10,19 @@ function buildRssXml(posts: BlogData[]): string {
         <item>
           <title>${post.title}</title>
           <link>${SITE_LINK}/blog/${post.slug}</link>
+          <guid isPermaLink="true">${SITE_LINK}/blog/${post.slug}</guid>
           <pubDate>${new Date(post.publishedOn).toUTCString()}</pubDate>
           <enclosure url="${post.coverImageUrl ? `${SITE_LINK}${post.coverImageUrl}` : `${SITE_LINK}${DEFAULT_COVER_IMAGE}`}" type="image/png" />
-          <description><![CDATA[ ${post.content} ]]></description>
+          ${post.tags.map((tag) => `<category>${tag}</category>`).join('')}
+          <description><![CDATA[ ${post.description} ]]></description>
+          <content:encoded><![CDATA[ ${post.content} ]]></content:encoded>
         </item>
       `
     )
     .join('')
 
   return `<?xml version="1.0" encoding="UTF-8" ?>
-    <rss version="2.0">
+    <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
       <channel>
         <title>${SITE_TITLE}</title>
         <link>${SITE_LINK}</link>
