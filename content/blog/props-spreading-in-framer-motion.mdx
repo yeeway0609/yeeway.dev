@@ -9,35 +9,33 @@ isPublished: true
 coverImageUrl: null
 ---
 
-import { CodeBlock } from '@/components/CodeBlock'
-
 在 React 中，使用 Props Spreading（物件展開運算符 `...`）是一種簡潔而強大的方法來傳遞大量的屬性。而在 [Motion](https://motion.dev/) (前身為 Framer Motion) 的開發中，這個技巧更能幫助我們有效地組織動畫物件，讓程式碼更可讀且易於維護。
 
 這篇文章將介紹如何使用 Props Spreading 的方式，將動畫參數物件傳遞給 Motion 的 `motion` 元件，並展示一些實用的應用場景。
 
 ## 什麼是 Props Spreading？
 
-Props Spreading 是指將一個物件的所有 key-value，展開作為元件的 `props` 傳遞。這種方式很適合用在一個元件有很大量的 props 時並且 props 名稱與物件的 key 值相同時，在 [React 官方文檔](https://react.dev/learn/passing-props-to-a-component#forwarding-props-with-the-jsx-spread-syntax)也有介紹這個寫法。另外當我們的資料是一個格式固定的列表時，也適合用 map 函式迭代渲染出元件。
+Props Spreading 是指將一個物件的所有 key-value，展開作為元件的 `props` 傳遞。這種方式很適合用在一個元件有很大量的 props 時並且 props 名稱與物件的 key 值相同時，在 [React 官方文檔](https://react.dev/learn/passing-props-to-a-component#forwarding-props-with-the-jsx-spread-syntax)也有介紹這個寫法。另外當我們的資料是一個格式固定的列表時，也適合用 map 函式迭代渲染出元件。  
 
 原本的寫法：
 
-<CodeBlock lang="jsx" icon="react">
-  {`const alex = { name: 'Alex', age: 20, email: 'alex@example.com', mbti: 'ISFJ'}
-  const becky  = { name: 'Becky', age: 27, email: 'becky@example.com', mbti: 'ISFJ' }
-  const cindy = { name: 'Cindy', age: 29, email: 'cindy@example.com', mbti: 'ISFJ' }
+```jsx
+const alex = { name: 'Alex', age: 20, email: 'alex@example.com', mbti: 'ISFJ'}
+const becky  = { name: 'Becky', age: 27, email: 'becky@example.com', mbti: 'ISFJ' }
+const cindy = { name: 'Cindy', age: 29, email: 'cindy@example.com', mbti: 'ISFJ' }
 
-  <Profile name={alex.name} age={alex.age} email={alex.email} mbti={alex.mbti} />
-  <Profile name={becky.name} age={becky.age} email={becky.email} mbti={becky.mbti} />
-  <Profile name={cindy.name} age={cindy.age} email={cindy.email} mbti={cindy.mbti} />`}
-</CodeBlock>
+<Profile name={alex.name} age={alex.age} email={alex.email} mbti={alex.mbti} />
+<Profile name={becky.name} age={becky.age} email={becky.email} mbti={becky.mbti} />
+<Profile name={cindy.name} age={cindy.age} email={cindy.email} mbti={cindy.mbti} />
+```
 
 改用 Props Spreading 的寫法：
 
-<CodeBlock lang="jsx" icon="react">
-  {`<Profile {...alex} />
-  <Profile {...becky} />
-  <Profile {...cindy} />`}
-</CodeBlock>
+```jsx
+<Profile {...alex} />
+<Profile {...becky} />
+<Profile {...cindy} />
+```
 
 ## 在 Motion 中的應用
 
@@ -45,66 +43,63 @@ Motion的 `motion` 元件通常需要接收多個動畫屬性，例如 `initial`
 
 原本的 `motion` 元件寫法：
 
-<CodeBlock lang="jsx" icon="react">
-  {`<motion.div
-    className="size-10 bg-slate-500"
-    initial={{ scale: 0, x: 0, y: 0 }}
-    animate={{ scale: 2, x: 100, y: 200 }}
-    transition={{ duration: 1 }}
-  />`}
-</CodeBlock>
+```jsx
+<motion.div
+  className="size-10 bg-slate-500"
+  initial={{ scale: 0, x: 0, y: 0 }}
+  animate={{ scale: 2, x: 100, y: 200 }}
+  transition={{ duration: 1 }}
+/>
+```
 
 改用 Props Spreading 的寫法：
 
-<CodeBlock lang="jsx" icon="react">
-  {`const animationProps = {
-    initial: { scale: 0, x: 0, y: 0 },
-    animate: { scale: 2, x: 100, y: 200 },
-    transition: { duration: 1 },
-  }
+```jsx
+const animationProps = {
+  initial: { scale: 0, x: 0, y: 0 },
+  animate: { scale: 2, x: 100, y: 200 },
+  transition: { duration: 1 },
+}
 
-  <motion.div className="size-10 bg-slate-500" {...animationProps} />
-  `}
-</CodeBlock>
+<motion.div className="size-10 bg-slate-500" {...animationProps} />
+```
 
 ## 動畫模板的重用
 
 如果某個頁面中需要用到大量或是重複的 `motion` 元件的話，我們也可以將這些動畫屬性物件抽離至另一個 utility 檔案中
 
-<CodeBlock lang="jsx" title="animations.js" icon="js">
-  {`export const fadeIn = {
-    initial: { opacity: 0 },
-    whileInView: { opacity: 1 },
-    transition: { duration: 0.5 },
-  }
+```js filename="animations.js"
+export const fadeIn = {
+  initial: { opacity: 0 },
+  whileInView: { opacity: 1 },
+  transition: { duration: 0.5 },
+}
 
-  export const slideUp = {
-    initial: { opacity: 0, y: 50 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.7 },
-  }
-  `}
-</CodeBlock>
+export const slideUp = {
+  initial: { opacity: 0, y: 50 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.7 },
+}
+```
 
 在元件中重用這些模板：
 
-<CodeBlock lang="jsx" icon="react">
-  {`import { motion } from "motion/react"
-  import { fadeIn, slideUp } from "./animations"
+```jsx
+import { motion } from "motion/react"
+import { fadeIn, slideUp } from "./animations"
 
-  function Page() {
-    return (
-      <motion.section id="hero-section" {...fadeIn}>
-        ...
-      </motion.section>
+function Page() {
+  return (
+    <motion.section id="hero-section" {...fadeIn}>
+      ...
+    </motion.section>
 
-      <motion.section id="about-section" {...fadeIn}>
-        ...
-      </motion.section>
-    )
-  }
-  `}
-</CodeBlock>
+    <motion.section id="about-section" {...fadeIn}>
+      ...
+    </motion.section>
+  )
+}
+```
 
 ## 總結用 Props Spreading 的好處
 

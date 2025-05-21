@@ -173,4 +173,8 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+
+  .content-text {
+    @apply text-foreground text-base leading-normal break-words sm:text-xl;
+  }
 }

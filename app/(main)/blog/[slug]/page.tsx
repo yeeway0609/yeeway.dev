@@ -38,7 +38,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           </div>
           <hr className="bg-border mb-5 h-0.5" />
 
-          <article className="text-foreground w-full text-base leading-normal break-words sm:text-xl">
+          <article className="content-text w-full">
             <PostContent />
           </article>
         </div>

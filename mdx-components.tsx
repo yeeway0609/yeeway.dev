@@ -1,9 +1,12 @@
 import type { MDXComponents } from 'mdx/types'
 import Image from 'next/image'
+import type { BundledLanguage } from 'shiki'
+import { CodeBlock } from '@/components/CodeBlock'
 import { ImageContainer } from '@/components/ImageContainer'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
+    p: ({ children }) => <p className="content-text my-6">{children}</p>,
     h2: ({ children }) => (
       <h2 id={children as string} className="text-primary mt-6 mb-4 scroll-mt-20 text-2xl leading-tight font-bold sm:text-3xl">
         {children}
@@ -27,7 +30,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     th: ({ children }) => <th className="border px-3 py-1">{children}</th>,
     td: ({ children }) => <td className="border px-3 py-1">{children}</td>,
     strong: ({ children }) => <strong className="font-bold">{children}</strong>,
-    pre: ({ children }) => <pre className="my-2 overflow-y-hidden rounded bg-gray-200 p-4 dark:bg-gray-700">{children}</pre>,
     a: ({ children, href }) => (
       <a
         className="cursor-pointer font-bold text-blue-400 underline underline-offset-2 hover:text-blue-600"
@@ -43,18 +45,26 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <ImageContainer className="mx-auto my-6 w-fit">
         <Image {...props} alt={props.alt ?? 'image'} />
       </ImageContainer>
-      // <div className="relative ">
-      //   <div className="absolute size-full animate-pulse bg-gray-300 dark:bg-gray-800" />
-      // </div>
     ),
+    pre: (props) => {
+      const codeElement = props.children
+      if (codeElement && codeElement.type === 'code') {
+        const { children, className } = codeElement.props as { children: string; className?: string }
+        const lang = className?.replace('language-', '') as BundledLanguage
+
+        return (
+          <CodeBlock lang={lang} fileName={props['filename']}>
+            {children}
+          </CodeBlock>
+        )
+      }
+      return <pre {...props} />
+    },
     ...components,
 
-    // DEPRECATED: 文章裡面只會出現 h2 和 h3，配合 TOC 的架構
+    // DEPRECATED: 文章裡面只能出現 h2 和 h3，配合 TOC 的架構
     // h4: ({ children }) => <h4 className="mt-6 mb-4 leading-none font-bold">{children}</h4>,
     // h5: ({ children }) => <h5 className="mt-6 mb-4 leading-tight font-bold">{children}</h5>,
     // h6: ({ children }) => <h6 className="text-muted-foreground mt-6 mb-4 leading-tight font-bold">{children}</h6>,
-
-    // DEPRECATED: code 統一用 CodeBlock 這個元件
-    // code: ({ children }) => <code className="rounded bg-gray-200 font-mono text-sm dark:bg-gray-700">{children}</code>,
   }
 }
