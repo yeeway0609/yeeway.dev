@@ -65,6 +65,11 @@ const profileLinks = [
       </svg>
     ),
   },
+  {
+    name: 'RSS',
+    href: '/feed.xml',
+    icon: <Icon icon="mingcute:rss-line" className="size-7 sm:size-8" />,
+  },
 ]
 
 const images: CarouselImage[] = [
@@ -125,7 +130,11 @@ export default function Page() {
             <TooltipProvider key={link.name}>
               <Tooltip delayDuration={0}>
                 <TooltipTrigger asChild>
-                  <a className="text-zinc-600 transition-colors hover:text-zinc-400 dark:text-zinc-400 dark:hover:text-zinc-200" href={link.href}>
+                  <a
+                    className="text-zinc-600 transition-colors hover:text-zinc-400 dark:text-zinc-400 dark:hover:text-zinc-200"
+                    href={link.href}
+                    target="_blank"
+                  >
                     {link.icon}
                   </a>
                 </TooltipTrigger>
