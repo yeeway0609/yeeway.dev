@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { SITE_LINK, SITE_TITLE, SITE_DESCRIPTION } from '@/lib/constants'
+import { SITE_LINK, SITE_TITLE, SITE_DESCRIPTION, DEFAULT_COVER_IMAGE } from '@/lib/constants'
 import { getAllBlogData } from '@/lib/mdx.utils'
 import { BlogData } from '@/lib/types'
 
@@ -11,8 +11,8 @@ function buildRssXml(posts: BlogData[]): string {
           <title>${post.title}</title>
           <link>${SITE_LINK}/blog/${post.slug}</link>
           <pubDate>${new Date(post.publishedOn).toUTCString()}</pubDate>
-          <description><![CDATA[ ${post.content ?? ''} ]]></description>
-          <enclosure url="${post.coverImageUrl}" type="image/jpeg" />
+          <enclosure url="${post.coverImageUrl ? post.coverImageUrl : DEFAULT_COVER_IMAGE}" type="image/jpeg" />
+          <description><![CDATA[ ${post.content} ]]></description>
         </item>
       `
     )

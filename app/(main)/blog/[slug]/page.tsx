@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { ImageContainer } from '@/components/ImageContainer'
 import { ScrollProgress } from '@/components/magicui/scroll-progress'
 import { Badge } from '@/components/ui/badge'
+import { DEFAULT_COVER_IMAGE } from '@/lib/constants'
 import { getBlogData, getAllBlogData, getBlogTOC } from '@/lib/mdx.utils'
 import { formatDate } from '@/lib/utils'
 import { TableOfContents } from './TableOfContents'
@@ -58,7 +59,6 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const DEFAULT_OG_IMAGE = '/og.png'
   const slug = (await params).slug
   const data = getBlogData(slug)
 
@@ -72,7 +72,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url: `/blog/${slug}`,
       images: [
         {
-          url: data.coverImageUrl ?? DEFAULT_OG_IMAGE,
+          url: data.coverImageUrl ?? DEFAULT_COVER_IMAGE,
           width: 1200,
           height: 630,
         },

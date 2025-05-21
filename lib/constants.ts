@@ -4,6 +4,8 @@ export const SITE_LINK = 'https://yeeway.dev'
 
 export const SITE_DESCRIPTION = 'Website of Yiwei Su, Creative Developer.'
 
+export const DEFAULT_COVER_IMAGE = `/og.png`
+
 export const Profile = {
   EMAIL: 'hi@yeeway.dev',
   GITHUB: 'https://github.com/yeeway0609',
