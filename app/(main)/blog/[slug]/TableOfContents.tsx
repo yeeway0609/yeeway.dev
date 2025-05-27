@@ -1,3 +1,4 @@
+// TODO: 在手機版會縮小，目前先單純隱藏
 'use client'
 
 import { useEffect, useState } from 'react'
@@ -31,25 +32,23 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
   }, [])
 
   return (
-    <nav className="top-header sticky z-10 hidden w-60 shrink-0 overflow-y-auto pt-6 lg:block">
-      <ul className="">
-        <div className="flex text-xl">
-          <Icon icon="quill:list" className="mr-1 mb-2 size-7" />
-          <span>目錄</span>
-        </div>
-        {toc.map(({ level, heading }) => (
-          <li
-            key={heading}
-            className={clsx(
-              'text-muted-foreground hover:text-foreground mb-2 text-base',
-              level === 3 ? 'ml-4 text-sm' : '',
-              heading === activeHeading ? 'text-primary' : ''
-            )}
-          >
-            <a href={`#${heading}`}>{heading}</a>
-          </li>
-        ))}
-      </ul>
+    <nav className="top-header sticky z-10 hidden max-h-[calc(100vh-var(--spacing-header))] w-60 shrink-0 list-none overflow-y-auto py-6 lg:block">
+      <div className="flex text-xl">
+        <Icon icon="quill:list" className="mr-1 mb-2 size-7" />
+        <span>目錄</span>
+      </div>
+      {toc.map(({ level, heading }) => (
+        <li
+          key={heading}
+          className={clsx(
+            'text-muted-foreground hover:text-foreground mb-2 text-base',
+            level === 3 ? 'ml-4 text-sm' : '',
+            heading === activeHeading ? 'text-primary' : ''
+          )}
+        >
+          <a href={`#${heading}`}>{heading}</a>
+        </li>
+      ))}
     </nav>
   )
 }

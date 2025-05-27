@@ -32,7 +32,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     strong: ({ children }) => <strong className="font-bold">{children}</strong>,
     a: ({ children, href }) => (
       <a
-        className="cursor-pointer font-bold text-blue-400 underline underline-offset-2 hover:text-blue-600"
+        className="cursor-pointer font-bold text-blue-400 underline underline-offset-4 hover:text-blue-600"
         href={href}
         target="_blank"
         rel="noopener"

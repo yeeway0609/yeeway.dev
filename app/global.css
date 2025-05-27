@@ -20,6 +20,7 @@
   --animate-badge-popup: badge-popup 3s;
   --animate-fade-in: fade-in 0.5s ease-in forwards; /* 要等 SplitTitle 跑完 */
   --animate-slide-in-right: slide-in-right 0.3s ease-in-out forwards;
+  --animate-img-loading: img-loading 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 @theme inline {
@@ -97,7 +98,7 @@
 
 @layer base {
   * {
-    @apply border-border transition-[background-color] duration-300 ease-in-out;
+    @apply border-border scroll-smooth transition-[background-color] duration-300 ease-in-out;
   }
 
   body {
@@ -156,10 +157,19 @@
       opacity: 0;
       transform: translateX(-20px);
     }
-
     to {
       opacity: 1;
       transform: translateX(0);
+    }
+  }
+
+  @keyframes img-loading {
+    0%,
+    100% {
+      background-color: var(--muted);
+    }
+    50% {
+      background-color: color-mix(in oklab, var(--muted) 50%, transparent);
     }
   }
 }
