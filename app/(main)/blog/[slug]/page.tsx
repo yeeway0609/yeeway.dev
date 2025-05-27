@@ -1,3 +1,4 @@
+import { Icon } from '@iconify/react'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { ScrollProgress } from '@/components/magicui/scroll-progress'
@@ -19,9 +20,18 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
       <div className="layout-container flex items-start justify-between lg:gap-6">
         <div className="w-full max-w-3xl">
-          <h1 className="mt-4 mb-2 text-3xl font-bold break-all sm:mt-8 sm:text-5xl sm:leading-tight sm:break-normal">{data.title}</h1>
-          <p className="text-muted-foreground mb-3 text-sm sm:text-lg">{data.description}</p>
+          <h1 className="mt-4 mb-2 text-2xl font-bold break-all sm:mt-8 sm:text-3xl sm:leading-tight sm:break-normal">{data.title}</h1>
+          <p className="text-muted-foreground content-text mb-3">{data.description}</p>
 
+          <div className="mb-4 flex items-center">
+            <Icon icon="uil:calender" className="text-muted-foreground mr-2 size-4" />
+            <time className="text-muted-foreground mr-4 pt-0.5 text-sm sm:text-base">{formatDate(data.publishedOn)}</time>
+            {data.tags.map((tag) => (
+              <Badge key={tag} className="mr-2 px-1.5 py-px text-xs font-medium">
+                #{tag}
+              </Badge>
+            ))}
+          </div>
           {data.coverImageUrl && (
             <Image
               className="animate-img-loading mb-4 w-full"
@@ -32,16 +42,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
               priority
             />
           )}
-
-          <div className="mb-4 flex items-center">
-            <time className="text-muted-foreground mr-4 pt-0.5 text-lg">{formatDate(data.publishedOn)}</time>
-            {data.tags.map((tag) => (
-              <Badge key={tag} className="mr-2 text-xs font-medium">
-                #{tag}
-              </Badge>
-            ))}
-          </div>
-          <hr className="bg-border mb-5 h-0.5" />
 
           <article className="content-text [&_img]:animate-img-loading w-full [&_img]:mx-auto [&_img]:mb-6 [&_video]:mx-auto">
             <PostContent />

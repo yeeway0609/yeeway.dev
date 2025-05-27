@@ -12,7 +12,7 @@ function buildRssXml(posts: BlogData[]): string {
           <link>${SITE_LINK}/blog/${post.slug}</link>
           <guid isPermaLink="true">${SITE_LINK}/blog/${post.slug}</guid>
           <pubDate>${new Date(post.publishedOn).toUTCString()}</pubDate>
-          <enclosure url="${post.coverImageUrl ? `${SITE_LINK}${post.coverImageUrl}` : `${SITE_LINK}${DEFAULT_COVER_IMAGE}`}" type="image/png" />
+          <enclosure url="${post.coverImageUrl ? post.coverImageUrl : `${SITE_LINK}${DEFAULT_COVER_IMAGE}`}" type="image/png" />
           ${post.tags.map((tag) => `<category>${tag}</category>`).join('')}
           <description><![CDATA[ ${post.description} ]]></description>
           <content:encoded><![CDATA[ ${post.content} ]]></content:encoded>

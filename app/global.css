@@ -124,6 +124,10 @@
     @apply animate-slide-in-right text-muted-foreground mt-3 pb-8 text-xl opacity-0 delay-100 sm:pb-12 sm:text-2xl;
   }
 
+  .content-text {
+    @apply text-foreground text-base leading-normal break-words sm:text-lg;
+  }
+
   @keyframes badge-popup {
     0% {
       scale: 0.1;
@@ -182,9 +186,5 @@
   .hide-scrollbar {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
-  }
-
-  .content-text {
-    @apply text-foreground text-base leading-normal break-words sm:text-xl;
   }
 }

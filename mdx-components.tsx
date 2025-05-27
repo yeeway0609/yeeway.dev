@@ -7,7 +7,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     p: ({ children }) => <p className="content-text my-6">{children}</p>,
     h2: ({ children }) => (
-      <h2 id={children as string} className="text-primary mt-6 mb-4 scroll-mt-20 text-2xl leading-tight font-bold sm:text-3xl">
+      <h2 id={children as string} className="text-primary mt-6 mb-4 scroll-mt-20 text-xl leading-tight font-bold sm:text-2xl">
         {children}
       </h2>
     ),
