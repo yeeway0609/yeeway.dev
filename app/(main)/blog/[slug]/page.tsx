@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { ImageContainer } from '@/components/ImageContainer'
 import { ScrollProgress } from '@/components/magicui/scroll-progress'
 import { Badge } from '@/components/ui/badge'
 import { DEFAULT_COVER_IMAGE } from '@/lib/constants'
@@ -24,9 +23,14 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           <p className="text-muted-foreground mb-3 text-sm sm:text-lg">{data.description}</p>
 
           {data.coverImageUrl && (
-            <ImageContainer className="mb-4 w-full">
-              <Image className="size-full" src={data.coverImageUrl} alt={`${data.title} - 封面`} width={600} height={315} priority />
-            </ImageContainer>
+            <Image
+              className="animate-img-loading mb-4 w-full"
+              src={data.coverImageUrl}
+              alt={`${data.title} - 封面`}
+              width={600}
+              height={315}
+              priority
+            />
           )}
 
           <div className="mb-4 flex items-center">
@@ -39,7 +43,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           </div>
           <hr className="bg-border mb-5 h-0.5" />
 
-          <article className="content-text w-full">
+          <article className="content-text [&_img]:animate-img-loading w-full [&_img]:mx-auto [&_img]:mb-6 [&_video]:mx-auto">
             <PostContent />
           </article>
         </div>

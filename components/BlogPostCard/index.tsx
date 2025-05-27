@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ImageContainer } from '@/components/ImageContainer'
 import { Badge } from '@/components/ui/badge'
 import { DEFAULT_COVER_IMAGE } from '@/lib/constants'
 import type { BlogData } from '@/lib/types'
@@ -13,16 +12,16 @@ export function BlogPostCard({ slug, title, description, publishedOn, tags, cove
       href={`blog/${slug}`}
       title={`Post: ${title}`}
     >
-      <ImageContainer className="w-full shrink-0 sm:max-w-72">
+      <div className="w-full shrink-0 sm:max-w-72">
         <Image
-          className="size-full max-h-48 object-cover"
+          className="animate-img-loading size-full max-h-[180px] object-cover sm:max-h-none"
           src={coverImageUrl ?? DEFAULT_COVER_IMAGE}
           alt={`${title} - 封面`}
           width={300}
           height={200}
           priority
         />
-      </ImageContainer>
+      </div>
 
       <div className="flex w-full flex-col p-4 sm:p-5">
         <h3 className="mb-2 text-xl font-semibold">{title}</h3>

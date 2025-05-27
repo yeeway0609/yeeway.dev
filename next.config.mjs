@@ -14,6 +14,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'avatars.githubusercontent.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'assets.yeeway.dev',
+      },
     ],
   },
   async rewrites() {
@@ -38,7 +42,7 @@ const withMDX = createMDX({
   options: {
     extension: /\.mdx?$/,
     remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
-    rehypePlugins: [[rehypeImageSize, { root: path.join(process.cwd(), 'public') }], rehypeMdxCodeProps],
+    rehypePlugins: [[rehypeImageSize, { root: path.join(process.cwd(), 'public'), filter: (src) => !/^https?:\/\//.test(src) }], rehypeMdxCodeProps],
   },
 })
 

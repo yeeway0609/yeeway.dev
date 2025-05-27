@@ -2,7 +2,6 @@ import type { MDXComponents } from 'mdx/types'
 import Image from 'next/image'
 import type { BundledLanguage } from 'shiki'
 import { CodeBlock } from '@/components/CodeBlock'
-import { ImageContainer } from '@/components/ImageContainer'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -41,11 +40,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </a>
     ),
-    img: (props) => (
-      <ImageContainer className="mx-auto my-6 w-fit">
-        <Image {...props} alt={props.alt ?? 'image'} />
-      </ImageContainer>
-    ),
+    img: (props) => <Image {...props} alt={props.alt ?? 'image'} />,
     pre: (props) => {
       const codeElement = props.children
       if (codeElement && codeElement.type === 'code') {
