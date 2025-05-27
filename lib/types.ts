@@ -6,8 +6,10 @@ export type BlogData = {
   publishedOn: Date
   isPublished: boolean
   coverImageUrl: string | null
-  content: string
+  content: string // HTML 字串
 }
+
+export type BlogMetadata = Omit<BlogData, 'content'>
 
 export type Project = {
   title: string
