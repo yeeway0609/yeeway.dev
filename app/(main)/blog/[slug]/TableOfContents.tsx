@@ -17,7 +17,7 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
     const headingElements = document.querySelectorAll('h2, h3')
 
     const observer = new IntersectionObserver(observerCallback, {
-      rootMargin: '-64px 0px -30% 0px', // EXPLAIN: 64px 是 Header 的高度，50% 代表畫面的中間高度
+      rootMargin: '-64px 0px -30% 0px', // EXPLAIN: 64px 是 Header 的高度
     })
 
     function observerCallback(entries: IntersectionObserverEntry[]) {
@@ -38,17 +38,22 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
         <span>目錄</span>
       </div>
       {toc.map(({ level, heading }) => (
-        <li
+        <a
           key={heading}
           className={clsx(
-            'text-muted-foreground hover:text-foreground mb-2 text-base',
+            'text-muted-foreground hover:text-foreground mb-2 block text-base',
             level === 3 ? 'ml-4 text-sm' : '',
             heading === activeHeading ? 'text-primary' : ''
           )}
+          href={`#${heading}`}
         >
-          <a href={`#${heading}`}>{heading}</a>
-        </li>
+          {heading}
+        </a>
       ))}
+      <a className="text-muted-foreground hover:text-foreground flex items-center text-base" href="#">
+        <Icon icon="icon-park-outline:arrow-circle-up" className="mr-1.5 size-4.5" />
+        <span className="-mb-px">回到頂端</span>
+      </a>
     </nav>
   )
 }

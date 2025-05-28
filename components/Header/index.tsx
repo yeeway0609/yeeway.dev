@@ -8,9 +8,9 @@ import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from '@/com
 import { ThemeSwitch } from './ThemeSwitch'
 
 const ROUTES = [
-  { title: 'Blog', href: '/blog', Icon: NewspaperIcon },
-  { title: 'Projects', href: '/projects', Icon: CommandLineIcon },
-  { title: 'About', href: '/about', Icon: UserIcon },
+  { title: '部落格', href: '/blog', Icon: NewspaperIcon },
+  { title: '專案', href: '/projects', Icon: CommandLineIcon },
+  { title: '關於我', href: '/about', Icon: UserIcon },
 ]
 
 export function Header() {

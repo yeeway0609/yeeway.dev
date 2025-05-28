@@ -21,16 +21,19 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ [
           {filteredDataList?.map((post: BlogData) => <BlogPostCard key={post.slug} {...post} />)}
         </section>
 
-        <aside className="flex w-full flex-wrap items-center justify-start gap-x-1.5 gap-y-1 lg:max-w-[330px]">
-          <h3 className="text-lg leading-none font-medium tracking-wide">Tags: </h3>
-          <Link href="/blog">
-            <Badge className={clsx('hover:bg-primary font-medium', currentTag ? 'bg-muted-foreground' : 'bg-primary')}>All</Badge>
-          </Link>
-          {tags.map((tag) => (
-            <Link key={tag} href={`/blog?tag=${tag}`}>
-              <Badge className={clsx('hover:bg-primary font-medium', currentTag === tag ? 'bg-primary' : 'bg-muted-foreground')}>#{tag}</Badge>
+        <aside className="w-full lg:max-w-[330px]">
+          <h3 className="text-lg leading-none font-medium tracking-wide">Tags</h3>
+          <hr className="border-muted-foreground mt-2 mb-3" />
+          <div className="flex flex-wrap items-center justify-start gap-2">
+            <Link href="/blog">
+              <Badge className={clsx('hover:bg-primary font-medium', currentTag ? 'bg-muted-foreground' : 'bg-primary')}>All</Badge>
             </Link>
-          ))}
+            {tags.map((tag) => (
+              <Link key={tag} href={`/blog?tag=${tag}`}>
+                <Badge className={clsx('hover:bg-primary font-medium', currentTag === tag ? 'bg-primary' : 'bg-muted-foreground')}>#{tag}</Badge>
+              </Link>
+            ))}
+          </div>
         </aside>
       </div>
     </main>

@@ -98,7 +98,7 @@
 
 @layer base {
   * {
-    @apply border-border scroll-smooth transition-[background-color] duration-300 ease-in-out;
+    @apply border-border scroll-smooth;
   }
 
   body {
