@@ -43,7 +43,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
             />
           )}
 
-          <article className="content-text [&_img]:animate-img-loading w-full [&_img]:mx-auto [&_img]:mb-6 [&_video]:mx-auto">
+          <article className="content-text [&_img]:animate-img-loading w-full [&_img]:mx-auto [&_video]:mx-auto">
             <PostContent />
           </article>
         </div>
