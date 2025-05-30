@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint . --fix && prettier --write ."
   },
+  "packageManager": "pnpm@10.11.0",
   "dependencies": {
     "@fontsource/commit-mono": "^5.0.1",
     "@heroicons/react": "^2.1.1",
