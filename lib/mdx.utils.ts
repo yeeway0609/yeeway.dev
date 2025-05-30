@@ -3,8 +3,8 @@ import path from 'path'
 import matter from 'gray-matter'
 import rehypeStringify from 'rehype-stringify'
 import { remark } from 'remark'
-import remarkMdx from 'remark-mdx'
 import remarkRehype from 'remark-rehype'
+import rehypeRaw from 'rehype-raw'
 import { BlogData, BlogTOC } from '@/lib/types'
 
 const BLOG_DIR = 'content/blog'
@@ -25,7 +25,12 @@ export function getBlogData(slug: string): BlogData {
     .filter((line) => !/^\s*(import)\s/.test(line))
     .join('\n')
 
-  const contentHTML = remark().use(remarkMdx).use(remarkRehype).use(rehypeStringify).processSync(removeImportsContent).toString()
+  const contentHTML = remark()
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeRaw)
+    .use(rehypeStringify)
+    .processSync(removeImportsContent)
+    .toString()
 
   return {
     slug,
