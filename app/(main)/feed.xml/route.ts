@@ -4,7 +4,7 @@ import { getAllBlogData } from '@/lib/mdx.utils'
 import { BlogData } from '@/lib/types'
 
 function buildRssXml(posts: BlogData[]): string {
-  const itemsXml = posts
+  const blogPostsXml = posts
     .map(
       (post) => `
         <item>
@@ -28,7 +28,11 @@ function buildRssXml(posts: BlogData[]): string {
         <link>${SITE_LINK}</link>
         <description>${SITE_DESCRIPTION}</description>
         <language>zh-TW</language>
-        ${itemsXml}
+        ${blogPostsXml}
+        <follow_challenge>
+          <feedId>148037044311473152</feedId>
+          <userId>132393965393202176</userId>
+        </follow_challenge>
       </channel>
     </rss>
   `
