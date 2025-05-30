@@ -42,8 +42,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     img: (props) => {
       const { src, alt } = props
-      const { altMessage, width, height } = parseImgAlt(alt)
-      return src && <Image src={src} alt={altMessage} width={width} height={height} />
+      const { altText, width, height } = parseImgAlt(alt)
+      return src && <Image src={src} alt={altText} width={width} height={height} />
     },
     pre: (props) => {
       const codeElement = props.children
@@ -73,19 +73,19 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
  * 狀況 2: ![說明文字](圖片網址)，只有 alt 文字但不指定寬高
  * 狀況 3: ![:600x400](圖片網址)，只指定寬高但 alt 文字為空
  */
-function parseImgAlt(alt?: string): { altMessage: string; width: number; height: number } {
+function parseImgAlt(alt?: string): { altText: string; width: number; height: number } {
   const DEFAULT_WIDTH = 768
   const DEFAULT_HEIGHT = 432
 
-  if (!alt) return { altMessage: '', width: DEFAULT_WIDTH, height: DEFAULT_HEIGHT }
+  if (!alt) return { altText: '', width: DEFAULT_WIDTH, height: DEFAULT_HEIGHT }
 
   const match = alt.match(/^(.*?):?(\d+)x(\d+)$/)
   if (match) {
-    const altMessage = match[1]?.trim() || ''
+    const altText = match[1]?.trim() || ''
     const width = Number(match[2])
     const height = Number(match[3])
-    return { altMessage, width, height }
+    return { altText, width, height }
   }
 
-  return { altMessage: alt, width: DEFAULT_WIDTH, height: DEFAULT_HEIGHT }
+  return { altText: alt, width: DEFAULT_WIDTH, height: DEFAULT_HEIGHT }
 }
