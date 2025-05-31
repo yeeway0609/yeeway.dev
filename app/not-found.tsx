@@ -2,12 +2,12 @@
 
 import { useEffect, useRef } from 'react'
 import clsx from 'clsx'
+import { usePathname } from 'next/navigation'
 import { UAParser } from 'ua-parser-js'
 import { Button } from '@/components/ui/button'
-import { usePathname } from 'next/navigation'
 
 export default function NotFound() {
-  const RICK_ROLL_URL = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  const RICK_ROLL_URL = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
   const pathname = usePathname()
   const bonkSoundRef = useRef<HTMLAudioElement | null>(null)
   const { device } = UAParser()

@@ -1,8 +1,8 @@
 'use client'
 
-import clsx from 'clsx'
 import { useState } from 'react'
 import { Icon } from '@iconify/react'
+import clsx from 'clsx'
 
 type CopyButtonProps = {
   text: string

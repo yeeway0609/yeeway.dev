@@ -1,10 +1,10 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import rehypeRaw from 'rehype-raw'
 import rehypeStringify from 'rehype-stringify'
 import { remark } from 'remark'
 import remarkRehype from 'remark-rehype'
-import rehypeRaw from 'rehype-raw'
 import { BlogData, BlogMetadata, BlogTOC } from '@/lib/types'
 
 const BLOG_DIR = 'content/blog'

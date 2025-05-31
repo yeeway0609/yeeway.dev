@@ -1,5 +1,5 @@
 {
-  "ignorePatterns": ["./components/ui/"],
+  "ignorePatterns": ["./components/ui/**", "./components/magicui/**"],
   "env": {
     "browser": true,
     "commonjs": true,
