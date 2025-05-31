@@ -1,16 +1,17 @@
 'use client'
 
 import { useState } from 'react'
-import { Bars3Icon, XMarkIcon, NewspaperIcon, UserIcon, CommandLineIcon } from '@heroicons/react/24/solid'
+import { Bars3Icon, XMarkIcon, NewspaperIcon, UserIcon, CommandLineIcon, BoltIcon } from '@heroicons/react/24/solid'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { ThemeSwitch } from './ThemeSwitch'
 
 const ROUTES = [
-  { title: '部落格', href: '/blog', Icon: NewspaperIcon },
-  { title: '專案', href: '/projects', Icon: CommandLineIcon },
-  { title: '關於我', href: '/about', Icon: UserIcon },
+  { title: 'Blog', href: '/blog', Icon: NewspaperIcon },
+  { title: 'Projects', href: '/projects', Icon: CommandLineIcon },
+  { title: 'About', href: '/about', Icon: UserIcon },
+  { title: 'Uses', href: '/uses', Icon: BoltIcon },
 ]
 
 export function Header() {
@@ -27,7 +28,7 @@ export function Header() {
         <nav className="hidden gap-x-6 sm:flex">
           {ROUTES.map((route) => (
             <Link key={route.title} className="hover:text-primary flex cursor-pointer bg-transparent text-sm" href={route.href}>
-              {<route.Icon className="mr-2 size-5" />}
+              {<route.Icon className="mr-1.5 size-5" />}
               <span>{route.title}</span>
             </Link>
           ))}

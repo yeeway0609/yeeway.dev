@@ -5,7 +5,7 @@ import { CodeBlock } from '@/components/CodeBlock'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    p: ({ children }) => <p className="content-text my-6">{children}</p>,
+    p: ({ children }) => <p className="content-text mb-4 sm:mb-6">{children}</p>,
     h2: ({ children }) => (
       <h2 id={children as string} className="text-primary mt-6 mb-4 scroll-mt-20 text-xl leading-tight font-bold sm:text-2xl">
         {children}
@@ -20,30 +20,35 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     blockquote: ({ children }) => (
       <blockquote className="border-muted-foreground text-muted-foreground my-4 border-l-4 pr-4 pl-4 text-sm sm:text-lg">{children}</blockquote>
     ),
-    ul: ({ children }) => <ul className="list-disc pl-8">{children}</ul>,
-    ol: ({ children }) => <ol className="list-decimal pl-8">{children}</ol>,
+    ul: ({ children }) => <ul className="content-text list-disc pl-8">{children}</ul>,
+    ol: ({ children }) => <ol className="content-text list-decimal pl-8">{children}</ol>,
     kbd: ({ children }) => (
       <kbd className="inline-block rounded border px-1 py-5 align-middle font-mono text-xs font-normal shadow-sm">{children}</kbd>
     ),
-    table: ({ children }) => <table className="border-gray-600 text-lg">{children}</table>,
+    table: ({ children }) => <table className="content-text border-gray-600 text-lg">{children}</table>,
     th: ({ children }) => <th className="border px-3 py-1">{children}</th>,
     td: ({ children }) => <td className="border px-3 py-1">{children}</td>,
-    strong: ({ children }) => <strong className="font-bold">{children}</strong>,
+    strong: ({ children }) => <strong className="content-text font-bold">{children}</strong>,
     a: ({ children, href }) => (
-      <a
-        className="cursor-pointer font-bold text-blue-400 underline underline-offset-4 hover:text-blue-600"
-        href={href}
-        target="_blank"
-        rel="noopener"
-        aria-label={children}
-      >
+      <a className="link" href={href} target="_blank" rel="noopener noreferrer" aria-label={children}>
         {children}
       </a>
     ),
     img: (props) => {
       const { src, alt } = props
       const { altText, width, height } = parseImgAlt(alt)
-      return src && <Image src={src} alt={altText} width={width} height={height} />
+      return (
+        src && (
+          <div className="group relative">
+            <Image src={src} alt={altText} width={width} height={height} />
+            {altText && (
+              <div className="absolute inset-0 flex size-full items-end bg-gradient-to-t from-black/50 via-black/0 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                <span className="px-3 py-2 text-sm font-bold">{altText}</span>
+              </div>
+            )}
+          </div>
+        )
+      )
     },
     pre: (props) => {
       const codeElement = props.children
@@ -60,11 +65,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       return <pre {...props} />
     },
     ...components,
-
-    // DEPRECATED: 文章裡面只能出現 h2 和 h3，配合 TOC 的架構
-    // h4: ({ children }) => <h4 className="mt-6 mb-4 leading-none font-bold">{children}</h4>,
-    // h5: ({ children }) => <h5 className="mt-6 mb-4 leading-tight font-bold">{children}</h5>,
-    // h6: ({ children }) => <h6 className="text-muted-foreground mt-6 mb-4 leading-tight font-bold">{children}</h6>,
   }
 }
 

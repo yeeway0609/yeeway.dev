@@ -41,7 +41,7 @@ export function ImageCarousel({ images, align = 'left' }: ImageCarouselProps) {
         )}
       >
         {images.map((image, index: number) => (
-          <motion.div
+          <motion.figure
             key={index}
             className="group relative shrink-0"
             style={{ width: image.width ?? 200, height: image.height ?? 200 }}
@@ -58,10 +58,10 @@ export function ImageCarousel({ images, align = 'left' }: ImageCarouselProps) {
             />
             {image.title && (
               <div className="absolute inset-0 flex size-full items-end bg-gradient-to-t from-black/75 via-black/0 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-                <p className="px-3 py-2 text-sm font-bold">{image.title}</p>
+                <figcaption className="px-3 py-2 text-sm font-bold">{image.title}</figcaption>
               </div>
             )}
-          </motion.div>
+          </motion.figure>
         ))}
       </motion.div>
     </div>

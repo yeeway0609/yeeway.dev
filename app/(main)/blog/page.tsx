@@ -14,7 +14,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ [
   return (
     <main className="layout-container min-h-[calc(100vh-var(--spacing-header))] pb-20">
       <h1 className="page-title">Blog</h1>
-      <h2 className="page-sub-title">My thoughts on coding, study notes, lifestyle, and other cool stuff.</h2>
+      <p className="page-sub-title">My thoughts on coding, study notes, lifestyle, and other cool stuff.</p>
 
       <div className="flex flex-col-reverse items-start justify-between gap-8 lg:flex-row lg:gap-16">
         <section className="flex w-full max-w-[640px] shrink-0 flex-col gap-6 sm:gap-10">

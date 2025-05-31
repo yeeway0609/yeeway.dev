@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { motion } from 'motion/react'
 import Image from 'next/image'
 
-type SplitTitleProps = {
+type HomePageTitleProps = {
   className?: string
 }
 
@@ -32,7 +32,7 @@ const wordVariants = {
   },
 }
 
-export function SplitTitle({ className }: SplitTitleProps) {
+export function HomePageTitle({ className }: HomePageTitleProps) {
   return (
     <motion.h1
       className={clsx(
@@ -48,7 +48,7 @@ export function SplitTitle({ className }: SplitTitleProps) {
           {word}
         </motion.span>
       ))}
-      <motion.div className="ml-2 flex aspect-square h-full items-center justify-center" variants={wordVariants}>
+      <motion.div className="-mt-2 ml-2 flex aspect-square h-full items-center justify-center" variants={wordVariants}>
         <Image className="inline-block size-9 sm:size-12" src="/assets/fluent-emoji-vulcan-salute.png" alt="vulcan-salute" width={48} height={48} />
       </motion.div>
     </motion.h1>

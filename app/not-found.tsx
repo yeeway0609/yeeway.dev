@@ -2,11 +2,13 @@
 
 import { useEffect, useRef } from 'react'
 import clsx from 'clsx'
-import Link from 'next/link'
 import { UAParser } from 'ua-parser-js'
 import { Button } from '@/components/ui/button'
+import { usePathname } from 'next/navigation'
 
 export default function NotFound() {
+  const RICK_ROLL_URL = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  const pathname = usePathname()
   const bonkSoundRef = useRef<HTMLAudioElement | null>(null)
   const { device } = UAParser()
 
@@ -35,10 +37,13 @@ export default function NotFound() {
         <img src="/assets/will-smith-meme.png" alt="will-smith-meme" width={150} height={250} draggable="false" />
         <h1 className="ml-5 pt-5 text-5xl leading-tight sm:text-7xl">Page not found</h1>
       </div>
-      <Button className="mt-10 cursor-help" asChild>
-        <Link href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
-          Back to Home
-        </Link>
+      <p className="mt-10 mb-5">
+        Current path: <code className="bg-gray-300 px-1 font-mono dark:bg-gray-700">{pathname}</code>
+      </p>
+      <Button className="cursor-help" asChild>
+        <a href={RICK_ROLL_URL} title="just kidding" target="_blank" rel="noopener noreferrer">
+          Back to Home ?
+        </a>
       </Button>
     </main>
   )

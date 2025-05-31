@@ -14,7 +14,7 @@ export function Footer() {
       <div className="layout-container flex flex-col gap-4 py-5 sm:py-8">
         <div className="flex items-center gap-5">
           {links.map(({ href, icon }, index) => (
-            <a className="fill-foreground hover:fill-primary size-6 transition duration-300" key={index} href={href} target="_blank">
+            <a className="fill-foreground hover:fill-primary size-6 transition duration-300" key={index} href={href} target="_blank" rel="noopener noreferrer">
               {icon}
             </a>
           ))}
@@ -22,7 +22,7 @@ export function Footer() {
         <div className="flex flex-col justify-between gap-1 sm:flex-row">
           <p>
             Contact me:&nbsp;
-            <a className="text-primary transition duration-300" href="mailto:hi@yeewy.dev" target="_blank">
+            <a className="text-primary transition duration-300" href="mailto:hi@yeewy.dev" target="_blank" rel="noopener noreferrer">
               {Profile.EMAIL}
             </a>
           </p>

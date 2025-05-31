@@ -6,7 +6,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { Profile } from '@/lib/constants'
 import { CarouselImage } from '@/lib/types'
 import { CoolAvatar } from './CoolAvatar'
-import { SplitTitle } from './SplitTitle'
+import { HomePageTitle } from './HomePageTitle'
 
 const profileLinks = [
   {
@@ -116,7 +116,7 @@ export default function Page() {
     <main className="mb-20 flex w-full flex-col items-center pt-16">
       <CoolAvatar />
 
-      <SplitTitle className="mt-5" />
+      <HomePageTitle className="mt-5" />
 
       <section className="animate-fade-in w-full opacity-0 delay-[1.5s]">
         <p className="mt-4 text-center text-sm text-zinc-600 sm:text-base dark:text-zinc-400">
@@ -134,6 +134,7 @@ export default function Page() {
                     className="text-zinc-600 transition-colors hover:text-zinc-400 dark:text-zinc-400 dark:hover:text-zinc-200"
                     href={link.href}
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     {link.icon}
                   </a>
@@ -155,7 +156,7 @@ export default function Page() {
           </Button>
         </div>
 
-        <h2 className="mt-16 mb-1 flex items-center justify-center space-x-2 text-2xl font-bold">
+        <h2 className="mt-16 mb-2 flex items-center justify-center space-x-2 text-2xl font-bold">
           <Icon icon="ri:sparkling-2-fill" className="size-6 text-[#D8A71B]" />
           <span>生活碎片</span>
           <Icon icon="ri:sparkling-2-fill" className="size-6 text-[#D8A71B]" />

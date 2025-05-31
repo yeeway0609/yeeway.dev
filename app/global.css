@@ -128,53 +128,8 @@
     @apply text-foreground text-base leading-normal break-words sm:text-lg;
   }
 
-  @keyframes badge-popup {
-    0% {
-      scale: 0.1;
-      opacity: 0;
-      animation-timing-function: cubic-bezier(0.13, 1.53, 0.12, 0.98);
-    }
-    16.67%,
-    83.33% {
-      scale: 1;
-      opacity: 1;
-      transform: translateY(-27px);
-    }
-    100% {
-      scale: 0;
-      opacity: 0;
-      animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-    }
-  }
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes slide-in-right {
-    from {
-      opacity: 0;
-      transform: translateX(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes img-loading {
-    0%,
-    100% {
-      background-color: var(--muted);
-    }
-    50% {
-      background-color: color-mix(in oklab, var(--muted) 50%, transparent);
-    }
+  .link {
+    @apply cursor-pointer font-bold text-blue-400 underline underline-offset-4 hover:text-blue-600;
   }
 }
 
@@ -186,5 +141,54 @@
   .hide-scrollbar {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
+  }
+}
+
+@keyframes badge-popup {
+  0% {
+    scale: 0.1;
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.13, 1.53, 0.12, 0.98);
+  }
+  16.67%,
+  83.33% {
+    scale: 1;
+    opacity: 1;
+    transform: translateY(-27px);
+  }
+  100% {
+    scale: 0;
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes img-loading {
+  0%,
+  100% {
+    background-color: var(--muted);
+  }
+  50% {
+    background-color: color-mix(in oklab, var(--muted) 50%, transparent);
   }
 }
