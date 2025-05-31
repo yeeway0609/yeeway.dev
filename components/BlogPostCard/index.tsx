@@ -2,10 +2,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Badge } from '@/components/ui/badge'
 import { DEFAULT_COVER_IMAGE } from '@/lib/constants'
-import type { BlogData } from '@/lib/types'
+import type { BlogMetadata } from '@/lib/types'
 import { formatDate } from '@/lib/utils'
 
-export function BlogPostCard({ slug, title, description, publishedOn, tags, coverImageUrl }: BlogData) {
+export function BlogPostCard({ slug, title, description, publishedOn, tags, coverImageUrl }: BlogMetadata) {
   return (
     <Link
       className="bg-card text-card-foreground @container flex min-h-48 w-full cursor-pointer flex-col overflow-clip rounded-lg border shadow-xs transition-transform hover:scale-105 sm:flex-row"

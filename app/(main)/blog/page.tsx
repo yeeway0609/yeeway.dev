@@ -2,11 +2,11 @@ import clsx from 'clsx'
 import Link from 'next/link'
 import { BlogPostCard } from '@/components/BlogPostCard'
 import { Badge } from '@/components/ui/badge'
-import { getAllBlogData, getAllBlogTags } from '@/lib/mdx.utils'
-import type { BlogData } from '@/lib/types'
+import { getAllBlogMetadata, getAllBlogTags } from '@/lib/mdx.utils'
+import type { BlogMetadata } from '@/lib/types'
 
 export default async function Page({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
-  const dataList = getAllBlogData()
+  const dataList = getAllBlogMetadata()
   const tags = getAllBlogTags()
   const currentTag = (await searchParams).tag
   const filteredDataList = currentTag ? dataList.filter((post) => post.tags.includes(currentTag)) : dataList
@@ -18,7 +18,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ [
 
       <div className="flex flex-col-reverse items-start justify-between gap-8 lg:flex-row lg:gap-16">
         <section className="flex w-full max-w-[640px] shrink-0 flex-col gap-6 sm:gap-10">
-          {filteredDataList?.map((post: BlogData) => <BlogPostCard key={post.slug} {...post} />)}
+          {filteredDataList?.map((post: BlogMetadata) => <BlogPostCard key={post.slug} {...post} />)}
         </section>
 
         <aside className="w-full lg:max-w-[330px]">

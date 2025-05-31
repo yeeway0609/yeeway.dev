@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { ScrollProgress } from '@/components/magicui/scroll-progress'
 import { Badge } from '@/components/ui/badge'
 import { DEFAULT_COVER_IMAGE } from '@/lib/constants'
-import { getBlogData, getAllBlogData, getBlogTOC } from '@/lib/mdx.utils'
+import { getBlogData, getAllBlogMetadata, getBlogTOC } from '@/lib/mdx.utils'
 import { formatDate } from '@/lib/utils'
 import { TableOfContents } from './TableOfContents'
 
@@ -57,7 +57,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 export const dynamicParams = false // accessing a route not defined in generateStaticParams will get 404.
 
 export function generateStaticParams() {
-  const dataSet = getAllBlogData()
+  const dataSet = getAllBlogMetadata()
   const slugs = dataSet.map((data) => ({ slug: data.slug }))
   return slugs
 }

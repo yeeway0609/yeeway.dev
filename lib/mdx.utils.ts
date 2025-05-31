@@ -5,13 +5,24 @@ import rehypeStringify from 'rehype-stringify'
 import { remark } from 'remark'
 import remarkRehype from 'remark-rehype'
 import rehypeRaw from 'rehype-raw'
-import { BlogData, BlogTOC } from '@/lib/types'
+import { BlogData, BlogMetadata, BlogTOC } from '@/lib/types'
 
 const BLOG_DIR = 'content/blog'
 
 function getFile(filePath: string): string {
   if (!fs.existsSync(filePath)) throw new Error(`File not found: ${filePath}`)
   return fs.readFileSync(filePath, 'utf8')
+}
+
+export function getBlogMetadata(slug: string): BlogMetadata {
+  const filePath = path.join(process.cwd(), BLOG_DIR, `${slug}.mdx`)
+  const fileContent = getFile(filePath)
+  const { data } = matter(fileContent)
+
+  return {
+    slug,
+    ...data,
+  } as BlogMetadata
 }
 
 export function getBlogData(slug: string): BlogData {
@@ -45,6 +56,19 @@ export function getBlogData(slug: string): BlogData {
   } as BlogData
 }
 
+export function getAllBlogMetadata(): BlogMetadata[] {
+  return fs
+    .readdirSync(path.join(process.cwd(), BLOG_DIR))
+    .filter((file) => file.endsWith('.mdx'))
+    .map((file) => {
+      const slug = file.replace(/\.mdx$/, '')
+      const metadata = getBlogMetadata(slug)
+      return metadata.isPublished ? metadata : null // EXPLAIN: Filter out unpublished posts
+    })
+    .filter(Boolean)
+    .sort((a, b) => new Date(b!.publishedOn).getTime() - new Date(a!.publishedOn).getTime()) as BlogMetadata[]
+}
+
 export function getAllBlogData(): BlogData[] {
   return fs
     .readdirSync(path.join(process.cwd(), BLOG_DIR))
@@ -59,8 +83,8 @@ export function getAllBlogData(): BlogData[] {
 }
 
 export function getAllBlogTags(): string[] {
-  const allData = getAllBlogData()
-  const allTags = allData.flatMap((data) => data.tags)
+  const allMetadata = getAllBlogMetadata()
+  const allTags = allMetadata.flatMap((metadata) => metadata.tags)
   const uniqueTags = Array.from(new Set(allTags))
   return uniqueTags.sort((a, b) => a.localeCompare(b))
 }
