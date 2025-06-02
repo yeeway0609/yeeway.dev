@@ -1,13 +1,12 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import rehypeRaw from 'rehype-raw'
 import rehypeStringify from 'rehype-stringify'
 import { remark } from 'remark'
+import remarkDirective from 'remark-directive'
 import remarkRehype from 'remark-rehype'
 import remarkImageGallery from '@/lib/remark-image-gallery.mjs'
 import { BlogData, BlogMetadata, BlogTOC } from '@/lib/types'
-import remarkDirective from 'remark-directive'
 
 const BLOG_DIR = 'content/blog'
 
@@ -42,13 +41,12 @@ export function getBlogData(slug: string): BlogData {
     .use(remarkDirective)
     .use(remarkImageGallery)
     .use(remarkRehype)
-    // .use(rehypeRaw)
     .use(rehypeStringify)
     .processSync(removeImportsContent)
     .toString()
 
-  // EXPLAIN: 處理 ![說明文字:寬x高] 格式的圖片
-  contentHTML = contentHTML.replace(/<img([^>]+)alt="([^"]*?):(\d+)x(\d+)"([^>]*)>/g, (match, beforeAlt, altText, width, height, afterAlt) => {
+  // EXPLAIN: 處理 ![說明文字@寬x高] 格式的圖片
+  contentHTML = contentHTML.replace(/<img([^>]+)alt="([^"]*?)@(\d+)x(\d+)"([^>]*)>/g, (match, beforeAlt, altText, width, height, afterAlt) => {
     const altAttr = altText.trim() ? `alt="${altText.trim()}" ` : ''
     return `<img${beforeAlt} ${altAttr} width="${width}" height="${height}"${afterAlt}>`
   })
