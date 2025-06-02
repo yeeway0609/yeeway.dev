@@ -1,7 +1,9 @@
 import createMDX from '@next/mdx'
 import rehypeMdxCodeProps from 'rehype-mdx-code-props'
+import remarkDirective from 'remark-directive'
 import remarkFrontmatter from 'remark-frontmatter'
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
+import remarkImageGallery from './lib/remark-image-gallery.mjs'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -39,8 +41,9 @@ const nextConfig = {
 const withMDX = createMDX({
   options: {
     extension: /\.mdx?$/,
-    remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
+    remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkDirective, remarkImageGallery],
     rehypePlugins: [rehypeMdxCodeProps],
+    skipExport: true,
   },
 })
 

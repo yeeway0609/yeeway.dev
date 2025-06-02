@@ -22,8 +22,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ [
         </section>
 
         <aside className="w-full lg:max-w-[330px]">
-          <h3 className="text-lg leading-none font-medium tracking-wide">Tags</h3>
-          <hr className="border-muted-foreground mt-2 mb-3" />
+          <h3 className="mb-3 text-lg leading-none font-medium tracking-wide">Tags:</h3>
           <div className="flex flex-wrap items-center justify-start gap-2">
             <Link href="/blog">
               <Badge className={clsx('hover:bg-primary font-medium', currentTag ? 'bg-muted-foreground' : 'bg-primary')}>All</Badge>

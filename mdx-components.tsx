@@ -5,7 +5,7 @@ import { CodeBlock } from '@/components/CodeBlock'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    p: ({ children }) => <p className="content-text mb-4 sm:mb-6">{children}</p>,
+    p: ({ children }) => <div className="content-text mb-4 sm:mb-6">{children}</div>,
     h2: ({ children }) => (
       <h2 id={children as string} className="text-primary mt-6 mb-4 scroll-mt-20 text-xl leading-tight font-bold sm:text-2xl">
         {children}
@@ -39,14 +39,21 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       const { altText, width, height } = parseImgAlt(alt)
       return (
         src && (
-          <div className="group relative">
-            <Image src={src} alt={altText} width={width} height={height} />
+          <figure className="group relative mx-auto" style={{ maxWidth: `${width}px`, maxHeight: `${height}px` }}>
+            <Image
+              className="size-full object-cover"
+              style={{ maxWidth: `${width}px`, maxHeight: `${height}px` }}
+              src={src}
+              alt={altText}
+              width={width}
+              height={height}
+            />
             {altText && (
-              <div className="absolute inset-0 flex size-full items-end bg-gradient-to-t from-black/50 via-black/0 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-                <span className="px-3 py-2 text-sm font-bold">{altText}</span>
-              </div>
+              <span className="absolute -bottom-px flex h-1/2 w-full items-end bg-gradient-to-t from-black/60 via-black/0 opacity-0 transition-opacity group-hover:opacity-100">
+                <figcaption className="px-3 py-2 text-sm font-bold">{altText}</figcaption>
+              </span>
             )}
-          </div>
+          </figure>
         )
       )
     },
@@ -69,17 +76,17 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 }
 
 /**
- * 狀況 1: ![說明文字:600x400](圖片網址)，有 alt 文字和寬高
+ * 狀況 1: ![說明文字@600x400](圖片網址)，有 alt 文字和寬高
  * 狀況 2: ![說明文字](圖片網址)，只有 alt 文字但不指定寬高
- * 狀況 3: ![:600x400](圖片網址)，只指定寬高但 alt 文字為空
+ * 狀況 3: ![@600x400](圖片網址)，只指定寬高但 alt 文字為空
  */
 function parseImgAlt(alt?: string): { altText: string; width: number; height: number } {
-  const DEFAULT_WIDTH = 768
-  const DEFAULT_HEIGHT = 432
+  const DEFAULT_MAX_WIDTH = 768
+  const DEFAULT_MAX_HEIGHT = 768
 
-  if (!alt) return { altText: '', width: DEFAULT_WIDTH, height: DEFAULT_HEIGHT }
+  if (!alt) return { altText: '', width: DEFAULT_MAX_WIDTH, height: DEFAULT_MAX_HEIGHT }
 
-  const match = alt.match(/^(.*?):?(\d+)x(\d+)$/)
+  const match = alt.match(/^(.*?)@?(\d+)x(\d+)$/)
   if (match) {
     const altText = match[1]?.trim() || ''
     const width = Number(match[2])
@@ -87,5 +94,5 @@ function parseImgAlt(alt?: string): { altText: string; width: number; height: nu
     return { altText, width, height }
   }
 
-  return { altText: alt, width: DEFAULT_WIDTH, height: DEFAULT_HEIGHT }
+  return { altText: alt, width: DEFAULT_MAX_WIDTH, height: DEFAULT_MAX_HEIGHT }
 }

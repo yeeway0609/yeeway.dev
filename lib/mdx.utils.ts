@@ -5,7 +5,9 @@ import rehypeRaw from 'rehype-raw'
 import rehypeStringify from 'rehype-stringify'
 import { remark } from 'remark'
 import remarkRehype from 'remark-rehype'
+import remarkImageGallery from '@/lib/remark-image-gallery.mjs'
 import { BlogData, BlogMetadata, BlogTOC } from '@/lib/types'
+import remarkDirective from 'remark-directive'
 
 const BLOG_DIR = 'content/blog'
 
@@ -37,8 +39,10 @@ export function getBlogData(slug: string): BlogData {
     .join('\n')
 
   let contentHTML = remark()
-    .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypeRaw)
+    .use(remarkDirective)
+    .use(remarkImageGallery)
+    .use(remarkRehype)
+    // .use(rehypeRaw)
     .use(rehypeStringify)
     .processSync(removeImportsContent)
     .toString()
