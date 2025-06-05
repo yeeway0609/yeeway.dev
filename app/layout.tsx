@@ -28,6 +28,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="zh-TW" suppressHydrationWarning>
+      <head>
+        <script src="https://app.rybbit.io/api/script.js" data-site-id="957" defer></script>
+      </head>
       <body className={`${nunito.className} flex min-h-dvh flex-col items-center`}>
         <Providers>
           <Header />
