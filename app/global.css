@@ -6,7 +6,7 @@
 @theme {
   --breakpoint-xs: 30rem; /* 480px */
 
-  --cursor-pointer: url(/assets/pointing-up-3d.png), pointer;
+  --cursor-pointer: url(/assets/fluent-emoji-pointing-up.png), pointer;
 
   --font-sans: Nunito, sans-serif;
   --font-mono: Commit Mono, monospace;
