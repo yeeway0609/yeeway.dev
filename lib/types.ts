@@ -15,13 +15,14 @@ export type Project = {
   title: string
   description: string
   imageURL: string
+  responsibilities: string
   websiteURL: string | null
   websiteTitle: string | null
   githubURL: string | null
   githubTitle: string | null
-  blogURL: string | null
-  blogTitle: string | null
-  tags?: string[]
+  articleURL: string | null
+  articleTitle: string | null
+  tags: string[]
 }
 
 export type CarouselImage = {

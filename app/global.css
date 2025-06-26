@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --breakpoint-xs: 24rem;
+  --breakpoint-xs: 30rem; /* 480px */
 
   --cursor-pointer: url(/assets/pointing-up-3d.png), pointer;
 
