@@ -1,9 +1,9 @@
 import clsx from 'clsx'
 import Link from 'next/link'
-import { BlogPostCard } from '@/components/BlogPostCard'
 import { Badge } from '@/components/ui/badge'
 import { getAllBlogMetadata, getAllBlogTags } from '@/lib/mdx.utils'
 import type { BlogMetadata } from '@/lib/types'
+import { BlogPostCard } from './BlogPostCard'
 
 export default async function Page({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
   const dataList = getAllBlogMetadata()
