@@ -1,4 +1,3 @@
-// import { GlobeAltIcon, BookOpenIcon } from '@heroicons/react/24/solid'
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
 import Link from 'next/link'
