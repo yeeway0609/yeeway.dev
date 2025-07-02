@@ -7,6 +7,8 @@ import { Header } from '@/components/Header'
 import { Providers } from '@/components/Providers'
 import './global.css'
 import '@fontsource/commit-mono'
+import { StagewiseToolbar } from '@stagewise/toolbar-next'
+import { ReactPlugin } from '@stagewise-plugins/react'
 
 const nunito = Nunito({ subsets: ['latin'], weight: ['400', '700', '900'] })
 
@@ -32,6 +34,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <script src="https://app.rybbit.io/api/script.js" data-site-id="957" defer></script>
       </head>
       <body className={`${nunito.className} flex min-h-dvh flex-col items-center`}>
+        <StagewiseToolbar
+          config={{
+            plugins: [ReactPlugin],
+          }}
+        />
         <Providers>
           <Header />
           {/* <div className="py-header relative grow "> */}
