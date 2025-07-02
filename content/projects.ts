@@ -38,7 +38,7 @@ export const projectsData: Project[] = [
     githubTitle: null,
     articleURL: 'https://www.boring-lab.com/work/tai-xin-yin-xing-2024jin-rong',
     articleTitle: '文章介紹',
-    tags: ['BORING Design', 'React', 'Firebase', 'GenAI'],
+    tags: ['BORING Design', 'React', 'Firebase', 'GenAI', 'Three.js ', 'Animation'],
   },
   {
     title: 'Architecture For Dog 官方網站',
