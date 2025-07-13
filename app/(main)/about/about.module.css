@@ -1,0 +1,9 @@
+.bentoGrid {
+  grid-template-areas:
+    'map mbti d spotify'
+    'map photo photo spotify'
+    'front-end photo photo e'
+    'front-end photo photo e'
+    'f jpop anime kpop'
+    'f jpop anime kpop';
+}
