@@ -41,6 +41,7 @@ export function CoolAvatar() {
         alt="Yiwei Su"
         width={128}
         height={128}
+        priority
       />
 
       <div
