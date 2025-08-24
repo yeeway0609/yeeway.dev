@@ -39,8 +39,6 @@
   },
   "devDependencies": {
     "@iconify/react": "^5.2.1",
-    "@stagewise-plugins/react": "^0.4.9",
-    "@stagewise/toolbar-next": "^0.4.9",
     "@tailwindcss/postcss": "^4.0.8",
     "@types/mdx": "^2.0.13",
     "@types/node": "^20",
