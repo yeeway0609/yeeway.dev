@@ -5,9 +5,9 @@ import rehypeStringify from 'rehype-stringify'
 import { remark } from 'remark'
 import remarkDirective from 'remark-directive'
 import remarkRehype from 'remark-rehype'
+import { BLOG_DIR } from '@/lib/constants'
 import remarkImageGallery from '@/lib/remark-image-gallery.mjs'
 import { BlogData, BlogMetadata, BlogTOC } from '@/lib/types'
-import { BLOG_DIR } from '@/lib/constants'
 
 function getFile(filePath: string): string {
   if (!fs.existsSync(filePath)) throw new Error(`File not found: ${filePath}`)
