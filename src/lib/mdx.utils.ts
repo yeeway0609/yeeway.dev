@@ -7,8 +7,7 @@ import remarkDirective from 'remark-directive'
 import remarkRehype from 'remark-rehype'
 import remarkImageGallery from '@/lib/remark-image-gallery.mjs'
 import { BlogData, BlogMetadata, BlogTOC } from '@/lib/types'
-
-const BLOG_DIR = 'content/blog'
+import { BLOG_DIR } from '@/lib/constants'
 
 function getFile(filePath: string): string {
   if (!fs.existsSync(filePath)) throw new Error(`File not found: ${filePath}`)

@@ -1,6 +1,6 @@
-export const SITE_TITLE = 'yeeway.dev'
+export const SITE_URL = 'https://yeeway.dev'
 
-export const SITE_LINK = 'https://yeeway.dev'
+export const SITE_TITLE = 'yeeway.dev'
 
 export const SITE_DESCRIPTION = 'Website of Yiwei Su, Creative Developer.'
 
@@ -14,3 +14,5 @@ export const Profile = {
   SPOTIFY: 'https://open.spotify.com/user/316mp4peyke2yfbklasiigreqyfq?si=d355fe49436e4a4d',
   FOLO: 'https://app.follow.is/share/users/yeeway0609',
 } as const
+
+export const BLOG_DIR = 'src/content/blog'

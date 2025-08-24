@@ -3,7 +3,7 @@ import rehypeMdxCodeProps from 'rehype-mdx-code-props'
 import remarkDirective from 'remark-directive'
 import remarkFrontmatter from 'remark-frontmatter'
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
-import remarkImageGallery from './lib/remark-image-gallery.mjs'
+import remarkImageGallery from './src/lib/remark-image-gallery.mjs'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
