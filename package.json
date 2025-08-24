@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --fix && prettier --write ."
+    "lint": "next lint",
+    "format": "prettier --write ."
   },
   "packageManager": "pnpm@10.11.0",
   "dependencies": {
