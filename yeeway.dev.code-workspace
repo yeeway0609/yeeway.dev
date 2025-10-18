@@ -1,0 +1,19 @@
+{
+  "folders": [
+    {
+      "name": "Content",
+      "path": "./src/content",
+    },
+    {
+      "name": "Root",
+      "path": ".",
+    },
+  ],
+  "settings": {
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.expand": false,
+    "explorer.fileNesting.patterns": {
+      "package.json": "pnpm-lock.yaml, .gitignore, LICENSE, prettier.config.js, .prettierignore, postcss.config.js, tsconfig.json, components.json",
+    },
+  },
+}
