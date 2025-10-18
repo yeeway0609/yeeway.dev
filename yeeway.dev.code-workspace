@@ -13,7 +13,7 @@
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.expand": false,
     "explorer.fileNesting.patterns": {
-      "package.json": "pnpm-lock.yaml, .gitignore, LICENSE, prettier.config.js, .prettierignore, postcss.config.js, tsconfig.json, components.json",
+      "package.json": "pnpm-lock.yaml, .gitignore, LICENSE, prettier.config.js, .prettierignore, postcss.config.js, tsconfig.json, components.json, next-env.d.ts",
     },
   },
 }
