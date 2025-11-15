@@ -24,7 +24,7 @@ export function ImageCarousel({ images, align = 'left' }: ImageCarouselProps) {
   }, [carousel])
 
   return (
-    <div className="hide-scrollbar w-full max-w-dvw overflow-x-hidden px-5 py-5">
+    <div className="hide-scrollbar w-full max-w-dvw overflow-x-auto px-5 py-5">
       <motion.div
         ref={carousel}
         drag="x"
