@@ -115,7 +115,7 @@
   }
 
   .page-title {
-    @apply animate-slide-in-right pt-12 text-4xl font-bold tracking-wide opacity-0 sm:text-5xl;
+    @apply animate-slide-in-right pt-6 text-4xl font-bold tracking-wide opacity-0 sm:text-5xl lg:pt-12;
   }
 
   .page-sub-title {

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <main className="layout-container pb-20">
+    <main className="layout-container w-full pb-20">
       <h1 className="page-title">Projects</h1>
       <p className="page-sub-title">Showcase of my works and contributions</p>
       <div className="grid place-items-center gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">

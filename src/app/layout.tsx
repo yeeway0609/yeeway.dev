@@ -31,9 +31,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className={`${nunito.className} flex min-h-dvh flex-col items-center`}>
         <Providers>
           <Header />
-          {/* <div className="py-header relative grow "> */}
-          {children}
-          {/* </div> */}
+          <div className="relative w-full grow">{children}</div>
           <Footer />
         </Providers>
       </body>

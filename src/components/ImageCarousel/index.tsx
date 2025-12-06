@@ -24,7 +24,8 @@ export function ImageCarousel({ images, align = 'left' }: ImageCarouselProps) {
   }, [carousel])
 
   return (
-    <div className="hide-scrollbar w-full max-w-dvw overflow-x-auto px-5 py-5">
+    // EXPLAIN: overflow-x 要用 hidden，用 auto 的話手機拖曳會卡卡的
+    <div className="hide-scrollbar w-full max-w-dvw overflow-x-hidden px-5 py-5">
       <motion.div
         ref={carousel}
         drag="x"
