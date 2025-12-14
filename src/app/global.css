@@ -96,7 +96,7 @@
 
 @layer base {
   * {
-    @apply border-border scroll-smooth;
+    @apply border-border overscroll-none scroll-smooth;
   }
 
   body {

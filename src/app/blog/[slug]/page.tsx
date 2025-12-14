@@ -24,8 +24,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           <p className="text-muted-foreground content-text mb-3">{data.description}</p>
 
           <div className="mb-4 flex items-center">
-            <Icon icon="uil:calender" className="text-muted-foreground mr-2 size-4" />
-            <time className="text-muted-foreground mr-4 pt-0.5 text-sm sm:text-base">{formatDate(data.publishedOn)}</time>
+            <Icon icon="uil:calender" className="text-muted-foreground mr-2 size-5" />
+            <time className="text-muted-foreground mr-4 pt-0.5 text-base sm:text-lg">{formatDate(data.publishedOn)}</time>
             {data.tags.map((tag) => (
               <Badge key={tag} className="mr-2 px-1.5 py-px text-xs font-medium">
                 #{tag}
@@ -42,6 +42,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
               priority
             />
           )}
+
+          <hr />
 
           <article className="content-text [&_img]:animate-img-loading w-full [&_img]:mx-auto [&_video]:mx-auto">
             <PostContent />

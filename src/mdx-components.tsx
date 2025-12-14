@@ -7,12 +7,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     p: ({ children }) => <div className="content-text mb-4 sm:mb-6">{children}</div>,
     h2: ({ children }) => (
-      <h2 id={children as string} className="text-primary mt-6 mb-4 scroll-mt-20 text-xl leading-tight font-bold sm:text-2xl">
+      <h2 id={children as string} className="text-primary mt-8 mb-4 scroll-mt-20 text-xl leading-tight font-bold sm:text-2xl">
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 id={children as string} className="mt-6 mb-4 scroll-mt-20 text-xl leading-snug font-bold">
+      <h3 id={children as string} className="mt-8 mb-4 scroll-mt-20 text-xl leading-snug font-bold">
         {children}
       </h3>
     ),
@@ -20,8 +20,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     blockquote: ({ children }) => (
       <blockquote className="border-muted-foreground text-muted-foreground my-4 border-l-4 pr-4 pl-4 text-sm sm:text-lg">{children}</blockquote>
     ),
-    ul: ({ children }) => <ul className="content-text list-disc pl-8">{children}</ul>,
-    ol: ({ children }) => <ol className="content-text list-decimal pl-8">{children}</ol>,
+    ul: ({ children }) => <ul className="content-text mb-4 list-disc pl-6 sm:mb-6">{children}</ul>,
+    ol: ({ children }) => <ol className="content-text mb-4 list-decimal pl-6 sm:mb-6">{children}</ol>,
+    li: ({ children }) => <li className="mb-2 leading-relaxed">{children}</li>,
     kbd: ({ children }) => (
       <kbd className="inline-block rounded border px-1 py-5 align-middle font-mono text-xs font-normal shadow-sm">{children}</kbd>
     ),
