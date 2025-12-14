@@ -38,7 +38,7 @@ export function CoolAvatar() {
         className="border-border size-32 shrink-0 cursor-pointer rounded-full border-2 object-cover"
         src={AVATAR_URL}
         onClick={handleClick}
-        alt="Yiwei Su"
+        alt="Alex Su"
         width={128}
         height={128}
         priority

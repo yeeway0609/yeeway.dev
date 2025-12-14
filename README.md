@@ -1,4 +1,4 @@
-# yeeway.dev - Personal Website of Yiwei Su
+# yeeway.dev - Personal Website of Alex Su
 
 ## Tech stack
 

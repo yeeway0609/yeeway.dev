@@ -2,7 +2,7 @@ export const SITE_URL = 'https://yeeway.dev'
 
 export const SITE_TITLE = 'yeeway.dev'
 
-export const SITE_DESCRIPTION = 'Website of Yiwei Su, Creative Developer.'
+export const SITE_DESCRIPTION = 'Website of Alex Su, Full Stack Developer.'
 
 export const DEFAULT_COVER_IMAGE = `/og.png`
 

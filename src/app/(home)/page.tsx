@@ -84,7 +84,7 @@ export default function Page() {
 
       <section className="animate-fade-in w-full opacity-0 delay-[1.5s]">
         <p className="mt-4 text-center text-sm text-zinc-600 sm:text-base dark:text-zinc-400">
-          目前是位前端工程師，也可叫我 Alex 或 yeeway
+          目前是位前端工程師，網名是 yeeway
           <br />
           時不時會數位 FOMO，但我努力跟上時代與台北的步調
         </p>

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: '%s | yeeway.dev',
     default: 'yeeway.dev',
   },
-  description: 'Website of Yiwei Su, Creative Developer.',
+  description: 'Website of Alex Su, Creative Developer.',
   metadataBase: new URL('https://yeeway.dev'),
   alternates: {
     canonical: 'https://yeeway.dev',

@@ -8,7 +8,7 @@ type HomePageTitleProps = {
   className?: string
 }
 
-const text = ['Hi, ', "I'm ", 'Yiwei ', 'Su']
+const text = ['Hi, ', "I'm ", 'Alex ', 'Su']
 
 const containerVariants = {
   hidden: {},
