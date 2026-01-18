@@ -1,7 +1,6 @@
 ---
-mode: agent
 model: Claude Sonnet 4.5 (copilot)
-tools: ['changes']
+tools: ['search/changes', 'search/codebase']
 ---
 
 依照下列規則生成 commit message，並用 code block 包起來直接回覆我：

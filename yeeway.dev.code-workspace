@@ -10,6 +10,9 @@
     },
   ],
   "settings": {
+    "files.exclude": {
+      "src/content": true,
+    },
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.expand": false,
     "explorer.fileNesting.patterns": {

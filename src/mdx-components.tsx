@@ -2,6 +2,7 @@ import type { MDXComponents } from 'mdx/types'
 import Image from 'next/image'
 import type { BundledLanguage } from 'shiki'
 import { CodeBlock } from '@/components/CodeBlock'
+import { Badge } from '@/components/ui/badge'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -50,9 +51,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
               height={height}
             />
             {altText && (
-              <span className="absolute -bottom-px flex h-1/2 w-full items-end bg-gradient-to-t from-black/60 via-black/0 opacity-0 transition-opacity group-hover:opacity-100">
-                <figcaption className="px-3 py-2 text-sm font-bold">{altText}</figcaption>
-              </span>
+              <Badge className="absolute bottom-2 left-2 bg-slate-900 text-sm font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 hover:bg-slate-900">
+                <figcaption>{altText}</figcaption>
+              </Badge>
             )}
           </figure>
         )

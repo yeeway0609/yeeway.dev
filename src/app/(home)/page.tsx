@@ -84,9 +84,9 @@ export default function Page() {
 
       <section className="animate-fade-in w-full opacity-0 delay-[1.5s]">
         <p className="mt-4 text-center text-sm text-zinc-600 sm:text-base dark:text-zinc-400">
-          目前是位前端工程師，網名是 yeeway
+          暱稱 yeeway，由網頁前端入門的全端工程師
           <br />
-          時不時會數位 FOMO，但我努力跟上時代與台北的步調
+          時不時會數位 FOMO，但我努力跟上大時代與台北市的步調
         </p>
 
         <div className="mt-4 flex items-center justify-center space-x-4 lg:mt-7">

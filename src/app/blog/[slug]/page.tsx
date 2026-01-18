@@ -18,7 +18,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     <main className="w-full pb-20">
       <ScrollProgress className="top-header h-[1.5px]" />
 
-      <div className="layout-container flex items-start justify-between lg:gap-6">
+      <div className="layout-container flex items-start justify-between gap-10">
         <div className="w-full max-w-3xl">
           <h1 className="mt-4 mb-2 text-2xl font-bold break-all sm:mt-8 sm:text-3xl sm:leading-tight sm:break-normal">{data.title}</h1>
           <p className="text-muted-foreground content-text mb-3">{data.description}</p>
@@ -43,7 +43,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
             />
           )}
 
-          <hr />
+          <hr className="my-6" />
 
           <article className="content-text [&_img]:animate-img-loading w-full [&_img]:mx-auto [&_video]:mx-auto">
             <PostContent />

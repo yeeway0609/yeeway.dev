@@ -1,7 +1,7 @@
 export type BlogData = {
   slug: string
   title: string
-  description: string
+  description: string // TODO: 這個欄位之後改為可選或是拔掉
   tags: string[]
   publishedOn: Date
   isPublished: boolean
