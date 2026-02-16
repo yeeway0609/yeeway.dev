@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { SITE_URL, SITE_TITLE, SITE_DESCRIPTION, DEFAULT_COVER_IMAGE } from '@/lib/constants'
+import { SITE } from '@/lib/constants'
 import { getAllBlogData } from '@/lib/mdx.utils'
 import { BlogData } from '@/lib/types'
 
@@ -9,10 +9,10 @@ function buildRssXml(posts: BlogData[]): string {
       (post) => `
         <item>
           <title>${post.title}</title>
-          <link>${SITE_URL}/blog/${post.slug}</link>
-          <guid isPermaLink="true">${SITE_URL}/blog/${post.slug}</guid>
+          <link>${SITE.url}/blog/${post.slug}</link>
+          <guid isPermaLink="true">${SITE.url}/blog/${post.slug}</guid>
           <pubDate>${new Date(post.publishedOn).toUTCString()}</pubDate>
-          <enclosure url="${post.coverImageUrl ? post.coverImageUrl : `${SITE_URL}${DEFAULT_COVER_IMAGE}`}" type="image/png" />
+          <enclosure url="${post.coverImageUrl ? post.coverImageUrl : `${SITE.url}${SITE.ogImage}`}" type="image/png" />
           ${post.tags.map((tag) => `<category>${tag}</category>`).join('')}
           <description><![CDATA[ ${post.description} ]]></description>
           <content:encoded><![CDATA[ ${post.content} ]]></content:encoded>
@@ -24,9 +24,9 @@ function buildRssXml(posts: BlogData[]): string {
   return `<?xml version="1.0" encoding="UTF-8" ?>
     <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
       <channel>
-        <title>${SITE_TITLE}</title>
-        <link>${SITE_URL}</link>
-        <description>${SITE_DESCRIPTION}</description>
+        <title>${SITE.title}</title>
+        <link>${SITE.url}</link>
+        <description>${SITE.description}</description>
         <language>zh-TW</language>
         ${blogPostsXml}
         <follow_challenge>

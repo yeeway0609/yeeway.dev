@@ -1,4 +1,4 @@
-import { Profile } from '@/lib/constants'
+import { CONTACTS } from '@/lib/constants'
 
 export function Footer() {
   return (
@@ -8,7 +8,7 @@ export function Footer() {
           <p>
             Contact me:&nbsp;
             <a className="text-primary transition duration-300" href="mailto:hi@yeewy.dev" target="_blank" rel="noopener noreferrer">
-              {Profile.EMAIL}
+              {CONTACTS.email}
             </a>
           </p>
           <p>

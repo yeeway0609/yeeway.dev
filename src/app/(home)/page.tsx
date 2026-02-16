@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ImageCarousel } from '@/components/ImageCarousel'
 import { Button } from '@/components/ui/button'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import { Profile } from '@/lib/constants'
+import { CONTACTS } from '@/lib/constants'
 import { CarouselImage } from '@/lib/types'
 import { CoolAvatar } from './CoolAvatar'
 import { HomePageTitle } from './HomePageTitle'
@@ -11,27 +11,27 @@ import { HomePageTitle } from './HomePageTitle'
 const socialLinks = [
   {
     name: 'GitHub',
-    href: Profile.GITHUB,
+    href: CONTACTS.github,
     icon: <Icon icon="tabler:brand-github" className="size-7 sm:size-8" />,
   },
   {
     name: 'LinkedIn',
-    href: Profile.LINKEDIN,
+    href: CONTACTS.linkedin,
     icon: <Icon icon="tabler:brand-linkedin" className="size-7 sm:size-8" />,
   },
   {
     name: 'Instagram',
-    href: Profile.INSTAGRAM,
+    href: CONTACTS.instagram,
     icon: <Icon icon="tabler:brand-instagram" className="size-7.5 sm:size-8.5" />,
   },
   {
     name: 'Discord',
-    href: Profile.DISCORD,
+    href: CONTACTS.discord,
     icon: <Icon icon="mingcute:discord-line" className="size-7 sm:size-8" />,
   },
   {
     name: 'Spotify',
-    href: Profile.SPOTIFY,
+    href: CONTACTS.spotify,
     icon: <Icon icon="tabler:brand-spotify" className="size-7 sm:size-8" />,
   },
 ]

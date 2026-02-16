@@ -5,6 +5,7 @@ import { ConsoleAsciiArt } from '@/components/ConsoleAsciiArt'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { Providers } from '@/components/Providers'
+import { SITE } from '@/lib/constants'
 import './global.css'
 import '@fontsource/commit-mono'
 
@@ -15,13 +16,24 @@ export const metadata: Metadata = {
     template: '%s | yeeway.dev',
     default: 'yeeway.dev',
   },
-  description: 'Website of Alex Su, Creative Developer.',
-  metadataBase: new URL('https://yeeway.dev'),
+  description: SITE.description,
+  metadataBase: new URL(SITE.url),
+  authors: [{ name: 'Alex Su', url: SITE.url }],
   alternates: {
-    canonical: 'https://yeeway.dev',
+    canonical: SITE.url,
     types: {
       'application/rss+xml': [{ url: 'feed.xml', title: 'yeeway.dev' }],
     },
+  },
+  icons: { icon: SITE.logo, apple: SITE.logo },
+  openGraph: {
+    images: [
+      {
+        url: SITE.ogImage,
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
 }
 
