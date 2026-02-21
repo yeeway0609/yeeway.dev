@@ -2,6 +2,7 @@
   "files.exclude": {
     "node_modules": true,
     ".next": true,
+    "certificates": true,
   },
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,

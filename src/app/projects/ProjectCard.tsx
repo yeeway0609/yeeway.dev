@@ -19,7 +19,7 @@ export function ProjectCard({
   articleTitle,
 }: Project) {
   return (
-    <Card className="flex w-full max-w-80 flex-col gap-2 pt-0 sm:h-[450px] md:max-w-none">
+    <Card className="flex w-full max-w-80 flex-col gap-2 overflow-hidden pt-0 sm:h-[450px] md:max-w-none">
       <div className="relative mb-3 aspect-5/3 h-[180px] shrink-0 overflow-hidden rounded-t-lg object-cover">
         <Image className="size-full object-cover" src={imageURL} alt={title} width={300} height={180} />
       </div>
