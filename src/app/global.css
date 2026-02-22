@@ -9,16 +9,13 @@
   --font-sans: Nunito, sans-serif;
   --font-mono: Commit Mono, monospace;
 
-  --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
-
   --spacing-header: 4rem;
 
   --animate-badge-popup: badge-popup 3s;
   --animate-fade-in: fade-in 0.5s ease-in forwards; /* 要等 SplitTitle 跑完 */
   --animate-slide-in-right: slide-in-right 0.3s ease-in-out forwards;
   --animate-img-loading: img-loading 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-song-marquee: marquee-scroll 16s linear infinite;
 }
 
 @theme inline {
@@ -46,6 +43,17 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
 }
 
 :root {
@@ -140,6 +148,16 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+
+  /* 左右約 5px 淡出 */
+  .marquee-fade-edges {
+    mask-image: linear-gradient(to right, transparent 0, black 8px, black calc(100% - 8px), transparent 100%);
+    mask-size: 100% 100%;
+    mask-repeat: no-repeat;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, black 8px, black calc(100% - 8px), transparent 100%);
+    -webkit-mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+  }
 }
 
 @keyframes badge-popup {
@@ -148,12 +166,14 @@
     opacity: 0;
     animation-timing-function: cubic-bezier(0.13, 1.53, 0.12, 0.98);
   }
+
   16.67%,
   83.33% {
     scale: 1;
     opacity: 1;
     transform: translateY(-27px);
   }
+
   100% {
     scale: 0;
     opacity: 0;
@@ -162,12 +182,8 @@
 }
 
 @keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1;}
 }
 
 @keyframes slide-in-right {
@@ -175,6 +191,7 @@
     opacity: 0;
     transform: translateX(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -186,6 +203,7 @@
   100% {
     background-color: var(--muted);
   }
+
   50% {
     background-color: color-mix(in oklab, var(--muted) 50%, transparent);
   }

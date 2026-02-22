@@ -77,10 +77,10 @@ const images: CarouselImage[] = [
 
 export default function Page() {
   return (
-    <main className="mb-20 flex w-full flex-col items-center pt-16">
+    <main className="mb-20 flex w-full flex-col items-center pt-10 lg:pt-16">
       <CoolAvatar />
 
-      <HomePageTitle className="mt-5" />
+      <HomePageTitle className="mt-8" />
 
       <section className="animate-fade-in w-full opacity-0 delay-[1.5s]">
         <p className="mt-4 text-center text-sm text-zinc-600 sm:text-base dark:text-zinc-400">
