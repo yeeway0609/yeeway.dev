@@ -12,7 +12,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const slug = (await params).slug
   const data = getBlogData(slug)
   const toc = getBlogTOC(slug)
-  const { default: PostContent } = await import(`@/content/blog/${slug}.mdx`)
+  const { default: PostContent } = await import(`@content/blog/${slug}.mdx`)
 
   return (
     <main className="w-full pb-20">

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Page() {
-  const { default: AboutContent } = await import(`@/content/about.mdx`)
+  const { default: AboutContent } = await import('@content/about.mdx')
 
   return (
     <main className="layout-container min-h-[calc(100vh-var(--spacing-header))] pb-20">

@@ -17,7 +17,7 @@ tools: ['search/changes', 'search/codebase']
   - about: `src/app/(main)/about/*`
   - projects: `src/app/(main)/projects/*`
   - uses: `src/app/(main)/uses/*`
-  - content: General content updates, `src/content/*`
+  - content: General content updates, `content/*`
   - ui: UI-related changes
   - typo: Fix typos
   - readme: README-specific changes

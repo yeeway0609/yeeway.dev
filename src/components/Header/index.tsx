@@ -12,7 +12,7 @@ const ROUTES = [
   { title: 'Projects', href: '/projects', icon: <Icon icon="heroicons:command-line-solid" className="mr-1.5 size-4" /> },
   { title: 'About', href: '/about', icon: <Icon icon="heroicons:user-solid" className="mr-1.5 size-4" /> },
   { title: 'Uses', href: '/uses', icon: <Icon icon="heroicons:bolt-solid" className="mr-1.5 size-4" /> },
-  { title: 'Library', href: '/library', icon: <Icon icon="heroicons:bookmark-solid" className="mr-1.5 size-4" /> },
+  // { title: 'Library', href: '/library', icon: <Icon icon="heroicons:bookmark-solid" className="mr-1.5 size-4" /> },
 ]
 
 export function Header() {

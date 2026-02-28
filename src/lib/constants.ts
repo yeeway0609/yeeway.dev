@@ -17,4 +17,4 @@ export const CONTACTS = {
 
 export const DEFAULT_COVER_IMAGE = `/cover.png`
 
-export const BLOG_DIR = 'src/content/blog'
+export const BLOG_DIR = 'content/blog'
