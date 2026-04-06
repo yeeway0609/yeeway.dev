@@ -18,6 +18,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'assets.yeeway.dev',
       },
+      {
+        protocol: 'https',
+        hostname: 'image.tmdb.org',
+      },
     ],
   },
   async rewrites() {

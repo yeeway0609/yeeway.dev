@@ -36,3 +36,25 @@ export type BlogTOC = {
   level: number
   heading: string
 }[]
+
+export interface TmdbDetails {
+  /** 映射到 LibraryItem 的 title */
+  title: string
+  /** 映射到 LibraryItem 的 externalUrl */
+  url: string
+  /** 映射到 LibraryItem 的 imageUrl */
+  posterUrl: string | null
+  /** 映射到 LibraryItem 的 releaseDate */
+  releaseDate: string
+}
+
+export interface LibraryItem {
+  id: string
+  title: string
+  type: string
+  rating: number
+  /** ISO 日曆日期字串（如 TMDB `2011-04-17`）；經 JSON 傳遞為字串 */
+  releaseDate: string
+  imageUrl: string | null
+  externalUrl: string | null
+}

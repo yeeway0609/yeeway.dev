@@ -8,9 +8,9 @@ import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from '@/com
 import { ThemeSwitch } from './ThemeSwitch'
 
 const ROUTES = [
-  { title: 'Blog', href: '/blog', icon: <Icon icon="heroicons:newspaper-solid" className="mr-1.5 size-4" /> },
-  { title: 'Projects', href: '/projects', icon: <Icon icon="heroicons:command-line-solid" className="mr-1.5 size-4" /> },
+  { title: 'Blog', href: '/blog', icon: <Icon icon="mingcute:pen-fill" className="mr-1.5 size-4" /> },
   { title: 'About', href: '/about', icon: <Icon icon="heroicons:user-solid" className="mr-1.5 size-4" /> },
+  { title: 'Projects', href: '/projects', icon: <Icon icon="heroicons:command-line-solid" className="mr-1.5 size-4" /> },
   { title: 'Uses', href: '/uses', icon: <Icon icon="heroicons:bolt-solid" className="mr-1.5 size-4" /> },
   // { title: 'Library', href: '/library', icon: <Icon icon="heroicons:bookmark-solid" className="mr-1.5 size-4" /> },
 ]
