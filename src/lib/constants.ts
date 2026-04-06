@@ -18,3 +18,26 @@ export const CONTACTS = {
 export const DEFAULT_COVER_IMAGE = `/cover.png`
 
 export const BLOG_DIR = 'content/blog'
+
+export const LIBRARY_TYPES = [
+  {
+    value: 'tv',
+    label: 'TV',
+  },
+  {
+    value: 'movie',
+    label: 'Movie',
+  },
+  // {
+  //   value: 'book',
+  //   label: 'Book',
+  // },
+  // {
+  //   value: 'comic',
+  //   label: 'Comic',
+  // },
+  // {
+  //   value: 'game',
+  //   label: 'Game',
+  // },
+] as const

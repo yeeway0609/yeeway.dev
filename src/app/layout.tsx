@@ -1,9 +1,11 @@
 import { GoogleAnalytics } from '@next/third-parties/google'
 import type { Metadata } from 'next'
 import { Nunito } from 'next/font/google'
+
 import { ConsoleAsciiArt } from '@/components/ConsoleAsciiArt'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
+import { LibraryPreloader } from '@/components/LibraryPreloader'
 import { Providers } from '@/components/Providers'
 import { SITE } from '@/lib/constants'
 import './global.css'
@@ -41,6 +43,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="zh-TW" suppressHydrationWarning>
       <body className={`${nunito.className} flex min-h-dvh flex-col items-center`}>
+        <LibraryPreloader />
         <Providers>
           <Header />
           <div className="relative w-full grow">{children}</div>
