@@ -53,11 +53,11 @@ export function LibraryTabs({ currentType, currentRating }: LibraryTabsProps) {
       </Tabs>
 
       <Select value={currentRating ?? 'all'} onValueChange={handleRatingChange}>
-        <SelectTrigger className="w-32">
+        <SelectTrigger className="w-30 text-xs">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="all">All</SelectItem>
+          <SelectItem value="all">All ratings</SelectItem>
           {RATING_OPTIONS.map((option) => (
             <SelectItem key={option.value} value={option.value}>
               {option.label}
