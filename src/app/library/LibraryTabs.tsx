@@ -26,6 +26,7 @@ export function LibraryTabs({ currentType, currentRating }: LibraryTabsProps) {
   const handleTypeChange = (value: string) => {
     const params = new URLSearchParams(searchParams)
     params.set('type', value)
+    params.delete('rating')
     router.push(`/library?${params.toString()}`, { scroll: false })
   }
 

@@ -44,7 +44,7 @@ async function getTmdbDetails(type: 'tv' | 'movie', id: number): Promise<TmdbDet
   }
 }
 
-export async function getLibraryItems(type: string, rating: number | undefined): Promise<LibraryItem[]> {
+export async function getLibraryItems(): Promise<LibraryItem[]> {
   if (!NOTION_API_KEY || !NOTION_DATABASE_ID) {
     console.warn('[Notion] Missing API key or database ID')
     return []
@@ -96,11 +96,7 @@ export async function getLibraryItems(type: string, rating: number | undefined):
       })
     )
 
-    return items.filter((item) => {
-      const matchesType = item.type.toLowerCase() === type.toLowerCase()
-      const matchesRating = rating === undefined || item.rating === rating
-      return matchesType && matchesRating
-    })
+    return items
   } catch (error) {
     console.error('[Notion] Failed to fetch entertainment works:', error)
     return []

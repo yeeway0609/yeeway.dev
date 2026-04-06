@@ -2,14 +2,9 @@ import { getLibraryItems } from '@/app/api/library/library.server'
 
 export const revalidate = 3600
 
-export async function GET(request: Request) {
+export async function GET() {
   try {
-    const { searchParams } = new URL(request.url)
-    const type = searchParams.get('type') ?? 'tv'
-    const ratingStr = searchParams.get('rating')
-    const rating = ratingStr ? parseFloat(ratingStr) : undefined
-
-    const works = await getLibraryItems(type, rating)
+    const works = await getLibraryItems()
 
     return Response.json(works, {
       headers: {
