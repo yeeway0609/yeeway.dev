@@ -9,27 +9,17 @@ export const metadata: Metadata = {
   title: 'Library',
 }
 
-async function fetchLibraryWorks() {
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/library`, {
-      next: { revalidate: 3600 },
-    })
-    if (!res.ok) throw new Error('Failed to fetch library data')
-    return await res.json()
-  } catch (error) {
-    console.error('[LibraryPage] Failed to fetch works:', error)
-    return []
-  }
-}
-
 export default async function LibraryPage({ searchParams }: { searchParams: Promise<{ type?: string }> }) {
   const params = await searchParams
   const requestedType = params.type?.toLowerCase() ?? 'tv'
   const validTypes = LIBRARY_TYPES.map((t) => t.value)
   const currentType = validTypes.includes(requestedType as any) ? requestedType : 'tv'
 
-  const works: LibraryItem[] = await fetchLibraryWorks()
-  const filteredWorks = works.filter((work: any) => work.type.toLowerCase() === currentType)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/library?type=${currentType}`, {
+    next: { revalidate: 3600 },
+  })
+
+  const works: LibraryItem[] = await res.json()
 
   return (
     <main className="layout-container pb-20">
@@ -39,7 +29,7 @@ export default async function LibraryPage({ searchParams }: { searchParams: Prom
       <LibraryTabs currentType={currentType} />
 
       <ul className="mt-4 grid grid-cols-3 gap-4 md:grid-cols-5 md:gap-6">
-        {filteredWorks
+        {works
           .sort((a, b) => Number(new Date(b.releaseDate)) - Number(new Date(a.releaseDate)))
           .map((work) => (
             <li key={work.id}>

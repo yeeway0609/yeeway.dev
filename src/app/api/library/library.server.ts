@@ -44,7 +44,7 @@ async function getTmdbDetails(type: 'tv' | 'movie', id: number): Promise<TmdbDet
   }
 }
 
-export async function getLibraryItems(): Promise<LibraryItem[]> {
+export async function getLibraryItems(type?: string): Promise<LibraryItem[]> {
   if (!NOTION_API_KEY || !NOTION_DATABASE_ID) {
     console.warn('[Notion] Missing API key or database ID')
     return []
@@ -58,7 +58,7 @@ export async function getLibraryItems(): Promise<LibraryItem[]> {
     const results = response.results ?? []
     console.log(results)
 
-    return Promise.all(
+    const items = await Promise.all(
       results.map(async (page: { id: string; properties?: Record<string, unknown> }) => {
         const props = page.properties ?? {}
         const titleProp = props.title as { title?: Array<{ plain_text?: string }> } | undefined
@@ -67,14 +67,14 @@ export async function getLibraryItems(): Promise<LibraryItem[]> {
         const tmdbUrlProp = props.tmdb_url as { url?: string } | undefined
 
         const title = titleProp?.title?.[0]?.plain_text ?? 'Untitled'
-        const type = typeProp?.select?.name ?? ''
+        const itemType = typeProp?.select?.name ?? ''
         const rating = ratingProp?.number ?? 0
         const tmdbUrlRaw = tmdbUrlProp?.url ?? ''
 
         const workData: LibraryItem = {
           id: page.id,
           title,
-          type,
+          type: itemType,
           rating,
           imageUrl: null,
           releaseDate: '',
@@ -95,6 +95,12 @@ export async function getLibraryItems(): Promise<LibraryItem[]> {
         return workData
       })
     )
+
+    if (type) {
+      return items.filter((item) => item.type.toLowerCase() === type.toLowerCase())
+    }
+
+    return items
   } catch (error) {
     console.error('[Notion] Failed to fetch entertainment works:', error)
     return []

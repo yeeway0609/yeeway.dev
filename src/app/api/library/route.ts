@@ -2,9 +2,12 @@ import { getLibraryItems } from '@/app/api/library/library.server'
 
 export const revalidate = 3600
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
-    const works = await getLibraryItems()
+    const { searchParams } = new URL(request.url)
+    const type = searchParams.get('type') ?? undefined
+    const works = await getLibraryItems(type)
+
     return Response.json(works, {
       headers: {
         'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
