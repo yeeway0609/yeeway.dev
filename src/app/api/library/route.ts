@@ -5,8 +5,11 @@ export const revalidate = 3600
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url)
-    const type = searchParams.get('type') ?? undefined
-    const works = await getLibraryItems(type)
+    const type = searchParams.get('type') ?? 'tv'
+    const ratingStr = searchParams.get('rating')
+    const rating = ratingStr ? parseFloat(ratingStr) : undefined
+
+    const works = await getLibraryItems(type, rating)
 
     return Response.json(works, {
       headers: {
