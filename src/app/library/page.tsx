@@ -32,7 +32,7 @@ export default async function LibraryPage({ searchParams }: { searchParams: Prom
   return (
     <main className="layout-container pb-20">
       <h1 className="page-title">Library</h1>
-      <p className="page-sub-title">A collection of things</p>
+      <p className="page-sub-title">A collection of things I&apos;ve watched, read, or played.</p>
 
       <LibraryTabs currentType={currentType} currentRating={params.rating} />
 
