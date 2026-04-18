@@ -1,10 +1,10 @@
 import { GoogleAnalytics } from '@next/third-parties/google'
 import type { Metadata } from 'next'
 import { Nunito } from 'next/font/google'
+import { ThemeProvider } from 'next-themes'
 import { ConsoleAsciiArt } from '@/components/ConsoleAsciiArt'
 import { Footer } from '@/components/Footer'
 import { Navbar } from '@/components/Navbar'
-import { Providers } from '@/components/Providers'
 import { SITE } from '@/lib/constants'
 import './global.css'
 import '@fontsource/commit-mono'
@@ -41,11 +41,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="zh-TW" suppressHydrationWarning>
       <body className={`${nunito.className} flex min-h-dvh flex-col items-center`}>
-        <Providers>
+        <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
           <Navbar />
           <div className="relative w-full grow">{children}</div>
           <Footer />
-        </Providers>
+        </ThemeProvider>
       </body>
       <GoogleAnalytics gaId="G-CCEVLQFSHY" />
       <ConsoleAsciiArt />
