@@ -137,6 +137,8 @@
   .link {
     @apply cursor-pointer font-bold text-blue-400 underline underline-offset-4 hover:text-blue-600;
   }
+
+
 }
 
 @layer utilities {
@@ -157,6 +159,18 @@
     -webkit-mask-image: linear-gradient(to right, transparent 0, black 8px, black calc(100% - 8px), transparent 100%);
     -webkit-mask-size: 100% 100%;
     -webkit-mask-repeat: no-repeat;
+  }
+
+  .not-found-bat-cursor {
+    cursor: url(/assets/bat.png) 32 32, auto;
+  }
+
+  .not-found-bat-cursor:active {
+    cursor: url(/assets/bat-bonk.png) 32 32, auto;
+  }
+
+  .dark .not-found-bat-cursor:active {
+    cursor: url(/assets/bat-bonk-white.png) 32 32, auto;
   }
 }
 
