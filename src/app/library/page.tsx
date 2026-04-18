@@ -1,13 +1,19 @@
 import { Icon } from '@iconify/react'
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { LibraryTabs } from '@/app/library/LibraryTabs'
+import { LibraryToolbar } from '@/app/library/LibraryToolbar'
 import { Badge } from '@/components/ui/badge'
 import { LIBRARY_TYPES, RATING_OPTIONS } from '@/lib/constants'
 import { getLibraryItems } from '@/lib/library.server'
 
+type LibrarySearchParams = {
+  type?: string
+  rating?: string
+  title?: string
+}
+
 interface LibraryPageProps {
-  searchParams: Promise<{ type?: string, rating?: string }>
+  searchParams: Promise<LibrarySearchParams>
 }
 
 export const metadata: Metadata = {
@@ -15,20 +21,28 @@ export const metadata: Metadata = {
 }
 
 export default async function LibraryPage({ searchParams }: LibraryPageProps) {
-  const params = await searchParams
-  const requestedType = params.type?.toLowerCase() ?? 'tv'
+  const { type: typeParam, rating: ratingParam, title: titleParam } = await searchParams
+
+  const typeNormalized = typeParam?.toLowerCase() ?? 'tv'
   const validTypes = LIBRARY_TYPES.map((t) => t.value)
-  const currentType = validTypes.includes(requestedType as any) ? requestedType : 'tv'
-  const ratingNum = params.rating && Number(params.rating) >= 1 && Number(params.rating) <= 6
-    ? Number(params.rating)
-    : undefined
+  const currentType = validTypes.includes(typeNormalized as (typeof validTypes)[number])
+    ? typeNormalized
+    : 'tv'
+
+  const ratingFilter
+    = ratingParam && Number(ratingParam) >= 1 && Number(ratingParam) <= 6
+      ? Number(ratingParam)
+      : undefined
+
+  const titleSearch = titleParam?.trim().toLowerCase() ?? ''
 
   const allItems = await getLibraryItems()
   const items = allItems
     .filter((item) => {
       const matchesType = item.type.toLowerCase() === currentType.toLowerCase()
-      const matchesRating = ratingNum === undefined || item.rating === ratingNum
-      return matchesType && matchesRating
+      const matchesRating = ratingFilter === undefined || item.rating === ratingFilter
+      const matchesTitle = !titleSearch || item.title.toLowerCase().includes(titleSearch)
+      return matchesType && matchesRating && matchesTitle
     })
     .sort((a, b) => Number(new Date(b.releaseDate)) - Number(new Date(a.releaseDate)))
 
@@ -37,14 +51,18 @@ export default async function LibraryPage({ searchParams }: LibraryPageProps) {
       <h1 className="page-title">Library</h1>
       <p className="page-sub-title">A collection of things I&apos;ve watched, read, or played.</p>
 
-      <LibraryTabs currentType={currentType} currentRating={params.rating} />
+      <LibraryToolbar
+        selectedType={currentType}
+        ratingParam={ratingParam}
+        titleParam={titleParam ?? ''}
+      />
 
       {items.length === 0 ? (
         <div className="flex items-center justify-center py-12 text-center">
           <p className="text-lg text-muted-foreground">No items</p>
         </div>
       ) : (
-        <ul className="mt-4 grid grid-cols-3 gap-4 md:grid-cols-6 md:gap-6">
+        <ul className="mt-6 grid grid-cols-3 gap-4 md:grid-cols-6 md:gap-6">
           {items.map((work) => (
             <li key={work.id}>
               <a
