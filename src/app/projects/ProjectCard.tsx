@@ -37,7 +37,7 @@ export function ProjectCard({
             <Icon icon="tabler:book" className="size-5" />
             {articleURL.startsWith('http') ? (
               <a
-                className="hover:text-primary cursor-pointer underline underline-offset-3"
+                className="cursor-pointer underline underline-offset-3 hover:text-primary"
                 href={articleURL}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -45,7 +45,7 @@ export function ProjectCard({
                 {articleTitle}
               </a>
             ) : (
-              <Link className="hover:text-primary cursor-pointer underline underline-offset-3" href={articleURL}>
+              <Link className="cursor-pointer underline underline-offset-3 hover:text-primary" href={articleURL}>
                 {articleTitle}
               </Link>
             )}
@@ -55,7 +55,7 @@ export function ProjectCard({
           <div className="flex items-center gap-2 transition-colors duration-300">
             <Icon icon="tabler:brand-github" className="size-5" />
             <a
-              className="hover:text-primary -mt-0.5 cursor-pointer underline underline-offset-3"
+              className="-mt-0.5 cursor-pointer underline underline-offset-3 hover:text-primary"
               href={githubURL}
               target="_blank"
               rel="noopener noreferrer"
@@ -68,7 +68,7 @@ export function ProjectCard({
           <div className="flex items-center gap-2 transition-colors duration-300">
             <Icon icon="bx:globe" className="size-5" />
             <a
-              className="hover:text-primary -mt-1 cursor-pointer underline underline-offset-3"
+              className="-mt-1 cursor-pointer underline underline-offset-3 hover:text-primary"
               href={websiteURL}
               target="_blank"
               rel="noopener noreferrer"

@@ -2,7 +2,7 @@ import { CONTACTS } from '@/lib/constants'
 
 export function Footer() {
   return (
-    <footer className="border-border w-full border-t">
+    <footer className="w-full border-t border-border">
       <div className="layout-container flex flex-col gap-4 py-4 sm:flex-row sm:items-end sm:justify-between sm:py-6">
         <div>
           <p>
@@ -19,7 +19,7 @@ export function Footer() {
           </p>
         </div>
 
-        <p className="text-muted-foreground text-sm">© 2024 Alex Su. All rights reserved.</p>
+        <p className="text-sm text-muted-foreground">© 2024 Alex Su. All rights reserved.</p>
       </div>
     </footer>
   )

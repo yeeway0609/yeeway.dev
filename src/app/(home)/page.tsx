@@ -82,7 +82,7 @@ export default function Page() {
 
       <HomePageTitle className="mt-8" />
 
-      <section className="animate-fade-in w-full opacity-0 delay-[1.5s]">
+      <section className="w-full animate-fade-in opacity-0 delay-[1.5s]">
         <p className="mt-4 text-center text-sm text-zinc-600 sm:text-base dark:text-zinc-400">
           暱稱 yeeway，由網頁前端入門的全端工程師
           <br />

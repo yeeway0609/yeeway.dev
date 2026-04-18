@@ -3,6 +3,7 @@ import { fileURLToPath } from 'url'
 import { FlatCompat } from '@eslint/eslintrc'
 import stylistic from '@stylistic/eslint-plugin'
 import { defineConfig, globalIgnores } from 'eslint/config'
+import tailwindPlugin from 'eslint-plugin-tailwindcss'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const compat = new FlatCompat({ baseDirectory: __dirname })
@@ -19,11 +20,16 @@ export default defineConfig([
   ]),
   ...compat.extends('next/core-web-vitals', 'plugin:@typescript-eslint/recommended'),
   stylistic.configs.recommended,
+  ...tailwindPlugin.configs['flat/recommended'],
   {
     settings: {
       'import/resolver': {
         typescript: true,
         node: true,
+      },
+      tailwindcss: {
+        config: `${__dirname}/src/app/global.css`,
+        callees: ['classnames', 'clsx', 'cn'],
       },
     },
     rules: {
@@ -36,6 +42,8 @@ export default defineConfig([
       'arrow-body-style': ['error', 'as-needed'],
       'prefer-arrow-callback': ['error'],
       'padded-blocks': ['error', { blocks: 'never', classes: 'never', switches: 'never' }],
+
+      'tailwindcss/no-custom-classname': 'off',
 
       'import/no-named-as-default': 'off',
       'import/order': [

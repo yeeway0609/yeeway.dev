@@ -32,7 +32,7 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
   }, [])
 
   return (
-    <nav className="top-header sticky z-10 hidden max-h-[calc(100vh-var(--spacing-header))] w-60 shrink-0 list-none overflow-y-auto py-6 lg:block">
+    <nav className="sticky top-header z-10 hidden max-h-[calc(100vh-var(--spacing-header))] w-60 shrink-0 list-none overflow-y-auto py-6 lg:block">
       <div className="flex text-xl">
         <Icon icon="quill:list" className="mr-1 mb-2 size-7" />
         <span>目錄</span>
@@ -41,7 +41,7 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
         <a
           key={heading}
           className={clsx(
-            'text-muted-foreground hover:text-foreground mb-2 block text-base',
+            'mb-2 block text-base text-muted-foreground hover:text-foreground',
             level === 3 ? 'ml-4 text-sm' : '',
             heading === activeHeading ? 'text-primary' : '',
           )}
@@ -50,7 +50,7 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
           {heading}
         </a>
       ))}
-      <a className="text-muted-foreground hover:text-foreground flex items-center text-base" href="#">
+      <a className="flex items-center text-base text-muted-foreground hover:text-foreground" href="#">
         <Icon icon="icon-park-outline:arrow-circle-up" className="mr-1.5 size-4.5" />
         <span className="-mb-px">回到頂端</span>
       </a>

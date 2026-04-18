@@ -20,7 +20,7 @@ export function Navbar() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="border-foreground-300/30 bg-background/70 h-header sticky top-0 z-50 flex w-full items-center justify-center border-b-[0.5px] py-3 shadow-md backdrop-blur-md">
+    <header className="border-foreground-300/30 sticky top-0 z-50 flex h-header w-full items-center justify-center border-b-[0.5px] bg-background/70 py-3 shadow-md backdrop-blur-md">
       <div className="layout-container border-foreground-300/30 flex items-center justify-between">
         <Link href="/" className="cursor-pointer">
           <Image src="/logo.png" alt="Alex Su' Website" width={36} height={36} />
@@ -29,7 +29,7 @@ export function Navbar() {
         {/* Desktop */}
         <nav className="hidden gap-x-6 sm:flex">
           {ROUTES.map((route) => (
-            <Link key={route.title} className="hover:text-primary flex cursor-pointer items-center bg-transparent text-sm" href={route.href}>
+            <Link key={route.title} className="flex cursor-pointer items-center bg-transparent text-sm hover:text-primary" href={route.href}>
               {route.icon} {route.title}
             </Link>
           ))}
@@ -49,7 +49,7 @@ export function Navbar() {
               <div className="flex justify-between">
                 <ThemeSwitch />
                 <SheetClose>
-                  <Icon icon="heroicons:x-mark" className="hover:text-primary active:text-primary size-7 transition-colors" />
+                  <Icon icon="heroicons:x-mark" className="size-7 transition-colors hover:text-primary active:text-primary" />
                 </SheetClose>
               </div>
               <nav className="mt-5 flex flex-col gap-8 px-1">
@@ -77,8 +77,8 @@ function ThemeSwitch() {
       size="icon"
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
     >
-      <Icon icon="heroicons:sun-solid" className="group-hover:text-primary absolute size-6 transition-colors dark:hidden" />
-      <Icon icon="heroicons:moon-solid" className="group-hover:text-primary absolute hidden size-6 transition-colors dark:block" />
+      <Icon icon="heroicons:sun-solid" className="absolute size-6 transition-colors group-hover:text-primary dark:hidden" />
+      <Icon icon="heroicons:moon-solid" className="absolute hidden size-6 transition-colors group-hover:text-primary dark:block" />
       <span className="sr-only">Toggle theme</span>
     </Button>
   )

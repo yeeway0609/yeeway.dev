@@ -8,7 +8,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     p: ({ children }) => <div className="content-text mb-4 sm:mb-6">{children}</div>,
     h2: ({ children }) => (
-      <h2 id={children as string} className="text-primary mt-8 mb-4 scroll-mt-20 text-xl leading-tight font-bold sm:text-2xl">
+      <h2 id={children as string} className="mt-8 mb-4 scroll-mt-20 text-xl leading-tight font-bold text-primary sm:text-2xl">
         {children}
       </h2>
     ),
@@ -19,7 +19,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     hr: () => <hr className="mt-2 mb-5" />,
     blockquote: ({ children }) => (
-      <blockquote className="border-muted-foreground text-muted-foreground my-4 border-l-4 pr-4 pl-4 text-sm sm:text-lg">{children}</blockquote>
+      <blockquote className="my-4 border-l-4 border-muted-foreground pr-4 pl-4 text-sm text-muted-foreground sm:text-lg">{children}</blockquote>
     ),
     ul: ({ children }) => <ul className="content-text mb-4 list-disc pl-6 sm:mb-6">{children}</ul>,
     ol: ({ children }) => <ol className="content-text mb-4 list-decimal pl-6 sm:mb-6">{children}</ol>,

@@ -33,7 +33,7 @@ export function CoolAvatar() {
   return (
     <div>
       <Image
-        className="border-border mx-auto size-32 shrink-0 rounded-full border-2 object-cover"
+        className="mx-auto size-32 shrink-0 rounded-full border-2 border-border object-cover"
         src={AVATAR_URL}
         alt="Alex Su"
         width={128}
@@ -50,7 +50,7 @@ export function CoolAvatar() {
                   ref={contentRef as React.Ref<HTMLAnchorElement>}
                   className={clsx(
                     'inline-block shrink-0 whitespace-nowrap',
-                    nowPlaying?.url && 'decoration-muted-foreground/50 underline underline-offset-2',
+                    nowPlaying?.url && 'underline decoration-muted-foreground/50 underline-offset-2',
                   )}
                   href={nowPlaying?.url}
                   target="_blank"
@@ -63,7 +63,7 @@ export function CoolAvatar() {
                 ref={contentRef as React.Ref<HTMLAnchorElement>}
                 className={clsx(
                   'inline-block shrink-0 whitespace-nowrap',
-                  nowPlaying?.url && 'decoration-muted-foreground/50 underline underline-offset-2',
+                  nowPlaying?.url && 'underline decoration-muted-foreground/50 underline-offset-2',
                 )}
                 href={nowPlaying?.url}
                 target="_blank"

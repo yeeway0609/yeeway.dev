@@ -21,11 +21,11 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       <div className="layout-container flex items-start justify-between gap-10">
         <div className="w-full max-w-3xl">
           <h1 className="mt-4 mb-2 text-2xl font-bold break-all sm:mt-8 sm:text-3xl sm:leading-tight sm:break-normal">{data.title}</h1>
-          <p className="text-muted-foreground content-text mb-3">{data.description}</p>
+          <p className="content-text mb-3 text-muted-foreground">{data.description}</p>
 
           <div className="mb-4 flex items-center">
-            <Icon icon="uil:calender" className="text-muted-foreground mr-2 size-5" />
-            <time className="text-muted-foreground mr-4 pt-0.5 text-base sm:text-lg">{formatDate(data.publishedOn)}</time>
+            <Icon icon="uil:calender" className="mr-2 size-5 text-muted-foreground" />
+            <time className="mr-4 pt-0.5 text-base text-muted-foreground sm:text-lg">{formatDate(data.publishedOn)}</time>
             {data.tags.map((tag) => (
               <Badge key={tag} className="mr-2 px-1.5 py-px text-xs font-medium">
                 #{tag}
@@ -34,7 +34,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           </div>
           {data.coverImageUrl && (
             <Image
-              className="animate-img-loading mb-4 w-full"
+              className="mb-4 w-full animate-img-loading"
               src={data.coverImageUrl}
               alt={`${data.title} - 封面`}
               width={600}
@@ -45,7 +45,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
           <hr className="my-6" />
 
-          <article className="content-text [&_img]:animate-img-loading w-full [&_img]:mx-auto [&_video]:mx-auto">
+          <article className="content-text w-full [&_img]:mx-auto [&_img]:animate-img-loading [&_video]:mx-auto">
             <PostContent />
           </article>
         </div>

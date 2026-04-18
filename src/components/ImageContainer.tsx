@@ -10,7 +10,7 @@ type ImageContainer = {
 export function ImageContainer({ children, className }: ImageContainer) {
   return (
     <span className={clsx('relative block', className)}>
-      <span className="bg-muted absolute -z-10 size-full animate-pulse" />
+      <span className="absolute -z-10 size-full animate-pulse bg-muted" />
       {children}
     </span>
   )

@@ -41,14 +41,14 @@ export default async function LibraryPage({ searchParams }: LibraryPageProps) {
 
       {items.length === 0 ? (
         <div className="flex items-center justify-center py-12 text-center">
-          <p className="text-muted-foreground text-lg">No items</p>
+          <p className="text-lg text-muted-foreground">No items</p>
         </div>
       ) : (
         <ul className="mt-4 grid grid-cols-3 gap-4 md:grid-cols-6 md:gap-6">
           {items.map((work) => (
             <li key={work.id}>
               <a
-                className="bg-muted group relative grid aspect-[2/3] place-items-center overflow-clip rounded-lg border p-2 shadow-sm"
+                className="group relative grid aspect-[2/3] place-items-center overflow-clip rounded-lg border bg-muted p-2 shadow-sm"
                 href={work.externalUrl ?? undefined}
                 target="_blank"
                 rel="noopener noreferrer"
