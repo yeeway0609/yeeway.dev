@@ -1,5 +1,0 @@
-package.json
-pnpm-lock.yaml
-*.md
-*.mdx
-src/app/global.css
