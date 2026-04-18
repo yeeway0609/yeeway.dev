@@ -19,6 +19,15 @@ export const DEFAULT_COVER_IMAGE = `/cover.png`
 
 export const BLOG_DIR = 'content/blog'
 
+export const RATING_OPTIONS = [
+  { label: '❤️', value: '6' },
+  { label: '⭐️⭐️⭐️⭐️⭐️', value: '5' },
+  { label: '⭐️⭐️⭐️⭐️', value: '4' },
+  { label: '⭐️⭐️⭐️', value: '3' },
+  { label: '⭐️⭐️', value: '2' },
+  { label: '⭐️', value: '1' },
+] as const
+
 export const LIBRARY_TYPES = [
   {
     value: 'tv',

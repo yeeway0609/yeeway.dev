@@ -1,6 +1,7 @@
 'use server'
 
-import { Client } from '@notionhq/client'
+import { Client, collectPaginatedAPI } from '@notionhq/client'
+import { unstable_cache } from 'next/cache'
 import type { LibraryItem, TmdbDetails } from '@/lib/types'
 
 const NOTION_API_KEY = process.env.NOTION_API_KEY
@@ -44,23 +45,21 @@ async function getTmdbDetails(type: 'tv' | 'movie', id: number): Promise<TmdbDet
   }
 }
 
-export async function getLibraryItems(): Promise<LibraryItem[]> {
+async function fetchAllLibraryItems(): Promise<LibraryItem[]> {
   if (!NOTION_API_KEY || !NOTION_DATABASE_ID) {
     console.warn('[Notion] Missing API key or database ID')
     return []
   }
 
   try {
-    const response = await notion.dataSources.query({
+    const allResults = await collectPaginatedAPI(notion.dataSources.query, {
       data_source_id: NOTION_DATABASE_ID,
+      page_size: 100,
     })
 
-    const results = response.results ?? []
-    console.log(results)
-
     const items = await Promise.all(
-      results.map(async (page: { id: string; properties?: Record<string, unknown> }) => {
-        const props = page.properties ?? {}
+      allResults.map(async (page) => {
+        const props = (page as { id: string; properties?: Record<string, unknown> }).properties ?? {}
         const titleProp = props.title as { title?: Array<{ plain_text?: string }> } | undefined
         const typeProp = props.type as { select?: { name?: string } } | undefined
         const ratingProp = props.rating as { number?: number } | undefined
@@ -98,7 +97,12 @@ export async function getLibraryItems(): Promise<LibraryItem[]> {
 
     return items
   } catch (error) {
-    console.error('[Notion] Failed to fetch entertainment works:', error)
+    console.error('[Notion] Failed to fetch library items:', error)
     return []
   }
 }
+
+// Cache the full item list for 1 hour so all paginated API calls share one Notion fetch
+export const getLibraryItems = unstable_cache(fetchAllLibraryItems, ['library-items'], {
+  revalidate: 3600,
+})

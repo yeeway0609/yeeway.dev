@@ -3,21 +3,12 @@
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { LIBRARY_TYPES } from '@/lib/constants'
+import { LIBRARY_TYPES, RATING_OPTIONS } from '@/lib/constants'
 
 interface LibraryTabsProps {
   currentType: string
   currentRating?: string
 }
-
-const RATING_OPTIONS = [
-  { label: '🌟', value: '6' },
-  { label: '⭐️⭐️⭐️⭐️⭐️', value: '5' },
-  { label: '⭐️⭐️⭐️⭐️', value: '4' },
-  { label: '⭐️⭐️⭐️', value: '3' },
-  { label: '⭐️⭐️', value: '2' },
-  { label: '⭐️', value: '1' },
-] as const
 
 export function LibraryTabs({ currentType, currentRating }: LibraryTabsProps) {
   const router = useRouter()
