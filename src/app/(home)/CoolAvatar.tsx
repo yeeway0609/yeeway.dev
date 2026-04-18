@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, type Ref } from 'react'
 import clsx from 'clsx'
 import Image from 'next/image'
 import { useInterval } from 'usehooks-ts'
@@ -12,9 +12,9 @@ const AVATAR_URL = '/assets/avatar-cartoon.png'
 const POLL_INTERVAL = 5_000
 
 export function CoolAvatar() {
+  const contentRef = useRef<HTMLElement>(null)
   const [nowPlaying, setNowPlaying] = useState<NowPlaying | null>(null)
   const [needsScroll, setNeedsScroll] = useState(false)
-  const contentRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     getNowPlaying().then(setNowPlaying)
@@ -40,36 +40,34 @@ export function CoolAvatar() {
         height={128}
         priority
       />
+
       <div className="mt-2 flex items-center justify-center gap-1.5 text-xs">
-        <AudioLinesIcon size={16} isPlaying={nowPlaying?.isPlaying ?? false} className={!nowPlaying?.title ? 'text-muted-foreground' : ''} />
+        <AudioLinesIcon
+          size={16}
+          isPlaying={nowPlaying?.isPlaying ?? false}
+          className={!nowPlaying?.title ? 'text-muted-foreground' : ''}
+        />
         {nowPlaying && nowPlaying.title ? (
           <div className={clsx('relative max-w-60', needsScroll && 'marquee-fade-edges')}>
             {needsScroll ? (
-              <Marquee repeat={2} className={clsx('p-0 [--duration:16s] [--gap:2rem]')}>
-                <a
-                  ref={contentRef as React.Ref<HTMLAnchorElement>}
-                  className={clsx(
-                    'inline-block shrink-0 whitespace-nowrap',
-                    nowPlaying?.url && 'underline decoration-muted-foreground/50 underline-offset-2',
-                  )}
-                  href={nowPlaying?.url}
-                  target="_blank"
-                >
-                  {nowPlaying.artist} <span className="font-normal"> - {nowPlaying.title}</span>
-                </a>
+              <Marquee
+                className={clsx('p-0 [--duration:16s] [--gap:2rem]')}
+                repeat={2}
+              >
+                <NowPlayingTrackLink
+                  contentRef={contentRef as Ref<HTMLAnchorElement>}
+                  artist={nowPlaying.artist ?? ''}
+                  title={nowPlaying.title ?? ''}
+                  url={nowPlaying.url}
+                />
               </Marquee>
             ) : (
-              <a
-                ref={contentRef as React.Ref<HTMLAnchorElement>}
-                className={clsx(
-                  'inline-block shrink-0 whitespace-nowrap',
-                  nowPlaying?.url && 'underline decoration-muted-foreground/50 underline-offset-2',
-                )}
-                href={nowPlaying?.url}
-                target="_blank"
-              >
-                {nowPlaying.artist} <span className="font-normal"> - {nowPlaying.title}</span>
-              </a>
+              <NowPlayingTrackLink
+                contentRef={contentRef as Ref<HTMLAnchorElement>}
+                artist={nowPlaying.artist ?? ''}
+                title={nowPlaying.title ?? ''}
+                url={nowPlaying.url}
+              />
             )}
           </div>
         ) : (
@@ -77,5 +75,28 @@ export function CoolAvatar() {
         )}
       </div>
     </div>
+  )
+}
+
+interface NowPlayingTrackLinkProps {
+  contentRef: Ref<HTMLAnchorElement>
+  artist: string
+  title: string
+  url?: string
+}
+
+function NowPlayingTrackLink({ contentRef, artist, title, url }: NowPlayingTrackLinkProps) {
+  return (
+    <a
+      className={clsx(
+        'inline-block shrink-0 whitespace-nowrap',
+        url && 'underline decoration-muted-foreground/50 underline-offset-2',
+      )}
+      ref={contentRef}
+      href={url}
+      target="_blank"
+    >
+      <span className="font-semibold">{artist}</span> - {title}
+    </a>
   )
 }

@@ -1,12 +1,7 @@
 'use client'
 
-import clsx from 'clsx'
 import { motion } from 'motion/react'
 import Image from 'next/image'
-
-type HomePageTitleProps = {
-  className?: string
-}
 
 const text = ['Hi, ', 'I\'m ', 'Alex ', 'Su']
 
@@ -32,13 +27,10 @@ const wordVariants = {
   },
 }
 
-export function HomePageTitle({ className }: HomePageTitleProps) {
+export function HomePageTitle() {
   return (
     <motion.h1
-      className={clsx(
-        'flex flex-wrap items-center text-center text-3xl font-extrabold tracking-wider whitespace-pre sm:text-5xl sm:leading-tight',
-        className,
-      )}
+      className="mt-8 flex flex-wrap items-center text-center text-3xl font-extrabold tracking-wider whitespace-pre sm:text-5xl sm:leading-tight"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -48,7 +40,10 @@ export function HomePageTitle({ className }: HomePageTitleProps) {
           {word}
         </motion.span>
       ))}
-      <motion.div className="-mt-2 ml-2 flex aspect-square h-full items-center justify-center" variants={wordVariants}>
+      <motion.div
+        className="-mt-2 ml-2 flex aspect-square h-full items-center justify-center"
+        variants={wordVariants}
+      >
         <Image className="inline-block size-9 sm:size-12" src="/assets/fluent-emoji-vulcan-salute.png" alt="vulcan-salute" width={48} height={48} />
       </motion.div>
     </motion.h1>

@@ -19,9 +19,15 @@ export function ProjectCard({
   articleTitle,
 }: Project) {
   return (
-    <Card className="flex w-full max-w-80 flex-col gap-2 overflow-hidden pt-0 sm:h-[450px] md:max-w-none">
-      <div className="relative mb-3 aspect-5/3 h-[180px] shrink-0 overflow-hidden rounded-t-lg object-cover">
-        <Image className="size-full object-cover" src={imageURL} alt={title} width={300} height={180} />
+    <Card className="flex w-full max-w-80 flex-col gap-2 overflow-clip pt-0 sm:h-[450px] md:max-w-none">
+      <div className="relative mb-3 aspect-5/3 h-[180px] shrink-0 overflow-clip rounded-t-lg object-cover">
+        <Image
+          className="size-full object-cover"
+          src={imageURL}
+          alt={title}
+          width={300}
+          height={180}
+        />
       </div>
       <CardHeader className="px-4">
         <CardTitle className="text-base">{title}</CardTitle>
@@ -31,50 +37,40 @@ export function ProjectCard({
         </CardDescription>
       </CardHeader>
       <CardContent className="mt-auto space-y-2 px-4 text-sm">
-        <p className=""></p>
         {articleURL && (
           <div className="flex items-center gap-2 transition-colors duration-300">
             <Icon icon="tabler:book" className="size-5" />
-            {articleURL.startsWith('http') ? (
-              <a
-                className="cursor-pointer underline underline-offset-3 hover:text-primary"
-                href={articleURL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {articleTitle}
-              </a>
-            ) : (
-              <Link className="cursor-pointer underline underline-offset-3 hover:text-primary" href={articleURL}>
-                {articleTitle}
-              </Link>
-            )}
+            <Link
+              className="cursor-pointer underline underline-offset-3 hover:text-primary"
+              href={articleURL}
+              target="_blank"
+            >
+              {articleTitle}
+            </Link>
           </div>
         )}
         {githubURL && (
           <div className="flex items-center gap-2 transition-colors duration-300">
-            <Icon icon="tabler:brand-github" className="size-5" />
-            <a
+            <Icon className="size-5" icon="tabler:brand-github" />
+            <Link
               className="-mt-0.5 cursor-pointer underline underline-offset-3 hover:text-primary"
               href={githubURL}
               target="_blank"
-              rel="noopener noreferrer"
             >
               {githubTitle}
-            </a>
+            </Link>
           </div>
         )}
         {websiteURL && (
           <div className="flex items-center gap-2 transition-colors duration-300">
-            <Icon icon="bx:globe" className="size-5" />
-            <a
+            <Icon className="size-5" icon="bx:globe" />
+            <Link
               className="-mt-1 cursor-pointer underline underline-offset-3 hover:text-primary"
               href={websiteURL}
               target="_blank"
-              rel="noopener noreferrer"
             >
               {websiteTitle}
-            </a>
+            </Link>
           </div>
         )}
       </CardContent>

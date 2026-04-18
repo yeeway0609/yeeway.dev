@@ -31,8 +31,6 @@ interface MarqueeProps extends ComponentPropsWithoutRef<'div'> {
    * @default 4
    */
   repeat?: number
-
-  paused?: boolean
 }
 
 export function Marquee({ className, reverse = false, pauseOnHover = false, children, vertical = false, repeat = 4, ...props }: MarqueeProps) {

@@ -79,8 +79,7 @@ export default function Page() {
   return (
     <main className="mb-20 flex w-full flex-col items-center pt-10 lg:pt-16">
       <CoolAvatar />
-
-      <HomePageTitle className="mt-8" />
+      <HomePageTitle />
 
       <section className="w-full animate-fade-in opacity-0 delay-[1.5s]">
         <p className="mt-4 text-center text-sm text-zinc-600 sm:text-base dark:text-zinc-400">
@@ -121,9 +120,15 @@ export default function Page() {
         </div>
 
         <h2 className="mt-16 mb-2 flex items-center justify-center space-x-2 text-2xl font-bold">
-          <Icon icon="ri:sparkling-2-fill" className="size-6 text-[#D8A71B]" />
+          <Icon
+            className="size-6 text-[#D8A71B]"
+            icon="ri:sparkling-2-fill"
+          />
           <span>生活碎片</span>
-          <Icon icon="ri:sparkling-2-fill" className="size-6 text-[#D8A71B]" />
+          <Icon
+            className="size-6 text-[#D8A71B]"
+            icon="ri:sparkling-2-fill"
+          />
         </h2>
         <ImageCarousel images={images} />
       </section>

@@ -25,11 +25,15 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ [
           <h3 className="mb-3 text-lg leading-none font-medium tracking-wide">Tags:</h3>
           <div className="flex flex-wrap items-center justify-start gap-2">
             <Link href="/blog">
-              <Badge className={clsx('font-medium hover:bg-primary', currentTag ? 'bg-muted-foreground' : 'bg-primary')}>All</Badge>
+              <Badge className={clsx('font-medium hover:bg-primary', currentTag ? 'bg-muted-foreground' : 'bg-primary')}>
+                All
+              </Badge>
             </Link>
             {tags.map((tag) => (
               <Link key={tag} href={`/blog?tag=${tag}`}>
-                <Badge className={clsx('font-medium hover:bg-primary', currentTag === tag ? 'bg-primary' : 'bg-muted-foreground')}>#{tag}</Badge>
+                <Badge className={clsx('font-medium hover:bg-primary', currentTag === tag ? 'bg-primary' : 'bg-muted-foreground')}>
+                  #{tag}
+                </Badge>
               </Link>
             ))}
           </div>

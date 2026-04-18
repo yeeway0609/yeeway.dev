@@ -27,6 +27,12 @@ export function ImageCarousel({ images, align = 'left' }: ImageCarouselProps) {
     // EXPLAIN: overflow-x 要用 hidden，用 auto 的話手機拖曳會卡卡的
     <div className="hide-scrollbar w-full max-w-dvw overflow-x-hidden px-5 py-5">
       <motion.div
+        className={clsx(
+          'flex cursor-grab items-center gap-8 will-change-transform active:cursor-grabbing',
+          align === 'left' && 'justify-start',
+          align === 'center' && 'justify-center',
+          align === 'right' && 'justify-end',
+        )}
         ref={carousel}
         drag="x"
         whileDrag={{ scale: 0.95 }}
@@ -34,17 +40,11 @@ export function ImageCarousel({ images, align = 'left' }: ImageCarouselProps) {
         dragConstraints={{ right: 0, left: -width }}
         dragTransition={{ bounceDamping: 30 }}
         transition={{ duration: 0.2, ease: 'easeInOut' }}
-        className={clsx(
-          'flex cursor-grab items-center gap-8 will-change-transform active:cursor-grabbing',
-          align === 'left' && 'justify-start',
-          align === 'center' && 'justify-center',
-          align === 'right' && 'justify-end',
-        )}
       >
         {images.map((image, index: number) => (
           <motion.figure
-            key={index}
             className="group relative shrink-0"
+            key={index}
             style={{ width: image.width ?? 200, height: image.height ?? 200 }}
             initial={{ scale: 1, rotate: possibleRotations[index % possibleRotations.length], opacity: 0 }}
             whileHover={{ scale: 1.1, rotate: 0, transition: { duration: 0.2 } }}
@@ -58,7 +58,7 @@ export function ImageCarousel({ images, align = 'left' }: ImageCarouselProps) {
               height={300}
             />
             {image.title && (
-              <div className="absolute inset-0 flex size-full items-end bg-gradient-to-t from-black/75 via-black/0 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+              <div className="absolute inset-0 flex size-full items-end bg-linear-to-t from-black/75 via-black/0 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
                 <figcaption className="px-3 py-2 text-sm font-bold">{image.title}</figcaption>
               </div>
             )}

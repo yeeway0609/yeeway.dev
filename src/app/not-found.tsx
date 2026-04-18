@@ -40,7 +40,7 @@ export default function NotFound() {
         Current path: <code className="bg-gray-300 px-1 font-mono dark:bg-gray-700">{pathname}</code>
       </p>
       <Button className="cursor-help" asChild>
-        <a href={RICK_ROLL_URL} title="just kidding" target="_blank" rel="noopener noreferrer">
+        <a href={RICK_ROLL_URL} title="just kidding" target="_blank">
           Back to Home ?
         </a>
       </Button>

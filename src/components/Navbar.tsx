@@ -22,14 +22,21 @@ export function Navbar() {
   return (
     <header className="border-foreground-300/30 sticky top-0 z-50 flex h-header w-full items-center justify-center border-b-[0.5px] bg-background/70 py-3 shadow-md backdrop-blur-md">
       <div className="layout-container border-foreground-300/30 flex items-center justify-between">
-        <Link href="/" className="cursor-pointer">
+        <Link
+          className="cursor-pointer"
+          href="/"
+        >
           <Image src="/logo.png" alt="Alex Su' Website" width={36} height={36} />
         </Link>
 
         {/* Desktop */}
         <nav className="hidden gap-x-6 sm:flex">
           {ROUTES.map((route) => (
-            <Link key={route.title} className="flex cursor-pointer items-center bg-transparent text-sm hover:text-primary" href={route.href}>
+            <Link
+              key={route.title}
+              className="flex cursor-pointer items-center bg-transparent text-sm hover:text-primary"
+              href={route.href}
+            >
               {route.icon} {route.title}
             </Link>
           ))}
@@ -42,19 +49,30 @@ export function Navbar() {
         <div className="sm:hidden">
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger className="block">
-              <Icon icon="heroicons:bars-3" className="size-8" />
+              <Icon
+                className="size-8"
+                icon="heroicons:bars-3"
+              />
             </SheetTrigger>
             <SheetContent className="flex w-[270px] flex-col p-4">
               <SheetTitle className="sr-only">Mobile menu</SheetTitle>
               <div className="flex justify-between">
                 <ThemeSwitch />
                 <SheetClose>
-                  <Icon icon="heroicons:x-mark" className="size-7 transition-colors hover:text-primary active:text-primary" />
+                  <Icon
+                    className="size-7 transition-colors hover:text-primary active:text-primary"
+                    icon="heroicons:x-mark"
+                  />
                 </SheetClose>
               </div>
               <nav className="mt-5 flex flex-col gap-8 px-1">
                 {ROUTES.map((route) => (
-                  <Link key={route.title} className="flex items-center" href={route.href} onClick={() => setOpen(false)}>
+                  <Link
+                    key={route.title}
+                    className="flex items-center"
+                    href={route.href}
+                    onClick={() => setOpen(false)}
+                  >
                     {route.icon} {route.title}
                   </Link>
                 ))}
@@ -77,8 +95,14 @@ function ThemeSwitch() {
       size="icon"
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
     >
-      <Icon icon="heroicons:sun-solid" className="absolute size-6 transition-colors group-hover:text-primary dark:hidden" />
-      <Icon icon="heroicons:moon-solid" className="absolute hidden size-6 transition-colors group-hover:text-primary dark:block" />
+      <Icon
+        className="absolute size-6 transition-colors group-hover:text-primary dark:hidden"
+        icon="heroicons:sun-solid"
+      />
+      <Icon
+        className="absolute hidden size-6 transition-colors group-hover:text-primary dark:block"
+        icon="heroicons:moon-solid"
+      />
       <span className="sr-only">Toggle theme</span>
     </Button>
   )

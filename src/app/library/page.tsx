@@ -48,20 +48,25 @@ export default async function LibraryPage({ searchParams }: LibraryPageProps) {
           {items.map((work) => (
             <li key={work.id}>
               <a
-                className="group relative grid aspect-[2/3] place-items-center overflow-clip rounded-lg border bg-muted p-2 shadow-sm"
+                className="group relative grid aspect-2/3 place-items-center overflow-clip rounded-lg border bg-muted p-2 shadow-sm"
                 href={work.externalUrl ?? undefined}
                 target="_blank"
-                rel="noopener noreferrer"
               >
                 {work.imageUrl && <Image src={work.imageUrl} alt={work.title} fill className="object-cover" />}
                 <span>{work.title}</span>
 
-                <Badge className="absolute top-2 left-2 text-sm" variant="secondary">
+                <Badge
+                  className="absolute top-2 left-2 text-sm"
+                  variant="secondary"
+                >
                   {RATING_OPTIONS.find((option) => option.value === String(work.rating))?.label ?? work.rating}
                 </Badge>
 
                 {work.releaseDate && (
-                  <Badge className="absolute right-2 bottom-2 text-xs opacity-0 transition-opacity group-hover:opacity-100" variant="secondary">
+                  <Badge
+                    className="absolute right-2 bottom-2 text-xs opacity-0 transition-opacity group-hover:opacity-100"
+                    variant="secondary"
+                  >
                     {work.releaseDate}
                     <Icon className="ml-1 size-3" icon="mingcute:arrow-right-up-fill" />
                   </Badge>

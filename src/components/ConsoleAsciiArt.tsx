@@ -4,7 +4,7 @@
 export function ConsoleAsciiArt() {
   if (process.env.NODE_ENV === 'production') {
     console.log(
-      '               ;i.\n' +
+        '               ;i.\n' +
         '               M$L                    .;i.\n' +
         '               M$Y;                .;iii;;.\n' +
         '              ;$YY$i._           .iiii;;;;;\n' +

@@ -48,7 +48,9 @@ export function LibraryTabs({ currentType, currentRating }: LibraryTabsProps) {
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="all">All ratings</SelectItem>
+          <SelectItem value="all">
+            不限評分
+          </SelectItem>
           {RATING_OPTIONS.map((option) => (
             <SelectItem key={option.value} value={option.value}>
               {option.label}

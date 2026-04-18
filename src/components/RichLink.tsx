@@ -10,13 +10,19 @@ export function RichLink({ children, href, imgSrc }: RichLinkProps) {
   return (
     <HoverCard openDelay={300} closeDelay={300}>
       <HoverCardTrigger asChild>
-        <a className="link" href={href} target="_blank" rel="noopener noreferrer">
+        <a className="link" href={href} target="_blank">
           {children}
         </a>
       </HoverCardTrigger>
 
       <HoverCardContent className="overflow-hidden p-0" sideOffset={4}>
-        <img className="pointer-events-none aspect-video object-cover" src={imgSrc} width={320} height={180} alt="" />
+        <img
+          className="pointer-events-none aspect-video object-cover"
+          src={imgSrc}
+          width={320}
+          height={180}
+          alt=""
+        />
       </HoverCardContent>
     </HoverCard>
   )

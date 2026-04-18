@@ -9,8 +9,8 @@ export function BlogPostCard({ slug, title, description, publishedOn, tags, cove
   return (
     <Link
       className="@container flex min-h-48 w-full cursor-pointer flex-col overflow-clip rounded-lg border bg-card text-card-foreground shadow-xs transition-transform hover:scale-105 sm:flex-row"
-      href={`blog/${slug}`}
       title={`Post: ${title}`}
+      href={`blog/${slug}`}
     >
       <div className="w-full shrink-0 sm:max-w-72">
         <Image
@@ -25,9 +25,13 @@ export function BlogPostCard({ slug, title, description, publishedOn, tags, cove
 
       <div className="flex w-full flex-col p-4 sm:p-5">
         <h3 className="mb-2 text-xl font-semibold">{title}</h3>
-        <p className="mb-3 text-sm text-muted-foreground">{description.length > 100 ? `${description.substring(0, 100)}......` : description}</p>
+        <p className="mb-3 text-sm text-muted-foreground">
+          {description.length > 100 ? `${description.substring(0, 100)}......` : description}
+        </p>
         <div className="mt-auto flex items-center">
-          <time className="mt-0.5">{formatDate(publishedOn)}</time>
+          <time className="mt-0.5">
+            {formatDate(publishedOn)}
+          </time>
           <span className="mx-2.5 text-[8px]">•</span>
           <div className="flex">
             {tags.map((tag) => (

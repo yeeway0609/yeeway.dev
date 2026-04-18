@@ -7,13 +7,21 @@ export function Footer() {
         <div>
           <p>
             Contact me:&nbsp;
-            <a className="text-primary transition duration-300" href="mailto:hi@yeewy.dev" target="_blank" rel="noopener noreferrer">
+            <a
+              className="text-primary transition duration-300"
+              href={`mailto:${CONTACTS.email}`}
+              target="_blank"
+            >
               {CONTACTS.email}
             </a>
           </p>
           <p>
             RSS:&nbsp;
-            <a className="text-primary transition duration-300" href="/feed.xml" target="_blank" rel="noopener noreferrer">
+            <a
+              className="text-primary transition duration-300"
+              href="/feed.xml"
+              target="_blank"
+            >
               /feed.xml
             </a>
           </p>
