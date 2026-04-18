@@ -17,7 +17,7 @@ function buildRssXml(posts: BlogData[]): string {
           <description><![CDATA[ ${post.description} ]]></description>
           <content:encoded><![CDATA[ ${post.content} ]]></content:encoded>
         </item>
-      `
+      `,
     )
     .join('')
 

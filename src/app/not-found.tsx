@@ -29,7 +29,7 @@ export default function NotFound() {
     <main
       className={clsx(
         'flex min-h-[calc(100vh-var(--spacing-header))] w-full flex-col items-center justify-center select-none',
-        "cursor-[url('/assets/bat.png')_32_32,auto] active:cursor-[url('/assets/bat-bonk.png')_32_32,auto] dark:active:cursor-[url('/assets/bat-bonk-white.png')_32_32,auto]"
+        'cursor-[url(\'/assets/bat.png\')_32_32,auto] active:cursor-[url(\'/assets/bat-bonk.png\')_32_32,auto] dark:active:cursor-[url(\'/assets/bat-bonk-white.png\')_32_32,auto]',
       )}
       onMouseDown={handlePlaySound}
     >

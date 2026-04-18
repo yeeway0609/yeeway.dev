@@ -45,10 +45,14 @@ export function getBlogData(slug: string): BlogData {
     .toString()
 
   // EXPLAIN: 處理 ![說明文字@寬x高] 格式的圖片
-  contentHTML = contentHTML.replace(/<img([^>]+)alt="([^"]*?)@(\d+)x(\d+)"([^>]*)>/g, (match, beforeAlt, altText, width, height, afterAlt) => {
-    const altAttr = altText.trim() ? `alt="${altText.trim()}" ` : ''
-    return `<img${beforeAlt} ${altAttr} width="${width}" height="${height}"${afterAlt}>`
-  })
+  const imgWithSizeInAlt = /<img([^>]+)alt="([^"]*?)@(\d+)x(\d+)"([^>]*)>/g
+  contentHTML = contentHTML.replace(
+    imgWithSizeInAlt,
+    (match, beforeAlt, altText, width, height, afterAlt) => {
+      const altAttr = altText.trim() ? `alt="${altText.trim()}" ` : ''
+      return `<img${beforeAlt} ${altAttr} width="${width}" height="${height}"${afterAlt}>`
+    },
+  )
 
   return {
     slug,

@@ -22,6 +22,7 @@ export function SpotifyPlayer() {
       height="80"
       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
       loading="lazy"
-    ></iframe>
+    >
+    </iframe>
   )
 }

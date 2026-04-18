@@ -13,7 +13,7 @@ const TMDB_POSTER_BASE = 'https://image.tmdb.org/t/p/w500'
 const notion = new Client({ auth: NOTION_API_KEY })
 
 /** https://www.themoviedb.org/movie/1084242-zootopia-2 -> { type: 'movie', id: 1084242 } */
-function parseTmdbUrl(url: string): { type: 'tv' | 'movie'; id: number } | null {
+function parseTmdbUrl(url: string): { type: 'tv' | 'movie', id: number } | null {
   const match = url.match(/themoviedb\.org\/(tv|movie)\/(\d+)/i)
   if (!match) return null
   const id = parseInt(match[2], 10)
@@ -59,7 +59,7 @@ async function fetchAllLibraryItems(): Promise<LibraryItem[]> {
 
     const items = await Promise.all(
       allResults.map(async (page) => {
-        const props = (page as { id: string; properties?: Record<string, unknown> }).properties ?? {}
+        const props = (page as { id: string, properties?: Record<string, unknown> }).properties ?? {}
         const titleProp = props.title as { title?: Array<{ plain_text?: string }> } | undefined
         const typeProp = props.type as { select?: { name?: string } } | undefined
         const ratingProp = props.rating as { number?: number } | undefined
@@ -92,7 +92,7 @@ async function fetchAllLibraryItems(): Promise<LibraryItem[]> {
         }
 
         return workData
-      })
+      }),
     )
 
     return items

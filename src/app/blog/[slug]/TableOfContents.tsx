@@ -43,7 +43,7 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
           className={clsx(
             'text-muted-foreground hover:text-foreground mb-2 block text-base',
             level === 3 ? 'ml-4 text-sm' : '',
-            heading === activeHeading ? 'text-primary' : ''
+            heading === activeHeading ? 'text-primary' : '',
           )}
           href={`#${heading}`}
         >

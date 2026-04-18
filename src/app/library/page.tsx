@@ -6,16 +6,22 @@ import { Badge } from '@/components/ui/badge'
 import { LIBRARY_TYPES, RATING_OPTIONS } from '@/lib/constants'
 import { getLibraryItems } from '@/lib/library.server'
 
+interface LibraryPageProps {
+  searchParams: Promise<{ type?: string, rating?: string }>
+}
+
 export const metadata: Metadata = {
   title: 'Library',
 }
 
-export default async function LibraryPage({ searchParams }: { searchParams: Promise<{ type?: string; rating?: string }> }) {
+export default async function LibraryPage({ searchParams }: LibraryPageProps) {
   const params = await searchParams
   const requestedType = params.type?.toLowerCase() ?? 'tv'
   const validTypes = LIBRARY_TYPES.map((t) => t.value)
   const currentType = validTypes.includes(requestedType as any) ? requestedType : 'tv'
-  const ratingNum = params.rating && Number(params.rating) >= 1 && Number(params.rating) <= 6 ? Number(params.rating) : undefined
+  const ratingNum = params.rating && Number(params.rating) >= 1 && Number(params.rating) <= 6
+    ? Number(params.rating)
+    : undefined
 
   const allItems = await getLibraryItems()
   const items = allItems

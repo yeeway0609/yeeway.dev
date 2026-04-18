@@ -50,7 +50,7 @@ export function CoolAvatar() {
                   ref={contentRef as React.Ref<HTMLAnchorElement>}
                   className={clsx(
                     'inline-block shrink-0 whitespace-nowrap',
-                    nowPlaying?.url && 'decoration-muted-foreground/50 underline underline-offset-2'
+                    nowPlaying?.url && 'decoration-muted-foreground/50 underline underline-offset-2',
                   )}
                   href={nowPlaying?.url}
                   target="_blank"
@@ -63,7 +63,7 @@ export function CoolAvatar() {
                 ref={contentRef as React.Ref<HTMLAnchorElement>}
                 className={clsx(
                   'inline-block shrink-0 whitespace-nowrap',
-                  nowPlaying?.url && 'decoration-muted-foreground/50 underline underline-offset-2'
+                  nowPlaying?.url && 'decoration-muted-foreground/50 underline underline-offset-2',
                 )}
                 href={nowPlaying?.url}
                 target="_blank"

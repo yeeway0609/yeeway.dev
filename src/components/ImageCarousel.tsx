@@ -38,7 +38,7 @@ export function ImageCarousel({ images, align = 'left' }: ImageCarouselProps) {
           'flex cursor-grab items-center gap-8 will-change-transform active:cursor-grabbing',
           align === 'left' && 'justify-start',
           align === 'center' && 'justify-center',
-          align === 'right' && 'justify-end'
+          align === 'right' && 'justify-end',
         )}
       >
         {images.map((image, index: number) => (

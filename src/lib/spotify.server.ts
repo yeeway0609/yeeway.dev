@@ -5,7 +5,7 @@ import { SpotifyApi, type AccessToken, type PlaybackState, type Track } from '@s
 const SPOTIFY_TOKEN_URL = 'https://accounts.spotify.com/api/token'
 const TOKEN_EXPIRY_BUFFER_MS = 5 * 60 * 1000 // refresh 5 min before expiry
 
-let tokenCache: { accessToken: string; expiresAt: number } | null = null
+let tokenCache: { accessToken: string, expiresAt: number } | null = null
 
 export interface NowPlaying {
   isPlaying: PlaybackState['is_playing']

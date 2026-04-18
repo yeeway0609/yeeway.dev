@@ -62,7 +62,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     pre: (props) => {
       const codeElement = props.children
       if (codeElement && codeElement.type === 'code') {
-        const { children, className } = codeElement.props as { children: string; className?: string }
+        const { children, className } = codeElement.props as { children: string, className?: string }
         const lang = className?.replace('language-', '') as BundledLanguage
 
         return (
@@ -82,7 +82,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
  * 狀況 2: ![說明文字](圖片網址)，只有 alt 文字但不指定寬高
  * 狀況 3: ![@600x400](圖片網址)，只指定寬高但 alt 文字為空
  */
-function parseImgAlt(alt?: string): { altText: string; width: number; height: number } {
+function parseImgAlt(alt?: string): { altText: string, width: number, height: number } {
   const DEFAULT_MAX_WIDTH = 768
   const DEFAULT_MAX_HEIGHT = 768
 

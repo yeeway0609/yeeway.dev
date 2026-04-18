@@ -8,7 +8,7 @@ type HomePageTitleProps = {
   className?: string
 }
 
-const text = ['Hi, ', "I'm ", 'Alex ', 'Su']
+const text = ['Hi, ', 'I\'m ', 'Alex ', 'Su']
 
 const containerVariants = {
   hidden: {},
@@ -37,7 +37,7 @@ export function HomePageTitle({ className }: HomePageTitleProps) {
     <motion.h1
       className={clsx(
         'flex flex-wrap items-center text-center text-3xl font-extrabold tracking-wider whitespace-pre sm:text-5xl sm:leading-tight',
-        className
+        className,
       )}
       variants={containerVariants}
       initial="hidden"

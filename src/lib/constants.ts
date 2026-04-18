@@ -15,7 +15,7 @@ export const CONTACTS = {
   discord: 'https://discordapp.com/users/388961699488595968',
 } as const
 
-export const DEFAULT_COVER_IMAGE = `/cover.png`
+export const DEFAULT_COVER_IMAGE = '/cover.png'
 
 export const BLOG_DIR = 'content/blog'
 
