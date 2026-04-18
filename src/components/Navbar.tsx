@@ -4,8 +4,9 @@ import { useState } from 'react'
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useTheme } from 'next-themes'
+import { Button } from '@/components/ui/button'
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
-import { ThemeSwitch } from './ThemeSwitch'
 
 const ROUTES = [
   { title: 'Blog', href: '/blog', icon: <Icon icon="mingcute:pen-fill" className="mr-1.5 size-4" /> },
@@ -15,7 +16,7 @@ const ROUTES = [
   { title: 'Library', href: '/library', icon: <Icon icon="heroicons:bookmark-solid" className="mr-1.5 size-4" /> },
 ]
 
-export function Header() {
+export function Navbar() {
   const [open, setOpen] = useState(false)
 
   return (
@@ -63,5 +64,22 @@ export function Header() {
         </div>
       </div>
     </header>
+  )
+}
+
+function ThemeSwitch() {
+  const { theme, setTheme } = useTheme()
+
+  return (
+    <Button
+      className="group relative cursor-pointer rounded-sm p-2"
+      variant="ghost"
+      size="icon"
+      onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+    >
+      <Icon icon="heroicons:sun-solid" className="group-hover:text-primary absolute size-6 transition-colors dark:hidden" />
+      <Icon icon="heroicons:moon-solid" className="group-hover:text-primary absolute hidden size-6 transition-colors dark:block" />
+      <span className="sr-only">Toggle theme</span>
+    </Button>
   )
 }

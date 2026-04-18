@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --fix & prettier --write ."
+    "lint": "next lint --fix && prettier --write . && tsc --noEmit"
   },
   "packageManager": "pnpm@10.11.0",
   "dependencies": {
