@@ -1,10 +1,10 @@
 import { Icon } from '@iconify/react'
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { getLibraryItems } from '@/app/api/library/library.server'
 import { LibraryTabs } from '@/app/library/LibraryTabs'
 import { Badge } from '@/components/ui/badge'
 import { LIBRARY_TYPES, RATING_OPTIONS } from '@/lib/constants'
+import { getLibraryItems } from '@/lib/library.server'
 
 export const metadata: Metadata = {
   title: 'Library',

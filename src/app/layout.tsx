@@ -3,7 +3,6 @@ import type { Metadata } from 'next'
 import { Nunito } from 'next/font/google'
 import { ConsoleAsciiArt } from '@/components/ConsoleAsciiArt'
 import { Footer } from '@/components/Footer'
-import { LibraryPreloader } from '@/components/LibraryPreloader'
 import { Navbar } from '@/components/Navbar'
 import { Providers } from '@/components/Providers'
 import { SITE } from '@/lib/constants'
@@ -42,7 +41,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="zh-TW" suppressHydrationWarning>
       <body className={`${nunito.className} flex min-h-dvh flex-col items-center`}>
-        <LibraryPreloader />
         <Providers>
           <Navbar />
           <div className="relative w-full grow">{children}</div>
