@@ -9,11 +9,31 @@ import { Button } from '@/components/ui/button'
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 
 const ROUTES = [
-  { title: 'Blog', href: '/blog', icon: <Icon icon="mingcute:pen-fill" className="mr-1.5 size-4" /> },
-  { title: 'About', href: '/about', icon: <Icon icon="heroicons:user-solid" className="mr-1.5 size-4" /> },
-  { title: 'Projects', href: '/projects', icon: <Icon icon="heroicons:command-line-solid" className="mr-1.5 size-4" /> },
-  { title: 'Uses', href: '/uses', icon: <Icon icon="heroicons:bolt-solid" className="mr-1.5 size-4" /> },
-  { title: 'Library', href: '/library', icon: <Icon icon="heroicons:bookmark-solid" className="mr-1.5 size-4" /> },
+  {
+    title: '部落格',
+    href: '/blog',
+    icon: <Icon className="mr-1.5 size-4 text-sky-500 dark:text-sky-400" icon="mingcute:pencil-fill" />,
+  },
+  {
+    title: '關於我',
+    href: '/about',
+    icon: <Icon className="mr-1.5 size-4 text-violet-500 dark:text-violet-400" icon="heroicons:user-solid" />,
+  },
+  {
+    title: '專案作品',
+    href: '/projects',
+    icon: <Icon className="mr-1.5 size-4 text-emerald-500 dark:text-emerald-400" icon="heroicons:command-line-solid" />,
+  },
+  {
+    title: '愛用工具',
+    href: '/uses',
+    icon: <Icon className="mr-1.5 size-4 text-amber-500 dark:text-amber-400" icon="heroicons:bolt-solid" />,
+  },
+  {
+    title: '收藏清單',
+    href: '/library',
+    icon: <Icon className="mr-1.5 size-4 text-rose-500 dark:text-rose-400" icon="heroicons:bookmark-solid" />,
+  },
 ]
 
 export function Navbar() {

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Uses',
+  title: '愛用工具',
 }
 
 export default async function Page() {
@@ -9,8 +9,8 @@ export default async function Page() {
 
   return (
     <main className="layout-container pb-20">
-      <h1 className="page-title">Uses</h1>
-      <p className="page-sub-title">A collection of my favorite tools, software, and gears.</p>
+      <h1 className="page-title">愛用工具</h1>
+      <p className="page-sub-title">收藏了我最常用的工具、軟體或各種設備</p>
 
       <div className="-mt-6">
         <UsesContent />

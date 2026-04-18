@@ -24,7 +24,10 @@ export function CopyButton({ text, className }: CopyButtonProps) {
 
   return (
     <button onClick={handleCopy} className={clsx('flex size-6 cursor-pointer items-center justify-center rounded hover:bg-gray-500/50', className)}>
-      <Icon icon={hasCopied ? 'tabler:check' : 'tabler:copy'} className="size-3.5" />
+      <Icon
+        className="size-3.5"
+        icon={hasCopied ? 'tabler:check' : 'tabler:copy'}
+      />
     </button>
   )
 }
