@@ -5,20 +5,21 @@ import { fetchAllLibraryItems } from '@/lib/library.server'
 export const dynamic = 'force-dynamic'
 export const maxDuration = 60
 
-const R2_OBJECT_KEY = 'library.json'
+const accessKeyId = process.env.R2_ACCESS_KEY_ID
+const secretAccessKey = process.env.R2_SECRET_ACCESS_KEY
+const endpoint = process.env.R2_S3_ENDPOINT
+const uploadUrl = `${endpoint}/library.json`
+
+const r2Client = accessKeyId && secretAccessKey
+  ? new AwsClient({ accessKeyId, secretAccessKey })
+  : null
 
 export async function GET(request: NextRequest) {
-  const authHeader = request.headers.get('authorization')
-
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+  if (request.headers.get('authorization') !== `Bearer ${process.env.CRON_SECRET}`) {
     return NextResponse.json({ ok: false, error: 'Unauthorized' }, { status: 401 })
   }
 
-  const accessKeyId = process.env.R2_ACCESS_KEY_ID
-  const secretAccessKey = process.env.R2_SECRET_ACCESS_KEY
-  const endpoint = process.env.R2_S3_ENDPOINT
-
-  if (!accessKeyId || !secretAccessKey || !endpoint) {
+  if (!r2Client || !endpoint) {
     return NextResponse.json({ ok: false, error: 'Missing R2 credentials' }, { status: 500 })
   }
 
@@ -26,10 +27,7 @@ export async function GET(request: NextRequest) {
     const items = await fetchAllLibraryItems()
     const body = new TextEncoder().encode(JSON.stringify(items))
 
-    const r2 = new AwsClient({ accessKeyId, secretAccessKey })
-    const uploadUrl = `${endpoint.replace(/\/$/, '')}/${R2_OBJECT_KEY}`
-
-    const res = await r2.fetch(uploadUrl, {
+    const res = await r2Client.fetch(uploadUrl, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
