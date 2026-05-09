@@ -6,18 +6,18 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { LIBRARY_TYPES, RATING_OPTIONS } from '@/lib/constants'
+import { LIBRARY_TYPE_VALUES, LIBRARY_TYPE_OPTIONS, RATING_OPTIONS } from '@/lib/constants'
 
-interface LibraryToolbarProps {
-  selectedType: string
-  ratingParam?: string
-  titleParam: string
-}
-
-export function LibraryToolbar({ selectedType, ratingParam, titleParam }: LibraryToolbarProps) {
+export function LibraryToolbar() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const titleParamFromUrl = searchParams.get('title') ?? ''
+  const typeParam = searchParams.get('type')?.toLowerCase() ?? 'tv'
+  const ratingParam = searchParams.get('rating') ?? undefined
+  const titleParam = searchParams.get('title') ?? ''
+
+  const selectedType = LIBRARY_TYPE_VALUES.includes(typeParam as (typeof LIBRARY_TYPE_VALUES)[number])
+    ? typeParam
+    : 'tv'
 
   const [titleInput, setTitleInput] = useState<string>(titleParam)
   const debouncedTitle = useDebounce(titleInput, 300)
@@ -40,8 +40,8 @@ export function LibraryToolbar({ selectedType, ratingParam, titleParam }: Librar
   }
 
   useEffect(() => {
-    setTitleInput(titleParamFromUrl)
-  }, [titleParamFromUrl])
+    setTitleInput(titleParam)
+  }, [titleParam])
 
   useEffect(() => {
     const params = new URLSearchParams(searchParams.toString())
@@ -58,7 +58,7 @@ export function LibraryToolbar({ selectedType, ratingParam, titleParam }: Librar
       <div className="flex flex-wrap items-center gap-4">
         <Tabs value={selectedType} onValueChange={handleTypeChange}>
           <TabsList>
-            {LIBRARY_TYPES.map((type) => (
+            {LIBRARY_TYPE_OPTIONS.map((type) => (
               <TabsTrigger key={type.value} value={type.value}>
                 {type.label}
               </TabsTrigger>

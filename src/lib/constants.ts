@@ -28,7 +28,7 @@ export const RATING_OPTIONS = [
   { label: '⭐️', value: '1' },
 ] as const
 
-export const LIBRARY_TYPES = [
+export const LIBRARY_TYPE_OPTIONS = [
   {
     value: 'tv',
     label: 'TV',
@@ -42,11 +42,9 @@ export const LIBRARY_TYPES = [
   //   label: 'Book',
   // },
   // {
-  //   value: 'comic',
-  //   label: 'Comic',
-  // },
-  // {
   //   value: 'game',
   //   label: 'Game',
   // },
 ] as const
+
+export const LIBRARY_TYPE_VALUES = LIBRARY_TYPE_OPTIONS.map((t) => t.value)

@@ -1,7 +1,5 @@
-'use server'
-
+import 'server-only'
 import { Client, collectPaginatedAPI } from '@notionhq/client'
-import { unstable_cache } from 'next/cache'
 import type { LibraryItem, TmdbDetails } from '@/lib/types'
 
 const NOTION_API_KEY = process.env.NOTION_API_KEY
@@ -45,7 +43,7 @@ async function getTmdbDetails(type: 'tv' | 'movie', id: number): Promise<TmdbDet
   }
 }
 
-async function fetchAllLibraryItems(): Promise<LibraryItem[]> {
+export async function fetchAllLibraryItems(): Promise<LibraryItem[]> {
   if (!NOTION_API_KEY || !NOTION_DATABASE_ID) {
     console.warn('[Notion] Missing API key or database ID')
     return []
@@ -101,8 +99,3 @@ async function fetchAllLibraryItems(): Promise<LibraryItem[]> {
     return []
   }
 }
-
-// Cache the full item list for 1 hour so all paginated API calls share one Notion fetch
-export const getLibraryItems = unstable_cache(fetchAllLibraryItems, ['library-items'], {
-  revalidate: 3600,
-})

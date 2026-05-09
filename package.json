@@ -26,6 +26,7 @@
     "@radix-ui/react-tooltip": "^1.2.4",
     "@reactuses/core": "^6.3.1",
     "@spotify/web-api-ts-sdk": "^1.2.0",
+    "aws4fetch": "^1.0.20",
     "caniuse-lite": "",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
