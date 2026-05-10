@@ -1,6 +1,6 @@
 'use client'
 
-import { type ChangeEvent, startTransition, useEffect, useState } from 'react'
+import { useEffect, useState, type ChangeEvent } from 'react'
 import { useDebounce } from '@reactuses/core'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Input } from '@/components/ui/input'
@@ -26,9 +26,7 @@ export function LibraryToolbar() {
     const params = new URLSearchParams(searchParams)
     params.set('type', value)
     params.delete('rating')
-    startTransition(() => {
-      router.push(`/library?${params.toString()}`, { scroll: false })
-    })
+    router.push(`/library?${params.toString()}`, { scroll: false })
   }
 
   function handleRatingChange(value: string) {
@@ -38,9 +36,7 @@ export function LibraryToolbar() {
     } else {
       params.set('rating', value)
     }
-    startTransition(() => {
-      router.push(`/library?${params.toString()}`, { scroll: false })
-    })
+    router.push(`/library?${params.toString()}`, { scroll: false })
   }
 
   useEffect(() => {
@@ -54,9 +50,7 @@ export function LibraryToolbar() {
     } else {
       params.delete('title')
     }
-    startTransition(() => {
-      router.replace(`/library?${params.toString()}`, { scroll: false })
-    })
+    router.replace(`/library?${params.toString()}`, { scroll: false })
   }, [debouncedTitle, router, searchParams])
 
   return (
