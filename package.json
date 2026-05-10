@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --fix && tsc --noEmit"
+    "lint": "next lint --fix && tsc -b"
   },
   "packageManager": "pnpm@10.11.0",
   "dependencies": {

@@ -62,7 +62,7 @@ export function LibraryGrids() {
           >
             {work.imageUrl && (
               <Image
-                className="size-full object-cover"
+                className="absolute size-full object-cover"
                 src={work.imageUrl}
                 alt={work.title}
                 width={120}
