@@ -12,7 +12,7 @@ export function BlogPostCard({ slug, title, description, publishedOn, tags, cove
       title={`Post: ${title}`}
       href={`blog/${slug}`}
     >
-      <div className="w-full shrink-0 sm:max-w-72">
+      <div className="w-full shrink-0 sm:max-w-80">
         <Image
           className="size-full max-h-[180px] animate-img-loading object-cover sm:max-h-none"
           src={coverImageUrl ?? DEFAULT_COVER_IMAGE}

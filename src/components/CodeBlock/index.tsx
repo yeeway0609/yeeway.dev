@@ -32,7 +32,10 @@ export async function CodeBlock({ children, lang, fileName }: CodeBlockProps) {
         <span className="text-xs leading-none sm:text-sm">{fileName}</span>
         <CopyButton className="ml-auto" text={children} />
       </div>
-      <div className="text-sm sm:text-base [&_pre]:overflow-x-auto [&_pre]:px-4 [&_pre]:py-3" dangerouslySetInnerHTML={{ __html: output }} />
+      <div
+        className="text-sm sm:text-base [&_pre]:overflow-x-auto [&_pre]:overflow-y-clip [&_pre]:overscroll-x-contain [&_pre]:overscroll-y-auto [&_pre]:px-4 [&_pre]:py-3"
+        dangerouslySetInnerHTML={{ __html: output }}
+      />
     </div>
   )
 }

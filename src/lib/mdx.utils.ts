@@ -97,10 +97,19 @@ export function getAllBlogTags(): string[] {
 export function getBlogTOC(slug: string): BlogTOC {
   const filePath = path.join(process.cwd(), BLOG_DIR, `${slug}.mdx`)
   const fileContent = getFile(filePath)
+  const { content } = matter(fileContent)
   const headings: BlogTOC = []
 
-  const lines = fileContent.split('\n')
+  const lines = content.split('\n')
+  let inCodeFence = false
+
   for (const line of lines) {
+    if (/^\s*```/.test(line)) {
+      inCodeFence = !inCodeFence
+      continue
+    }
+    if (inCodeFence) continue
+
     const h2 = line.match(/^##\s+(.*)/)
     const h3 = line.match(/^###\s+(.*)/)
 

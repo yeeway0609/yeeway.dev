@@ -1,0 +1,211 @@
+---
+title: yt-dlp 實用小技巧
+description: 分享幾個我最常用的 yt-dlp 使用情境，以及結合 AI Agent 的小技巧
+tags:
+  - AI
+  - 實用工具
+publishedOn: 2026-05-10
+isPublished: true
+coverImageUrl:
+---
+
+我最近真的愛上了 yt-dlp 這個工具，用了之後才發現它比想像中強大很多。身為一個音樂控，常常困擾的是有些歌曲只在 YouTube 上有，例如翻唱影片；但本播放清單整理魔人又喜歡在同一個播放清單裡面聽某個音樂家的所有歌曲。yt-dlp 幫我解決了這個問題，而且它能做的事情遠不止這樣。這篇文章就來整理一下我平常怎麼用這個工具的。
+
+## yt-dlp 基礎功能介紹
+
+**yt-dlp** 是 youtube-dl 的進化版，支援超過一千個網站，而且更新頻率很高。安裝方式（macOS）：
+
+```bash
+brew install yt-dlp
+```
+
+最簡單的使用方式就是直接加 URL：
+
+```bash
+yt-dlp <URL>
+```
+
+幾個最常用的參數：
+
+- **`-f` / `--format`**：選擇畫質，例如 `-f "bestvideo+bestaudio"`
+- **`-o` / `--output`**：自訂輸出檔案名稱，支援模板語法
+- **`-x` / `--extract-audio`**：只提取音訊，不下載影片
+- **`--audio-format`**：指定音訊格式，例如 `mp3`、`flac`、`m4a`
+
+---
+
+## Use Case 1：把 YouTube 上才有的音樂，匯入 Spotify
+
+有時候在 YouTube 上看到某個歌手翻唱了一首很好聽的歌，但平常都在 Spotify 聽歌，這時候就會想說能不能把它載下來、直接放在 Spotify 裡面聽。剛好 Spotify 桌面版支援「本地檔案」(Local Files) 功能，所以這個需求完全可以實現。
+
+以我自己為例：NMIXX 的成員們都有參加過韓國 YouTube 音樂節目《리무진서비스》（LeeMujin Service），cover 了很多好聽的歌，但這些版本在 Spotify 上當然找不到。下面就用這個例子來走一遍完整流程。
+
+### 下載指令
+
+```bash
+yt-dlp -x --audio-format mp3 "<url>"
+```
+
+我平常下載音樂時會多加兩個參數，讓下載下來的 MP3 直接帶上縮圖和 metadata，不需要事後再補：
+
+```bash
+yt-dlp \
+  --extract-audio \
+  --audio-format mp3 \
+  --embed-thumbnail \
+  --add-metadata \
+  -o "%(title)s.%(ext)s" \
+  "<url>"
+```
+
+`--embed-thumbnail` 會把影片縮圖嵌入 MP3 的封面藝術，`--add-metadata` 則會把標題、頻道名等資訊寫進 ID3 標籤。這樣在 Spotify 本地檔案和大多數播放器都能正常顯示封面。
+
+![img-1](https://assets.yeeway.dev/yt-dlp-intro/SCR-20260110-otvl.png)
+
+如果是從節目頻道下載（例如 리무진서비스 加長型禮車服務系列），影片的 artist metadata 會是頻道名稱，而不是演出的藝人。用 `--parse-metadata` 可以在下載時直接覆蓋，省去事後跑 ffmpeg 的步驟：
+
+```bash
+yt-dlp  \
+  --extract-audio \
+  --audio-format mp3 \
+  --embed-thumbnail \
+  --add-metadata \
+  --parse-metadata ":(?P<meta_title>HAEWON | Love Me Like This)" \
+  --parse-metadata ":(?P<meta_artist>HAEWON)" \
+  --parse-metadata ":(?P<meta_album>리무진서비스 EP.55)" \
+  -o "HAEWON | Love Me Like This.mp3" \
+  "{{url}}"
+
+```
+
+![img-2](https://assets.yeeway.dev/yt-dlp-intro/SCR-20260110-ovns.png)
+
+再來像"加長型禮車服務" 這種節目通常是半小時的長度，裡面有好幾首歌加上 talking 環節。用 `--download-sections` 可以只抓指定的時間段，直接切成一首一首的 MP3：
+
+```bash
+yt-dlp  \
+  --extract-audio \
+  --audio-format mp3 \
+  --embed-thumbnail \
+  --add-metadata \
+  -o "%(title)s.%(ext)s" \
+  --download-sections "*00:00-00:00" \
+  "{{url}}"
+```
+
+每首歌各執行一次指令，填入對應的時間區間和歌名，就能把整支合輯拆成獨立曲目。
+
+### 匯入 Spotify
+
+下載完之後，打開 Spotify 桌面版，照以下步驟就能把 MP3 加入音樂庫：
+
+1. 打開 Spotify 桌面版 → 設定 → 顯示本地檔案
+2. 指定你放 MP3 的資料夾
+3. Spotify 會自動掃描並加入音樂庫
+4. 在手機版要收聽的話，需要在同一個 Wi-Fi 網路下同步一次
+
+![img-3](https://assets.yeeway.dev/yt-dlp-intro/SCR-20260110-pnzi.png)
+
+## Use Case 2：下載字幕，用 AI Agent 整理為筆記
+
+看教學影片、演講或 Podcast 節目的時候，常常會想說要是能把內容整理成筆記就好了。雖然影片不像文章可以直接複製貼上，但大部分影片都有字幕，而字幕本身就是純文字。所以我就會用 yt-dlp 單獨把字幕抓下來，再丟給 AI 快速整理成有結構的筆記。
+### 下載字幕的指令
+
+```bash
+# 只下載字幕，不下載影片
+yt-dlp --write-subs --skip-download "URL"
+
+# 指定字幕語言（英文 + 繁體中文）
+yt-dlp --write-subs --sub-langs "en,zh-TW" --skip-download "URL"
+
+# 指定字幕格式
+yt-dlp --write-subs --sub-format srt --skip-download "URL"
+
+# 如果影片沒有手動字幕，可以用自動生成的
+yt-dlp --write-auto-subs --skip-download "URL"
+```
+
+### 與 AI 整合的工作流程
+
+1. 下載 `.srt` 或 `.vtt` 字幕檔
+2. 把字幕內容貼給 AI（例如 Claude），請它：
+   - 去除重複的文字和時間碼
+   - 整理為有段落結構的筆記
+   - 提取重點、製作摘要或 Flashcard
+
+字幕檔的格式其實很適合 AI 處理，因為內容已經是純文字，只需要重新組織結構。
+
+### 實際範例
+
+我最近在學著自己用髮蠟抓頭髮，當個精緻男孩！這邊就以這支「[推薦你 3 款男生的清爽髮型](https://www.youtube.com/watch?v=0bSofVoS2k8)」影片為例，先下載繁體中文字幕：
+
+```bash
+yt-dlp --write-subs --sub-langs "zh-TW" --skip-download \
+  "https://www.youtube.com/watch?v=0bSofVoS2k8"
+```
+
+下載下來的 `.vtt` 格式長這樣——每一句都附帶時間碼，而且一句話被切成好幾行：
+
+```
+WEBVTT
+Kind: captions
+Language: zh-TW
+
+00:00:00.066 --> 00:00:00.833
+今天我要教你
+
+00:00:01.466 --> 00:00:02.800
+男生的清爽髮型
+
+00:00:02.800 --> 00:00:04.200
+分別是短髮碎蓋
+
+00:00:04.266 --> 00:00:05.400
+跟微分碎蓋
+...
+```
+
+把這份字幕貼給 Claude，請它整理成筆記，輸出結果：
+
+```markdown
+### 髮型一：短髮碎蓋
+- 取少量造型品搓揉手心 → 撥入髮中增加髮束感
+- 側邊頭髮往前撥順頭型，上方做出層次與紋理感
+
+### 髮型二：微分碎蓋（韓系）
+1. 兩根手指對準鼻梁直直往上梳，自然剖開分線
+2. 拎起該撮頭髮折出彎度，噴定型液 → 吹風機熱小風加熱 → 靜置定型
+3. 瀏海髮尾往中間撥做出內彎（髮質硬：手指凹內彎 → 熱風加熱 → 冷風定型）
+
+### 髮型三：短髮類油頭（露額頭）
+- 只打濕前面瀏海，吹髮時只把瀏海往上吹，不要整顆往後吹
+- 造型：撥出髮束感，瀏海往上並左右分，保留刺刺、飛飛的瀟灑感
+...
+```
+
+原本碎片化的字幕，變成結構清晰、可以直接存進筆記軟體的內容。而且我也會直接用一句 `claude "請你用 yt-dlp 幫我下載 <url> 的字幕檔，並將他整理成簡易筆記放在 XXX.md"` 這樣的指令一步叫 Claude Code 做到位，Agent 時代就是要這麼懶！
+
+## 其他不錯的小功能
+
+### 下載播放清單的進階用法
+
+```bash
+# 只下載第 1、3、5 集
+yt-dlp --playlist-items 1,3,5 "播放清單 URL"
+
+# 下載第 10 集之後的所有集數
+yt-dlp --playlist-items 10: "播放清單 URL"
+```
+
+### 批次下載（從文件讀取 URL）
+
+把多個 URL 存成一個文字檔，一次全部下載：
+
+```bash
+# urls.txt 裡面每行一個 URL
+yt-dlp -a urls.txt -x --audio-format mp3
+```
+
+## 總結
+
+yt-dlp 是一個我用得越久越覺得強大的工具。最常用的兩個情境（下載音樂匯入 Spotify、下載字幕整理筆記）只是它能力的一小部分。
