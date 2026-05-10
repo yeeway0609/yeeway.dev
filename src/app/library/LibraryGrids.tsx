@@ -60,7 +60,16 @@ export function LibraryGrids() {
             href={work.externalUrl ?? undefined}
             target="_blank"
           >
-            {work.imageUrl && <Image src={work.imageUrl} alt={work.title} fill className="object-cover" />}
+            {work.imageUrl && (
+              <Image
+                className="size-full object-cover"
+                src={work.imageUrl}
+                alt={work.title}
+                width={120}
+                height={180}
+                fetchPriority="low"
+              />
+            )}
             <span>{work.title}</span>
 
             <Badge
