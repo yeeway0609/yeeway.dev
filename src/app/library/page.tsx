@@ -11,7 +11,7 @@ export default function LibraryPage() {
   return (
     <main className="layout-container pb-20">
       <h1 className="page-title">收藏清單</h1>
-      <p className="page-sub-title">評價我看過的各種影視作品（好的壞的都有）</p>
+      <p className="page-sub-title">評價我看過或讀過的影視及書籍（好的壞的都有）</p>
 
       <LibraryToolbar />
       <Suspense fallback={<GridSkeleton />}>

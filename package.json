@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --fix && tsc -b"
+    "lint": "next lint --fix && tsc -b",
+    "sync": "curl -s http://localhost:3000/api/sync-library -H \"Authorization: Bearer $CRON_SECRET\" | python3 -m json.tool"
   },
   "packageManager": "pnpm@10.11.0",
   "dependencies": {

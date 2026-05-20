@@ -22,6 +22,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'image.tmdb.org',
       },
+      {
+        protocol: 'https',
+        hostname: 'uploads.mangadex.org',
+      },
     ],
   },
   async rewrites() {

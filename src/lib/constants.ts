@@ -37,14 +37,10 @@ export const LIBRARY_TYPE_OPTIONS = [
     value: 'movie',
     label: 'Movie',
   },
-  // {
-  //   value: 'book',
-  //   label: 'Book',
-  // },
-  // {
-  //   value: 'game',
-  //   label: 'Game',
-  // },
+  {
+    value: 'book',
+    label: 'Book',
+  },
 ] as const
 
 export const LIBRARY_TYPE_VALUES = LIBRARY_TYPE_OPTIONS.map((t) => t.value)
